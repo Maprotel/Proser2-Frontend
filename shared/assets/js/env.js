@@ -10,8 +10,6 @@
   window.__env.callcenterSlogan = "Proser executive services";
   window.__env.callcenterLogo = "assets/img/logos_proser/proser-icon-sm.png";
   window.__env.callcenterSite = "http://www.maprotel.com/";
-
-  
   window.__env.autoregister = false;
 
   window.__env.waitTime = 20;

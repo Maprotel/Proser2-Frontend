@@ -1,53 +1,85 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule, ModuleWithProviders } from "@angular/core";
+
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-// local compoenents
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
-import { DashboardHeaderModule } from './dashboard-header/dashboard-header.module';
-
-// shared modules
-import { IntroPageModule } from "shared/modules/intro-page/intro-page.module";
-
-
-// node modules
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { AuthGuard } from "shared/guards";
-import { AlertService } from "shared/services/helpers/alert.service";
-import { AlertModule } from "shared/modules/alert/alert.module";
-
-// Shared
-import { EnvServiceProvider } from "shared/services/helpers/env.service.provider";
-
-
-// Bootstrap
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 
+import { AuthGuard } from "shared/guards";
+import { AlertService } from "shared/services/helpers/alert.service";
+import { AlertModule } from "shared/modules/alert/alert.module";
+import { NowModule } from "shared/modules/now/now.module";
+import { ConnectionModule } from "shared/modules/connection/connection.module";
+import { SelectorModule } from "shared/modules/selector/selector.module";
+import { EnvServiceProvider } from "shared/services/helpers/env.service.provider";
+
+import { HomeComponent } from "./home/home.component";
+
+
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+
+import { HeaderMenuModule } from "shared/modules/header-menu/header-menu.module";
+import { HeaderMenuUserModule } from "shared/modules/header-menu-user/header-menu-user.module";
+import { HeaderMenuBrandModule } from "shared/modules/header-menu-brand/header-menu-brand.module";
+import { IntroPageModule } from "shared/modules/intro-page/intro-page.module";
+
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+
+import { HeaderModule } from './header/header.module';
+// import { DashboardHistoricHeaderComponent } from './shared/modules/dashboard-historic-header/dashboard-historic-header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardHomeComponent
+    HomeComponent,
+
+    // DashboardHistoricHeaderComponent
   ],
   imports: [
     BrowserModule,
+    SelectorModule,
+    FormsModule,
     HttpClientModule,
-
-    IntroPageModule,
-    FontAwesomeModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    AlertModule,
+    NowModule,
     NgbModule,
+    ConnectionModule,
+
+    HeaderMenuModule,
+
+    HeaderMenuUserModule,
+    HeaderMenuBrandModule,
+    
+    IntroPageModule,
 
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
 
-    DashboardHeaderModule,
+    FontAwesomeModule,
+
+    HeaderModule,
 
     AppRoutingModule
   ],
   providers: [EnvServiceProvider, AuthGuard, AlertService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+const providers = [];
+@NgModule({})
+export class DashboardSharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AppModule,
+      providers: providers
+    };
+  }
+}

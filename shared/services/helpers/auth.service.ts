@@ -22,7 +22,7 @@ export class AuthService {
     private http: HttpClient,
     private env: EnvService,
     private router: Router
-  ) { }
+  ) {}
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
@@ -96,7 +96,7 @@ export class AuthService {
   logoutUser() {
     const accessToken = localStorage.getItem("accessToken");
     const url_api = `${this.env.loopbackApiUrl}/api/userbases/logout?access_token=${accessToken}`;
-    this.router.navigate(["/bye"]);
+    this.router.navigate(["/init/bye"]);
     localStorage.clear();
     return this.http.post<UserbaseModel>(url_api, { headers: this.headers });
   }
@@ -206,6 +206,4 @@ export class AuthService {
       return 0;
     }
   }
-
-
 }

@@ -20,7 +20,7 @@ export class HeaderMenuBrandComponent implements OnInit {
   }
 
   onBrand() {
-    this.router.navigate(["/"]);
-    // this.router.navigate([`${this.env.homeUrl}`]);
+    // this.router.navigate(["/"]);
+    this.router.navigate([`${this.env.host}`]);
   }
 }

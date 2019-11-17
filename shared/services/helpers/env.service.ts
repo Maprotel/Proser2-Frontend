@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
 
 // Host
-export const host: string = "http://127.0.0.1";
+export const host: string = "http://127.0.0.1/";
 
 @Injectable(
 )
 export class EnvService {
   // The values that are defined here are the default values that can
   // be overridden by env.js
+
+  public host = "http://localhost:4200";
 
   // API url
   public loopbackApiUrl = "http://127.0.0.1:3151";

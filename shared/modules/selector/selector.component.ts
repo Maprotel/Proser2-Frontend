@@ -39,9 +39,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
   @Input() userSelection: UserSelectionModel;
   @Input() selectorVisibleFields: UserSelectionModel;
 
-  groupList
-  list
-
   jsonSelector = false;
 
   // time

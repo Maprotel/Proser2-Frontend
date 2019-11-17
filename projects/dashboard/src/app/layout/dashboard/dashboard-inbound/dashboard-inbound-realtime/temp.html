@@ -1,0 +1,68 @@
+<!----------ALERT MESSAGE------------------------- -->
+<div>
+  <app-alert [alertMessage]="alertMessage"></app-alert>
+</div>
+
+
+<!----------REPORT HEADER------------------------- -->
+<app-dashboard-dashboard-header [userSelection]="userSelection"
+                                [selectorVisibleFields]="selectorVisibleFields"
+                                [timerConnected]="timerConnected"
+                                [historic]="historic"
+                                (returnResult)="onReturnHeaderResult($event)">
+</app-dashboard-dashboard-header>
+
+
+<section class="main-button">
+  <div>
+    <!-- <ng-select class="register-input" [items]="dashboardOptions"
+      bindLabel="name" placeholder="Modo"
+      [dropdownPosition]="'auto'" [searchable]="false"
+      [clearable]="false" [multiple]="false"
+      hideSelected="true" formControlName="mode"
+      (change)="onChange()">
+</ng-select> -->
+  </div>
+  <div class="clock ml-auto">
+    <a>
+      <fa-icon [icon]="faClock"></fa-icon> &nbsp; {{timerConnected}}
+    </a>
+  </div>
+</section>
+
+
+<!-- TODAY -->
+<main class="main" *ngIf="rows && show">
+  <!-- HIGHLIGHTS -->
+  <section class="highlights">
+    <article>
+      <!-- <p class="small"> HIGHLIGHTS </p> -->
+      <app-dashboard-inbound-highlights [rows]="rows">
+      </app-dashboard-inbound-highlights>
+    </article>
+  </section>
+
+  <section *ngIf="rows">
+    <div class="board">
+      <article class="pane">
+        <app-dashboard-inbound-calls [rows]="rows">
+        </app-dashboard-inbound-calls>
+      </article>
+
+      <article>
+        <app-dashboard-inbound-levels [rows]="rows">
+        </app-dashboard-inbound-levels>
+      </article>
+
+      <article>
+        <app-dashboard-inbound-agents [rows]="rows">
+        </app-dashboard-inbound-agents>
+      </article>
+
+      <article>
+        <app-dashboard-inbound-breaks [rows]="rows">
+        </app-dashboard-inbound-breaks>
+      </article>
+    </div>
+  </section>
+</main>

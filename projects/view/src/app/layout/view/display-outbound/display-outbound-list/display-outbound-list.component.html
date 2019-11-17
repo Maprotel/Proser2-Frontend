@@ -1,0 +1,65 @@
+<!----------ALERT MESSAGE------------------------- -->
+<div>
+  <app-alert [alertMessage]="alertMessage"></app-alert>
+</div>
+
+<!----------REPORT HEADER------------------------- -->
+<app-display-display-header [userSelection]="displayUserSelection"
+                            [selectorVisibleFields]="selectorVisibleFields"
+                            [timerConnected]="timerConnected"
+                            (returnResult)="onReturnHeaderResult($event)">
+</app-display-display-header>
+
+
+
+<section class="main-button">
+  <div>
+    <!-- <button class="btn btn-outline-primary"
+                (click)="onShowGraph()">Gráfico</button>
+        <button class="btn btn-outline-primary"
+                (click)="onShowGroups()">Grupos</button>
+        <button class="btn btn-outline-primary"
+                (click)="onShowHistoric()">{{historicLabel}}</button>
+    
+        <a class="small text-secondary">
+          {{rows.dashboardInboundCallsIndicators[0].now | date: 'medium'}}
+        </a> -->
+  </div>
+  <div class="clock ml-auto">
+    <a>{{displayUserSelection.creation_date}} -
+      {{displayUserSelection.creation_time}} - </a>
+    <a>
+      <fa-icon [icon]="faClock"></fa-icon> &nbsp; {{timerConnected}}
+    </a>
+  </div>
+</section>
+
+<!-- TODAY -->
+<main class="main">
+  <!-- HIGHLIGHTS -->
+  <section class="highlights" *ngIf="rows">
+    <article>
+      <!-- <p class="small"> HIGHLIGHTS </p> -->
+      <app-display-outbound-highlights [rows]="rows">
+      </app-display-outbound-highlights>
+    </article>
+  </section>
+
+
+  <section>
+    <div class="board">
+      <article class="pane">
+        <app-display-outbound-calls [rows]="rows"
+                                    [displayUserSelection]="displayUserSelection">
+        </app-display-outbound-calls>
+      </article>
+
+      <article>
+        <app-display-outbound-levels [rows]="rows"
+                                     [displayUserSelection]="displayUserSelection">
+        </app-display-outbound-levels>
+      </article>
+
+    </div>
+  </section>
+</main>

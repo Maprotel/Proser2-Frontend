@@ -1,1 +1,62 @@
-<p>dashboard-inbound-historic works!</p>
+<!----------ALERT MESSAGE------------------------- -->
+<div>
+  <app-alert [alertMessage]="alertMessage"></app-alert>
+</div>
+
+<!----------REPORT HEADER------------------------- -->
+<app-dashboard-dashboard-historic-header [userSelection]="userSelection"
+                                         [selectorVisibleFields]="selectorVisibleFields"
+                                         [timerConnected]="timerConnected"
+                                         [historic]="historic"
+                                         (returnResult)="onReturnHeaderResult($event)">
+</app-dashboard-dashboard-historic-header>
+
+
+<section class="main-button" *ngIf="!show">
+  <div>
+    <h1>Obteniendo datos del servidor...</h1>
+  </div>
+
+</section>
+
+
+<!-- TODAY -->
+<main class="main" *ngIf="rows && show">
+  <!-- HIGHLIGHTS -->
+  <section class="highlights">
+    <article>
+      <!-- <p class="small"> HIGHLIGHTS </p> -->
+      <app-dashboard-inbound-highlights-historic [rows]="rows"
+                                                 [userSelection]="userSelection">
+      </app-dashboard-inbound-highlights-historic>
+    </article>
+  </section>
+
+  <section *ngIf="rows">
+    <div class=" board">
+      <article class="pane">
+        <app-dashboard-inbound-calls [rows]="rows"
+                                     [userSelection]="userSelection">
+        </app-dashboard-inbound-calls>
+      </article>
+
+      <article>
+        <app-dashboard-inbound-levels [rows]="rows"
+                                      [userSelection]="userSelection">
+        </app-dashboard-inbound-levels>
+      </article>
+
+      <article>
+        <app-dashboard-dashboard-inbound-agents-historic [rows]="rows"
+                                                         [userSelection]="userSelection">
+        </app-dashboard-dashboard-inbound-agents-historic>
+      </article>
+
+      <article>
+        <app-dashboard-dashboard-inbound-breaks-historic [rows]="rows"
+                                                         [userSelection]="userSelection">
+        </app-dashboard-dashboard-inbound-breaks-historic>
+      </article>
+    </div>
+  </section>
+</main>
