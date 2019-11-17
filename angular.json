@@ -97,7 +97,12 @@
             "karmaConfig": "projects/home/karma.conf.js",
             "assets": [
               "projects/home/src/favicon.ico",
-              "projects/home/src/assets"
+              "projects/home/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -156,7 +161,12 @@
             "aot": true,
             "assets": [
               "projects/menu/src/favicon.ico",
-              "projects/menu/src/assets"
+              "projects/menu/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "shared/styles/styles.scss",
@@ -222,7 +232,12 @@
             "karmaConfig": "projects/menu/karma.conf.js",
             "assets": [
               "projects/menu/src/favicon.ico",
-              "projects/menu/src/assets"
+              "projects/menu/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "shared/styles/styles.scss",
@@ -267,7 +282,7 @@
       },
       "root": "projects/dashboard",
       "sourceRoot": "projects/dashboard/src",
-      "prefix": "app",
+      "prefix": "dashboard",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -280,7 +295,12 @@
             "aot": true,
             "assets": [
               "projects/dashboard/src/favicon.ico",
-              "projects/dashboard/src/assets"
+              "projects/dashboard/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "shared/styles/styles.scss",
@@ -346,11 +366,21 @@
             "karmaConfig": "projects/dashboard/karma.conf.js",
             "assets": [
               "projects/dashboard/src/favicon.ico",
-              "projects/dashboard/src/assets"
+              "projects/dashboard/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "shared/styles/styles.scss",
-              "projects/dashboard/src/styles.scss"
+              "projects/dashboard/src/styles.scss",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "scripts": []
           }
@@ -404,7 +434,12 @@
             "aot": true,
             "assets": [
               "projects/report/src/favicon.ico",
-              "projects/report/src/assets"
+              "projects/report/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "shared/styles/styles.scss",
@@ -470,7 +505,12 @@
             "karmaConfig": "projects/report/karma.conf.js",
             "assets": [
               "projects/report/src/favicon.ico",
-              "projects/report/src/assets"
+              "projects/report/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "shared/styles/styles.scss",
@@ -528,7 +568,12 @@
             "aot": true,
             "assets": [
               "projects/configuration/src/favicon.ico",
-              "projects/configuration/src/assets"
+              "projects/configuration/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "shared/styles/styles.scss",
@@ -594,7 +639,12 @@
             "karmaConfig": "projects/configuration/karma.conf.js",
             "assets": [
               "projects/configuration/src/favicon.ico",
-              "projects/configuration/src/assets"
+              "projects/configuration/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "shared/styles/styles.scss",

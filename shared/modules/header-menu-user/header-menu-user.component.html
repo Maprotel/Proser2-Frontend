@@ -7,7 +7,8 @@
       <span class="nav-link active small">
         <span> &nbsp; <fa-icon [icon]="faUser"></fa-icon>
         </span>
-        <span> &nbsp; {{currentUser.firstname}} </span>
+        <span *ngIf="currentUser"> &nbsp; {{currentUser.firstname}}
+        </span>
         <span>
           &nbsp; <app-connection></app-connection></span>
         <span>

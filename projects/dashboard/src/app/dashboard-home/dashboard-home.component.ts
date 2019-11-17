@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from "shared/services/helpers/auth.service";
@@ -5,11 +6,11 @@ import { AlertService } from "shared/services/helpers/alert.service";
 import { AlertModel } from "shared/models/helpers/Alert";
 
 @Component({
-  selector: 'dashboard-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  selector: 'dashboard-dashboard-home',
+  templateUrl: './dashboard-home.component.html',
+  styleUrls: ['./dashboard-home.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class DashboardHomeComponent implements OnInit {
   visibleMenus;
   currentUser;
   showInMenu;

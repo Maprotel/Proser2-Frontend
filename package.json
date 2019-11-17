@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-home": "ng build --prod home --base-href /proser_reports/dist/home/"
+    "build-home": "ng build --prod home --base-href /proser_reports/dist/home/",
+    "build-dashboard": "ng build --prod dashboard --base-href /proser_reports/dashboard/"
   },
   "private": true,
   "dependencies": {

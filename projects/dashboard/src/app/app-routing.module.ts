@@ -1,16 +1,12 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuard } from "shared/guards";
-import { RedirectModule } from "shared/modules/redirect/redirect.module";
-
-import { HomeComponent } from "./home/home.component";
-import { AppComponent } from "./app.component";
-import { LayoutComponent } from "./layout/layout.component";
+import { AppComponent } from './app.component';
+import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 
 const routes: Routes = [
   {
-    path: "dashboard",
+    path: "",
     component: AppComponent,
     children: [
       {
@@ -20,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: "home",
-        component: HomeComponent
+        component: DashboardHomeComponent
       },
       {
         path: "layout",
@@ -32,35 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), RedirectModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
-
-/*
-const routes: Routes = [
-  { path: "", redirectTo: "dashboard", pathMatch: "full" },
-
-  {
-    path: "dashboard",
-    component: AppComponent,
-    children: [
-      {
-        path: "",
-        redirectTo: "home",
-        pathMatch: "full"
-      },
-      {
-        path: "home",
-        component: HomeComponent
-      },
-      {
-        path: "layout",
-        loadChildren: () =>
-          import("./layout/layout.module").then(m => m.LayoutModule)
-      }
-    ]
-  }
-];
-
-*/
+export class AppRoutingModule { }
