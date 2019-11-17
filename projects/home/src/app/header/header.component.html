@@ -1,0 +1,37 @@
+<section>
+  <nav class="navbar navbar-expand-lg navbar-dark configheader-menu">
+    <header-menu-brand></header-menu-brand>
+
+
+    <a routerLink="/" class="chapter nav-link">Home</a>
+
+    <article class="collapse navbar-collapse" id="navigation">
+
+      <!-- ---- LEFT MENU --------- -->
+      <div *ngIf="visibleMenus.loginMenu">
+        <login-header-menu-login [showInMenu]="showInMenu"
+                                 [currentUser]="currentUser">
+        </login-header-menu-login>
+      </div>
+
+      <!-- ---- LEFT MENU --------- -->
+
+      <div *ngIf="visibleMenus.sectionsMenus">
+        <login-header-menu-sections [showInMenu]="showInMenu"
+                                    [currentUser]="currentUser">
+        </login-header-menu-sections>
+      </div>
+
+
+      <!------------FIN Avanzado------>
+
+      <!-- *ngIf="showInMenu.userMenu" -->
+
+      <!-- ---- RIGHT MENU --------- -->
+      <div class="navbar-nav ml-auto" *ngIf="visibleMenus.userMenu">
+        <header-menu-user [showInMenu]="showInMenu" [currentUser]="currentUser">
+        </header-menu-user>
+      </div>
+    </article>
+  </nav>
+</section>
