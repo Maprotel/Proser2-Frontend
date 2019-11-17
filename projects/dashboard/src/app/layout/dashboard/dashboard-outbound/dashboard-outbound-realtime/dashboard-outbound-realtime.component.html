@@ -1,0 +1,74 @@
+<!----------ALERT MESSAGE------------------------- -->
+<div>
+  <app-alert [alertMessage]="alertMessage"></app-alert>
+</div>
+
+
+<!----------REPORT HEADER------------------------- -->
+<app-dashboard-dashboard-header [userSelection]="userSelection"
+                                [selectorVisibleFields]="selectorVisibleFields"
+                                [timerConnected]="timerConnected"
+                                [historic]="historic"
+                                (returnResult)="onReturnHeaderResult($event)">
+</app-dashboard-dashboard-header>
+
+<!-- // timer -->
+<section class="main-button">
+  <div>
+  </div>
+  <div class="clock ml-auto">
+    <a>
+      <fa-icon [icon]="faClock"></fa-icon> &nbsp; {{timerConnected}}
+    </a>
+  </div>
+</section>
+
+<section class="main-button" *ngIf="!show">
+  <div>
+    <h1>Obteniendo datos del servidor...</h1>
+  </div>
+
+</section>
+
+<!-- TODAY -->
+<main class="main" *ngIf="rows && show">
+  <!-- HIGHLIGHTS -->
+  <section class="highlights">
+    <article>
+      <!-- <p class="small"> HIGHLIGHTS </p> -->
+      <app-dashboard-outbound-highlights [rows]="rows"
+                                         [userSelection]="userSelection">
+      </app-dashboard-outbound-highlights>
+    </article>
+  </section>
+
+
+  <section *ngIf="rows">
+    <div class="board">
+      <article class="pane">
+        <app-dashboard-outbound-calls [rows]="rows"
+                                      [userSelection]="userSelection">
+
+        </app-dashboard-outbound-calls>
+      </article>
+
+      <article>
+        <app-dashboard-outbound-levels [rows]="rows"
+                                       [userSelection]="userSelection">
+        </app-dashboard-outbound-levels>
+      </article>
+
+      <article>
+        <app-dashboard-outbound-agents [rows]="rows"
+                                       [userSelection]="userSelection">
+        </app-dashboard-outbound-agents>
+      </article>
+
+      <article>
+        <app-dashboard-outbound-breaks [rows]="rows"
+                                       [userSelection]="userSelection">
+        </app-dashboard-outbound-breaks>
+      </article>
+    </div>
+  </section>
+</main>

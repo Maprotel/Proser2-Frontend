@@ -1,3 +1,3 @@
-export * from "./pages/index";
+export * from "./crud/index";
 export * from "./helpers/index";
-export * from "./system/index";
+export * from "./pages/index";

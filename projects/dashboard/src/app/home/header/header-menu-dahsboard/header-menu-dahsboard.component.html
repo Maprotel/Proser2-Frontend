@@ -1,0 +1,64 @@
+<!-- Secciones Menu -->
+<div class="navbar-nav">
+  <div class="nav-item dropdown" dropdown #dropdown="bs-dropdown"
+       [autoClose]="true">
+
+    <a id="navdrop" dropdownToggle role="button"
+       class="nav-link dropdown-toggle"
+       aria-controls="dropdown-basic">Entrantes</a>
+
+    <ul id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu"
+        role="menu" aria-labelledby="button-triggers-manual">
+
+      <!-- MENU ITEM-->
+      <li role="menuitem">
+        <a class="dropdown-item "
+           routerLink="/dashboard/layout/dashboard-inbound/realtime">
+          <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Entrantes tiempo real
+        </a>
+      </li>
+
+      <!-- MENU ITEM-->
+      <li role="menuitem">
+        <a class="dropdown-item "
+           routerLink="/dashboard/layout/dashboard-inbound/historic">
+          <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Entrantes histórico
+        </a>
+      </li>
+
+
+    </ul>
+  </div>
+
+  <!-- /************************************* -->
+
+  <div class="nav-item dropdown" dropdown #dropdown="bs-dropdown"
+       [autoClose]="true">
+
+    <a id="navdrop" dropdownToggle role="button"
+       class="nav-link dropdown-toggle"
+       aria-controls="dropdown-basic">Salientes</a>
+
+    <ul id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu"
+        role="menu" aria-labelledby="button-triggers-manual">
+
+      <!-- MENU ITEM-->
+      <li role="menuitem">
+        <a class="dropdown-item "
+           routerLink="/dashboard/layout/dashboard-outbound/realtime">
+          <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Salientes tiempo real
+        </a>
+      </li>
+
+      <!-- MENU ITEM-->
+      <li role="menuitem">
+        <a class="dropdown-item "
+           routerLink="/dashboard/layout/dashboard-outbound/historic">
+          <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Salientes historico
+        </a>
+      </li>
+
+
+    </ul>
+  </div>
+</div>
