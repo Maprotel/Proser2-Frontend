@@ -1,4 +1,4 @@
-import { AuthService } from "./../../../../../../../shared/services/helpers/auth.service";
+import { AuthService } from "shared/services";
 import { Component, OnInit } from "@angular/core";
 
 import { faIdBadge, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
@@ -13,13 +13,13 @@ export class HeaderMenuUserComponent implements OnInit {
   faIdBadge = faIdBadge;
   faSignOutAlt = faSignOutAlt;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onLogout() {
     this.authService.logoutUser().subscribe(data => {
-      this.router.navigate(["/init/home"]);
+      this.router.navigate(["/"]);
     });
   }
 }

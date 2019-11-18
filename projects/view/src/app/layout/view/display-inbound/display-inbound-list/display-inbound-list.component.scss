@@ -1,5 +1,5 @@
-@import "shared/styles/responsive/responsive-sizes";
-@import "projects/display/src/app/shared/styles/display/agents-pie";
+// @import "shared/styles/responsive/responsive-sizes";
+// @import "projects/display/src/app/shared/styles/display/agents-pie";
 
 .main {
   margin: 20px;
@@ -46,39 +46,39 @@
   border: 1px black;
 }
 
-@media screen and (max-width: map-get($grid-breakpoints, "xl")) {
-  .board {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0;
-    grid-gap: 0.5rem;
-  }
-}
+// @media screen and (max-width: map-get($grid-breakpoints, "xl")) {
+//   .board {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr;
+//     padding: 0;
+//     grid-gap: 0.5rem;
+//   }
+// }
 
-@media screen and (max-width: map-get($grid-breakpoints, "lg")) {
-  .board {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 0;
-    grid-gap: 0.5rem;
-  }
-}
+// @media screen and (max-width: map-get($grid-breakpoints, "lg")) {
+//   .board {
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     padding: 0;
+//     grid-gap: 0.5rem;
+//   }
+// }
 
-@media screen and (max-width: map-get($grid-breakpoints, "md")) {
-  .board {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0;
-    grid-gap: 0.5rem;
-  }
-}
+// @media screen and (max-width: map-get($grid-breakpoints, "md")) {
+//   .board {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr;
+//     padding: 0;
+//     grid-gap: 0.5rem;
+//   }
+// }
 
-@media screen and (max-width: map-get($grid-breakpoints, "sm")) {
-  .board {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 5px;
-    padding: 0;
-    grid-gap: 0.5rem;
-  }
-}
+// @media screen and (max-width: map-get($grid-breakpoints, "sm")) {
+//   .board {
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     margin: 5px;
+//     padding: 0;
+//     grid-gap: 0.5rem;
+//   }
+// }

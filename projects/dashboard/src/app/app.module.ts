@@ -1,3 +1,4 @@
+
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, ModuleWithProviders } from "@angular/core";
 
@@ -17,7 +18,7 @@ import { ConnectionModule } from "shared/modules/connection/connection.module";
 import { SelectorModule } from "shared/modules/selector/selector.module";
 import { EnvServiceProvider } from "shared/services/helpers/env.service.provider";
 
-import { HomeComponent } from "./home/home.component";
+import { HomeComponent } from "./pages/home/home.component";
 
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -31,12 +32,19 @@ import { IntroPageModule } from "shared/modules/intro-page/intro-page.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { HeaderModule } from './header/header.module';
-// import { DashboardHistoricHeaderComponent } from './shared/modules/dashboard-historic-header/dashboard-historic-header.component';
+
+import { RedirectModule } from 'shared/modules/redirect/redirect.module';
+import { LoginComponent } from './pages/login/login.component';
+import { ByeComponent } from './pages/bye/bye.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
+    ByeComponent,
+    NotfoundComponent,
 
     // DashboardHistoricHeaderComponent
   ],
@@ -56,8 +64,9 @@ import { HeaderModule } from './header/header.module';
 
     HeaderMenuUserModule,
     HeaderMenuBrandModule,
-    
+
     IntroPageModule,
+    RedirectModule,
 
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),

@@ -38,6 +38,8 @@ import { HeaderMenuSectionsComponent } from './header/header-menu-sections/heade
 
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
+import { RedirectModule } from "shared/modules"
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +67,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     FontAwesomeModule,
+    RedirectModule,
     AppRoutingModule,
   ],
   providers: [

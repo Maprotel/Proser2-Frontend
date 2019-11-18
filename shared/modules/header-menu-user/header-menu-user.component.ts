@@ -43,6 +43,10 @@ export class HeaderMenuUserComponent implements OnInit {
     });
   }
 
+  onLogin() {
+    this.router.navigate(["/login"]);
+  }
+
   onProfile() {
     this.router.navigate(["/profile"]);
   }

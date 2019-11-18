@@ -55,7 +55,7 @@ export class LoginLoginComponent implements OnInit {
           let temp = this.userCheck(data, this.option);
           this.authService.setUser(temp);
           this.authService.setToken(temp.accessToken);
-          this.router.navigate(["/init/home"]);
+          this.router.navigate(["/"]);
         },
         error => {
           console.error("Error", error, error.status);

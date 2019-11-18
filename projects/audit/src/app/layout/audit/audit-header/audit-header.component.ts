@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./audit-header.component.scss"]
 })
 export class AuditHeaderComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
   currentUser;
 
   ngOnInit() {
@@ -17,8 +17,7 @@ export class AuditHeaderComponent implements OnInit {
 
   onLogout() {
     this.authService.logoutUser().subscribe(data => {
-      // console.error("LOGOUT");
-      this.router.navigate(["/main/header"]);
+      this.router.navigate(["/"]);
     });
   }
 

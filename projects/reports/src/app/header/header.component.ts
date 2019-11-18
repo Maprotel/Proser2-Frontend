@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "shared/services/helpers/auth.service";
 
-import { logout } from "shared/functions";
+import { AuthService } from "shared/services/helpers/auth.service";
+import { AlertService } from "shared/services/helpers/alert.service";
+import { AlertModel } from "shared/models/helpers/Alert";
 
 @Component({
   selector: "app-header",
@@ -9,19 +10,31 @@ import { logout } from "shared/functions";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  currentUser;
 
-  constructor(private authService: AuthService) {}
+  currentUser;
+  visibleMenus;
+
+  // *ngIf="currentUser"
+
+  constructor(
+    private authService: AuthService,
+    private alertService: AlertService) {
+    this.currentUser = this.authService.getCurrentUser();
+
+    this.visibleMenus = {
+      loginMenu: true,
+      sectionsMenus: false,
+      userMenu: false
+    }
+  }
 
   ngOnInit() {
-    this.getCurrentUser();
+    this.onGetCurrentUser()
   }
 
-  getCurrentUser() {
+  onGetCurrentUser() {
     this.currentUser = this.authService.getCurrentUser();
-  }
-
-  onLogout() {
-    logout(this.authService, "/reports/home", "/reports/home");
+    console.log('this.currentUser', this.currentUser);
+    return this.currentUser
   }
 }

@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   currentUser;
   visibleMenus;
+  showInMenu;
 
 
 
