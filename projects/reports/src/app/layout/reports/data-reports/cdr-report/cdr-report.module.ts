@@ -22,11 +22,11 @@ import { CdrReportRoutingModule } from "./cdr-report-routing.module";
 
 import { CdrReportListComponent } from "./cdr-report-list/cdr-report-list.component";
 
-import { ReportHeaderModule } from "projects/reports/src/app/shared/modules/report-header/report-header.module";
-import { ReportFinderModule } from "projects/reports/src/app/shared/modules/report-finder/report-finder.module";
+import { ReportHeaderModule } from "projects/reports/src/shared/modules/report-header/report-header.module";
+import { ReportFinderModule } from "projects/reports/src/shared/modules/report-finder/report-finder.module";
 
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 
 @NgModule({

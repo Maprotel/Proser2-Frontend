@@ -18,10 +18,10 @@ import { UserSelectionModel } from "shared/models";
 
 import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
-import { CallsAbandonedService } from "projects/reports/src/app/shared/services/reports/calls/reports-abandoned-calls.service";
-import { CallsAbandonedModel } from "projects/reports/src/app/shared/models/reports/calls/CallsAbandoned.model";
+import { CallsAbandonedService } from "projects/reports/src/shared/services/reports/calls/reports-abandoned-calls.service";
+import { CallsAbandonedModel } from "projects/reports/src/shared/models/reports/calls/CallsAbandoned.model";
 
 @Component({
   selector: "app-reports-abandoned-report-list",

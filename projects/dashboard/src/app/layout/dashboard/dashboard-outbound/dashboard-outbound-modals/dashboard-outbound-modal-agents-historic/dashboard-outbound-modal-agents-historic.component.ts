@@ -12,8 +12,8 @@ import {
 import { AlertModel } from "shared/models/helpers/Alert";
 import { UserSelectionModel } from "shared/models";
 
-import { DashboardSelectionModel } from "projects/dashboard/src/app/shared/models";
-import { DashboardOutboundListsService } from "projects/dashboard/src/app/shared/services";
+import { DashboardSelectionModel } from "projects/dashboard/src/shared/models";
+import { DashboardOutboundListsService } from "projects/dashboard/src/shared/services";
 
 @Component({
   selector: 'app-dashboard-dashboard-outbound-modal-agents-historic',

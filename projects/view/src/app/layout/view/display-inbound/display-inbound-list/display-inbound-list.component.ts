@@ -24,13 +24,13 @@ import { AlertService, EnvService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
 
 // Local models
-import { DisplayInboundResponseModel } from "projects/display/src/app/shared/models/display-inbound/DisplayInboundResponse.model";
+import { DisplayInboundResponseModel } from "projects/view/src/shared/models/display-inbound/DisplayInboundResponse.model";
 
 // Local shared
 import { DisplayInboundGraphComponent } from "../display-inbound-graph/display-inbound-graph.component";
 
-import { DisplayInboundModel } from "projects/display/src/app/shared/models/display-inbound/DisplayInbound.model";
-import { DisplayInboundIndicatorsService } from "projects/display/src/app/shared/services/display-inbound/display-inbound-indicators.service";
+import { DisplayInboundModel } from "projects/view/src/shared/models/display-inbound/DisplayInbound.model";
+import { DisplayInboundIndicatorsService } from "projects/view/src/shared/services/display-inbound/display-inbound-indicators.service";
 import { DisplayInboundHighlightsComponent } from "../display-inbound-highlights/display-inbound-highlights.component";
 
 import { faIdBadge, faClock } from "@fortawesome/free-solid-svg-icons";

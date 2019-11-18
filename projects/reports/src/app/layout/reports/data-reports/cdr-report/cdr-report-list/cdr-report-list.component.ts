@@ -12,18 +12,18 @@ import {
   NgbModalRef
 } from "@ng-bootstrap/ng-bootstrap";
 
-import { MainCdrService } from "projects/reports/src/app/shared/services/reports/data/reports-main-cdr.service";
+import { MainCdrService } from "projects/reports/src/shared/services/reports/data/reports-main-cdr.service";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
 
 import { UserSelectionModel } from "shared/models";
-import { MainCdrReportModel } from "projects/reports/src/app/shared/models/reports/data/MainCdrReport.model";
+import { MainCdrReportModel } from "projects/reports/src/shared/models/reports/data/MainCdrReport.model";
 
 import {
   objectDateToTextDate,
   textDateToObjectDate
 } from "shared/functions";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 @Component({
   selector: "app-reports-cdr-report-list",

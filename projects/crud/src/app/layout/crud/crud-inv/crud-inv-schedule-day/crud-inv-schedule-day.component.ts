@@ -18,7 +18,7 @@ import { getUpdateFilter } from "shared/functions";
 import { AlertModel } from "shared/models";
 import { AlertService, EnvService } from "shared/services/";
 
-import { scheduleDaysRecords } from "projects/crud/src/app/shared/functions";
+import { scheduleDaysRecords } from "projects/crud/src/shared/functions";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -351,7 +351,7 @@ export class CrudInvScheduleDayComponent implements OnInit, OnDestroy {
   }
 
   // DETECT EVENTS ON DATATABLE
-  onActivate(event) {}
+  onActivate(event) { }
 
   onSelect(event) {
     this.show_selected_button = true;

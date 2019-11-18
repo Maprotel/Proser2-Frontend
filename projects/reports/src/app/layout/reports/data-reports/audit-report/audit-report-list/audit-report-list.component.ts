@@ -12,18 +12,18 @@ import {
   NgbModalRef
 } from "@ng-bootstrap/ng-bootstrap";
 
-import { MainAuditService } from "projects/reports/src/app/shared/services/reports/data/reports-main-audit.service";
+import { MainAuditService } from "projects/reports/src/shared/services/reports/data/reports-main-audit.service";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
 
 import { UserSelectionModel, MainAuditModel } from "shared/models";
-import { MainAuditReportModel } from "projects/reports/src/app/shared/models/reports/data/MainAuditReport.model";
+import { MainAuditReportModel } from "projects/reports/src/shared/models/reports/data/MainAuditReport.model";
 
 import {
   objectDateToTextDate,
   textDateToObjectDate
 } from "shared/functions";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 @Component({
   selector: "app-reports-audit-report-list",

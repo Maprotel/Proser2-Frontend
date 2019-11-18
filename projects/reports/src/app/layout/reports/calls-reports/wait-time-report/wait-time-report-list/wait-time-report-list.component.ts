@@ -20,15 +20,15 @@ import { UserSelectionModel } from "shared/models";
 // Global shared services
 import { AlertService, EnvService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 // Local models
-import { BackendResponseModel } from "projects/reports/src/app/shared/models/reports/backendResponse.model";
+import { BackendResponseModel } from "projects/reports/src/shared/models/reports/backendResponse.model";
 
 // Local shared
 
-import { CallsWaitTimeModel } from "projects/reports/src/app/shared/models/reports/calls/CallsWaitTime.model";
-import { CallsWaitTimeService } from "projects/reports/src/app/shared/services/reports/calls/reports-wait-time.service";
+import { CallsWaitTimeModel } from "projects/reports/src/shared/models/reports/calls/CallsWaitTime.model";
+import { CallsWaitTimeService } from "projects/reports/src/shared/services/reports/calls/reports-wait-time.service";
 import { WaitTimeReportGraphComponent } from "../wait-time-report-graph/wait-time-report-graph.component";
 
 @Component({

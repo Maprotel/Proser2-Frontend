@@ -17,7 +17,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
 
-import { DisplayHeaderModule } from "../../../shared/modules/display-header/display-header.module";
+import { DisplayHeaderModule } from "projects/view/src/shared/modules/display-header/display-header.module";
 
 import { DisplayAutomaticRoutingModule } from './display-automatic-routing.module';
 import { DisplayAutomaticComponent } from './display-automatic.component';

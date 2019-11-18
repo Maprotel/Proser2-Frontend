@@ -20,14 +20,14 @@ import { UserSelectionModel } from "shared/models";
 // Global shared services
 import { AlertService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 // Local models
-import { BackendResponseModel } from "projects/reports/src/app/shared/models/reports/backendResponse.model";
+import { BackendResponseModel } from "projects/reports/src/shared/models/reports/backendResponse.model";
 
 // Local shared
 
-import { AgentsAuxiliarService } from "projects/reports/src/app/shared/services/reports/agents/reports-agents-auxiliar.service";
-import { AgentsAuxiliarModel } from "projects/reports/src/app/shared/models/reports/agents/AgentsAuxiliar.model";
+import { AgentsAuxiliarService } from "projects/reports/src/shared/services/reports/agents/reports-agents-auxiliar.service";
+import { AgentsAuxiliarModel } from "projects/reports/src/shared/models/reports/agents/AgentsAuxiliar.model";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import * as moment from "moment";
 

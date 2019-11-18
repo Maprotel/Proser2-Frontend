@@ -8,7 +8,7 @@ import {
   NgbActiveModal,
   NgbModalRef
 } from "@ng-bootstrap/ng-bootstrap";
-import { OutboundIndicators } from "projects/dashboard/src/app/shared/models";
+import { OutboundIndicators } from "projects/dashboard/src/shared/models";
 
 @Component({
   selector: "app-dashboard-outbound-calls",

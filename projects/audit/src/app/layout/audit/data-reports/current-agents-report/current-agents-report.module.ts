@@ -17,8 +17,8 @@ import { NgSelectModule } from "@ng-select/ng-select";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
 
-import { ReportHeaderModule } from "projects/reports/src/app/shared/modules/report-header/report-header.module";
-import { ReportFinderModule } from "projects/reports/src/app/shared/modules/report-finder/report-finder.module";
+import { ReportHeaderModule } from "projects/audit/src/shared/modules/report-header/report-header.module";
+import { ReportFinderModule } from "projects/audit/src/shared/modules/report-finder/report-finder.module";
 
 
 import { CurrentAgentsReportComponent } from "./current-agents-report.component";
@@ -50,4 +50,4 @@ import { CurrentAgentsReportListComponent } from "./current-agents-report-list/c
   ],
   providers: [{ provide: LOCALE_ID, useValue: "es" }]
 })
-export class CurrentAgentsReportModule {}
+export class CurrentAgentsReportModule { }

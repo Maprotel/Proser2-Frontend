@@ -18,15 +18,15 @@ import { NgSelectModule } from "@ng-select/ng-select";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
 
-import { ReportHeaderModule } from "projects/reports/src/app/shared/modules/report-header/report-header.module";
-import { ReportFinderModule } from "projects/reports/src/app/shared/modules/report-finder/report-finder.module";
+import { ReportHeaderModule } from "projects/reports/src/shared/modules/report-header/report-header.module";
+import { ReportFinderModule } from "projects/reports/src/shared/modules/report-finder/report-finder.module";
 
 import { InboundReportRoutingModule } from "./inbound-report-routing.module";
 import { InboundReportComponent } from "./inbound-report.component";
 import { InboundReportListComponent } from "./inbound-report-list/inbound-report-list.component";
 import { InboundReportGraphComponent } from "./inbound-report-graph/inbound-report-graph.component";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 @NgModule({
   declarations: [

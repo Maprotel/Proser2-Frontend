@@ -24,19 +24,19 @@ import { AlertService, EnvService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
 
 // Local models
-import { DashboardInboundResponseModel } from "projects/dashboard/src/app/shared/models/dashboard-inbound/DashboardInboundResponse.model";
+import { DashboardInboundResponseModel } from "projects/dashboard/src/shared/models/dashboard-inbound/DashboardInboundResponse.model";
 
 // Local shared
 import { DashboardInboundGraphComponent } from "../dashboard-inbound-graph/dashboard-inbound-graph.component";
 import { DashboardInboundGroupsComponent } from "./../dashboard-inbound-groups/dashboard-inbound-groups.component";
 
-import { DashboardInboundModel } from "projects/dashboard/src/app/shared/models/dashboard-inbound/DashboardInbound.model";
+import { DashboardInboundModel } from "projects/dashboard/src/shared/models/dashboard-inbound/DashboardInbound.model";
 
-import { DashboardInboundIndicatorsService } from "projects/dashboard/src/app/shared/services/dashboard-inbound/dashboard-inbound-indicators.service";
+import { DashboardInboundIndicatorsService } from "projects/dashboard/src/shared/services/dashboard-inbound/dashboard-inbound-indicators.service";
 import { DashboardInboundHighlightsComponent } from "../dashboard-inbound-highlights/dashboard-inbound-highlights.component";
 
-import { DashboardInboundDailyByIntervalService } from "projects/dashboard/src/app/shared/services/dashboard-inbound/dashboard-inbound-interval.service";
-import { DashboardInboundGroupsService } from "projects/dashboard/src/app/shared/services";
+import { DashboardInboundDailyByIntervalService } from "projects/dashboard/src/shared/services/dashboard-inbound/dashboard-inbound-interval.service";
+import { DashboardInboundGroupsService } from "projects/dashboard/src/shared/services";
 
 import { faIdBadge, faClock } from "@fortawesome/free-solid-svg-icons";
 

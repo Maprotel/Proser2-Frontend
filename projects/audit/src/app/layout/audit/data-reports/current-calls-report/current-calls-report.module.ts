@@ -22,8 +22,8 @@ import { CurrentCallsReportRoutingModule } from "./current-calls-report-routing.
 
 import { CurrentCallsReportListComponent } from "./current-calls-report-list/current-calls-report-list.component";
 
-import { ReportHeaderModule } from "projects/reports/src/app/shared/modules/report-header/report-header.module";
-import { ReportFinderModule } from "projects/reports/src/app/shared/modules/report-finder/report-finder.module";
+import { ReportHeaderModule } from "projects/audit/src/shared/modules/report-header/report-header.module";
+import { ReportFinderModule } from "projects/audit/src/shared/modules/report-finder/report-finder.module";
 
 @NgModule({
   declarations: [CurrentCallsReportComponent, CurrentCallsReportListComponent],
@@ -46,4 +46,4 @@ import { ReportFinderModule } from "projects/reports/src/app/shared/modules/repo
   ],
   providers: [{ provide: LOCALE_ID, useValue: "es" }]
 })
-export class CurrentCallsReportModule {}
+export class CurrentCallsReportModule { }

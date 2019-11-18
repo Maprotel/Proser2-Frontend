@@ -23,10 +23,10 @@ import {
   textDateToObjectDate
 } from "shared/functions";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
-import { RealCurrentAgentsService } from "projects/reports/src/app/shared/services/reports/data/reports-real-current-agents.service";
-import { RealCurrentAgentsReportModel } from "projects/reports/src/app/shared/models/reports/data/RealCurrentAgents.model";
+import { RealCurrentAgentsService } from "projects/reports/src/shared/services/reports/data/reports-real-current-agents.service";
+import { RealCurrentAgentsReportModel } from "projects/reports/src/shared/models/reports/data/RealCurrentAgents.model";
 
 @Component({
   selector: 'app-reports-automaitc-report-list',

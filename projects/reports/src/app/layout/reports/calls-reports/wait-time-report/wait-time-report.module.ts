@@ -17,8 +17,8 @@ import { NgSelectModule } from "@ng-select/ng-select";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
 
-import { ReportHeaderModule } from "projects/reports/src/app/shared/modules/report-header/report-header.module";
-import { ReportFinderModule } from "projects/reports/src/app/shared/modules/report-finder/report-finder.module";
+import { ReportHeaderModule } from "projects/reports/src/shared/modules/report-header/report-header.module";
+import { ReportFinderModule } from "projects/reports/src/shared/modules/report-finder/report-finder.module";
 
 
 import { WaitTimeReportRoutingModule } from "./wait-time-report-routing.module";
@@ -26,7 +26,7 @@ import { WaitTimeReportComponent } from "./wait-time-report.component";
 import { WaitTimeReportListComponent } from "./wait-time-report-list/wait-time-report-list.component";
 import { WaitTimeReportGraphComponent } from "./wait-time-report-graph/wait-time-report-graph.component";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 
 @NgModule({

@@ -26,10 +26,10 @@ import { UserSelectionService } from "shared/services/";
 import {
   DisplayAgentsModel,
   DisplayAgentsResponseModel
-} from "projects/display/src/app/shared/models/";
+} from "projects/display/src/shared/models/";
 
 // Local shared
-import { DisplayAgentsIndicatorsService } from "projects/display/src/app/shared/services/";
+import { DisplayAgentsIndicatorsService } from "projects/display/src/shared/services/";
 
 @Component({
   selector: "app-display-display-agents-list",

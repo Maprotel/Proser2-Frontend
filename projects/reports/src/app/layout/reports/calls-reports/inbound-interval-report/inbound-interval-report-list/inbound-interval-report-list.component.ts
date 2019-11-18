@@ -20,15 +20,15 @@ import { UserSelectionModel } from "shared/models";
 // Global shared services
 import { AlertService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
-import { ExcelService } from "projects/reports/src/app/shared/services/helpers/excel.service";
+import { ExcelService } from "projects/reports/src/shared/services/helpers/excel.service";
 
 // Local models
-import { BackendResponseModel } from "projects/reports/src/app/shared/models/reports/backendResponse.model";
+import { BackendResponseModel } from "projects/reports/src/shared/models/reports/backendResponse.model";
 
 // Local shared
 
-import { CallsInboundDailyByIntervalService } from "projects/reports/src/app/shared/services/reports/calls/reports-inbound-interval.service";
-import { CallsInboundDailyByIntervalModel } from "projects/reports/src/app/shared/models/reports/calls/CallsInboundDailyByInterval.model ";
+import { CallsInboundDailyByIntervalService } from "projects/reports/src/shared/services/reports/calls/reports-inbound-interval.service";
+import { CallsInboundDailyByIntervalModel } from "projects/reports/src/shared/models/reports/calls/CallsInboundDailyByInterval.model ";
 import { InboundIntervalReportGraphComponent } from "../inbound-interval-report-graph/inbound-interval-report-graph.component";
 
 @Component({

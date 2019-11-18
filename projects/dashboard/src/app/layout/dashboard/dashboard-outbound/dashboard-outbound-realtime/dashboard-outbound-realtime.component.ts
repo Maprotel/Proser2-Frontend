@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { UserSelectionModel, AlertModel } from "shared/models";
 
-import { DashboardOutboundIndicatorsRealTimeService } from "projects/dashboard/src/app/shared/services";
-import { DashboardOutboundResponseModel } from "projects/dashboard/src/app/shared/models";
+import { DashboardOutboundIndicatorsRealTimeService } from "projects/dashboard/src/shared/services";
+import { DashboardOutboundResponseModel } from "projects/dashboard/src/shared/models";
 
 // Installed modules
 import { Observable, Subscription, timer } from "rxjs";

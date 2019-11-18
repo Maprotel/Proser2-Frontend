@@ -1,4 +1,4 @@
-import { DashboardHistoricHeaderModule } from './../../../shared/modules/dashboard-historic-header/dashboard-historic-header.module';
+import { DashboardHistoricHeaderModule } from 'projects/dashboard/src/shared/modules/dashboard-historic-header/dashboard-historic-header.module';
 import { registerLocaleData } from "@angular/common";
 import localeEs from "@angular/common/locales/es";
 
@@ -26,7 +26,7 @@ import { SelectorModule } from "shared/modules/selector/selector.module";
 
 
 
-import { DashboardHeaderModule } from "../../../shared/modules/dashboard-header/dashboard-header.module";
+import { DashboardHeaderModule } from "projects/dashboard/src/shared/modules/dashboard-header/dashboard-header.module";
 
 import { DashboardInboundRoutingModule } from "./dashboard-inbound-routing.module";
 import { DashboardInboundComponent } from "./dashboard-inbound.component";

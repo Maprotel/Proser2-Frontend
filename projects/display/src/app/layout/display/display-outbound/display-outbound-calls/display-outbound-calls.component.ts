@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { UserSelectionModel } from "shared/models";
 
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { OutboundIndicators } from "projects/display/src/app/shared/models";
+import { OutboundIndicators } from "projects/display/src/shared/models";
 
 @Component({
   selector: "app-display-outbound-calls",

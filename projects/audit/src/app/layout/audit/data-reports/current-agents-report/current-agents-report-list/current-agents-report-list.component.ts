@@ -18,8 +18,8 @@ import { UserSelectionModel } from "shared/models";
 
 import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
 
-import { RealCurrentAgentsService } from "projects/reports/src/app/shared/services/reports/data/reports-real-current-agents.service";
-import { RealCurrentAgentsReportModel } from "projects/reports/src/app/shared/models/reports/data/RealCurrentAgents.model";
+import { RealCurrentAgentsService } from "projects/audit/src/shared/services/reports/data/reports-real-current-agents.service";
+import { RealCurrentAgentsReportModel } from "projects/audit/src/shared/models/reports/data/RealCurrentAgents.model";
 
 @Component({
   selector: "app-reports-current-agents-report-list",
@@ -162,7 +162,7 @@ export class CurrentAgentsReportListComponent implements OnInit {
     return output;
   }
 
-  onChange() {}
+  onChange() { }
 
   openModal(content) {
     this.activeModal = this.modalService.open(content, {
@@ -217,5 +217,5 @@ export class CurrentAgentsReportListComponent implements OnInit {
     console.error("model", model3);
   }
 
-  exportToExcel(data) {}
+  exportToExcel(data) { }
 }

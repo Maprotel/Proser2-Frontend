@@ -22,8 +22,8 @@ import { CurrentBreaksReportRoutingModule } from "./current-breaks-report-routin
 
 import { CurrentBreaksReportListComponent } from "./current-breaks-report-list/current-breaks-report-list.component";
 
-import { ReportHeaderModule } from "projects/reports/src/app/shared/modules/report-header/report-header.module";
-import { ReportFinderModule } from "projects/reports/src/app/shared/modules/report-finder/report-finder.module";
+import { ReportHeaderModule } from "projects/audit/src/shared/modules/report-header/report-header.module";
+import { ReportFinderModule } from "projects/audit/src/shared/modules/report-finder/report-finder.module";
 
 
 @NgModule({
@@ -51,4 +51,4 @@ import { ReportFinderModule } from "projects/reports/src/app/shared/modules/repo
   ],
   providers: [{ provide: LOCALE_ID, useValue: "es" }]
 })
-export class CurrentBreaksReportModule {}
+export class CurrentBreaksReportModule { }

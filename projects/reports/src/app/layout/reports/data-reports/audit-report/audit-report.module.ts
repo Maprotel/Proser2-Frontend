@@ -22,11 +22,11 @@ import { AuditReportRoutingModule } from "./audit-report-routing.module";
 
 import { AuditReportListComponent } from "./audit-report-list/audit-report-list.component";
 
-import { ReportHeaderModule } from "projects/reports/src/app/shared/modules/report-header/report-header.module";
-import { ReportFinderModule } from "projects/reports/src/app/shared/modules/report-finder/report-finder.module";
+import { ReportHeaderModule } from "projects/reports/src/shared/modules/report-header/report-header.module";
+import { ReportFinderModule } from "projects/reports/src/shared/modules/report-finder/report-finder.module";
 
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 
 

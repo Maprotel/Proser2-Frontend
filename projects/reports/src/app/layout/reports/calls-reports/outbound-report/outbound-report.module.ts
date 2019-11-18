@@ -17,8 +17,8 @@ import { NgSelectModule } from "@ng-select/ng-select";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
 
-import { ReportHeaderModule } from "projects/reports/src/app/shared/modules/report-header/report-header.module";
-import { ReportFinderModule } from "projects/reports/src/app/shared/modules/report-finder/report-finder.module";
+import { ReportHeaderModule } from "projects/reports/src/shared/modules/report-header/report-header.module";
+import { ReportFinderModule } from "projects/reports/src/shared/modules/report-finder/report-finder.module";
 
 
 import { OutboundReportRoutingModule } from "./outbound-report-routing.module";
@@ -26,7 +26,7 @@ import { OutboundReportComponent } from "./outbound-report.component";
 import { OutboundReportListComponent } from "./outbound-report-list/outbound-report-list.component";
 import { OutboundReportGraphComponent } from './outbound-report-graph/outbound-report-graph.component';
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 
 @NgModule({

@@ -11,7 +11,7 @@ import { CrudInvAgentRoutingModule } from "./crud-inv-agent-routing.module";
 import { CrudInvAgentComponent } from "./crud-inv-agent.component";
 import { CrudInvAgentDetailComponent } from "./crud-inv-agent-detail/crud-inv-agent-detail.component";
 import { CrudInvAgentListComponent } from "./crud-inv-agent-list/crud-inv-agent-list.component";
-import { FormatPipesModule } from "projects/crud/src/app/shared/modules/";
+import { FormatPipesModule } from "projects/crud/src/shared/modules/";
 
 @NgModule({
   declarations: [
@@ -32,4 +32,4 @@ import { FormatPipesModule } from "projects/crud/src/app/shared/modules/";
     CrudInvAgentRoutingModule
   ]
 })
-export class CrudInvAgentModule {}
+export class CrudInvAgentModule { }

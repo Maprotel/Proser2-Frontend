@@ -21,9 +21,9 @@ import {
   textDateToObjectDate
 } from "shared/functions";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
-import { MainCallEntryService } from "projects/reports/src/app/shared/services/reports/data/reports-main-call-entry.service";
-import { MainCallEntryReportModel } from "projects/reports/src/app/shared/models/reports/data/MainCallEntryReport.model";
+import { ExcelService } from 'projects/reports/src/shared/services';
+import { MainCallEntryService } from "projects/reports/src/shared/services/reports/data/reports-main-call-entry.service";
+import { MainCallEntryReportModel } from "projects/reports/src/shared/models/reports/data/MainCallEntryReport.model";
 
 @Component({
   selector: "app-reports-call-entry-report-list",

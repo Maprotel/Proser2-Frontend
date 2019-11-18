@@ -17,15 +17,15 @@ import { NgSelectModule } from "@ng-select/ng-select";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
 
-import { ReportHeaderModule } from "projects/reports/src/app/shared/modules/report-header/report-header.module";
-import { ReportFinderModule } from "projects/reports/src/app/shared/modules/report-finder/report-finder.module";
+import { ReportHeaderModule } from "projects/reports/src/shared/modules/report-header/report-header.module";
+import { ReportFinderModule } from "projects/reports/src/shared/modules/report-finder/report-finder.module";
 
 import { OutboundIntervalReportRoutingModule } from "./outbound-interval-report-routing.module";
 import { OutboundIntervalReportComponent } from "./outbound-interval-report.component";
 import { OutboundIntervalReportListComponent } from "./outbound-interval-report-list/outbound-interval-report-list.component";
 import { OutboundIntervalReportGraphComponent } from "./outbound-interval-report-graph/outbound-interval-report-graph.component";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 
 @NgModule({

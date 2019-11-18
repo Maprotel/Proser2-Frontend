@@ -23,10 +23,10 @@ import {
   textDateToObjectDate
 } from "shared/functions";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
-import { OperationConsolidateOperationService } from "projects/reports/src/app/shared/services/reports/operation/reports-operation-consolidate.service";
-import { OperationConsolidateOperationModel } from "projects/reports/src/app/shared/models/reports/operation/OperationConsolidateOperation.model";
+import { OperationConsolidateOperationService } from "projects/reports/src/shared/services/reports/operation/reports-operation-consolidate.service";
+import { OperationConsolidateOperationModel } from "projects/reports/src/shared/models/reports/operation/OperationConsolidateOperation.model";
 
 
 @Component({

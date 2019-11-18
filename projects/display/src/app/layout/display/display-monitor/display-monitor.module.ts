@@ -17,7 +17,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
 
-import { DisplayHeaderModule } from "../../../shared/modules/display-header/display-header.module";
+import { DisplayHeaderModule } from "projects/display/src/shared/modules/display-header/display-header.module";
 
 import { DisplayMonitorRoutingModule } from "./display-monitor-routing.module";
 import { DisplayMonitorComponent } from "./display-monitor.component";
@@ -39,7 +39,7 @@ import { DisplayMonitorIndicatorsHistoricComponent } from './display-monitor-ind
     DisplayMonitorIndicatorsHistoricComponent
   ],
   imports: [
-    CommonModule, 
+    CommonModule,
     AlertModule,
     FormsModule,
     ReactiveFormsModule,
@@ -58,4 +58,4 @@ import { DisplayMonitorIndicatorsHistoricComponent } from './display-monitor-ind
   ],
   providers: [{ provide: LOCALE_ID, useValue: "es" }]
 })
-export class DisplayMonitorModule {}
+export class DisplayMonitorModule { }

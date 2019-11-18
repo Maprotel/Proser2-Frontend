@@ -1,4 +1,4 @@
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 // Angular import
 import { Component, OnInit, Input } from "@angular/core";
 
@@ -25,11 +25,11 @@ import { UserSelectionService } from "shared/services/crud/system/user-selection
 ExcelService
 
 // Local models
-import { BackendResponseModel } from "projects/reports/src/app/shared/models/reports/backendResponse.model";
+import { BackendResponseModel } from "projects/reports/src/shared/models/reports/backendResponse.model";
 
 // Local shared
-import { AgentsAssignationService } from "projects/reports/src/app/shared/services/reports/agents/reports-agents-assignation.service";
-import { AgentsAssignationModel } from "projects/reports/src/app/shared/models/reports/agents/AgentsAssignation.model";
+import { AgentsAssignationService } from "projects/reports/src/shared/services/reports/agents/reports-agents-assignation.service";
+import { AgentsAssignationModel } from "projects/reports/src/shared/models/reports/agents/AgentsAssignation.model";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import * as moment from "moment";

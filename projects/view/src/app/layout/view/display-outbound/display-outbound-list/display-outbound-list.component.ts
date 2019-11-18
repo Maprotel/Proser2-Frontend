@@ -24,13 +24,13 @@ import { AlertService, EnvService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
 
 // Local models
-import { DisplayOutboundResponseModel } from "projects/display/src/app/shared/models/display-outbound/DisplayOutboundResponse.model";
+import { DisplayOutboundResponseModel } from "projects/view/src/shared/models/display-outbound/DisplayOutboundResponse.model";
 
 // Local shared
 import { DisplayOutboundGraphComponent } from "../display-outbound-graph/display-outbound-graph.component";
 
-import { DisplayOutboundModel } from "projects/display/src/app/shared/models/display-outbound/DisplayOutbound.model";
-import { DisplayOutboundIndicatorsService } from "projects/display/src/app/shared/services/display-outbound/display-outbound-indicators.service";
+import { DisplayOutboundModel } from "projects/view/src/shared/models/display-outbound/DisplayOutbound.model";
+import { DisplayOutboundIndicatorsService } from "projects/view/src/shared/services/display-outbound/display-outbound-indicators.service";
 import { DisplayOutboundHighlightsComponent } from "../display-outbound-highlights/display-outbound-highlights.component";
 
 import { faIdBadge, faClock } from "@fortawesome/free-solid-svg-icons";
@@ -196,7 +196,7 @@ export class DisplayOutboundListComponent implements OnInit {
               // res.colors = res.colors[0];
               this.rows = res;
 
-        
+
 
               // this.childGraph
               //   ? this.childGraph.generateGraph("service", this.rows)

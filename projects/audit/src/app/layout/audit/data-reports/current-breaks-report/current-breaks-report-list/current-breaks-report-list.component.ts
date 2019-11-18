@@ -18,8 +18,8 @@ import { UserSelectionModel } from "shared/models";
 
 import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
 
-import { RealCurrentBreaksService } from "projects/reports/src/app/shared/services/reports/data/reports-real-current-break.service";
-import { RealCurrentBeaksReportModel } from "projects/reports/src/app/shared/models/reports/data/RealCurrentBreaks.model";
+import { RealCurrentBreaksService } from "projects/audit/src/shared/services/reports/data/reports-real-current-break.service";
+import { RealCurrentBeaksReportModel } from "projects/audit/src/shared/models/reports/data/RealCurrentBreaks.model";
 
 @Component({
   selector: "app-reports-current-breaks-report-list",
@@ -162,7 +162,7 @@ export class CurrentBreaksReportListComponent implements OnInit {
     return output;
   }
 
-  onChange() {}
+  onChange() { }
 
   openModal(content) {
     this.activeModal = this.modalService.open(content, {

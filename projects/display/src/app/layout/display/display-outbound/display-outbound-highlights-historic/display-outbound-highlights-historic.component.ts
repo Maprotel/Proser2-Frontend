@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, TemplateRef } from "@angular/core";
 import { UserSelectionModel } from "shared/models";
 
-import { OutboundIndicators } from "projects/display/src/app/shared/models";
+import { OutboundIndicators } from "projects/display/src/shared/models";
 
 import { InvScaleService } from "shared/services/crud/inv/inv-scale.service";
 import { InvScaleModel } from "shared/models";

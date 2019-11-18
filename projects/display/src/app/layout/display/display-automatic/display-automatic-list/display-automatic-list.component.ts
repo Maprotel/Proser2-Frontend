@@ -27,10 +27,10 @@ import { UserSelectionService } from "shared/services/";
 import {
   DisplayAutomaticModel,
   DisplayAutomaticResponseModel
-} from "projects/display/src/app/shared/models/";
+} from "projects/display/src/shared/models/";
 
 // Local shared
-import { DisplayAutomaticIndicatorsService } from "projects/display/src/app/shared/services/";
+import { DisplayAutomaticIndicatorsService } from "projects/display/src/shared/services/";
 
 @Component({
   selector: "app-display-display-automatic-list",
@@ -108,7 +108,7 @@ export class DisplayAutomaticListComponent implements OnInit, OnDestroy {
 
   // Start
   ngOnInit() {
-    this.userSelection =  new UserSelectionModel('standard');
+    this.userSelection = new UserSelectionModel('standard');
     this.getReportList(this.userSelection);
     this.filterFieldList = this.model.fieldList();
     this.numberOfRowsInTable = { id: 10, value: 10 };
@@ -231,7 +231,7 @@ export class DisplayAutomaticListComponent implements OnInit, OnDestroy {
 
   // Update on return of selector in header
   onReturnHeaderResult(event) {
-    this.userSelection =  new UserSelectionModel('standard');
+    this.userSelection = new UserSelectionModel('standard');
     this.getReportList(this.userSelection);
     this.show_graph_or_table_button = false;
     // this.childGraph ? this.childGraph.generateGraph("header", this.rows) : "";
@@ -239,7 +239,7 @@ export class DisplayAutomaticListComponent implements OnInit, OnDestroy {
 
   // Activated by button
   onRecalculate(event) {
-    this.userSelection =  new UserSelectionModel('standard');
+    this.userSelection = new UserSelectionModel('standard');
     this.getReportList(this.userSelection);
     this.show_graph_or_table_button = false;
     console.error("this.rows", this.rows);

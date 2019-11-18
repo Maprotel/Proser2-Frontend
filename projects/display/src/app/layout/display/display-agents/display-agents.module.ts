@@ -17,7 +17,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
 
-import { DisplayHeaderModule } from "../../../shared/modules/display-header/display-header.module";
+import { DisplayHeaderModule } from "projects/display/src/shared/modules/display-header/display-header.module";
 
 import { DisplayAgentsRoutingModule } from "./display-agents-routing.module";
 import { DisplayAgentsComponent } from "./display-agents.component";
@@ -46,4 +46,4 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
   ],
   providers: [{ provide: LOCALE_ID, useValue: "es" }]
 })
-export class DisplayAgentsModule {}
+export class DisplayAgentsModule { }

@@ -20,15 +20,15 @@ import { UserSelectionModel } from "shared/models";
 // Global shared services
 import { AlertService, EnvService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
-import { ExcelService } from "projects/reports/src/app/shared/services/helpers/excel.service";
+import { ExcelService } from "projects/reports/src/shared/services/helpers/excel.service";
 
 // Local models
-import { BackendResponseModel } from "projects/reports/src/app/shared/models/reports/backendResponse.model";
+import { BackendResponseModel } from "projects/reports/src/shared/models/reports/backendResponse.model";
 
 // Local shared
 
-import { CallsInboundDailyModel } from "projects/reports/src/app/shared/models/reports/calls/CallsInboundDaily.model";
-import { CallsInboundDailyService } from "projects/reports/src/app/shared/services/reports/calls/reports-inbound.service";
+import { CallsInboundDailyModel } from "projects/reports/src/shared/models/reports/calls/CallsInboundDaily.model";
+import { CallsInboundDailyService } from "projects/reports/src/shared/services/reports/calls/reports-inbound.service";
 import { InboundReportGraphComponent } from "../inbound-report-graph/inbound-report-graph.component";
 
 @Component({

@@ -1,4 +1,4 @@
-import { DashboardHistoricHeaderModule } from './../../../shared/modules/dashboard-historic-header/dashboard-historic-header.module';
+import { DashboardHistoricHeaderModule } from 'projects/dashboard/src/shared/modules/dashboard-historic-header/dashboard-historic-header.module';
 import { registerLocaleData } from "@angular/common";
 import localeEs from "@angular/common/locales/es";
 registerLocaleData(localeEs, "es");
@@ -20,7 +20,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
 
-import { DashboardHeaderModule } from "../../../shared/modules/dashboard-header/dashboard-header.module";
+import { DashboardHeaderModule } from "projects/dashboard/src/shared/modules/dashboard-header/dashboard-header.module";
 
 
 
@@ -116,4 +116,4 @@ import { DashboardOutboundHistoricComponent } from './dashboard-outbound-histori
   ],
   providers: [{ provide: LOCALE_ID, useValue: "es" }]
 })
-export class DashboardOutboundModule {}
+export class DashboardOutboundModule { }

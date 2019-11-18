@@ -14,8 +14,8 @@ import { AlertService, EnvService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
 
 // Local shared
-import { CallsInboundGroupModel } from "projects/dashboard/src/app/shared/models";
-import { DashboardInboundGroupsService } from "projects/dashboard/src/app/shared/services";
+import { CallsInboundGroupModel } from "projects/dashboard/src/shared/models";
+import { DashboardInboundGroupsService } from "projects/dashboard/src/shared/services";
 
 @Component({
   selector: "app-dashboard-dashboard-inbound-groups",

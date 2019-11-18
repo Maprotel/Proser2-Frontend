@@ -6,8 +6,8 @@ import { EnvService } from "shared/services/helpers/env.service";
 
 import { UserSelectionModel } from "shared/models";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
-import { CallsDetailService } from "projects/reports/src/app/shared/services/reports/calls/reports-detail-calls.service";
-import { CallsDetailModel } from "projects/reports/src/app/shared/models/reports/calls/CallsDetail.model";
+import { CallsDetailService } from "projects/reports/src/shared/services/reports/calls/reports-detail-calls.service";
+import { CallsDetailModel } from "projects/reports/src/shared/models/reports/calls/CallsDetail.model";
 
 @Component({
   selector: "app-reports-detail-report-audio",

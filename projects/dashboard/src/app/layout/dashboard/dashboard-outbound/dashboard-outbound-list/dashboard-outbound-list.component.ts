@@ -24,14 +24,14 @@ import { AlertService, EnvService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
 
 // Local models
-import { DashboardOutboundResponseModel } from "projects/dashboard/src/app/shared/models/dashboard-outbound/DashboardOutboundResponse.model";
+import { DashboardOutboundResponseModel } from "projects/dashboard/src/shared/models/dashboard-outbound/DashboardOutboundResponse.model";
 
 // Local shared
 import { DashboardOutboundGraphComponent } from "../dashboard-outbound-graph/dashboard-outbound-graph.component";
 import { DashboardOutboundGroupsComponent } from "./../dashboard-outbound-groups/dashboard-outbound-groups.component";
 
-import { DashboardOutboundModel } from "projects/dashboard/src/app/shared/models/dashboard-outbound/DashboardOutbound.model";
-import { DashboardOutboundIndicatorsService } from "projects/dashboard/src/app/shared/services/dashboard-outbound/dashboard-outbound-indicators.service";
+import { DashboardOutboundModel } from "projects/dashboard/src/shared/models/dashboard-outbound/DashboardOutbound.model";
+import { DashboardOutboundIndicatorsService } from "projects/dashboard/src/shared/services/dashboard-outbound/dashboard-outbound-indicators.service";
 import { DashboardOutboundHighlightsComponent } from "../dashboard-outbound-highlights/dashboard-outbound-highlights.component";
 
 import { faIdBadge, faClock } from "@fortawesome/free-solid-svg-icons";

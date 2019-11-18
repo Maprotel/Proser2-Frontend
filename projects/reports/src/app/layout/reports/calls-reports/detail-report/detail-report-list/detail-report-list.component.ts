@@ -14,12 +14,12 @@ import {
 
 import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
 
-import { ExcelService } from 'projects/reports/src/app/shared/services';
+import { ExcelService } from 'projects/reports/src/shared/services';
 
 import { UserSelectionModel } from "shared/models";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
-import { CallsDetailService } from "projects/reports/src/app/shared/services/reports/calls/reports-detail-calls.service";
-import { CallsDetailModel } from "projects/reports/src/app/shared/models/reports/calls/CallsDetail.model";
+import { CallsDetailService } from "projects/reports/src/shared/services/reports/calls/reports-detail-calls.service";
+import { CallsDetailModel } from "projects/reports/src/shared/models/reports/calls/CallsDetail.model";
 
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
