@@ -6,18 +6,18 @@
 
     <article class="collapse navbar-collapse" id="navigation">
       <!-- ---- LEFT MENU --------- -->
-      <div>
+      <div *ngIf="currentUser">
         <app-crud-header-menu-general></app-crud-header-menu-general>
       </div>
 
       <!-- ---- LEFT MENU --------- -->
-      <div>
+      <div *ngIf="currentUser">
         <app-crud-header-menu-people></app-crud-header-menu-people>
       </div>
 
 
       <!-- ---- LEFT MENU --------- -->
-      <div>
+      <div *ngIf="currentUser">
         <app-crud-header-menu-operation></app-crud-header-menu-operation>
       </div>
 

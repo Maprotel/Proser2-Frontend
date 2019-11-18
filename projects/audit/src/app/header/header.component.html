@@ -6,7 +6,7 @@
 
     <article class="collapse navbar-collapse" id="navigation">
       <!-- ---- LEFT MENU --------- -->
-      <div>
+      <div *ngIf="currentUser">
         <app-audit-header-menu-reports></app-audit-header-menu-reports>
       </div>
 

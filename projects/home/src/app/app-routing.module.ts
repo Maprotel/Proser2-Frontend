@@ -24,112 +24,113 @@ const routes: Routes = [
   { path: 'bye', component: ByeComponent },
   { path: 'logout', component: ByeComponent },
 
-  {
-    path: 'display',
-    component: ByeComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver'
-    },
-    data: {
-      externalUrl: `${host}/proser_reports/dist/display`
-    }
-  },
+  // {
+  //   path: 'display',
+  //   component: ByeComponent,
+  //   resolve: {
+  //     url: 'externalUrlRedirectResolver'
+  //   },
+  //   data: {
+  //     externalUrl: `${host}/proser_reports/dist/display`
+  //   }
+  // },
 
-  {
-    path: 'dashboard',
-    component: ByeComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver'
-    },
-    data: {
-      externalUrl: host + '/proser_reports/dist/dashboard'
-    }
-  },
-
-
-  {
-    path: 'crud',
-    component: ByeComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver'
-    },
-    data: {
-      externalUrl: host + '/proser_reports/dist/crud'
-    }
-  },
+  // {
+  //   path: 'dashboard',
+  //   component: ByeComponent,
+  //   resolve: {
+  //     url: 'externalUrlRedirectResolver'
+  //   },
+  //   data: {
+  //     externalUrl: host + '/proser_reports/dist/dashboard'
+  //   }
+  // },
 
 
-  {
-    path: 'audit',
-    component: ByeComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver'
-    },
-    data: {
-      externalUrl: host + '/proser_reports/dist/audit'
-    }
-  },
+  // {
+  //   path: 'crud',
+  //   component: ByeComponent,
+  //   resolve: {
+  //     url: 'externalUrlRedirectResolver'
+  //   },
+  //   data: {
+  //     externalUrl: host + '/proser_reports/dist/crud'
+  //   }
+  // },
 
 
-  {
-    path: 'system',
-    component: ByeComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver'
-    },
-    data: {
-      externalUrl: host + '/proser_reports/dist/system'
-    }
-  },
+  // {
+  //   path: 'audit',
+  //   component: ByeComponent,
+  //   resolve: {
+  //     url: 'externalUrlRedirectResolver'
+  //   },
+  //   data: {
+  //     externalUrl: host + '/proser_reports/dist/audit'
+  //   }
+  // },
 
 
-  {
-    path: 'view',
-    component: ByeComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver'
-    },
-    data: {
-      externalUrl: host + '/proser_reports/dist/view'
-    }
-  },
+  // {
+  //   path: 'system',
+  //   component: ByeComponent,
+  //   resolve: {
+  //     url: 'externalUrlRedirectResolver'
+  //   },
+  //   data: {
+  //     externalUrl: host + '/proser_reports/dist/system'
+  //   }
+  // },
 
 
-  {
-    path: 'user',
-    component: ByeComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver'
-    },
-    data: {
-      externalUrl: host + '/proser_reports/dist/user'
-    }
-  },
+  // {
+  //   path: 'view',
+  //   component: ByeComponent,
+  //   resolve: {
+  //     url: 'externalUrlRedirectResolver'
+  //   },
+  //   data: {
+  //     externalUrl: host + '/proser_reports/dist/view'
+  //   }
+  // },
 
 
-  {
-    path: 'configuracion',
-    component: ByeComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver'
-    },
-    data: {
-      externalUrl: host + '/proser_reports/dist/configuration'
-    }
-  },
-
-  {
-    path: 'reports',
-    component: ByeComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver'
-    },
-    data: {
-      externalUrl: host + '/proser_reports/dist/reports'
-    }
-  },
+  // {
+  //   path: 'user',
+  //   component: ByeComponent,
+  //   resolve: {
+  //     url: 'externalUrlRedirectResolver'
+  //   },
+  //   data: {
+  //     externalUrl: host + '/proser_reports/dist/user'
+  //   }
+  // },
 
 
+  // {
+  //   path: 'configuracion',
+  //   component: ByeComponent,
+  //   resolve: {
+  //     url: 'externalUrlRedirectResolver'
+  //   },
+  //   data: {
+  //     externalUrl: host + '/proser_reports/dist/configuration'
+  //   }
+  // },
+
+  // {
+  //   path: 'reports',
+  //   component: ByeComponent,
+  //   resolve: {
+  //     url: 'externalUrlRedirectResolver'
+  //   },
+  //   data: {
+  //     externalUrl: host + '/proser_reports/dist/reports'
+  //   }
+  // },
+
+  // NAVIGATE TO NOT FOUND PAGE
+  { path: "**", redirectTo: "not-found" }
 
 ];
 

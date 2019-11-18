@@ -19,18 +19,28 @@
         role="menu" aria-labelledby="button-triggers-manual">
 
       <!-- MENU ITEM-->
-      <li role="menuitem">
+      <!-- <li role="menuitem">
         <a class="dropdown-item " (click)="onProfile()">
           <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Perfil
         </a>
 
-      </li>
+      </li> -->
 
       <!-- MENU ITEM-->
       <li role="menuitem">
-        <a class="dropdown-item " (click)="onLogout()">
-          <fa-icon [icon]="faSignOutAlt"></fa-icon> &nbsp; Logout
-        </a>
+
+        <div *ngIf="currentUser">
+          <a class="dropdown-item " (click)="onLogout()">
+            <fa-icon [icon]="faSignOutAlt"></fa-icon> &nbsp; Logout
+          </a>
+        </div>
+
+        <div *ngIf="!currentUser">
+          <a class="dropdown-item " (click)="onLogin()">
+            <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Login
+          </a>
+        </div>
+
       </li>
 
     </ul>

@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+
+import { AuthService } from "shared/services/helpers/auth.service";
+import { AlertService } from "shared/services/helpers/alert.service";
+import { AlertModel } from "shared/models/helpers/Alert";
 
 @Component({
   selector: "app-header",
@@ -7,11 +11,30 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() visibleMenus;
-  @Input() currentUser;
-  @Input() showInMenu;
+  currentUser;
+  visibleMenus;
 
-  constructor() { }
 
-  ngOnInit() { }
+
+  constructor(
+    private authService: AuthService,
+    private alertService: AlertService) {
+    this.currentUser = this.authService.getCurrentUser();
+
+    this.visibleMenus = {
+      loginMenu: true,
+      sectionsMenus: false,
+      userMenu: false
+    }
+  }
+
+  ngOnInit() {
+    this.onGetCurrentUser()
+  }
+
+  onGetCurrentUser() {
+    this.currentUser = this.authService.getCurrentUser();
+    console.log('this.currentUser', this.currentUser);
+    return this.currentUser
+  }
 }

@@ -7,12 +7,12 @@
     <article class="collapse navbar-collapse" id="navigation">
       <!-- ---- LEFT MENU --------- -->
 
-      <div>
+      <div *ngIf="currentUser">
         <app-system-header-menu-commands></app-system-header-menu-commands>
       </div>
 
       <!-- ---- LEFT MENU --------- -->
-      <div>
+      <div *ngIf="currentUser">
         <app-system-header-menu-user></app-system-header-menu-user>
       </div>
 
