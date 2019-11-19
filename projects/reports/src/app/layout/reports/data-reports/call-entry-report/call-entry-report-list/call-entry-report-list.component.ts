@@ -249,7 +249,7 @@ export class CallEntryReportListComponent implements OnInit {
         estatus: x.callentry_status,
         transferido: x.callentry_transfer,
         entrada_en_cola: x.callentry_datetime_entry_queue,
-        duracion_seg: x.callentry_duration_sec_wait,
+        segundos_de_espera: x.callentry_duration_sec_wait,
         uniqueid: x.callentry_uniqueid,
         campaña: x.callentry_campaign_id,
         trunk: x.callentry_trunk,
