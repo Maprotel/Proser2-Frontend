@@ -20,7 +20,7 @@ import { DashboardOutboundListsService } from "projects/dashboard/src/shared/ser
   templateUrl: "./dashboard-outbound-modal-breaks.component.html",
   styleUrls: ["./dashboard-outbound-modal-breaks.component.scss"]
 })
-export class DaashboardOutboundModalBreaksComponent implements OnInit {
+export class DashboardOutboundModalBreaksComponent implements OnInit {
   @Input() userSelection;
   @Input() modalView: string;
 
@@ -37,7 +37,7 @@ export class DaashboardOutboundModalBreaksComponent implements OnInit {
     private alertService: AlertService,
     private envService: EnvService,
     private userSelectionService: UserSelectionService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.title = this.onAddTitle(this.modalView);
@@ -76,9 +76,9 @@ export class DaashboardOutboundModalBreaksComponent implements OnInit {
     }
   }
 
-  onActivate() {}
+  onActivate() { }
 
-  onSelect() {}
+  onSelect() { }
 
   onAddTitle(modalView) {
     let result = "Lista de agentes";

@@ -20,7 +20,7 @@ import { DashboardInboundListsService } from "projects/dashboard/src/shared/serv
   templateUrl: "./dashboard-inbound-modal-breaks.component.html",
   styleUrls: ["./dashboard-inbound-modal-breaks.component.scss"]
 })
-export class DaashboardInboundModalBreaksComponent implements OnInit {
+export class DashboardInboundModalBreaksComponent implements OnInit {
   @Input() userSelection;
   @Input() modalView: string;
 
