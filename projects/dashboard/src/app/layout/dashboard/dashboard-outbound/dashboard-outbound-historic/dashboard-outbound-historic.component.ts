@@ -94,8 +94,6 @@ export class DashboardOutboundHistoricComponent implements OnInit {
           if (res) {
             this.rows = res;
             this.show = true;
-            console.log('res', res);
-
           } else {
             console.error("Error", res);
           }
