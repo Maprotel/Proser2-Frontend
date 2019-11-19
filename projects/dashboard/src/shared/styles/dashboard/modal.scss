@@ -1,18 +1,7 @@
 // Modal
-.dark-modal .modal-content {
-  background-color: #292b2c;
-  color: white;
-}
-.dark-modal .close {
-  color: white;
-}
-.light-blue-backdrop {
-  background-color: #5cb3fd;
-}
-
-
 .modal-header {
-  background: #5cb3fd;
+  background: #275e20;
+  color: white;
 }
 
 .modal-lg {
@@ -20,6 +9,19 @@
   max-width: 95% !important;
 }
 
-.modal-buton {
+.modal-button {
   font-size: 1.2rem;
+}
+
+
+.modal-content {
+  background-color: #292b2c;
+  color: white;
+}
+
+.dark-modal .close {
+  color: white;
+}
+.light-blue-backdrop {
+  background-color: #5cb3fd;
 }

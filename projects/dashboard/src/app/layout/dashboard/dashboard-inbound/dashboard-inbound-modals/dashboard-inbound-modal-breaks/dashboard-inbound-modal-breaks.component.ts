@@ -16,9 +16,9 @@ import { DashboardSelectionModel } from "projects/dashboard/src/shared/models";
 import { DashboardInboundListsService } from "projects/dashboard/src/shared/services";
 
 @Component({
-  selector: "app-dashboard-daashboard-inbound-modal-breaks",
-  templateUrl: "./daashboard-inbound-modal-breaks.component.html",
-  styleUrls: ["./daashboard-inbound-modal-breaks.component.scss"]
+  selector: "app-dashboard-dashboard-inbound-modal-breaks",
+  templateUrl: "./dashboard-inbound-modal-breaks.component.html",
+  styleUrls: ["./dashboard-inbound-modal-breaks.component.scss"]
 })
 export class DaashboardInboundModalBreaksComponent implements OnInit {
   @Input() userSelection;
@@ -37,10 +37,10 @@ export class DaashboardInboundModalBreaksComponent implements OnInit {
     private alertService: AlertService,
     private envService: EnvService,
     private userSelectionService: UserSelectionService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    
+
     this.title = this.onAddTitle(this.modalView);
     this.dashboardInboundListCurrentBreaks(this.userSelection);
   }
@@ -77,9 +77,9 @@ export class DaashboardInboundModalBreaksComponent implements OnInit {
     }
   }
 
-  onActivate() {}
+  onActivate() { }
 
-  onSelect() {}
+  onSelect() { }
 
   onAddTitle(modalView) {
     let result = "Lista de agentes";

@@ -30,8 +30,8 @@ import { DashboardHeaderModule } from "projects/dashboard/src/shared/modules/das
 
 import { DashboardInboundRoutingModule } from "./dashboard-inbound-routing.module";
 import { DashboardInboundComponent } from "./dashboard-inbound.component";
-import { DashboardInboundListComponent } from "./dashboard-inbound-list/dashboard-inbound-list.component";
-import { DashboardInboundGraphComponent } from "./dashboard-inbound-graph/dashboard-inbound-graph.component";
+
+
 import { DashboardInboundCallsComponent } from "./dashboard-inbound-calls/dashboard-inbound-calls.component";
 
 import { DashboardInboundLevelsComponent } from "./dashboard-inbound-levels/dashboard-inbound-levels.component";
@@ -55,8 +55,8 @@ import { DashboardInboundModalCallsComponent } from "./dashboard-inbound-modals/
 import { DashboardInboundModalTextComponent } from "./dashboard-inbound-modals/dashboard-inbound-modal-text/dashboard-inbound-modal-text.component";
 import { SharedPipesModule } from "shared/pipes/shared-pipes.module";
 import { DashboardInboundModalCurrentcallsComponent } from './dashboard-inbound-modals/dashboard-inbound-modal-currentcalls/dashboard-inbound-modal-currentcalls.component';
-import { DaashboardInboundModalBreaksComponent } from './dashboard-inbound-modals/daashboard-inbound-modal-breaks/daashboard-inbound-modal-breaks.component';
-import { DashboardInboundGroupsComponent } from './dashboard-inbound-groups/dashboard-inbound-groups.component';
+import { DaashboardInboundModalBreaksComponent } from './dashboard-inbound-modals/dashboard-inbound-modal-breaks/dashboard-inbound-modal-breaks.component';
+
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { DashboardInboundModalAgentsHistoricComponent } from './dashboard-inbound-modals/dashboard-inbound-modal-agents-historic/dashboard-inbound-modal-agents-historic.component';
 import { DashboardInboundModalBreaksHistoricComponent } from './dashboard-inbound-modals/dashboard-inbound-modal-breaks-historic/dashboard-inbound-modal-breaks-historic.component';
@@ -70,8 +70,7 @@ import { DashboardInboundHistoricComponent } from './dashboard-inbound-historic/
 @NgModule({
   declarations: [
     DashboardInboundComponent,
-    DashboardInboundListComponent,
-    DashboardInboundGraphComponent,
+
     DashboardInboundCallsComponent,
     DashboardInboundLevelsComponent,
     DashboardInboundBreaksComponent,
@@ -91,7 +90,9 @@ import { DashboardInboundHistoricComponent } from './dashboard-inbound-historic/
     DashboardInboundModalTextComponent,
     DashboardInboundModalCurrentcallsComponent,
     DaashboardInboundModalBreaksComponent,
-    DashboardInboundGroupsComponent,
+
+
+
     DashboardInboundModalAgentsHistoricComponent,
     DashboardInboundModalBreaksHistoricComponent,
     DashboardInboundRealtimeComponent,

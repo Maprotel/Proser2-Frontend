@@ -8,5 +8,5 @@ SHELL=/bin/bash
     npm run  build-reports;
     npm run  build-sms;
     npm run  build-system;
-    npm run  build-view;
     npm run  build-user;
+    npm run  build-view;

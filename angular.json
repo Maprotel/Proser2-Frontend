@@ -36,7 +36,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/audit/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -167,7 +167,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/crud/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -298,7 +298,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/dashboard/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -364,7 +364,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/dashboard/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -423,7 +423,6 @@
             "assets": [
               "projects/display/src/favicon.ico",
               "projects/display/src/assets",
-              "projects/display/src/styles",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -431,7 +430,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/display/src/shared/styles/styles.scss",
             ],
             "scripts": []
@@ -497,7 +496,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/display/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -560,7 +559,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/home/src/styles.scss"
             ],
             "scripts": []
@@ -632,7 +631,7 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/home/src/styles.scss"
             ],
             "scripts": []
@@ -698,7 +697,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/reports/src/shared/styles/styles.scss",
               "projects/reports/src/shared/styles/datatable/datatable.scss"
             ],
@@ -765,7 +764,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/reports/src/shared/styles/styles.scss",
               "projects/reports/src/shared/styles/datatable/datatable.scss"
             ],
@@ -828,7 +827,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/sms/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -894,7 +893,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/sms/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -960,7 +959,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/system/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -1026,7 +1025,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/system/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -1092,7 +1091,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/user/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -1158,7 +1157,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/user/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -1225,7 +1224,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/view/src/shared/styles/styles.scss"
             ],
             "scripts": []
@@ -1291,7 +1290,7 @@
               }
             ],
             "styles": [
-              "shared/styles/styles.scss",
+              "shared/styles/app.scss",
               "projects/view/src/shared/styles/styles.scss"
             ],
             "scripts": []

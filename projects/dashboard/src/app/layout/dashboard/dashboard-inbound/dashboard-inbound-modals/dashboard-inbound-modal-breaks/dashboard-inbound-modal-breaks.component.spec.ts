@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DaashboardInboundModalBreaksComponent } from './daashboard-inbound-modal-breaks.component';
+import { DaashboardInboundModalBreaksComponent } from './dashboard-inbound-modal-breaks.component;
 
 describe('DaashboardInboundModalBreaksComponent', () => {
   let component: DaashboardInboundModalBreaksComponent;
@@ -8,9 +8,9 @@ describe('DaashboardInboundModalBreaksComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DaashboardInboundModalBreaksComponent ]
+      declarations: [DaashboardInboundModalBreaksComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

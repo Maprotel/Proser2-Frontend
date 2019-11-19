@@ -29,8 +29,8 @@ import { DashboardHeaderModule } from "projects/dashboard/src/shared/modules/das
 
 import { DashboardOutboundRoutingModule } from "./dashboard-outbound-routing.module";
 import { DashboardOutboundComponent } from "./dashboard-outbound.component";
-import { DashboardOutboundListComponent } from "./dashboard-outbound-list/dashboard-outbound-list.component";
-import { DashboardOutboundGraphComponent } from "./dashboard-outbound-graph/dashboard-outbound-graph.component";
+
+
 import { DashboardOutboundCallsComponent } from "./dashboard-outbound-calls/dashboard-outbound-calls.component";
 
 import { DashboardOutboundLevelsComponent } from "./dashboard-outbound-levels/dashboard-outbound-levels.component";
@@ -55,7 +55,7 @@ import { DashboardOutboundModalTextComponent } from "./dashboard-outbound-modals
 import { SharedPipesModule } from "shared/pipes/shared-pipes.module";
 import { DashboardOutboundModalCurrentcallsComponent } from './dashboard-outbound-modals/dashboard-outbound-modal-currentcalls/dashboard-outbound-modal-currentcalls.component';
 import { DaashboardOutboundModalBreaksComponent } from './dashboard-outbound-modals/dashboard-outbound-modal-breaks/dashboard-outbound-modal-breaks.component';
-import { DashboardOutboundGroupsComponent } from './dashboard-outbound-groups/dashboard-outbound-groups.component';
+
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { DashboardOutboundModalAgentsHistoricComponent } from './dashboard-outbound-modals/dashboard-outbound-modal-agents-historic/dashboard-outbound-modal-agents-historic.component';
 import { DashboardOutboundModalBreaksHistoricComponent } from './dashboard-outbound-modals/dashboard-outbound-modal-breaks-historic/dashboard-outbound-modal-breaks-historic.component';
@@ -65,8 +65,8 @@ import { DashboardOutboundHistoricComponent } from './dashboard-outbound-histori
 @NgModule({
   declarations: [
     DashboardOutboundComponent,
-    DashboardOutboundListComponent,
-    DashboardOutboundGraphComponent,
+
+
     DashboardOutboundCallsComponent,
     DashboardOutboundLevelsComponent,
     DashboardOutboundBreaksComponent,
@@ -86,7 +86,7 @@ import { DashboardOutboundHistoricComponent } from './dashboard-outbound-histori
     DashboardOutboundModalTextComponent,
     DashboardOutboundModalCurrentcallsComponent,
     DaashboardOutboundModalBreaksComponent,
-    DashboardOutboundGroupsComponent,
+
     DashboardOutboundModalAgentsHistoricComponent,
     DashboardOutboundModalBreaksHistoricComponent,
     DashboardOutboundRealtimeComponent,
