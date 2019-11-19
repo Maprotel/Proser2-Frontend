@@ -33,15 +33,15 @@ export class DashboardInboundHighlightsComponent implements OnInit {
   constructor(
     private invScaleService: InvScaleService,
     private modalService: NgbModal
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onCloseModal() {
     this.activeModal.close();
   }
 
-  onExtractVariables(rows) {}
+  onExtractVariables(rows) { }
 
   onColorClass(color) {
     return `indicator-cell ${color}`;

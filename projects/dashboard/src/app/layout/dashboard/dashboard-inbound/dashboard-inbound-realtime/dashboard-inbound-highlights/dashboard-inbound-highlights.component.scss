@@ -1,6 +1,10 @@
 @import "projects/dashboard/src/shared/styles/dashboard/dashboard-colors";
 @import "shared/styles/responsive/responsive-sizes";
 
+@import "shared/styles/modal/modal";
+
+
+
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
