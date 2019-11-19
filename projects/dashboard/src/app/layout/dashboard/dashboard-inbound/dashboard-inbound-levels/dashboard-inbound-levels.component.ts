@@ -37,7 +37,7 @@ export class DashboardInboundLevelsComponent implements OnInit {
     this.argument = selected;
 
     this.activeModal = this.modalService.open(content, {
-      windowClass: "my-class",
+      windowClass: "myCustomModalClass",
       keyboard: false
     });
   }

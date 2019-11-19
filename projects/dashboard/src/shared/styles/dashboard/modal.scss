@@ -4,7 +4,11 @@
   color: white;
 }
 
-.modal-lg {
+.modal-dialog {
+  min-width: 80%;
+}
+
+.modal-sm {
   min-width: 90% !important;
   max-width: 95% !important;
 }
