@@ -1,0 +1,16 @@
+@import "projects/dashboard/src/shared/styles/dashboard/card-two-columns";
+// @import "projects/dashboard/src/shared/styles/dashboard/modal";
+
+.myCustomModalClass .modal-dialog {
+  min-width: 90%;
+}
+
+.myCustomModalClass .modal-header {
+  background: yellow;
+}
+
+
+
+.pointer {
+  cursor: pointer;
+}

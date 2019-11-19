@@ -13,14 +13,14 @@ import { AlertModel } from "shared/models/helpers/Alert";
 import { UserSelectionModel } from "shared/models";
 
 import { DashboardSelectionModel } from "projects/dashboard/src/shared/models";
-import { DashboardOutboundListsService } from "projects/dashboard/src/shared/services";
+import { DashboardInboundListsService } from "projects/dashboard/src/shared/services";
 
 @Component({
-  selector: "app-dashboard-outbound-modal-breaks",
-  templateUrl: "./dashboard-outbound-modal-breaks.component.html",
-  styleUrls: ["./dashboard-outbound-modal-breaks.component.scss"]
+  selector: "app-dashboard-dashboard-inbound-modal-breaks",
+  templateUrl: "./dashboard-inbound-modal-breaks.component.html",
+  styleUrls: ["./dashboard-inbound-modal-breaks.component.scss"]
 })
-export class DashboardOutboundModalBreaksComponent implements OnInit {
+export class DashboardInboundModalBreaksComponent implements OnInit {
   @Input() userSelection;
   @Input() modalView: string;
 
@@ -33,26 +33,27 @@ export class DashboardOutboundModalBreaksComponent implements OnInit {
   title;
 
   constructor(
-    private dashboardOutboundListsService: DashboardOutboundListsService,
+    private dashboardInboundListsService: DashboardInboundListsService,
     private alertService: AlertService,
     private envService: EnvService,
     private userSelectionService: UserSelectionService
   ) { }
 
   ngOnInit() {
+
     this.title = this.onAddTitle(this.modalView);
-    this.dashboardOutboundListCurrentBreaks(this.userSelection);
+    this.dashboardInboundListCurrentBreaks(this.userSelection);
   }
 
-  dashboardOutboundListCurrentBreaks(userSelection: UserSelectionModel) {
+  dashboardInboundListCurrentBreaks(userSelection: UserSelectionModel) {
     this.dashboardSelection = {
-      userSelection: userSelection,
+      userSelection: this.userSelection,
       modalView: this.modalView
     };
 
     if (this.dashboardSelection) {
-      this.dashboardOutboundListsService
-        .dashboardOutboundListCurrentBreaks(this.dashboardSelection)
+      this.dashboardInboundListsService
+        .dashboardInboundListCurrentBreaks(this.dashboardSelection)
         .subscribe(
           res => {
             if (res) {
