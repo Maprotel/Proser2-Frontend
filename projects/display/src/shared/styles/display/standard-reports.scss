@@ -2,17 +2,8 @@
 
 .button-area {
   display: grid;
-  grid-template-columns: 4fr 2fr;
+  grid-template-columns: 2fr 2fr;
   grid-gap: 1rem;
-  margin: 0;
-}
-
-.buttons {
-  margin-left: 20px;
-}
-
-.filter {
-  margin-right: 20px;
 }
 
 .btn {
