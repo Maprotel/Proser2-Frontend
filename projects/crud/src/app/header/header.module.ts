@@ -17,8 +17,9 @@ import { HeaderMenuPeopleComponent } from './header-menu-people/header-menu-peop
 import { HeaderMenuOperationComponent } from './header-menu-operation/header-menu-operation.component';
 import { HeaderMenuPlanningComponent } from './header-menu-planning/header-menu-planning.component';
 
+import { HeaderMenuLoginComponent } from './header-menu-login/header-menu-login.component';
 @NgModule({
-  declarations: [HeaderComponent, HeaderMenuGeneralComponent, HeaderMenuPeopleComponent, HeaderMenuOperationComponent, HeaderMenuPlanningComponent],
+  declarations: [HeaderComponent, HeaderMenuGeneralComponent, HeaderMenuPeopleComponent, HeaderMenuOperationComponent, HeaderMenuPlanningComponent, HeaderMenuLoginComponent],
   imports: [
     CommonModule,
 

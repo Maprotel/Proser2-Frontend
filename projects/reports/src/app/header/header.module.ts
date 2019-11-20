@@ -23,12 +23,13 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { HeaderMenuUserModule } from "shared/modules/header-menu-user/header-menu-user.module";
 import { HeaderMenuBrandModule } from "shared/modules/header-menu-brand/header-menu-brand.module";
 
+import { HeaderMenuLoginComponent } from './header-menu-login/header-menu-login.component';
 
 @NgModule({
   declarations: [HeaderComponent, HeaderMenuAgentsComponent,
     HeaderMenuCallsComponent,
     HeaderMenuDataComponent,
-    HeaderMenuOperationComponent,
+    HeaderMenuOperationComponent, HeaderMenuLoginComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,23 @@
+<div>
+  <ul class="navbar-nav" *ngIf="currentUser">
+    <!-- ----------------------------------- -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navdrop" role="button"
+         data-toggle="dropdown" data-hover="dropdown">Comandos</a>
+      <!-- ----------------------------------- -->
+      <div class="dropdown-menu" aria-labelledby="navdrop">
+
+
+        <a class="dropdown-item configheader-menu" routerLink="/sms/home/">
+          <i class="fas fa-user-tie"></i> Sms
+        </a>
+
+        <a class="dropdown-item configheader-menu" routerLink="/init/home/">
+          <i class="fas fa-user-tie"></i> Home
+        </a>
+      </div>
+
+    </li>
+  </ul>
+
+</div>

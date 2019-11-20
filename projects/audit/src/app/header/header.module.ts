@@ -15,9 +15,9 @@ import { HeaderMenuBrandModule } from "shared/modules/header-menu-brand/header-m
 
 import { HeaderComponent } from './header.component';
 import { HeaderMenuReportsComponent } from './header-menu-reports/header-menu-reports.component';
-
+import { HeaderMenuLoginComponent } from './header-menu-login/header-menu-login.component';
 @NgModule({
-  declarations: [HeaderComponent, HeaderMenuReportsComponent],
+  declarations: [HeaderComponent, HeaderMenuReportsComponent, HeaderMenuLoginComponent],
   imports: [
     CommonModule,
     HttpClientModule,

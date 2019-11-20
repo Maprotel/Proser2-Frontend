@@ -5,6 +5,11 @@
     <a routerLink="/display" class="chapter nav-link">Vistas</a>
 
     <article class="collapse navbar-collapse" id="navigation">
+
+      <div *ngIf="!currentUser">
+        <app-header-menu-login></app-header-menu-login>
+      </div>
+
       <!-- ---- LEFT MENU --------- -->
       <div>
         <app-display-header-menu-display></app-display-header-menu-display>
@@ -12,7 +17,7 @@
 
       <!-- ---- RIGHT MENU --------- -->
       <div class="navbar-nav ml-auto">
-        <header-menu-user></header-menu-user>
+        <header-menu-user [currentUser]="currentUser"></header-menu-user>
       </div>
     </article>
   </nav>

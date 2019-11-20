@@ -4,32 +4,24 @@
 
     <a routerLink="/sms" class="chapter nav-link">Sms</a>
 
+
+
+
     <article class="collapse navbar-collapse" id="navigation">
       <!-- ---- LEFT MENU --------- -->
-      <ul class="navbar-nav" *ngIf="currentUser">
-        <!-- ----------------------------------- -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navdrop" role="button"
-             data-toggle="dropdown" data-hover="dropdown">Comandos</a>
-          <!-- ----------------------------------- -->
-          <div class="dropdown-menu" aria-labelledby="navdrop">
+     
 
+      <div *ngIf="!currentUser">
+        <app-header-menu-login></app-header-menu-login>
+      </div>
 
-            <a class="dropdown-item configheader-menu" routerLink="/sms/home/">
-              <i class="fas fa-user-tie"></i> Sms
-            </a>
-
-            <a class="dropdown-item configheader-menu" routerLink="/init/home/">
-              <i class="fas fa-user-tie"></i> Home
-            </a>
-          </div>
-
-        </li>
-      </ul>
+      <div *ngIf="currentUser">
+        <app-header-menu-sms></app-header-menu-sms>
+      </div>
 
       <!-- ---- RIGHT MENU --------- -->
       <div class="navbar-nav ml-auto">
-        <header-menu-user></header-menu-user>
+        <header-menu-user [currentUser]="currentUser"></header-menu-user>
       </div>
     </article>
   </nav>

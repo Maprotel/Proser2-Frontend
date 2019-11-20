@@ -6,6 +6,12 @@
 
     <article class="collapse navbar-collapse" id="navigation">
       <!-- ---- LEFT MENU --------- -->
+
+      <div *ngIf="!currentUser">
+        <app-header-menu-login></app-header-menu-login>
+      </div>
+
+
       <div *ngIf="currentUser">
         <app-crud-header-menu-general></app-crud-header-menu-general>
       </div>
@@ -30,7 +36,7 @@
 
       <!-- ---- RIGHT MENU --------- -->
       <div class="navbar-nav ml-auto">
-        <header-menu-user></header-menu-user>
+        <header-menu-user [currentUser]="currentUser"></header-menu-user>
       </div>
     </article>
   </nav>

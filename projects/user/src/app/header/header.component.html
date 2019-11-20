@@ -10,6 +10,11 @@
 
       <!-- ---- LEFT MENU --------- -->
       <div *ngIf="!currentUser">
+        <app-header-menu-login></app-header-menu-login>
+      </div>
+
+      
+      <div *ngIf="!currentUser">
         <app-init-header-menu-login></app-init-header-menu-login>
       </div>
 
@@ -22,7 +27,7 @@
 
       <!-- ---- RIGHT MENU --------- -->
       <div class="navbar-nav ml-auto">
-        <header-menu-user></header-menu-user>
+          <header-menu-user [currentUser]="currentUser"></header-menu-user>
       </div>
 
 
