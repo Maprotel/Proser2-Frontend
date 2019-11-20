@@ -9,7 +9,6 @@ import {
   NgbModalRef
 } from "@ng-bootstrap/ng-bootstrap";
 
-import { InboundIndicators } from "aux/dashboard/InboundIndicators";
 
 import { InvScaleService } from "shared/services/crud/inv/inv-scale.service";
 import { InvScaleModel } from "shared/models";

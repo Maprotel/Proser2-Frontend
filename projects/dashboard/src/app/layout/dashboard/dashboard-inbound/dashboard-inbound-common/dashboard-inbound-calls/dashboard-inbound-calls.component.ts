@@ -9,7 +9,6 @@ import {
   NgbModalRef
 } from "@ng-bootstrap/ng-bootstrap";
 
-import { InboundIndicators } from "aux/dashboard/InboundIndicators";
 
 @Component({
   selector: "app-dashboard-inbound-calls",
