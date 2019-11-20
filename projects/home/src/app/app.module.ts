@@ -1,33 +1,42 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { CollapseModule } from "ngx-bootstrap/collapse";
-
+// Angular
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule, ModuleWithProviders } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule, HttpClient } from "@angular/common/http";
-
-import { AuthGuard } from "shared/guards";
-import { AlertService } from "shared/services/helpers/alert.service";
-import { AlertModule } from "shared/modules/";
-
-import { EnvServiceProvider } from "shared/services/helpers/env.service.provider";
-
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 
-import { HeaderMenuBrandModule } from "shared/modules/"
-import { HeaderMenuUserModule } from "shared/modules/";
+// Vendor
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { CollapseModule } from "ngx-bootstrap/collapse";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
+// Custom modules
+import { IntroPageModule } from "shared/modules/intro-page/intro-page.module";
+//
+import { AlertModule } from "shared/modules/alert/alert.module";
 import { NowModule } from "shared/modules/now/now.module";
 import { ConnectionModule } from "shared/modules/connection/connection.module";
-import { IntroPageModule } from "shared/modules/intro-page/intro-page.module";
+import { SelectorModule } from "shared/modules/selector/selector.module";
+//
+import { HeaderModule } from './header/header.module';
+import { HeaderMenuModule } from "shared/modules/header-menu/header-menu.module";
+import { HeaderMenuUserModule } from "shared/modules/header-menu-user/header-menu-user.module";
+import { HeaderMenuBrandModule } from "shared/modules/header-menu-brand/header-menu-brand.module";
+//
+import { RedirectModule } from 'shared/modules/redirect/redirect.module';
+// Routing
+import { AppRoutingModule } from "./app-routing.module";
 
+// Custom providers
+import { AuthGuard } from "shared/guards";
+import { AlertService } from "shared/services/helpers/alert.service";
+import { EnvServiceProvider } from "shared/services/helpers/env.service.provider";
 
-import { AppRoutingModule } from './app-routing.module';
+// Components
 import { AppComponent } from './app.component';
-
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from "./pages/home/home.component";
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -36,9 +45,6 @@ import { ByeComponent } from './pages/bye/bye.component';
 import { HeaderMenuLoginComponent } from './header/header-menu-login/header-menu-login.component';
 import { HeaderMenuSectionsComponent } from './header/header-menu-sections/header-menu-sections.component';
 
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-
-import { RedirectModule } from "shared/modules"
 
 @NgModule({
   declarations: [
@@ -53,27 +59,39 @@ import { RedirectModule } from "shared/modules"
     HeaderMenuSectionsComponent
   ],
   imports: [
+    // Angular
     BrowserModule,
-    NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    AlertModule,
-    HeaderMenuBrandModule,
-    HeaderMenuUserModule,
-    ConnectionModule,
-    NowModule,
-    IntroPageModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    // Vendor
+    NgbModule,
+    SelectorModule,
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     FontAwesomeModule,
+    // Custom modules
+    IntroPageModule,
+    //
+    AlertModule,
+    NowModule,
+    ConnectionModule,
+    SelectorModule,
+    //
+    HeaderModule,
+    HeaderMenuModule,
+    HeaderMenuUserModule,
+    HeaderMenuBrandModule,
+    //
     RedirectModule,
-    AppRoutingModule,
+    // Routing
+    AppRoutingModule
   ],
   providers: [
-    EnvServiceProvider,
     AuthGuard,
-    AlertService,
+    AlertService
+    EnvServiceProvider,
     {
       provide: "externalUrlRedirectResolver",
       useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
