@@ -19,7 +19,7 @@ import { AbstractControl } from "@angular/forms";
 import { UserbaseModel } from "shared/models";
 
 @Component({
-  selector: 'login-register',
+  selector: 'redirect-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })

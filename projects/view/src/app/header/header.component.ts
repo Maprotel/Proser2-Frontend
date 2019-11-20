@@ -1,4 +1,10 @@
 import { Component, OnInit } from "@angular/core";
+import { environment } from "shared/environments/environment.prod";
+import { EnvService } from "shared/services/helpers/env.service";
+import { AuthService } from "shared/services/helpers/auth.service";
+import { Router } from "@angular/router";
+
+import { logout } from "shared/functions";
 
 @Component({
   selector: "app-header",
@@ -6,7 +12,36 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  title = "Proser";
+  env;
+  currentUser;
+  show_init_header;
+  showInMenu;
 
-  ngOnInit() {}
+  constructor(
+    private envService: EnvService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
+  ngOnInit() {
+    this.env = this.envService;
+    this.getCurrentUser();
+    this.show_init_header = true;
+  }
+
+  ngOnDestroy() {
+    this.show_init_header = false;
+  }
+
+  getCurrentUser() {
+    this.currentUser = this.authService.getCurrentUser();
+    console.log('currentUser', this.currentUser);
+
+  }
+
+  onLogout() {
+    this.authService.logoutUser().subscribe(data => {
+      this.router.navigate(["/"]);
+    });
+  }
 }

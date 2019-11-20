@@ -23,7 +23,7 @@ import {
   styleUrls: ['./header-menu-sections.component.scss']
 })
 export class HeaderMenuSectionsComponent implements OnInit {
-  @Input() showInMenu;
+  showInMenu;
   @Input() currentUser;
 
   faDigitalTachograph = faDigitalTachograph;
@@ -66,11 +66,17 @@ export class HeaderMenuSectionsComponent implements OnInit {
     this.userLink = 'http://localhost/proser_reports/dist/user/'
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.onShowSectionMenus()
+  }
 
   onLogout() {
     this.authService.logoutUser().subscribe(data => {
       this.router.navigate(["/"]);
     });
+  }
+
+  onShowSectionMenus() {
+    this.showInMenu = this.authService.getCurrentUserValue()
   }
 }

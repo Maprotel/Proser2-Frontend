@@ -9,14 +9,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'login-header-menu-login',
+  selector: 'app-header-menu-login',
   templateUrl: './header-menu-login.component.html',
   styleUrls: ['./header-menu-login.component.scss']
 })
 export class HeaderMenuLoginComponent implements OnInit {
   @Input() showInMenu;
   @Input() currentUser;
-  
+
   faCoffee = faCoffee;
   faChartArea = faChartArea;
   faDigitalTachograph = faDigitalTachograph;

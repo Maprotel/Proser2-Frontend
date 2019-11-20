@@ -1,3 +1,4 @@
+
 // Angular
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, ModuleWithProviders } from "@angular/core";
@@ -36,27 +37,26 @@ import { EnvServiceProvider } from "shared/services/helpers/env.service.provider
 
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from "./pages/home/home.component";
-import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './pages/login/login.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { ByeComponent } from './pages/bye/bye.component';
-import { HeaderMenuLoginComponent } from './header/header-menu-login/header-menu-login.component';
-import { HeaderMenuSectionsComponent } from './header/header-menu-sections/header-menu-sections.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from "./pages/home/home.component";
+import { NotfoundComponent } from './pages/notfound/notfound.component';
+//
+import { RegisterComponent } from './pages/register/register.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent,
     LoginComponent,
-    ProfileComponent,
-    RegisterComponent,
     ByeComponent,
-    HeaderMenuLoginComponent,
-    HeaderMenuSectionsComponent
+    NotfoundComponent,
+    //
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     // Angular

@@ -1,141 +1,71 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-
-import { HomeComponent } from './pages/home/home.component';
+// Angular
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+// Custom
+import { AuthGuard } from "shared/guards";
+import { RedirectModule } from "shared/modules/redirect/redirect.module";
+// Components
+import { HomeComponent } from "./pages/home/home.component";
+import { AppComponent } from "./app.component";
+import { LayoutComponent } from "./layout/layout.component";
+//
 import { LoginComponent } from './pages/login/login.component';
+import { ByeComponent } from './pages/bye/bye.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
+//
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { ByeComponent } from './pages/bye/bye.component';
-
-import { host } from 'shared/services/helpers/env.service'
-
-// const host = "http://127.0.0.1:4200";
-const service = `${host}/proser_reports/dist/display/home`
 
 const routes: Routes = [
-
   {
-    path: '', component: HomeComponent
+    path: "",
+    component: AppComponent,
+    children: [
+      {
+        path: "",
+        redirectTo: "home",
+        pathMatch: "full"
+      },
+      {
+        path: "home",
+        component: HomeComponent
+      },
+
+      {
+        path: "login",
+        component: LoginComponent
+      },
+      {
+        path: "bye",
+        component: ByeComponent
+      },
+
+      {
+        path: "register",
+        component: RegisterComponent
+      },
+
+      {
+        path: "profile",
+        component: ProfileComponent
+      },
+
+
+      {
+        path: "layout",
+        loadChildren: () =>
+          import("./layout/layout.module").then(m => m.LayoutModule)
+      }
+    ]
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'bye', component: ByeComponent },
-  { path: 'logout', component: ByeComponent },
 
-  // {
-  //   path: 'display',
-  //   component: ByeComponent,
-  //   resolve: {
-  //     url: 'externalUrlRedirectResolver'
-  //   },
-  //   data: {
-  //     externalUrl: `${host}/proser_reports/dist/display`
-  //   }
-  // },
-
-  // {
-  //   path: 'dashboard',
-  //   component: ByeComponent,
-  //   resolve: {
-  //     url: 'externalUrlRedirectResolver'
-  //   },
-  //   data: {
-  //     externalUrl: host + '/proser_reports/dist/dashboard'
-  //   }
-  // },
-
-
-  // {
-  //   path: 'crud',
-  //   component: ByeComponent,
-  //   resolve: {
-  //     url: 'externalUrlRedirectResolver'
-  //   },
-  //   data: {
-  //     externalUrl: host + '/proser_reports/dist/crud'
-  //   }
-  // },
-
-
-  // {
-  //   path: 'audit',
-  //   component: ByeComponent,
-  //   resolve: {
-  //     url: 'externalUrlRedirectResolver'
-  //   },
-  //   data: {
-  //     externalUrl: host + '/proser_reports/dist/audit'
-  //   }
-  // },
-
-
-  // {
-  //   path: 'system',
-  //   component: ByeComponent,
-  //   resolve: {
-  //     url: 'externalUrlRedirectResolver'
-  //   },
-  //   data: {
-  //     externalUrl: host + '/proser_reports/dist/system'
-  //   }
-  // },
-
-
-  // {
-  //   path: 'view',
-  //   component: ByeComponent,
-  //   resolve: {
-  //     url: 'externalUrlRedirectResolver'
-  //   },
-  //   data: {
-  //     externalUrl: host + '/proser_reports/dist/view'
-  //   }
-  // },
-
-
-  // {
-  //   path: 'user',
-  //   component: ByeComponent,
-  //   resolve: {
-  //     url: 'externalUrlRedirectResolver'
-  //   },
-  //   data: {
-  //     externalUrl: host + '/proser_reports/dist/user'
-  //   }
-  // },
-
-
-  // {
-  //   path: 'configuracion',
-  //   component: ByeComponent,
-  //   resolve: {
-  //     url: 'externalUrlRedirectResolver'
-  //   },
-  //   data: {
-  //     externalUrl: host + '/proser_reports/dist/configuration'
-  //   }
-  // },
-
-  // {
-  //   path: 'reports',
-  //   component: ByeComponent,
-  //   resolve: {
-  //     url: 'externalUrlRedirectResolver'
-  //   },
-  //   data: {
-  //     externalUrl: host + '/proser_reports/dist/reports'
-  //   }
-  // },
-
+  { path: "not-found", component: NotfoundComponent },
   // NAVIGATE TO NOT FOUND PAGE
   { path: "**", redirectTo: "not-found" }
-
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), RedirectModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

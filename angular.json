@@ -560,7 +560,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "projects/home/src/styles.scss"
+              "projects/home/src/shared/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -630,9 +630,8 @@
               }
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "shared/styles/app.scss",
-              "projects/home/src/styles.scss"
+              "projects/home/src/shared/styles/styles.scss"
             ],
             "scripts": []
           }

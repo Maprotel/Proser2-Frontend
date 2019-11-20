@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from "@angular/core";
 import { UserSelectionModel } from "shared/models";
 
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { InboundIndicators } from "aux/dashboard/InboundIndicators";
 
 @Component({
   selector: "app-display-inbound-calls",
@@ -13,7 +12,7 @@ export class DisplayInboundCallsComponent implements OnInit {
   @Input() rows;
   @Input() displayUserSelection;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
     // console.error('displayInboundCallsIndicators', this.displayInboundCallsIndicators);

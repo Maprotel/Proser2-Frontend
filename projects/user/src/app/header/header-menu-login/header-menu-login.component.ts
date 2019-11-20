@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: "app-init-header-menu-login",
+  selector: "app-header-menu-login",
   templateUrl: "./header-menu-login.component.html",
   styleUrls: ["./header-menu-login.component.scss"]
 })
@@ -24,5 +24,5 @@ export class HeaderMenuLoginComponent implements OnInit {
     this.env = this.envService;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

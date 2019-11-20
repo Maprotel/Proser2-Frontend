@@ -1,38 +1,43 @@
+// Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HttpClientModule } from "@angular/common/http";
+
+
+// Vendor
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
-import { CollapseModule } from "ngx-bootstrap/collapse";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { HeaderMenuUserModule } from "shared/modules/header-menu-user/header-menu-user.module";
+import { CollapseModule } from "ngx-bootstrap/collapse";
 
+
+// Custom modules
 import { HeaderRoutingModule } from './header-routing.module';
-
-
-import { HeaderComponent } from './header.component';
+import { HeaderMenuUserModule } from "shared/modules/header-menu-user/header-menu-user.module";
 import { HeaderMenuBrandModule } from "shared/modules/header-menu-brand/header-menu-brand.module";
+
+
+// Components
+import { HeaderComponent } from './header.component';
+
 import { HeaderMenuLoginComponent } from './header-menu-login/header-menu-login.component';
-import { HeaderMenuUserComponent } from './header-menu-user/header-menu-user.component';
+
+import { HeaderMenuSectionsComponent } from './header-menu-sections/header-menu-sections.component';
+
 @NgModule({
-  declarations: [HeaderComponent,
-    HeaderMenuLoginComponent,
-    HeaderMenuUserComponent, HeaderMenuLoginComponent],
+  declarations: [HeaderComponent, HeaderMenuSectionsComponent, HeaderMenuLoginComponent],
   imports: [
     CommonModule,
+
     HttpClientModule,
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     FontAwesomeModule,
-
 
     HeaderMenuUserModule,
     HeaderMenuBrandModule,
 
     HeaderRoutingModule
   ],
-  exports: [HeaderComponent,
-    HeaderMenuLoginComponent,
-    HeaderMenuUserComponent,],
+  exports: [HeaderComponent, HeaderMenuSectionsComponent],
 })
 export class HeaderModule { }

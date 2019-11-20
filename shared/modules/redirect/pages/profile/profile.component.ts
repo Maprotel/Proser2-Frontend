@@ -6,7 +6,7 @@ import { AlertService } from "shared/services/helpers/alert.service";
 import { AlertModel } from "shared/models/helpers/Alert";
 
 @Component({
-  selector: 'login-profile',
+  selector: 'redirect-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
