@@ -431,7 +431,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "projects/display/src/shared/styles/styles.scss",
+              "projects/display/src/shared/styles/styles.scss"
             ],
             "scripts": []
           },
