@@ -81,7 +81,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
   ],
   providers: [
     AuthGuard,
-    AlertService
+    AlertService,
     EnvServiceProvider,
     {
       provide: "externalUrlRedirectResolver",

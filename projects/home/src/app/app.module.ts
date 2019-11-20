@@ -90,7 +90,7 @@ import { HeaderMenuSectionsComponent } from './header/header-menu-sections/heade
   ],
   providers: [
     AuthGuard,
-    AlertService
+    AlertService,
     EnvServiceProvider,
     {
       provide: "externalUrlRedirectResolver",
