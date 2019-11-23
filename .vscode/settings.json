@@ -44,7 +44,7 @@
     "projects/*/src/main.ts": false,
     "projects/*/src/polyfills.ts": true,
     "projects/*/src/test.ts": true,
-    "projects/*/src/environments": true
+    "projects/*/src/environments": false
   },
   "files.watcherExclude": {
     ".babelrc": true,

@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { environment } from "shared/environments/environment.prod";
 import { EnvService } from "shared/services/helpers/env.service";
 
 @Component({
