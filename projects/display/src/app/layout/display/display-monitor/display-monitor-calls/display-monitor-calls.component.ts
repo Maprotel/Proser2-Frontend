@@ -26,7 +26,8 @@ export class DisplayMonitorCallsComponent implements OnInit {
   private subscription: Subscription = new Subscription();
 
   alertMessage;
-  show;
+  show_table;
+  show_data;
 
   // User selection
   userSelection;
@@ -64,6 +65,8 @@ export class DisplayMonitorCallsComponent implements OnInit {
     this.rows = new DisplayMonitorByCallsModel();
     this.alertMessage = new AlertModel();
     this.timerConnected = 0;
+    this.show_table = false;
+    this.show_data = false;
   }
 
   ngOnInit() {
@@ -104,7 +107,10 @@ export class DisplayMonitorCallsComponent implements OnInit {
           this.rows = res.detail;
           this.rows_total = res.total;
           this.update_date = res.now;
-          this.show = true;
+          console.log('this.rows', this.rows);
+
+          this.rows ? this.show_table = true : this.show_table = false;
+          this.rows[0] ? this.show_data = true : this.show_data = false;
 
         } else {
           console.error("Error", res);
@@ -113,7 +119,8 @@ export class DisplayMonitorCallsComponent implements OnInit {
       },
       error => {
         console.error("Error", error);
-        this.show = false;
+        this.show_table = false;
+        this.show_data = false;
         this.alertService.error(error.status);
         this.alertMessage.alertTitle = "Error del servidor";
         this.alertMessage.alertText = error.statusText;
@@ -126,7 +133,8 @@ export class DisplayMonitorCallsComponent implements OnInit {
 
   // Update on return of selector in header
   onReturnHeaderResult(event) {
-    this.show = false;
+    this.show_table = false;
+    this.show_data = false;
     this.userSelection = this.userSelectionService.readUserSelectionHistoric(
       this.local_store
     );
@@ -161,5 +169,5 @@ export class DisplayMonitorCallsComponent implements OnInit {
     this.selectorVisibleFields.auxiliar = false;
   }
 
-  onSelect() {}
+  onSelect() { }
 }

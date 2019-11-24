@@ -25,16 +25,23 @@
     </div>
   </section>
   
-  <section class="main-button" *ngIf="!show">
+  <section class="main-button" *ngIf="!show_table">
     <div>
       <h1>Obteniendo datos del servidor...</h1>
     </div>
   
   </section>
 
+  <section class="main-button" *ngIf="!show_data">
+        <div>
+          <h1>Sin datos que mostrar...</h1>
+        </div>
+      
+      </section>
+
 
 <!-- DATATABE---------------------------- -->
-<section class="report" *ngIf="rows && show">
+<section class="report" *ngIf="rows && show_table && show_data">
     <div>
       <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'"
                      [headerHeight]="110"
