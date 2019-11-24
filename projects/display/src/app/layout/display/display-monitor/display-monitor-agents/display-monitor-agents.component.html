@@ -1,226 +1,234 @@
 <!----------ALERT MESSAGE------------------------- -->
 <div>
-        <app-alert [alertMessage]="alertMessage"></app-alert>
-      </div>
-      
-      
-      <!----------REPORT HEADER------------------------- -->
-      <div *ngIf="userSelection">
-      <app-display-display-header [userSelection]="userSelection"
-                                      [selectorVisibleFields]="selectorVisibleFields"
-                                      [timerConnected]="timerConnected"
-                                      (returnResult)="onReturnHeaderResult($event)">
-      </app-display-display-header>
-      </div> 
-      <!----------CLOCK SPACE------------------------- -->
-      <section class="main-button">
-        <div>
-      
-        </div>
-        <div class="clock ml-auto">
-          <a>{{update_date }} </a>
-            <a>
-            <fa-icon [icon]="faClock"></fa-icon> &nbsp; {{timerConnected}}
-          </a>
-        </div>
-      </section>
-      
-      <section class="main-button" *ngIf="!show">
-        <div>
-          <h1>Obteniendo datos del servidor...</h1>
-        </div>
-      
-      </section>
-    
-    
-    <!-- DATATABE---------------------------- -->
-    <section class="report" *ngIf="rows && show">
-        <div>
-          <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'"
-                         [headerHeight]="110"
-                         [footerHeight]="50" [rowHeight]="40" [scrollbarH]="true"
-                         [scrollbarV]="false" [summaryRow]="true" [summaryHeight]="50"
-                         [selectionType]="'single'"
-                         [loadingIndicator]="'Contactando servidor'"
-                         [messages]="{ emptyMessage: 'Sin datos que mostrar' }"
-                         (select)="onSelect($event)"
-                         data-toggle="modal" role="button" href="#content">
-    
-    
-    <!-- FIELDS ----------------------------------- -->
-    
-          <!------------------------------------------------- -->
-          <!-- queueName------------------------------------- -->
-          <ngx-datatable-column prop="queueName" width="160" name="queueName"
-                                [summaryTemplate]="queueName" [frozenLeft]="true">
-    
-            <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-                         ngx-datatable-header-template>
-              <p class="right-black-bold" >
-                Nombre Cola
-              </p>
-            </ng-template>
-    
-            <ng-template let-value="value" ngx-datatable-cell-template>
-              <div class="table-column">
-                <p class="right-black-normal">{{ value }}</p>
-              </div>
-            </ng-template>
-    
-            <ng-template #queueName>
-              <p class="right-black-bold">{{rows_total[0].queueName}}</p>
-            </ng-template>
-    
-          </ngx-datatable-column>
-    
-          <!------------------------------------------------- -->
-           <!-- queueNumber------------------------------------- -->
-           <ngx-datatable-column prop="activeCalls" width="80" name="activeCalls"
-           [summaryTemplate]="activeCalls">
-    
-            <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-            ngx-datatable-header-template>
-            <p class="right-black-bold" >
-            Llamadas<br> activas
-            </p>
-            </ng-template>
-    
-            <ng-template let-value="value" ngx-datatable-cell-template>
-            <div class="table-column">
+  <app-alert [alertMessage]="alertMessage"></app-alert>
+</div>
+
+
+<!----------REPORT HEADER------------------------- -->
+<div *ngIf="userSelection">
+  <app-display-display-header [userSelection]="userSelection"
+                              [selectorVisibleFields]="selectorVisibleFields"
+                              [timerConnected]="timerConnected"
+                              (returnResult)="onReturnHeaderResult($event)">
+  </app-display-display-header>
+</div>
+<!----------CLOCK SPACE------------------------- -->
+<section class="main-button">
+  <div>
+
+  </div>
+  <div class="clock ml-auto">
+    <a>{{update_date }} </a>
+    <a>
+      <fa-icon [icon]="faClock"></fa-icon> &nbsp; {{timerConnected}}
+    </a>
+  </div>
+</section>
+
+<section class="main-button" *ngIf="!show_table">
+  <div>
+    <h1>Obteniendo datos del servidor...</h1>
+  </div>
+
+</section>
+
+<section class="main-button" *ngIf="!show_data">
+  <div>
+    <h1>Sin datos que mostrar...</h1>
+  </div>
+
+</section>
+
+
+<!-- DATATABE---------------------------- -->
+<section class="report" *ngIf="rows && show_table && show_data">
+  <div>
+    <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'"
+                   [headerHeight]="110" [footerHeight]="50" [rowHeight]="40"
+                   [scrollbarH]="true" [scrollbarV]="false" [summaryRow]="true"
+                   [summaryHeight]="50" [selectionType]="'single'"
+                   [loadingIndicator]="'Contactando servidor'"
+                   [messages]="{ emptyMessage: 'Sin datos que mostrar' }"
+                   (select)="onSelect($event)" data-toggle="modal" role="button"
+                   href="#content">
+
+
+      <!-- FIELDS ----------------------------------- -->
+
+      <!------------------------------------------------- -->
+      <!-- queueName------------------------------------- -->
+      <ngx-datatable-column prop="queueName" width="160" name="queueName"
+                            [summaryTemplate]="queueName" [frozenLeft]="true">
+
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
+          <p class="right-black-bold">
+            Nombre Cola
+          </p>
+        </ng-template>
+
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <div class="table-column">
             <p class="right-black-normal">{{ value }}</p>
-            </div>
-            </ng-template>
-    
-            <ng-template #activeCalls>
-            <p class="right-black-bold">{{rows_total[0].activeCalls}}</p>
-            </ng-template>
-    
-            </ngx-datatable-column>
-    
-        <!------------------------------------------------- -->
-        <!-- agentsLogin------------------------------------- -->
-        <ngx-datatable-column prop="agentsLogin" width="80" name="agentsLogin"
-        [summaryTemplate]="agentsLogin">
-    
+          </div>
+        </ng-template>
+
+        <ng-template #queueName>
+          <p class="right-black-bold">{{rows_total[0].queueName}}</p>
+        </ng-template>
+
+      </ngx-datatable-column>
+
+      <!------------------------------------------------- -->
+      <!-- queueNumber------------------------------------- -->
+      <ngx-datatable-column prop="activeCalls" width="80" name="activeCalls"
+                            [summaryTemplate]="activeCalls">
+
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-        ngx-datatable-header-template>
-        <p class="right-black-bold" >
-        Agentes<br> conectados
-        </p>
+                     ngx-datatable-header-template>
+          <p class="right-black-bold">
+            Llamadas<br> activas
+          </p>
         </ng-template>
-    
+
         <ng-template let-value="value" ngx-datatable-cell-template>
-        <div class="table-column">
-        <p class="right-black-normal">{{ value }}</p>
-        </div>
+          <div class="table-column">
+            <p class="right-black-normal">{{ value }}</p>
+          </div>
         </ng-template>
-    
+
+        <ng-template #activeCalls>
+          <p class="right-black-bold">{{rows_total[0].activeCalls}}</p>
+        </ng-template>
+
+      </ngx-datatable-column>
+
+      <!------------------------------------------------- -->
+      <!-- agentsLogin------------------------------------- -->
+      <ngx-datatable-column prop="agentsLogin" width="80" name="agentsLogin"
+                            [summaryTemplate]="agentsLogin">
+
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
+          <p class="right-black-bold">
+            Agentes<br> conectados
+          </p>
+        </ng-template>
+
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <div class="table-column">
+            <p class="right-black-normal">{{ value }}</p>
+          </div>
+        </ng-template>
+
         <ng-template #agentsLogin>
-        <p class="right-black-bold">{{rows_total[0].agentsLogin}}</p>
+          <p class="right-black-bold">{{rows_total[0].agentsLogin}}</p>
         </ng-template>
-    
-        </ngx-datatable-column>
-    
-        <!------------------------------------------------- -->
-        <!-- agentsAvailable------------------------------------- -->
-        <ngx-datatable-column prop="agentsAvailable" width="80" name="agentsAvailable"
-        [summaryTemplate]="agentsAvailable">
-    
+
+      </ngx-datatable-column>
+
+      <!------------------------------------------------- -->
+      <!-- agentsAvailable------------------------------------- -->
+      <ngx-datatable-column prop="agentsAvailable" width="80"
+                            name="agentsAvailable"
+                            [summaryTemplate]="agentsAvailable">
+
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-        ngx-datatable-header-template>
-        <p class="right-black-bold" >
-                Agentes<br> disponibles
-        </p>
+                     ngx-datatable-header-template>
+          <p class="right-black-bold">
+            Agentes<br> disponibles
+          </p>
         </ng-template>
-    
+
         <ng-template let-value="value" ngx-datatable-cell-template>
-        <div class="table-column">
-        <p class="right-black-normal">{{ value }}</p>
-        </div>
+          <div class="table-column">
+            <p class="right-black-normal">{{ value }}</p>
+          </div>
         </ng-template>
-    
+
         <ng-template #agentsAvailable>
-        <p class="right-black-bold">{{rows_total[0].agentsAvailable}}</p>
+          <p class="right-black-bold">{{rows_total[0].agentsAvailable}}</p>
         </ng-template>
-    
-        </ngx-datatable-column>
-    
-        <!------------------------------------------------- -->
-        <!-- agentsBusy------------------------------------- -->
-        <ngx-datatable-column prop="agentsBusy" width="80" name="agentsBusy"
-        [summaryTemplate]="agentsBusy">
-    
+
+      </ngx-datatable-column>
+
+      <!------------------------------------------------- -->
+      <!-- agentsBusy------------------------------------- -->
+      <ngx-datatable-column prop="agentsBusy" width="80" name="agentsBusy"
+                            [summaryTemplate]="agentsBusy">
+
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-        ngx-datatable-header-template>
-        <p class="right-black-bold" >
-                Agentes<br> ocupados
-        </p>
+                     ngx-datatable-header-template>
+          <p class="right-black-bold">
+            Agentes<br> ocupados
+          </p>
         </ng-template>
-    
+
         <ng-template let-value="value" ngx-datatable-cell-template>
-        <div class="table-column">
-        <p class="right-black-normal">{{ value }}</p>
-        </div>
+          <div class="table-column">
+            <p class="right-black-normal">{{ value }}</p>
+          </div>
         </ng-template>
-    
+
         <ng-template #agentsBusy>
-        <p class="right-black-bold">{{rows_total[0].agentsBusy}}</p>
+          <p class="right-black-bold">{{rows_total[0].agentsBusy}}</p>
         </ng-template>
-    
-        </ngx-datatable-column>
-    
-        <!------------------------------------------------- -->
-        <!-- agentsBreak------------------------------------- -->
-        <ngx-datatable-column prop="agentsBreak" width="80" name="agentsBreak"
-        [summaryTemplate]="agentsBreak">
-    
+
+      </ngx-datatable-column>
+
+      <!------------------------------------------------- -->
+      <!-- agentsBreak------------------------------------- -->
+      <ngx-datatable-column prop="agentsBreak" width="80" name="agentsBreak"
+                            [summaryTemplate]="agentsBreak">
+
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-        ngx-datatable-header-template>
-        <p class="right-black-bold" >
-                Agentes<br> en auxiliar
-        </p>
+                     ngx-datatable-header-template>
+          <p class="right-black-bold">
+            Agentes<br> en auxiliar
+          </p>
         </ng-template>
-    
+
         <ng-template let-value="value" ngx-datatable-cell-template>
-        <div class="table-column">
-        <p class="right-black-normal">{{ value }}</p>
-        </div>
+          <div class="table-column">
+            <p class="right-black-normal">{{ value }}</p>
+          </div>
         </ng-template>
-    
+
         <ng-template #agentsBreak>
-        <p class="right-black-bold">{{rows_total[0].agentsBreak}}</p>
+          <p class="right-black-bold">{{rows_total[0].agentsBreak}}</p>
         </ng-template>
-    
-        </ngx-datatable-column>
-    
-        <!------------------------------------------------- -->
-        <!-- agentsAssignation------------------------------------- -->
-        <ngx-datatable-column prop="agentsAssignation" width="80" name="agentsAssignation"
-        [summaryTemplate]="agentsAssignation">
-    
+
+      </ngx-datatable-column>
+
+      <!------------------------------------------------- -->
+      <!-- agentsAssignation------------------------------------- -->
+      <ngx-datatable-column prop="agentsAssignation" width="80"
+                            name="agentsAssignation"
+                            [summaryTemplate]="agentsAssignation">
+
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-        ngx-datatable-header-template>
-        <p class="right-black-bold" >
-                Agentes<br> en asignación
-        </p>
+                     ngx-datatable-header-template>
+          <p class="right-black-bold">
+            Agentes<br> en asignación
+          </p>
         </ng-template>
-    
+
         <ng-template let-value="value" ngx-datatable-cell-template>
-        <div class="table-column">
-        <p class="right-black-normal">{{ value }}</p>
-        </div>
+          <div class="table-column">
+            <p class="right-black-normal">{{ value }}</p>
+          </div>
         </ng-template>
-    
+
         <ng-template #agentsAssignation>
-        <p class="right-black-bold">{{rows_total[0].agentsAssignation}}</p>
+          <p class="right-black-bold">{{rows_total[0].agentsAssignation}}</p>
         </ng-template>
-    
-        </ngx-datatable-column>
-    
-        <!------------------------------------------------- -->
-      
-    
-    
-            </ngx-datatable>
-            </div>
-            </section>
+
+      </ngx-datatable-column>
+
+      <!------------------------------------------------- -->
+
+
+
+    </ngx-datatable>
+  </div>
+</section>

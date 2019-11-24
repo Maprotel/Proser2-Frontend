@@ -107,7 +107,6 @@ export class DisplayMonitorCallsComponent implements OnInit {
           this.rows = res.detail;
           this.rows_total = res.total;
           this.update_date = res.now;
-          console.log('this.rows', this.rows);
 
           this.rows ? this.show_table = true : this.show_table = false;
           this.rows[0] ? this.show_data = true : this.show_data = false;

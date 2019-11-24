@@ -26,7 +26,8 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
   private subscription: Subscription = new Subscription();
 
   alertMessage;
-  show;
+  show_table;
+  show_data;
 
   // User selection
   userSelection;
@@ -66,16 +67,8 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
     this.rows = new DisplayMonitorByIndicatorsModel();
     this.alertMessage = new AlertModel();
     this.timerConnected = 0;
-    // this.dashboardOptions = [
-    //   {
-    //     id: 1,
-    //     name: "Supervisores"
-    //   },
-    //   {
-    //     id: 1,
-    //     name: "Agentes"
-    //   }
-    // ];
+    this.show_table = false;
+    this.show_data = false;
   }
 
   ngOnInit() {
@@ -98,7 +91,7 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
     this.userSelectionService.writeUserSelectionHistoric(
       this.userSelection,
     );
-    
+
     this.subscription.unsubscribe();
   }
 
@@ -116,7 +109,9 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
             this.rows = res.detail;
             this.rows_total = res.total;
             this.update_date = res.now;
-            this.show = true;
+
+            this.rows ? this.show_table = true : this.show_table = false;
+            this.rows[0] ? this.show_data = true : this.show_data = false;
           } else {
             console.error("Error", res);
           }
@@ -124,7 +119,7 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
         },
         error => {
           console.error("Error", error);
-          this.show = false;
+          this.show_table = false;
           this.alertService.error(error.status);
           this.alertMessage.alertTitle = "Error del servidor";
           this.alertMessage.alertText = error.statusText;
@@ -137,7 +132,9 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
 
   // Update on return of selector in header
   onReturnHeaderResult(event) {
-    this.show = false;
+    this.show_table = false;
+    this.show_data = false;
+
     this.userSelection = this.userSelectionService.readUserSelectionHistoric(
       this.local_store
     );
@@ -172,5 +169,5 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
     this.selectorVisibleFields.auxiliar = false;
   }
 
-  onSelect() {}
+  onSelect() { }
 }
