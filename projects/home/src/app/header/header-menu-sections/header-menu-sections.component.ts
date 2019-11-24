@@ -7,6 +7,13 @@ import { Router } from "@angular/router";
 import { logout } from "shared/functions";
 
 import {
+  AlertService,
+  EnvService,
+  UserSelectionService
+} from "shared/services";
+
+
+import {
   faDigitalTachograph,
   faChartArea,
   faSwatchbook,
@@ -25,6 +32,7 @@ import {
 export class HeaderMenuSectionsComponent implements OnInit {
   showInMenu;
   @Input() currentUser;
+  env;
 
   faDigitalTachograph = faDigitalTachograph;
   faChartArea = faChartArea;
@@ -37,33 +45,40 @@ export class HeaderMenuSectionsComponent implements OnInit {
 
 
 
-  displayLink
-  dashboardLink
-  reportsLink
-  configurationLink
-  auditLink
-  systemLink
-  viewsLink
-  userLink
+  auditLink;
+  crudLink;
+  dashboardLink;
+  displayLink;
+  homeLink;
+  reportsLink;
+  smsLink;
+  systemLink;
+  userLink;
+  viewLink;
 
   testLink
 
-
+  host
   constructor(
     private authService: AuthService,
+    private envService: EnvService,
     private router: Router
 
   ) {
+    this.env = this.envService;
+    this.host = this.envService.host;
+    console.log('env', this.host);
 
-    this.testLink = 'http://localhost/proser_reports/dist/test/'
-    this.displayLink = 'http://localhost/proser_reports/dist/display/'
-    this.dashboardLink = 'http://localhost/proser_reports/dist/dashboard/'
-    this.reportsLink = 'http://localhost/proser_reports/dist/reports/'
-    this.configurationLink = 'http://localhost/proser_reports/dist/configuration/'
-    this.auditLink = 'http://localhost/proser_reports/dist/audit/'
-    this.systemLink = 'http://localhost/proser_reports/dist/system/'
-    this.viewsLink = 'http://localhost/proser_reports/dist/views/'
-    this.userLink = 'http://localhost/proser_reports/dist/user/'
+    this.auditLink = this.env.auditLink
+    this.crudLink = this.env.crudLink
+    this.dashboardLink = this.env.dashboardLink
+    this.displayLink = this.env.displayLink
+    this.homeLink = this.env.homeLink
+    this.reportsLink = this.env.reportsLink
+    this.smsLink = this.env.smsLink
+    this.systemLink = this.env.systemLink
+    this.userLink = this.env.userLink
+    this.viewLink = this.env.viewLink
   }
 
   ngOnInit() {

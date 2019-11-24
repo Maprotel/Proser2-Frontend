@@ -11,6 +11,17 @@ export class EnvService {
 
   public host = "http://localhost:4200";
 
+  public auditLink = this.host + '/proser_reports/dist/audit/'
+  public crudLink = this.host + '/proser_reports/dist/crud/'
+  public dashboardLink = this.host + '/proser_reports/dist/dashboard/'
+  public displayLink = this.host + '/proser_reports/dist/display/'
+  public homeLink = this.host + '/proser_reports/dist/home/'
+  public reportsLink = this.host + '/proser_reports/dist/reports/'
+  public smsLink = this.host + '/proser_reports/dist/sms/'
+  public systemLink = this.host + '/proser_reports/dist/system/'
+  public userLink = this.host + '/proser_reports/dist/user/'
+  public viewLink = this.host + '/proser_reports/dist/view/'
+
   // API url
   public loopbackApiUrl = "http://127.0.0.1:3151";
   public systemApiUrl = "http://127.0.0.1:3152";
