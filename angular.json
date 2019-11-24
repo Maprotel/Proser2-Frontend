@@ -28,10 +28,10 @@
             "aot": true,
             "assets": [
               "projects/audit/src/favicon.ico",
-              "projects/audit/src/assets",
+              "projects/audit/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -94,10 +94,10 @@
             "karmaConfig": "projects/audit/karma.conf.js",
             "assets": [
               "projects/audit/src/favicon.ico",
-              "projects/audit/src/assets",
+              "projects/audit/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -160,10 +160,10 @@
             "aot": true,
             "assets": [
               "projects/crud/src/favicon.ico",
-              "projects/crud/src/assets",
+              "projects/crud/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -226,10 +226,10 @@
             "karmaConfig": "projects/crud/karma.conf.js",
             "assets": [
               "projects/crud/src/favicon.ico",
-              "projects/crud/src/assets",
+              "projects/crud/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -292,10 +292,10 @@
             "aot": true,
             "assets": [
               "projects/dashboard/src/favicon.ico",
-              "projects/dashboard/src/assets",
+              "projects/dashboard/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -358,10 +358,10 @@
             "karmaConfig": "projects/dashboard/karma.conf.js",
             "assets": [
               "projects/dashboard/src/favicon.ico",
-              "projects/dashboard/src/assets",
+              "projects/dashboard/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -424,10 +424,10 @@
             "aot": true,
             "assets": [
               "projects/display/src/favicon.ico",
-              "projects/display/src/assets",
+              "projects/display/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -490,10 +490,10 @@
             "karmaConfig": "projects/display/karma.conf.js",
             "assets": [
               "projects/display/src/favicon.ico",
-              "projects/display/src/assets",
+              "projects/display/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -553,10 +553,10 @@
             "aot": true,
             "assets": [
               "projects/home/src/favicon.ico",
-              "projects/home/src/assets",
+              "projects/home/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -624,10 +624,10 @@
             "karmaConfig": "projects/home/karma.conf.js",
             "assets": [
               "projects/home/src/favicon.ico",
-              "projects/home/src/assets",
+              "projects/home/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -690,10 +690,10 @@
             "aot": true,
             "assets": [
               "projects/reports/src/favicon.ico",
-              "projects/reports/src/assets",
+              "projects/reports/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -757,10 +757,10 @@
             "karmaConfig": "projects/reports/karma.conf.js",
             "assets": [
               "projects/reports/src/favicon.ico",
-              "projects/reports/src/assets",
+              "projects/reports/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -820,10 +820,10 @@
             "aot": true,
             "assets": [
               "projects/sms/src/favicon.ico",
-              "projects/sms/src/assets",
+              "projects/sms/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -886,10 +886,10 @@
             "karmaConfig": "projects/sms/karma.conf.js",
             "assets": [
               "projects/sms/src/favicon.ico",
-              "projects/sms/src/assets",
+              "projects/sms/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -952,10 +952,10 @@
             "aot": true,
             "assets": [
               "projects/system/src/favicon.ico",
-              "projects/system/src/assets",
+              "projects/system/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -1018,10 +1018,10 @@
             "karmaConfig": "projects/system/karma.conf.js",
             "assets": [
               "projects/system/src/favicon.ico",
-              "projects/system/src/assets",
+              "projects/system/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -1084,10 +1084,10 @@
             "aot": true,
             "assets": [
               "projects/user/src/favicon.ico",
-              "projects/user/src/assets",
+              "projects/user/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -1150,10 +1150,10 @@
             "karmaConfig": "projects/user/karma.conf.js",
             "assets": [
               "projects/user/src/favicon.ico",
-              "projects/user/src/assets",
+              "projects/user/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -1216,11 +1216,11 @@
             "aot": true,
             "assets": [
               "projects/view/src/favicon.ico",
-              "projects/view/src/assets",
+              "projects/view/src/shared/assets",
               "projects/view/src/styles",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
@@ -1283,10 +1283,10 @@
             "karmaConfig": "projects/view/karma.conf.js",
             "assets": [
               "projects/view/src/favicon.ico",
-              "projects/view/src/assets",
+              "projects/view/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./shared/assets/",
+                "input": "./projects/assets/",
                 "output": "./assets"
               }
             ],
