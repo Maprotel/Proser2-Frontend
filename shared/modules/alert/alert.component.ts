@@ -9,19 +9,13 @@ import { AlertModel } from "../../models/helpers/Alert";
 export class AlertComponent implements OnInit {
   @Input() alertMessage: AlertModel;
 
-  constructor() {}
 
-  ngOnInit() {
-    if (this.alertMessage.alertText === "Unknown Error") {
-      this.alertMessage.alertText = "Servidor desconectado";
-    }
-    // this.onAlert();
+  constructor() {
+
   }
 
-  // onAlert() {
-  //   this.alert.alertTitle = 'Holy guacamole!';
-  //   this.alert.alertText = 'You should check in on some of those fields below.';
-  //   this.alert.alertShow = true;
-  //   this.alert.alertClass = 'alert-warning';
-  // }
+  ngOnInit() {
+
+  }
+
 }
