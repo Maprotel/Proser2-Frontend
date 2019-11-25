@@ -9,4 +9,4 @@ SHELL=/bin/bash
     npm run  build-sms;
     npm run  build-system;
     npm run  build-user;
-    npm run  build-view;
+   npm run  build-view;

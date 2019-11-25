@@ -31,7 +31,7 @@
               "projects/audit/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -97,7 +97,7 @@
               "projects/audit/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -163,7 +163,7 @@
               "projects/crud/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -229,7 +229,7 @@
               "projects/crud/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -295,7 +295,7 @@
               "projects/dashboard/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -361,7 +361,7 @@
               "projects/dashboard/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -427,7 +427,7 @@
               "projects/display/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -493,7 +493,7 @@
               "projects/display/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -556,7 +556,7 @@
               "projects/home/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -627,7 +627,7 @@
               "projects/home/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -693,7 +693,7 @@
               "projects/reports/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -760,7 +760,7 @@
               "projects/reports/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -823,7 +823,7 @@
               "projects/sms/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -889,7 +889,7 @@
               "projects/sms/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -955,7 +955,7 @@
               "projects/system/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -1021,7 +1021,7 @@
               "projects/system/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -1087,7 +1087,7 @@
               "projects/user/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -1153,7 +1153,7 @@
               "projects/user/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -1220,7 +1220,7 @@
               "projects/view/src/styles",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],
@@ -1286,7 +1286,7 @@
               "projects/view/src/shared/assets",
               {
                 "glob": "**/*",
-                "input": "./projects/assets/",
+                "input": "./shared/assets/",
                 "output": "./assets"
               }
             ],

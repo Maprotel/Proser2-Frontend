@@ -12,6 +12,7 @@ export class EnvService {
 
   public host = "http://localhost:4200";
   public home = "http://localhost:4200";
+  public externalAssets = '/assets'
 
   public auditLink = this.host + '/proser_reports/dist/audit/'
   public crudLink = this.host + '/proser_reports/dist/crud/'

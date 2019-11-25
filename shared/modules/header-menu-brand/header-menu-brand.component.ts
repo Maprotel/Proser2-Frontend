@@ -11,8 +11,13 @@ import { EnvService } from "shared/services/helpers/env.service";
 })
 export class HeaderMenuBrandComponent implements OnInit {
   env;
+  externalAssets;
+  proserLogo;
+
   constructor(private router: Router, private envService: EnvService) {
     this.env = this.envService;
+    this.externalAssets = this.env.externalAssets
+    this.proserLogo = `${this.externalAssets}/img/logos_proser/proser-logo-xsm.png`
   }
 
   ngOnInit() {

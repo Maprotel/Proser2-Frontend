@@ -51,7 +51,7 @@
     ".editorconfig": true,
     ".eslintrc.json": true,
     ".eslintrc.original.json": true,
-    ".gitignore": true,
+    ".gitignore": false,
     ".jshintignore": true,
     ".jshintrc": true,
     ".npmignore": true,
