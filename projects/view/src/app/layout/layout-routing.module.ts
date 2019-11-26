@@ -11,27 +11,7 @@ const routes: Routes = [
         path: "layout",
         component: LayoutComponent
       },
-      {
-        path: "view-inbound",
-        loadChildren: () =>
-          import("./view/display-inbound/display-inbound.module").then(
-            m => m.DisplayInboundModule
-          )
-      },
-      {
-        path: "view-outbound",
-        loadChildren: () =>
-          import("./view/display-outbound/display-outbound.module").then(
-            m => m.DisplayOutboundModule
-          )
-      },
-      {
-        path: "view-automatic",
-        loadChildren: () =>
-          import("./view/display-automatic/display-automatic.module").then(
-            m => m.DisplayAutomaticModule
-          )
-      },
+
       {
         path: "view-monitor",
         loadChildren: () =>
@@ -47,4 +27,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LayoutRoutingModule {}
+export class LayoutRoutingModule { }

@@ -1,18 +1,24 @@
-import { DisplayMonitorIndicatorsComponent } from "./display-monitor-indicators/display-monitor-indicators.component";
+
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
 import { DisplayMonitorComponent } from "./display-monitor.component";
-import { DisplayMonitorCallsComponent } from "./display-monitor-calls/display-monitor-calls.component";
+
+import { DisplayMonitorIndicatorsComponent } from "./display-monitor-indicators/display-monitor-indicators.component";
+
+import { DisplayMonitorIndicatorsHistoricComponent } from "./display-monitor-indicators-historic/display-monitor-indicators-historic.component";
+
+import { DisplayMonitorIndicatorsSummaryComponent } from './display-monitor-indicators-summary/display-monitor-indicators-summary.component';
 
 const routes: Routes = [
   {
     path: "",
     component: DisplayMonitorComponent,
     children: [
-      { path: "calls", component: DisplayMonitorCallsComponent },
 
-      { path: "indicators", component: DisplayMonitorIndicatorsComponent }
+      { path: "indicators", component: DisplayMonitorIndicatorsComponent },
+      { path: "indicators-historic", component: DisplayMonitorIndicatorsHistoricComponent },
+      { path: "indicators-summary", component: DisplayMonitorIndicatorsSummaryComponent }
     ]
   }
 ];
@@ -20,20 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DisplayMonitorRoutingModule {}
-
-/*
-const routes: Routes = [
-  {
-    path: "",
-    component: DashboardOutboundComponent,
-    children: [
-      { path: "list", component: DashboardOutboundListComponent },
-      // { path: "groups", component: DashboardOutboundGroupsComponent },
-      { path: "realtime", component: DashboardOutboundRealtimeComponent },
-      { path: "historic", component: DashboardOutboundHistoricComponent }
-    ]
-  }
-];
-
-*/
+export class DisplayMonitorRoutingModule { }

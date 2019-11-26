@@ -1,7 +1,10 @@
+
+
+
 import { Component, OnInit } from "@angular/core";
 import { UserSelectionModel, AlertModel } from "shared/models";
 
-import { DisplayMonitorByIndicatorsService } from "projects/view/src/shared/services";
+import { DisplayMonitorByIndicatorsServiceHistoric } from "projects/view/src/shared/services";
 import { DisplayMonitorByIndicatorsModel } from "projects/view/src/shared/models";
 
 // Installed modules
@@ -19,11 +22,11 @@ import {
 
 import { ExcelService } from "projects/view/src/shared/services/helpers/excel.service";
 @Component({
-  selector: "app-display-display-monitor-indicators",
-  templateUrl: "./display-monitor-indicators.component.html",
-  styleUrls: ["./display-monitor-indicators.component.scss"]
+  selector: 'app-view-display-monitor-indicators-historic',
+  templateUrl: './display-monitor-indicators-historic.component.html',
+  styleUrls: ['./display-monitor-indicators-historic.component.scss']
 })
-export class DisplayMonitorIndicatorsComponent implements OnInit {
+export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
   // Subscription
   private subscription: Subscription = new Subscription();
 
@@ -61,21 +64,22 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
   selectorVisibleAreas;
 
   constructor(
-    private displayMonitorByIndicatorsService: DisplayMonitorByIndicatorsService,
+    private displayMonitorByIndicatorsServiceHistoric: DisplayMonitorByIndicatorsServiceHistoric,
     private excelService: ExcelService,
     private userSelectionService: UserSelectionService,
     private alertService: AlertService
   ) {
     this.userSelection = new UserSelectionModel("standard");
+    this.userSelection.mode = { id: 0, name: "Histórico", value: "historic" };
     this.selectorVisibleFields = new UserSelectionModel("menuOptions");
-    this.selectorVisibleFields.start_date = false;
-    this.selectorVisibleFields.end_date = false;
+    this.selectorVisibleFields.start_date = true;
+    this.selectorVisibleFields.end_date = true;
     this.selectorVisibleFields.start_time = false;
     this.selectorVisibleFields.end_time = false;
     this.rows = new DisplayMonitorByIndicatorsModel();
     this.alertMessage = new AlertModel();
     this.timerConnected = 0;
-    this.exportName = "Indicadores_tiempo_real";
+    this.exportName = "Indicadores_historico";
     this.selectorVisibleAreas = {
       date: true,
       interval: false,
@@ -85,18 +89,18 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.title = ("Indicadores tiempo real");
-    this.userSelectionCurrent();
+    this.title = ("Indicadores histórico");
+    this.userSelectionHistoric();
     this.getMonitorList(this.userSelection);
     this.onRepeat();
   }
 
   // Finish
   ngOnDestroy() {
-    this.userSelection.end_date = this.old_end_date;
-    this.userSelection.start_date = this.old_start_date;
+    // this.userSelection.end_date = this.old_end_date;
+    // this.userSelection.start_date = this.old_start_date;
 
-    this.userSelectionService.writeUserSelectionCurrent(this.userSelection);
+    this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
     this.subscription.unsubscribe();
   }
 
@@ -104,10 +108,8 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
 
   // Get records from backend
   getMonitorList(userSelection: UserSelectionModel) {
-    this.userSelection.mode = { id: 0, name: "Actual", value: 'actual' };
-    this.userSelection.start_date = this.userSelection.current_date;
-    this.userSelection.end_date = this.userSelection.current_date;
-    this.displayMonitorByIndicatorsService
+    this.userSelection.mode = { id: 0, name: "Histórico", value: 'historic' };
+    this.displayMonitorByIndicatorsServiceHistoric
       .getReportList(userSelection)
       .subscribe(
         res => {
@@ -117,7 +119,6 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
             this.rows_total = res.total;
             this.update_date = res.now;
             this.show = true;
-            console.log('rows', this.rows);
 
           } else {
             console.error("Error", res);
@@ -140,7 +141,7 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
   // Update on return of selector in header
   onReturnHeaderResult(event) {
     this.show = false;
-    this.userSelection = this.userSelectionService.readUserSelectionCurrent(
+    this.userSelection = this.userSelectionService.readUserSelectionHistoric(
       this.local_store
     );
 
@@ -164,6 +165,15 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
       this.timerConnected = this.timerConnected + 1;
     });
   }
+
+  // setReportTitles(title) {
+  //   this.userSelection.title = title;
+
+  //   this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
+
+  //   this.selectorVisibleFields.assignation = false;
+  //   this.selectorVisibleFields.auxiliar = false;
+  // }
 
 
   // Export to excel
@@ -209,31 +219,18 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
     this.excelService.exportAsExcelFile(filterData, this.exportName);
   }
 
-
-  userSelectionCurrent() {
-    this.userSelection = this.userSelectionService.readUserSelectionCurrent();
+  userSelectionHistoric() {
+    this.userSelection = this.userSelectionService.readUserSelectionHistoric();
     this.selectorVisibleFields.groupBy = false;
     this.selectorVisibleFields.interval = false;
     this.selectorVisibleFields.assignation = false;
     this.selectorVisibleFields.auxiliar = false;
 
-    this.selectorVisibleFields.start_date = false;
-    this.selectorVisibleFields.end_date = false;
-
     this.userSelection.title = this.title;
 
-    this.userSelection.mode = { id: 0, name: "Actual", value: "actual" };
-    this.userSelection.start_date = dateToDatePicker(
-      moment().format("YYYY-MM-DD")
-    );
-    this.userSelection.end_date = dateToDatePicker(
-      moment().format("YYYY-MM-DD")
-    );
-    this.userSelection.current_date = dateToDatePicker(
-      moment().format("YYYY-MM-DD")
-    );
+    this.userSelection.mode = { id: 0, name: "Histórico", value: "historic" };
 
-    this.userSelectionService.writeUserSelectionCurrent(this.userSelection);
-    this.userSelection = this.userSelectionService.readUserSelectionCurrent();
+    this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
+    this.userSelection = this.userSelectionService.readUserSelectionHistoric();
   }
 }

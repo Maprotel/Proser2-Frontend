@@ -8,15 +8,19 @@
       <div *ngIf="userSelection">
       <app-display-display-header [userSelection]="userSelection"
                                       [selectorVisibleFields]="selectorVisibleFields"
+                                      [selectorVisibleAreas]="selectorVisibleAreas"
                                       [timerConnected]="timerConnected"
                                       (returnResult)="onReturnHeaderResult($event)">
       </app-display-display-header>
       </div> 
       <!----------CLOCK SPACE------------------------- -->
       <section class="main-button">
-        <div>
-      
-        </div>
+        <div *ngIf="rows">
+                <a class="btn btn-outline-primary " (click)="exportToExcel(rows)">
+                  Exportar excel
+                </a>
+              </div>
+          
         <div class="clock ml-auto">
                 <a>{{update_date }} </a>
             <a>
@@ -73,31 +77,6 @@
     
           </ngx-datatable-column>
     
-          <!------------------------------------------------- -->
-           <!-- day_name------------------------------------- -->
-           <!-- <ngx-datatable-column prop="day_name" width="80" name="day_name"
-           [summaryTemplate]="day_name">
-    
-            <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-            ngx-datatable-header-template>
-            <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
-            Día
-            </p>
-            </ng-template>
-    
-            <ng-template let-value="value" ngx-datatable-cell-template>
-            <div class="table-column">
-            <p class="right-black-normal">{{ value | date:'E' }}</p>
-            </div>
-            </ng-template>
-    
-            <ng-template #day_name>
-            <p class="right-black-bold">{{rows_total[0].day_name}}</p>
-            </ng-template>
-    
-            </ngx-datatable-column> -->
-    
-        <!------------------------------------------------- -->
         <!-- start_date------------------------------------- -->
         <ngx-datatable-column prop="start_time" width="80" name="start_time"
         [summaryTemplate]="start_time">
@@ -291,30 +270,6 @@
     
         </ngx-datatable-column>
 
-        <!------------------------------------------------- -->
-        <!-- inboundHungAgent------------------------------------- -->
-        <ngx-datatable-column prop="inboundHungAgent" width="80" name="inboundHungAgent"
-        [summaryTemplate]="inboundHungAgent">
-    
-        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-        ngx-datatable-header-template>
-        <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
-                Colgadas<br> por agente
-        </p>
-        </ng-template>
-    
-        <ng-template let-value="value" ngx-datatable-cell-template>
-        <div class="table-column">
-        <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
-        </div>
-        </ng-template>
-    
-        <ng-template #inboundHungAgent>
-        <p class="right-black-bold">{{rows_total[0].inboundHungAgent | number: "1.0-0" }}</p>
-        </ng-template>
-    
-        </ngx-datatable-column>
-    
         <!------------------------------------------------- -->
         <!-- inboundServiceLevel------------------------------------- -->
         <ngx-datatable-column prop="inboundServiceLevel" width="80" name="inboundServiceLevel"

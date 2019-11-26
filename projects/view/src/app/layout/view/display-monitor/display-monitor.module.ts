@@ -22,18 +22,20 @@ import { DisplayHeaderModule } from "projects/view/src/shared/modules/display-he
 import { DisplayMonitorRoutingModule } from "./display-monitor-routing.module";
 import { DisplayMonitorComponent } from "./display-monitor.component";
 
-import { DisplayMonitorCallsComponent } from "./display-monitor-calls/display-monitor-calls.component";
-
 import { DisplayMonitorIndicatorsComponent } from "./display-monitor-indicators/display-monitor-indicators.component";
 
 import { SharedPipesModule } from "shared/pipes/shared-pipes.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
+import { ExcelService } from 'projects/reports/src/shared/services/helpers/excel.service';
+import { DisplayMonitorIndicatorsHistoricComponent } from './display-monitor-indicators-historic/display-monitor-indicators-historic.component';
+import { DisplayMonitorIndicatorsSummaryComponent } from './display-monitor-indicators-summary/display-monitor-indicators-summary.component';
 @NgModule({
   declarations: [
     DisplayMonitorComponent,
-    DisplayMonitorCallsComponent,
-    DisplayMonitorIndicatorsComponent
+    DisplayMonitorIndicatorsComponent,
+    DisplayMonitorIndicatorsHistoricComponent,
+    DisplayMonitorIndicatorsSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -53,6 +55,6 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     FontAwesomeModule,
     DisplayMonitorRoutingModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: "es" }]
+  providers: [ExcelService, { provide: LOCALE_ID, useValue: "es" }]
 })
 export class DisplayMonitorModule { }

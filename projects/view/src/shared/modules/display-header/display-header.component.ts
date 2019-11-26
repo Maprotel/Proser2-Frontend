@@ -16,6 +16,7 @@ export class DisplayHeaderComponent implements OnInit {
 
   @Input() userSelection;
   @Input() selectorVisibleFields;
+  @Input() selectorVisibleAreas;
   @Input() timerConnected;
 
   activeModal: NgbActiveModal;
@@ -36,7 +37,7 @@ export class DisplayHeaderComponent implements OnInit {
     this.local_store = "assignation";
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onUserSelectionText() {
     let data = new UserSelectionModel("standard");

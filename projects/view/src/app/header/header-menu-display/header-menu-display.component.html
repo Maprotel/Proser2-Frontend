@@ -3,58 +3,41 @@
   <div class="nav-item dropdown" dropdown #dropdown="bs-dropdown"
        [autoClose]="true">
 
-    <a id="navdrop" dropdownToggle role="button"
-       class="nav-link dropdown-toggle"
-       aria-controls="dropdown-basic">Presentaciones</a>
+    <!-- /********************************************** -->
 
-    <ul id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu"
-        role="menu" aria-labelledby="button-triggers-manual">
+    <div class="nav-item dropdown" dropdown #dropdown="bs-dropdown"
+         [autoClose]="true">
 
-      <!-- MENU ITEM-->
-      <li role="menuitem">
-        <a class="dropdown-item " routerLink="/layout/view-inbound/">
-          <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Entrantes
-        </a>
-      </li>
+      <a id="navdrop" dropdownToggle role="button"
+         class="nav-link dropdown-toggle" aria-controls="dropdown-basic">Monitor
+        de colas</a>
 
-      <!-- MENU ITEM-->
-      <li role="menuitem">
-        <a class="dropdown-item " routerLink="/layout/view-outbound/">
-          <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Salientes
-        </a>
-      </li>
+      <ul id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-triggers-manual">
 
-    </ul>
+
+        <li role="menuitem">
+          <a class="dropdown-item "
+             routerLink="/layout/view-monitor/indicators">
+            <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Indicadores tiempo
+            real
+          </a>
+        </li>
+
+        <li role="menuitem">
+          <a class="dropdown-item "
+             routerLink="/layout/view-monitor/indicators-historic">
+            <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Indicadores histórico
+          </a>
+        </li>
+
+        <!-- <li role="menuitem">
+          <a class="dropdown-item "
+             routerLink="/layout/view-monitor/indicators-summary">
+            <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Indicadores acumulados
+          </a>
+        </li> -->
+
+      </ul>
+    </div>
   </div>
-
-
-
-  <!-- /********************************************** -->
-
-  <div class="nav-item dropdown" dropdown #dropdown="bs-dropdown"
-       [autoClose]="true">
-
-    <a id="navdrop" dropdownToggle role="button"
-       class="nav-link dropdown-toggle" aria-controls="dropdown-basic">Monitor
-      de colas</a>
-
-    <ul id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu"
-        role="menu" aria-labelledby="button-triggers-manual">
-
-
-      <li role="menuitem">
-        <a class="dropdown-item " routerLink="/layout/view-monitor/calls">
-          <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Monitor-Llamadas
-        </a>
-      </li>
-
-
-      <li role="menuitem">
-        <a class="dropdown-item " routerLink="/layout/view-monitor/indicators">
-          <fa-icon [icon]="faIdBadge"></fa-icon> &nbsp; Monitor-Indicadores
-        </a>
-      </li>
-
-    </ul>
-  </div>
-</div>

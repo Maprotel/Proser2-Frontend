@@ -35,8 +35,6 @@ export class HeaderComponent implements OnInit {
 
   getCurrentUser() {
     this.currentUser = this.authService.getCurrentUser();
-    console.log('currentUser', this.currentUser);
-
   }
 
   onLogout() {

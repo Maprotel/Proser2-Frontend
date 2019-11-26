@@ -38,6 +38,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   @Input() userSelection: UserSelectionModel;
   @Input() selectorVisibleFields: UserSelectionModel;
+  @Input() selectorVisibleAreas;
 
   jsonSelector = false;
 
@@ -86,10 +87,20 @@ export class SelectorComponent implements OnInit, OnDestroy {
     // this.show_data = false;
 
     this.model = new UserSelectionModel();
-    // this.groupList = groupList;
+
   }
 
   ngOnInit() {
+    if (!this.selectorVisibleAreas) {
+      this.selectorVisibleAreas = {
+        date: true,
+        interval: true,
+        options: true,
+        buttons: true,
+      }
+    }
+
+
     this.menuOptions = JSON.parse(localStorage.getItem("menuOptions"));
 
     this.getUserSelectionMenus();

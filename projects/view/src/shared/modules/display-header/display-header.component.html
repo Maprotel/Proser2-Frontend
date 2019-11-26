@@ -23,12 +23,10 @@
 
   <!-- ------- INFO -------------------- -->
   <article class="header-right">
-    <!-- <p><a class="selector-text-link"
+    <p><a class="selector-text-link"
          (click)="openDetailModal(currentCalls)">Filtre
         la
-        información aquí</a></p> -->
-    <!-- <span *ngIf="userSelection.mode.name === 'Historic'">Histórico - &nbsp;
-    </span> -->
+        información aquí</a></p>
     <p class="report-selection">{{ userSelection.options }}</p>
   </article>
 </section>
@@ -55,6 +53,8 @@
   <div class="" id="result">
     <app-selector [userSelection]="userSelection"
                   [selectorVisibleFields]="selectorVisibleFields"
+                  [selectorVisibleAreas]="selectorVisibleAreas"
+                  [selectorVisibleAreas]="selectorVisibleAreas"
                   (userSelectionBack)="updateSelection($event, 'userSelectionBack')"
                   (closeSelector)="closeSelector($event)"
                   (closeModal)="onCloseModal($event, 'closeModal')">

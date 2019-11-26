@@ -6,7 +6,7 @@
 
   <form [formGroup]="selectorForm" class="register">
     <section class="register-form">
-      <article class="register-column">
+      <article class="register-column" *ngIf="selectorVisibleAreas.date">
 
         <!-------------------------- FIELD END --------------------------->
         <h3>Fecha & hora</h3>
@@ -105,7 +105,7 @@
         <!-------------------------- FIELD END --------------------------->
       </article>
 
-      <article class="register-column">
+      <article class="register-column" *ngIf="selectorVisibleAreas.interval">
 
         <h3>Intervalos</h3>
         <hr>
@@ -242,7 +242,7 @@
       </article>
 
 
-      <article class="register-column">
+      <article class="register-column" *ngIf="selectorVisibleAreas.options">
         <h3>Opciones</h3>
         <hr>
         <!-- supervisor -->
@@ -453,10 +453,9 @@ model.fieldInfo('client').text
           <button (click)="onReset()"
                   class="btn btn-secondary">Resetear</button>
           <hr>
-
           <!-- status -->
           <div class="form-group two-column" id="status"
-               *ngIf="selectorVisibleFields.status">
+               *ngIf="selectorVisibleFields.status && selectorVisibleAreas.buttons">
             <label
                    class="register-label">{{model.fieldInfo('status').text}}</label>
 
@@ -480,7 +479,7 @@ model.fieldInfo('client').text
           <hr>
 
           <div class="form-group two-column" id="mode"
-               *ngIf="selectorVisibleFields.mode">
+               *ngIf="selectorVisibleFields.mode && selectorVisibleAreas.buttons">
             <label
                    class="register-label">{{ model.fieldInfo("mode").text}}</label>
 
@@ -510,11 +509,13 @@ model.fieldInfo('client').text
           <hr>
 
           <button (click)="getUserSelectionMenus()"
+                  *ngIf="selectorVisibleAreas.buttons"
                   class="btn btn-outline-primary">Actualizar Menus</button>
 
           <hr>
 
           <button (click)="getUserJsonSelector()"
+                  *ngIf="selectorVisibleAreas.buttons"
                   class="btn btn-outline-secondary">JSON selector</button>
 
           <!-- END BUTTONS -->
