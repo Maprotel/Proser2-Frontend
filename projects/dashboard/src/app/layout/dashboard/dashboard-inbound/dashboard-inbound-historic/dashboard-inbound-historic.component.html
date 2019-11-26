@@ -4,13 +4,14 @@
 </div>
 
 <!----------REPORT HEADER------------------------- -->
-<app-dashboard-dashboard-historic-header [userSelection]="userSelection"
-                                         [selectorVisibleFields]="selectorVisibleFields"
-                                         [timerConnected]="timerConnected"
-                                         [historic]="historic"
-                                         (returnResult)="onReturnHeaderResult($event)">
-</app-dashboard-dashboard-historic-header>
-
+<div *ngIf="userSelection">
+  <app-dashboard-dashboard-historic-header [userSelection]="userSelection"
+                                           [selectorVisibleFields]="selectorVisibleFields"
+                                           [timerConnected]="timerConnected"
+                                           [historic]="historic"
+                                           (returnResult)="onReturnHeaderResult($event)">
+  </app-dashboard-dashboard-historic-header>
+</div>
 
 <section class="main-button" *ngIf="!show">
   <div>

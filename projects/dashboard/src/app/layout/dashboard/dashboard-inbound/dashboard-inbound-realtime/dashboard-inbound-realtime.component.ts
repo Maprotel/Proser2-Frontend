@@ -58,10 +58,12 @@ export class DashboardInboundRealtimeComponent implements OnInit {
     this.rows = new DashboardInboundResponseModel();
     this.alertMessage = new AlertModel();
     this.timerConnected = 0;
-    this.title = "Entrantes en tiempo real";
+
   }
 
   ngOnInit() {
+    this.userSelection = new UserSelectionModel("standard");
+    this.title = "Entrantes en tiempo real";
     this.userSelectionCurrent();
     this.getReportListDashboard(this.userSelection);
     this.onRepeat();
@@ -76,10 +78,11 @@ export class DashboardInboundRealtimeComponent implements OnInit {
     this.userSelection = this.userSelectionService.readUserSelectionCurrent();
     this.selectorVisibleFields.groupBy = false;
     this.selectorVisibleFields.interval = false;
-    this.selectorVisibleFields.start_date = false;
-    this.selectorVisibleFields.end_date = false;
     this.selectorVisibleFields.assignation = false;
     this.selectorVisibleFields.auxiliar = false;
+    
+    this.selectorVisibleFields.start_date = false;
+    this.selectorVisibleFields.end_date = false;
 
     this.userSelection.title = this.title;
 

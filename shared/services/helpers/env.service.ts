@@ -31,7 +31,7 @@ export class EnvService {
   public userApiUrl = "http://localhost:3153";
 
   // Version
-  public version = "2.3.6";
+  public version = "2.3.7";
 
   // Callcenter Name
   public callcenterName = "Test CallCenter";
@@ -54,6 +54,7 @@ export class EnvService {
 
   // Show/Hide Register user option
   public autoregister = true;
+
 
   constructor() { }
 }

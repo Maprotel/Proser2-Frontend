@@ -61,33 +61,32 @@ export class DashboardInboundHistoricComponent implements OnInit {
     this.rows = new DashboardInboundResponseModel();
     this.alertMessage = new AlertModel();
     this.timerConnected = 0;
-
   }
 
   ngOnInit() {
     this.userSelection = new UserSelectionModel("standard");
     this.title = ("Llamadas entrantes historico");
     this.userSelectionHistoric()
-
     this.getReportListDashboard(this.userSelection);
   }
 
-  onSetHeader() {
-    this.header_data = {
-      callcenterName: this.env.callcenterName,
-      title: this.title,
-      date: 'date',
-      interval: 'interval',
-      legend: 'legend',
-      options: 'options',
-    };
-  }
+    // Finish
+    ngOnDestroy() {
+      this.subscription.unsubscribe();
+    }
 
-  // Finish
-  ngOnDestroy() {
-    this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
-    this.subscription.unsubscribe();
-  }
+  // onSetHeader() {
+  //   this.header_data = {
+  //     callcenterName: this.env.callcenterName,
+  //     title: this.title,
+  //     date: 'date',
+  //     interval: 'interval',
+  //     legend: 'legend',
+  //     options: 'options',
+  //   };
+  // }
+
+
 
   userSelectionHistoric() {
     this.userSelection = this.userSelectionService.readUserSelectionHistoric();
@@ -99,8 +98,6 @@ export class DashboardInboundHistoricComponent implements OnInit {
     this.userSelection.title = this.title;
 
     this.userSelection.mode = { id: 0, name: "Histórico", value: "historic" };
-
-    this.onSetHeader()
 
     this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
     this.userSelection = this.userSelectionService.readUserSelectionHistoric();

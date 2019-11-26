@@ -1,12 +1,11 @@
-<section class="header-block" *ngIf="userSelection && show_header">
+<section class="header-block" *ngIf="userSelection">
 
   <!-- ------- REPORT NAME -------------------- -->
-  <article class="header-left" *ngIf="userSelection">
-    <p class="report-title"> {{ headerText.title }}</p>
+  <article class="header-left">
+    <p class="report-title">{{ userSelection.title }}</p>
     <p class="report-date">
-      {{ headerText.date }}</p>
-    <p class="report-time">{{ headerText.legend }}</p>
-    <!-- <p class="report-time">{{ onUserSelectionLegend() }}</p> -->
+      {{ onUserSelectionText() }}</p>
+    <p class="report-time">{{ onUserSelectionLegend() }}</p>
   </article>
 
   <!-- ------- CALLCENTER NAME -------------------- -->
@@ -17,20 +16,20 @@
 
   <!-- ------- INFO -------------------- -->
   <article class="header-right">
-    <p><a class="selector-text-link" (click)="openModal(selector)">Filtre
+    <p><a class="selector-text-link"
+         (click)="openDetailModal(currentCalls)">Filtre
         la
         información aquí</a></p>
     <span *ngIf="userSelection.mode.name === 'Historic'">Histórico - &nbsp;
     </span>
-    <p class="report-selection">{{headerText.options}}</p>
-    <!-- <p class="report-selection">{{ onUserSelectionOptions() }}</p> -->
+    <p class="report-selection">{{ onUserSelectionOptions() }}</p>
   </article>
 </section>
 
 
 
 <!-- MODAL WINDOW FOR SELECTOR ---------------------------------------------------- -->
-<ng-template #selector class="modal-full">
+<ng-template #currentCalls class="modal-full">
   <div class="modal-header modal-primary">
     <p class="modal-title ">Seleccione las opciones el reporte</p>
 
