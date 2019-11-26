@@ -27,6 +27,9 @@ export class DashboardHeaderComponent implements OnInit {
   @Input() selectorVisibleFields;
   @Input() timerConnected;
   @Input() historic;
+  @Input() show_header;
+
+  headerText;
 
   activeModal: NgbActiveModal;
   local_store;
@@ -41,12 +44,19 @@ export class DashboardHeaderComponent implements OnInit {
     private userSelectionService: UserSelectionService
   ) {
     this.env = this.envService;
-    this.userSelection = new UserSelectionModel("standard");
+
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.local_store = "assignation";
   }
 
   ngOnInit() {
+    // this.userSelection = new UserSelectionModel("standard");
+    this.headerText = {
+      title: this.userSelection.title,
+      date: this.onUserSelectionText(),
+      legend: this.userSelection.legend,
+      options: this.userSelection.options
+    }
     this.userSelection.current_date = dateToDatePicker(
       moment().format("YYYY-MM-DD")
     );

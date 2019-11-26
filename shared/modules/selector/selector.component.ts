@@ -90,10 +90,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.menuOptions = JSON.parse(localStorage.getItem("menuOptions"));
-    // if (this.menuOptions === null || this.menuOptions === undefined) {
-    //   this.getUserSelectionMenus();
-    // }
+    this.menuOptions = JSON.parse(localStorage.getItem("menuOptions"));
 
     this.getUserSelectionMenus();
 
@@ -417,22 +414,18 @@ export class SelectorComponent implements OnInit, OnDestroy {
   }
 
   onSaveUserSelection(userSelection) {
-    if (this.userSelection.mode.value === "historic") {
-      this.userSelectionService.writeUserSelectionHistoric(userSelection);
-    }
-
     if (this.userSelection.mode.value === "actual") {
       this.userSelectionService.writeUserSelectionCurrent(userSelection);
+    } else {
+      this.userSelectionService.writeUserSelectionHistoric(userSelection);
     }
   }
 
   onReadUserSelection() {
-    if (this.userSelection.mode.value === "historic") {
-      this.userSelectionService.readUserSelectionHistoric();
-    }
-
     if (this.userSelection.mode.value === "actual") {
       this.userSelectionService.readUserSelectionCurrent();
+    } else {
+      this.userSelectionService.readUserSelectionHistoric();
     }
   }
 }

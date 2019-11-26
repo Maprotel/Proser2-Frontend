@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 })
 export class IntroPageComponent implements OnInit {
   @Input() title;
+  @Input() version;
   env;
   currentUser;
   currentConfig;

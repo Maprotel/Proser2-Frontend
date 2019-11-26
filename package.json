@@ -31,7 +31,17 @@
     "serve-sms": "ng serve sms --port 4206",
     "serve-system": "ng serve system --port 4207",
     "serve-user": "ng serve user --port 4208",
-    "serve-view": "ng serve view --port 4209"
+    "serve-view": "ng serve view --port 4209",
+    "audit": "ng serve audit",
+    "crud": "ng serve crud",
+    "dashboard": "ng serve dashboard",
+    "display": "ng serve display",
+    "home": "ng serve home",
+    "reports": "ng serve reports",
+    "sms": "ng serve sms",
+    "system": "ng serve system",
+    "user": "ng serve user",
+    "view": "ng serve view"
   },
   "private": true,
   "dependencies": {
