@@ -65,21 +65,16 @@ export class ReportHeaderComponent implements OnInit {
   }
 
   updateSelection(event, userSelectionBack) {
-    console.log("userSelectionBack", userSelectionBack);
-
-    // closeDetailModal()
-
     this.userSelection = this.userSelectionService.readUserSelectionHistoric(
       this.local_store
     );
-    // console.error("RETURN", this.userSelection);
   }
 
   closeSelector($event) {
     this.userSelection = this.userSelectionService.readUserSelectionHistoric(
       this.local_store
     );
-    // console.error("CLOSED", this.userSelection);
+
     this.returnResult.emit({
       userSelection: this.userSelection,
       rows: this.rows,
