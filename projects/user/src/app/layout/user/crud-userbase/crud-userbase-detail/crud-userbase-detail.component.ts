@@ -1,3 +1,4 @@
+import { WaitTimeReportRoutingModule } from './../../../../../../../reports/src/app/layout/reports/calls-reports/wait-time-report/wait-time-report-routing.module';
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
@@ -37,7 +38,7 @@ export class CrudUserbaseDetailComponent implements OnInit {
     private roleMappingService: RoleMappingService,
     private alertService: AlertService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.onFillForm();
@@ -112,7 +113,7 @@ export class CrudUserbaseDetailComponent implements OnInit {
     this.crudRecord.action === "new" ? this.onCheckIfExists() : "";
   }
 
-  onButton() {}
+  onButton() { }
 
   /***************************************** */
 
@@ -174,7 +175,7 @@ export class CrudUserbaseDetailComponent implements OnInit {
 
   // EDIT RECORD
   editRecord() {
-    console.log("EDIT");
+
 
     // put form values into variable
     let query = this.registerForm.value;
@@ -321,7 +322,7 @@ export class CrudUserbaseDetailComponent implements OnInit {
    *************************************/
 
   onTest() {
-    console.log("testing...");
+    console.warn("testing...");
   }
 
   onCancel() {
@@ -350,11 +351,11 @@ export class CrudUserbaseDetailComponent implements OnInit {
   }
 
   onDeactivate() {
-    console.log("onDeactivate");
+    console.warn("onDeactivate");
   }
 
   onReactivate() {
-    console.log("onReactivate");
+    console.warn("onReactivate");
   }
 
   onSubmit() {
@@ -383,7 +384,7 @@ export class CrudUserbaseDetailComponent implements OnInit {
           this.roleItem = data;
           this.crudRecord.currentRecord.roleMapping = data;
 
-          console.log("editRoleMapping - this.roleItem", this.roleItem);
+          console.warn("editRoleMapping - this.roleItem", this.roleItem);
 
           let temp = {
             id: this.roleItem.id,
@@ -404,7 +405,7 @@ export class CrudUserbaseDetailComponent implements OnInit {
             }
           );
 
-          console.log("roleMapping", this.crudRecord.currentRecord.roleMapping);
+          console.warn("roleMapping", this.crudRecord.currentRecord.roleMapping);
           return data;
         },
         error => {
@@ -446,7 +447,7 @@ export class CrudUserbaseDetailComponent implements OnInit {
         this.roleItem = data;
         this.crudRecord.currentRecord.roleMapping = data;
 
-        console.log("roleMapping", this.crudRecord.currentRecord.roleMapping);
+        console.warn("roleMapping", this.crudRecord.currentRecord.roleMapping);
         return data;
       },
       error => {

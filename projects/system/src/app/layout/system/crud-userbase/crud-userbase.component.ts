@@ -33,8 +33,6 @@ export class CrudUserbaseComponent implements OnInit {
   ngOnDestroy() {}
 
   onExport() {
-    console.log("Base");
-    console.log("crudRecord", this.crudRecord.rows);
     this.export(this.crudRecord.rows);
   }
 

@@ -67,7 +67,6 @@ export class HeaderMenuSectionsComponent implements OnInit {
   ) {
     this.env = this.envService;
     this.host = this.envService.host;
-    console.log('env', this.host);
 
     this.auditLink = this.env.auditLink
     this.crudLink = this.env.crudLink

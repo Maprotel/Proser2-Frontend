@@ -142,7 +142,6 @@ export class CrudInvScheduleDayComponent implements OnInit, OnDestroy {
 
   // IMPORT DATA FROM SERVICE
   getAll_Records(selectedSchedule) {
-    console.log("selectedSchedule", selectedSchedule.inv_schedule_id);
 
     let query = null;
 

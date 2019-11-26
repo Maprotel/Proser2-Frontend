@@ -113,7 +113,7 @@ export class CrudUserbaseListComponent implements OnInit {
   }
 
   onExport() {
-    console.log("destiny");
+
   }
 
   

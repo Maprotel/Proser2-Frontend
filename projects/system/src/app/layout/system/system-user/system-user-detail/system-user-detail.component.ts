@@ -173,10 +173,8 @@ export class SystemUserDetailComponent implements OnInit {
         this.action.temp = user;
         let roleId = this.roleAssignation(user.profile);
 
-        console.log("user patchRecord", user, user.profile, roleId);
-
         this.roleMappingService.findOneRecord(user).subscribe(rolMap => {
-          console.log("rolMap", rolMap);
+    
           let id = rolMap.id;
           let record = {
             roleId: roleId
@@ -234,7 +232,7 @@ export class SystemUserDetailComponent implements OnInit {
 
   onFindRoleMapping(user) {
     this.roleMappingService.findOneRecord(user).subscribe(rolMap => {
-      console.log("rolMap", rolMap);
+      console.warn("rolMap", rolMap);
     });
   }
 

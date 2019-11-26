@@ -73,8 +73,6 @@ export class CrudUserbaseHeaderButtonsComponent implements OnInit {
   }
 
   onExport() {
-    console.log('buton');
-    
     this.exportData.emit("export");
   }
 }

@@ -87,9 +87,6 @@ export class DisplayHeaderComponent implements OnInit {
   }
 
   updateSelection(event, userSelectionBack) {
-    console.log("userSelectionBack", userSelectionBack);
-
-    // closeDetailModal()
 
     this.userSelection = this.userSelectionService.readUserSelectionHistoric(
       this.local_store

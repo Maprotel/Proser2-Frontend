@@ -16,7 +16,6 @@ export class CrudUserbaseHeaderComponent implements OnInit {
   ngOnInit() {}
 
   onExport() {
-    console.log('header');
     this.exportData.emit("export");
   }
 }

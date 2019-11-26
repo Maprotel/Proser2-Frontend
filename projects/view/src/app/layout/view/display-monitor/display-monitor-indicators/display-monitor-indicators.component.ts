@@ -117,7 +117,6 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
             this.rows_total = res.total;
             this.update_date = res.now;
             this.show = true;
-            console.log('rows', this.rows);
 
           } else {
             console.error("Error", res);
