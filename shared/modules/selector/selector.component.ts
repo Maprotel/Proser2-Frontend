@@ -83,9 +83,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.incomingUserSelection = new UserSelectionModel();
 
     this.alertMessage = new AlertModel();
-    // this.show_submit_button = false;
-    // this.show_data = false;
-
     this.model = new UserSelectionModel();
 
   }

@@ -1,3 +1,4 @@
+
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
@@ -11,8 +12,11 @@ import { Router } from "@angular/router";
 import {
   UserSelectionModel,
   RoleMappingModel,
-  UserbaseModel
+  UserbaseModel,
 } from "shared/models";
+
+
+
 
 @Injectable({
   providedIn: "root"
@@ -21,8 +25,9 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private env: EnvService,
-    private router: Router
-  ) {}
+    private router: Router,
+
+  ) { }
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
@@ -62,6 +67,15 @@ export class AuthService {
       .pipe(map(data => data));
   }
 
+  // logout from backend
+  logoutUser() {
+    const accessToken = localStorage.getItem("accessToken");
+    const url_api = `${this.env.loopbackApiUrl}/api/userbases/logout?access_token=${accessToken}`;
+    this.router.navigate(["/bye"]);
+    localStorage.clear();
+    return this.http.post<UserbaseModel>(url_api, { headers: this.headers });
+  }
+
   // List all users
   getAllUsers() {
     const accessToken = localStorage.getItem("accessToken");
@@ -92,14 +106,6 @@ export class AuthService {
     return result;
   }
 
-  // logout from backend
-  logoutUser() {
-    const accessToken = localStorage.getItem("accessToken");
-    const url_api = `${this.env.loopbackApiUrl}/api/userbases/logout?access_token=${accessToken}`;
-    this.router.navigate(["/init/bye"]);
-    localStorage.clear();
-    return this.http.post<UserbaseModel>(url_api, { headers: this.headers });
-  }
 
   /* SETTERS ****************** */
 

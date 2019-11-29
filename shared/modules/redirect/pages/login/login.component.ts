@@ -1,5 +1,4 @@
 
-
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "shared/services/helpers/auth.service";
 import { UserInterface } from "shared/models/pages/user-interface";
@@ -10,6 +9,11 @@ import { AlertModel } from "shared/models/helpers/Alert";
 import { Router } from "@angular/router";
 import { AlertService } from "shared/services/helpers/alert.service";
 import { EnvService } from "shared/services/helpers/env.service";
+
+
+import { UserSelectionService } from 'shared/services';
+import { UserSelectionModel } from 'shared/models';
+
 
 @Component({
   selector: 'redirect-login',
@@ -34,7 +38,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private envService: EnvService,
     private alertService: AlertService,
-    private router: Router
+    private router: Router,
+    private userSelectionService: UserSelectionService
   ) {
     this.env = this.envService;
 
@@ -72,6 +77,7 @@ export class LoginComponent implements OnInit {
           let temp = this.userCheck(data, this.option);
           this.authService.setUser(temp);
           this.authService.setToken(temp.accessToken);
+          this.getUserSelectionMenus();
           this.router.navigate(["/"]);
         },
         error => {
@@ -107,5 +113,20 @@ export class LoginComponent implements OnInit {
       };
     }
     return result;
+  }
+
+
+  // store selection menus
+  getUserSelectionMenus() {
+    let selection = new UserSelectionModel("standard");
+    this.userSelectionService
+      .getUserSelectionMenus(selection)
+      .subscribe(data => {
+        let menuOptions = data;
+        localStorage.setItem("menuOptions", JSON.stringify(menuOptions));
+        error => {
+          console.error('Error');
+        };
+      });
   }
 }

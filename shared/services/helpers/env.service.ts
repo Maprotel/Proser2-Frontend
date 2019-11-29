@@ -31,7 +31,7 @@ export class EnvService {
   public userApiUrl = "http://localhost:3153";
 
   // Version
-  public version = "2.3.7";
+  public version = "2.3.8";
 
   // Callcenter Name
   public callcenterName = "Test CallCenter";
