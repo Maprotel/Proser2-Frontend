@@ -69,7 +69,7 @@ export class UserSelectionModel {
       this.start_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
       this.end_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
 
-      // OBJECTCS
+      // OBJECTS
       this.mode = { id: 1, name: "Historic", value: true };
       this.type = { id: 0, name: "Ejecutado" };
       this.start_time = { id: 0, value: "00:00:00" };
@@ -120,10 +120,10 @@ export class UserSelectionModel {
       };
 
       this.views = [
-        { id: 1, name: "dashbord", time: 30, option: "actual" },
+        { id: 1, name: "dashboard", time: 30, option: "actual" },
         { id: 1, name: "graph", time: 30 },
         { id: 1, name: "group", time: 30, option: "COLAS" },
-        { id: 1, name: "dashbord", time: 30, option: "historic" }
+        { id: 1, name: "dashboard", time: 30, option: "historic" }
       ];
 
       this.creation_date = moment().format("YYYY-MM-DD");

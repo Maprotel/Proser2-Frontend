@@ -41,6 +41,7 @@ export class HeaderMenuUserComponent implements OnInit {
     this.authService.logoutUser().subscribe(data => {
       this.router.navigate(["/bye"]);
     });
+    localStorage.clear();
   }
 
   onLogin() {
