@@ -225,24 +225,22 @@ export class AuditReportListComponent implements OnInit {
     const filterData = data.map(x => {
       return {
         id: x.audit_id,
-        agente_id: x.audit_agent_id,
-        break: x.audit_break_id,
+        fecha: x.audit_date,
+        agente: x.inv_agent_name,
+        concepto: x.inv_break_name,
         inicio: x.audit_datetime_init,
         final: x.audit_datetime_end,
         duracion: x.audit_duration,
         duracion_sec: x.audit_duration_sec,
-        status: x.audit_status,
-        fecha: x.audit_date,
-        info_colas_cdr: x.audit_cdr_queues,
+        id_agente: x.audit_agent_id,
+        cedula: x.inv_agent_legal_id,
+        doc_interno: x.inv_agent_internal_id,
         supervisor: x.supervisor,
         turno: x.schedule,
         rol: x.role,
         cliente: x.client,
         cola: x.queue,
-        servicio: x.service,
-        campaña: x.campaign,
-        nombre_agente: x.inv_agent_name,
-        nombre_break: x.inv_break_name
+        servicio: x.service        
       };
     });
 

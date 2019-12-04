@@ -238,7 +238,7 @@ export class AbandonedReportListComponent implements OnInit {
         origen: x.callerid,
         fecha: x.callentry_date,
         entrada_cola: x.time_entry_queue,
-        seg_espera: x.duration_wait_secs,
+        segundos_espera: x.duration_wait_secs,
         tiempo_espera: x.duration_wait_time,
         final: x.time_end,
         uniqueid: x.uniqueid,

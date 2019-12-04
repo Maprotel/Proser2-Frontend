@@ -234,23 +234,21 @@ export class WaitTimeReportListComponent implements OnInit {
   exportToExcel(data) {
     const filterData = data.map(x => {
       return {
-        nombre_dia: x.day_name,
-        fecha_inicio: x.start_date,
+        
+        fecha: x.start_date,
         intervalo_inicial: x.interval_start,
         intervalo_final: x.interval_end,
-        antes_tiempo_ideal: x.beforeIdealTime,
-        despues_tiempo_ideal: x.afterIdealTime,
         cero_cinco: x.afterFive,
-        cinco_diez: x.afterTen,
-        diez_qince: x.afterFifteen,
-        quince_veinte: x.afterTwenty,
-        veinte_veinticinco: x.afterTwentyfive,
-        veinticinco_treinta: x.afterThirty,
-        treinta_sesenta: x.afterSixty,
-        sesenta_cientoveinte: x.afterTwoMinutes,
-        cientoveinte_cientochenta: x.afterThreeMinutes,
-        cientochenta_doscientocuarenta: x.afterFourMinutes,
-        doscientocuarenta_mas: x.afterMoreFourMinutes
+        seis_diez: x.afterTen,
+        once_quince: x.afterFifteen,
+        dieciseis_veinte: x.afterTwenty,
+        veintiuno_veinticinco: x.afterTwentyfive,
+        veintiseis_treinta: x.afterThirty,
+        treinta_y_uno_sesenta: x.afterSixty,
+        sesenta_y_uno_cientoveinte: x.afterTwoMinutes,
+        cientoveintiuno_cientochenta: x.afterThreeMinutes,
+        cientochenta_y_uno_doscientoscuarenta: x.afterFourMinutes,
+        doscientoscuarenta_y_uno_mas: x.afterMoreFourMinutes
       };
     });
 

@@ -212,20 +212,16 @@ export class AssignationReportListComponent implements OnInit {
   exportToExcelGroup(data) {
     const filterData = data.map(x => {
       return {
-        id_agente: x.agent_id,
-        veces_registrado: x.times_registered,
+        conectado: x.connected,
+        previo: x.previous_day,
         nombre_agente: x.agent_name,
-        cedula: x.agent_legal_id,
-        doc_interno: x.agent_internal_id,
-        extension: x.agent_extension,
-        supervisor: x.agent_supervisor_name,
-        horario: x.agent_schedule_name,
-        fecha: moment(x.min_date).format("YYYY-MM-DD"),
+        cant: x.times_registered,
+        id_agente: x.agent_id,
+        duracion: x.duration_time,
         fecha_inicial: x.min_date,
         fecha_final: x.max_date,
-        tiempo_inicial: x.start_time,
-        tiempo_final: x.end_time,
-        tiempo_conexion: x.duration_time,
+        hora_inicial: x.start_time,
+        hora_final: x.end_time,
         segundos_conexion: x.duration_time_secs
       };
     });
@@ -240,19 +236,13 @@ export class AssignationReportListComponent implements OnInit {
         id: x.record_id,
         id_agente: x.agent_id,
         nombre_agente: x.agent_name,
-        cedula: x.agent_legal_id,
-        doc_interno: x.agent_internal_id,
-        extension: x.agent_extension,
-        supervisor: x.agent_supervisor_name,
-        horario: x.agent_schedule_name,
-        asignacion: x.break_name,
-        fecha: moment(x.min_date).format("YYYY-MM-DD"),
+        auxiliar: x.break_name,
+        duracion: x.duration_time,
+        segundos_conexion: x.duration_time_secs,
         fecha_inicial: x.min_date,
         fecha_final: x.max_date,
-        tiempo_inicial: x.start_time,
-        tiempo_final: x.end_time,
-        tiempo_duracion: x.duration_time,
-        segundos_duracion: x.duration_time_secs
+        hora_inicial: x.start_time,
+        hora_final: x.end_time,
       };
     });
 
