@@ -236,18 +236,17 @@ export class OutboundReportListComponent implements OnInit {
   exportToExcel(data) {
     const filterData = data.map(x => {
       return {
-        nombre_dia: x.day_name,
-        dia_semana: x.week_day,
-        fecha_inicio: x.start_date,
+        
+        fecha: x.start_date,
         hora_inicio: x.start_time,
-        hora_fin: x.end_time,
+        hora_final: x.end_time,
         llamadas_realizadas: x.outboundMade,
         llamadas_fallidas: x.outboundFail,
         llamadas_contestadas: x.outboundAnswered,
         llamadas_efectivas: x.outboundEffective,
         llamadas_colgadas: x.outboundHungout,
-        nivel_contactabilidad: x.outboundContactLevel,
-        nivel_efectividad: x.outboundEffectiveLevel,
+        nivel_de_contactabilidad: x.outboundContactLevel,
+        nivel_de_efectividad: x.outboundEffectiveLevel,
         segundos_operacion: x.operation_seconds,
         tiempo_operacion: x.operation_time,
         tmo_saliente: x.outboundTMO

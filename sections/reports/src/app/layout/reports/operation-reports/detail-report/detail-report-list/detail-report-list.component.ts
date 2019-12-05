@@ -277,8 +277,8 @@ export class DetailReportListComponent implements OnInit {
         duracion_hms_llamadas_atendidas: x.inbound_attended_duration_time,
         duracion_hms_llamadas_realizadas: x.outbound_made_time,
         duracion_hms_llamadas_internas: x.outbound_internal_time,
-        duracion_hms_auxiliar: x.auxiliar_duration_time,
-        duracion_hms_asignacion: x.assignation_duration_time,
+        duracion_hms_auxiliares: x.auxiliar_duration_time,
+        duracion_hms_asignaciones: x.assignation_duration_time,
         duracion_hms_disponible: x.available_duration_time,
 
         llamadas_atendidas: x.inbound_calls_attended,
@@ -287,8 +287,8 @@ export class DetailReportListComponent implements OnInit {
         porcentaje_duracion_atendidas: x.inbound_percent,
         porcentaje_duracion_realizadas: x.outbound_percent,
         porcentaje_duracion_internas: x.internal_percent,
-        porcentaje_duracion_auxiliar: x.auxiliar_percent,
-        porcentaje_duracion_asignacion: x.assignation_percent,
+        porcentaje_duracion_auxiliares: x.auxiliar_percent,
+        porcentaje_duracion_asignaciones: x.assignation_percent,
         porcentaje_duracion_disponible: x.available_percent,
 
 

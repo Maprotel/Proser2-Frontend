@@ -237,7 +237,7 @@ export class CdrReportListComponent implements OnInit {
         lastapp: x.cdr_lastapp,
         lastdata: x.cdr_lastdata,
         duracion_seg: x.cdr_duration_sec,
-        segundos_facturables: x.cdr_billsec_sec,
+        segundos_fact: x.cdr_billsec_sec,
         disposicion: x.cdr_disposition,
         amaflags: x.cdr_amaflags,
         accountcode: x.cdr_accountcode,
@@ -249,25 +249,7 @@ export class CdrReportListComponent implements OnInit {
         outbound_cnum: x.cdr_outbound_cnum,
         outbound_cnam: x.cdr_outbound_cnam,
         dst_cnam: x.cdr_dst_cnam,
-        did: x.cdr_did,
-        callcenter: x.__CALLCENTER__,
-        nombre_callcenter: x.cdr_callcenter_name,
-        tipo: x.cdr_call_type,
-        clase: x.cdr_call_class,
-        extension: x.cdr_agent_extension,
-        numero_cola: x.cdr_queue_number,
-        id_agente: x.cdr_agent_id,
-        id_cola: x.cdr_queue_id,
-        date: x.__DATE__,
-        hca: x.__HCA__,
-        fecha_agente: x.cdr_hca_agent_serial_id,
-        fecha_cola: x.cdr_hca_queue_serial_id,
-        made: x.__MADE__,
-        llamadas_realizadas: x.cdr_call_made,
-        llamadas_fallidas: x.cdr_call_fail,
-        llamadas_contestadas: x.cdr_call_answered,
-        llamadas_efectivas: x.cdr_call_efective,
-        colgadas_agente: x.cdr_call_hungout
+        did: x.cdr_did
       };
     });
 

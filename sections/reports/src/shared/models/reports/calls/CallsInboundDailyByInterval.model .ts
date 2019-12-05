@@ -80,7 +80,7 @@ export class CallsInboundDailyByIntervalModel {
         name: "interval_end",
         text: "Intervalo final"
       },
-      { field_name: "start_date", name: "fecha_inicio", text: "Fecha desde" },
+      { field_name: "start_date", name: "fecha_inicio", text: "Fecha" },
       { field_name: "start_time", name: "hora_inicio", text: "Hora inicio" },
       { field_name: "end_time", name: "hora_fin", text: "Hora final" },
       {

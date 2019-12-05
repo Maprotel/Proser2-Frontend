@@ -291,24 +291,27 @@ export class DetailReportListComponent implements OnInit {
   exportToExcel(data) {
     const filterData = data.map(x => {
       return {
-        id_agente: x.agent_id,
-        agente: x.agent_name,
-        supervisor: x.agent_supervisor_name,
-        fecha_inicio: x.start_date,
-        hora_inicio: x.start_time,
-        tipo: x.call_type,
+        grabacion: x.record,
+        tipo_llamada: x.call_type,
         origen: x.call_source,
         destino: x.call_destiny,
+        id: x.agent_id,
+        extension: x.agent_extension,
+        trans: x.agent_transfer,
+        agente: x.agent_name,
+        fecha_inicio: x.start_date,
+        hora_inicio: x.start_time,
+        hora_fin: x.end_time,
         duracion: x.duration,
         estatus: x.call_status,
-        clasificacion: x.call_clasif,
-        grabacion: x.record,
-        hora_cola: x.queue_time,
-        hora_conexion: x.connection_time,
-        hora_final: x.end_time,
-        hora_colgado_agente: x.time_hung_agent,
-        hora_colgado_llamante: x.time_hung_caller,
-        hora_abandonada: x.time_abandoned
+        colgado_cliente: x.time_hung_caller,
+        colgado_agente: x.time_hung_agent,
+        hora_abandono: x.time_abandoned,
+        supervisor: x.agent_supervisor_name,
+        cdr_id: x.cdr_id,
+        uniqueid: x.cdr_uniqueid
+        
+      
       };
     });
 

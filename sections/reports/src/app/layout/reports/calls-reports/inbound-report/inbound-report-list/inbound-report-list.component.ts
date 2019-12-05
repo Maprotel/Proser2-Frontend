@@ -232,28 +232,26 @@ export class InboundReportListComponent implements OnInit {
   exportToExcel(data) {
     const filterData = data.map(x => {
       return {
-        nombre_dia: x.day_name,
-        dia_semana: x.week_day,
-        fecha_inicio: x.start_date,
+        
+        fecha: x.start_date,
         hora_inicio: x.start_time,
-        hora_fin: x.end_time,
-        llamadas_recibidas: x.inboundReceived,
-        llamadas_abandonadas: x.inboundAbandoned,
-        llamadas_atendidas: x.inboundAttended,
-        llamadas_cortas: x.inboundShort,
-        llamadas_atendidas_antes_de: x.inboundBeforeTime,
-        llamadas_atendidas_despues_de: x.inboundAfterTime,
-        llamadas_colgadas_agente: x.inboundHungAgent,
+        hora_final: x.end_time,
+        recibidas: x.inboundReceived,
+        atendidas: x.inboundAttended,
+        atendidas_antes_de: x.inboundBeforeTime,
+        atendidas_despues_de: x.inboundAfterTime,
+        abandonadas: x.inboundAbandoned,
+        cortas: x.inboundShort,
+        colgadas_agente: x.inboundHungAgent,
         nivel_servicio: x.inboundServiceLevel,
         nivel_atencion: x.inboundAttentionLevel,
         nivel_abandono: x.inboundAbandonLevel,
+        tmo: x.inboundTmo,
+        asa: x.inboundAsa,
         seg_operacion: x.operation_seconds,
-        tiempo_operacion: x.operation_time,
+        hrs_operacion: x.operation_time,
         seg_espera: x.wait_seconds,
-        tiempo_espera: x.wait_time,
-        tmo_entrante: x.inboundTmo,
-        asa_entrante: x.inboundAsa,
-        tiempo_ideal_respuesta: x.idealResponseTime
+        hrs_espera: x.wait_time
       };
     });
 
