@@ -134,6 +134,10 @@ export class AuthService {
       userSelection: new UserSelectionModel("standard")
     };
 
+    const menuOptions = {
+      userSelection: new UserSelectionModel("menuOptions")
+    };
+
     proser_historic.userSelection.mode = {
       id: 1,
       name: "Histórico",
@@ -148,6 +152,7 @@ export class AuthService {
 
     localStorage.setItem("proser_historic", JSON.stringify(proser_historic));
     localStorage.setItem("proser_current", JSON.stringify(proser_historic));
+    localStorage.setItem("menuOptions", JSON.stringify(menuOptions));
   }
 
   // Record proser_historic in local store
@@ -175,6 +180,14 @@ export class AuthService {
       value: "actual"
     };
     localStorage.setItem("proser_current", JSON.stringify(proser_current));
+  }
+
+  // Record proser_current in local store
+  setProserStoreMenuOptions() {
+    const menuOptions = {
+      userSelection: new UserSelectionModel("menuOptions")
+    };
+    localStorage.setItem("menuOptions", JSON.stringify(menuOptions));
   }
 
   /* GETTERS****************** */

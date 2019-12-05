@@ -54,6 +54,8 @@ export class UserSelectionService {
       );
   }
 
+
+
   readUserSelectionHistoric(local_store?): UserSelectionModel {
     let userSelection = new UserSelectionModel();
     let proser_historic = { userSelection: userSelection };
@@ -117,10 +119,18 @@ export class UserSelectionService {
   }
 
   writeUserSelectionCurrent(userSelection) {
-
-
     let proser_current = { userSelection };
     localStorage.setItem(`proser_current`, JSON.stringify(proser_current));
     return userSelection;
   }
+
+
+  writeMenuOptions() {
+    let menuOptions = new UserSelectionModel('menuOptions');
+    localStorage.setItem(
+      `menuOptions`,
+      JSON.stringify(menuOptions)
+    );
+  }
+
 }
