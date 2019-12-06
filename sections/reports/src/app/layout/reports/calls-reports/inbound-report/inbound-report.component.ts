@@ -63,7 +63,6 @@ export class InboundReportComponent implements OnInit {
   onResetValues() {
     // Stored Data
     this.userSelection = this.userSelectionService.readUserSelectionHistoric();
-    this.menuOptions = this.userSelectionService.readMenuOptions();
 
     // Component variables
     this.title = "Reporte de llamadas entrantes";
@@ -89,65 +88,31 @@ export class InboundReportComponent implements OnInit {
     }
 
     // userSelection
-    // this.userSelection = new UserSelectionModel('standard')
     this.userSelection.title = this.title;
     this.userSelection.mode = { id: 1, name: "Histórico", value: "historic" };
     this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
 
-    // menuOptions
-    // this.menuOptions = new UserSelectionModel("menuOptions");
-    console.log('this.menuOptions', this.menuOptions);
-
-    // this.onUserSelectionMenus();
-    // this.userSelectionService.writeMenuOptions(this.menuOptions);
-
+    // Show
+    this.showDatatable = true
 
   }
 
-  // userSelectionMenus
 
-  onUserSelectionMenus() {
-    this.userSelectionService.getUserSelectionMenus(this.userSelection)
-      .subscribe(data => {
-
-        this.menuOptions = data;
-        this.userSelectionService.writeMenuOptions(this.menuOptions);
-        this.menuOptions = this.userSelectionService.readMenuOptions();
-        console.log('this.menuOptions', this.menuOptions);
-
-      },
-        error => {
-          console.error("Error", error);
-          this.alertService.error(error.status);
-          this.alertMessage.alertTitle = "Error del servidor";
-          this.alertMessage.alertText = error.statusText;
-          this.alertMessage.alertShow = true;
-          this.alertMessage.alertClass =
-            "alert alert-danger alert-dismissible fade show";
-        });
-  }
 
   // Selector
   onOpenSelector(event) {
-    this.showHeader = false;
-    this.userSelection = this.userSelectionService.readUserSelectionHistoric();
-    this.menuOptions = this.userSelectionService.readMenuOptions();
+    this.showDatatable = false
     this.userSelectionTemp = this.userSelection;
     this.onOpenModal(event);
   }
 
   onAcceptSelector(event) {
-    this.showHeader = true;
-    console.log('this.userSelection', this.userSelection);
-    console.log('this.menuOptions', this.menuOptions);
-
-    this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
-    this.userSelectionService.writeMenuOptions(this.menuOptions);
+    this.userSelectionService.writeUserSelectionHistoric(event);
+    this.onResetValues()
     this.onCloseModal()
   }
 
   onCancelSelector() {
-    this.showHeader = true;
     this.userSelection = this.userSelectionTemp;
     this.onCloseModal()
   }
@@ -155,6 +120,7 @@ export class InboundReportComponent implements OnInit {
 
   // Modal
   onOpenModal(content) {
+    this.showDatatable = false;
     this.activeModal = this.modalService.open(content, {
       windowClass: "my-class",
       keyboard: false
@@ -162,6 +128,8 @@ export class InboundReportComponent implements OnInit {
   }
 
   onCloseModal() {
+    this.showHeader = true;
+    this.showDatatable = true;
     this.userSelection = this.userSelectionService.readUserSelectionHistoric();
     this.activeModal.close();
   }

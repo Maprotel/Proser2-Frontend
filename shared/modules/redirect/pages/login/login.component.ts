@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
           this.authService.setUser(temp);
           this.authService.setToken(temp.accessToken);
           this.authService.setStore();
+          this.onGetUserSelectionMenus();
           console.clear();
           this.router.navigate(["/"]);
         },
@@ -119,5 +120,24 @@ export class LoginComponent implements OnInit {
   getUserSelectionMenus() {
     let userSelection = new UserSelectionModel("menuOptions");
     localStorage.setItem("proser_menu", JSON.stringify(userSelection));
+  }
+
+  onGetUserSelectionMenus() {
+    let userSelection = new UserSelectionModel('userSelection')
+    this.userSelectionService.getUserSelectionMenus(userSelection)
+      .subscribe(data => {
+        let menuOptions = data;
+        this.userSelectionService.writeMenuOptions(menuOptions);
+        menuOptions = this.userSelectionService.readMenuOptions();
+      },
+        error => {
+          console.error("Error", error);
+          this.alertService.error(error.status);
+          this.alertMessage.alertTitle = "Error del servidor";
+          this.alertMessage.alertText = error.statusText;
+          this.alertMessage.alertShow = true;
+          this.alertMessage.alertClass =
+            "alert alert-danger alert-dismissible fade show";
+        });
   }
 }

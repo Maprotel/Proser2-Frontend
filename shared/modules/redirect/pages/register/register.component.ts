@@ -10,6 +10,8 @@ import { MustMatch } from "shared/functions";
 import { AuthService } from "shared/services/helpers/auth.service";
 import { AlertService } from "shared/services/helpers/alert.service";
 
+import { UserSelectionService } from 'shared/services';
+
 import { UserInterface } from "shared/models/pages/user-interface";
 
 import { Router } from "@angular/router";
@@ -17,6 +19,7 @@ import { AlertModel } from "shared/models/helpers/Alert";
 
 import { AbstractControl } from "@angular/forms";
 import { UserbaseModel } from "shared/models";
+import { UserSelectionModel } from 'shared/models';
 
 @Component({
   selector: 'redirect-register',
@@ -45,7 +48,8 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private alertService: AlertService,
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    private userSelectionService: UserSelectionService
   ) {
     this.visibleMenus = {
       loginMenu: true,
@@ -165,6 +169,7 @@ export class RegisterComponent implements OnInit {
       (loggedUser: any) => {
         this.authService.setUser(loggedUser.user);
         this.authService.setToken(loggedUser.id);
+        this.onGetUserSelectionMenus();
         this.router.navigate(["/"]);
       },
       error => {
@@ -255,6 +260,25 @@ export class RegisterComponent implements OnInit {
 
   onRecordJsonChange() {
     this.onCheckIfExists();
+  }
+
+  onGetUserSelectionMenus() {
+    let userSelection = new UserSelectionModel('userSelection')
+    this.userSelectionService.getUserSelectionMenus(userSelection)
+      .subscribe(data => {
+        let menuOptions = data;
+        this.userSelectionService.writeMenuOptions(menuOptions);
+        menuOptions = this.userSelectionService.readMenuOptions();
+      },
+        error => {
+          console.error("Error", error);
+          this.alertService.error(error.status);
+          this.alertMessage.alertTitle = "Error del servidor";
+          this.alertMessage.alertText = error.statusText;
+          this.alertMessage.alertShow = true;
+          this.alertMessage.alertClass =
+            "alert alert-danger alert-dismissible fade show";
+        });
   }
 
 }

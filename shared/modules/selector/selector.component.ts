@@ -40,8 +40,10 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   @Input() userSelection: UserSelectionModel;
   @Input() selectorVisibleFields: UserSelectionModel;
-  @Input() menuOptions: UserSelectionModel;
+  // @Input() menuOptions: UserSelectionModel;
   @Input() selectorVisibleAreas;
+
+  menuOptions
 
   jsonSelector = false;
 
@@ -88,15 +90,13 @@ export class SelectorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('menuOptions', this.menuOptions);
-    console.log('userSelection', this.userSelection);
-
+    this.menuOptions = this.userSelectionService.readMenuOptions();
     this.onFillForm(this.userSelection);
     this.onChange()
   }
 
   ngOnDestroy() {
-    // this.acceptSelector.emit("redraw");
+    // this.userSelection = this.selectorForm.value
   }
 
   // Selector
@@ -105,10 +105,11 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.menuOptions = new UserSelectionModel('menuOptions');
     this.onGetUserSelectionMenus();
     this.onFillForm(this.userSelection);
+    this.onChange();
   }
 
   onAcceptSelector() {
-    this.acceptSelector.emit("acceptSelector");
+    this.acceptSelector.emit(this.userSelection);
   }
 
   onCancelSelector() {
@@ -182,6 +183,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.selectorForm.patchValue({
       legend: selectorLegendSubtitles(this.selectorForm.value)
     });
+    this.userSelection = this.selectorForm.value
     this.userSelection.options = this.selectorForm.value.options;
     this.userSelection.legend = this.selectorForm.value.legend;
   }
@@ -335,19 +337,29 @@ export class SelectorComponent implements OnInit, OnDestroy {
     }
   }
 
-
-  // Gets the menu lists from the server this.menuOptions
+  // Get menu options from database
   onGetUserSelectionMenus() {
     this.userSelectionService.getUserSelectionMenus(this.userSelection)
-      .subscribe(
-        data => {
-          // localStorage.setItem(`menuOptions`, JSON.stringify(this.menuOptions));
-          console.log('menuOptions', data);
-          this.menuOptions = data;
-          error => {
-            this.onError(error);
-          };
+      .subscribe(data => {
+        this.menuOptions = data;
+        this.userSelectionService.writeMenuOptions(this.menuOptions);
+        this.menuOptions = this.userSelectionService.readMenuOptions();
+      },
+        error => {
+          console.error("Error", error);
+          this.alertService.error(error.status);
+          this.alertMessage.alertTitle = "Error del servidor";
+          this.alertMessage.alertText = error.statusText;
+          this.alertMessage.alertShow = true;
+          this.alertMessage.alertClass =
+            "alert alert-danger alert-dismissible fade show";
         });
+  }
+
+  // Status
+  onStatusChange() {
+    this.userSelection.status = this.selectorForm.value.status
+    this.onGetUserSelectionMenus();
   }
 
 

@@ -49,6 +49,21 @@ export class UserSelectionService {
       );
   }
 
+  // getPartialUserSelectionMenus(
+  //   userSelection: UserSelectionModel): Observable<UserSelectionModel> {
+  //   let query = JSON.stringify(userSelection);
+  //   let filter = this.userSelection.status
+  //   const accessToken = localStorage.getItem("accessToken");
+  //   const url_api = `${this.env.loopbackApiUrl}${this.api_string}/userSelectionMenu`;
+  //   return this.http
+  //     .post<UserSelectionModel>(url_api, query, { headers: this.headers })
+  //     .pipe(
+  //       map(data => data),
+  //       catchError(this.handleError)
+  //     );
+  // }
+
+
 
 
   readUserSelectionHistoric(local_store?): UserSelectionModel {
@@ -106,8 +121,26 @@ export class UserSelectionService {
 
 
   readMenuOptions(local_store?): UserSelectionModel {
-    let menuOptions = new UserSelectionModel('menuOptions')
-    menuOptions = JSON.parse(localStorage.getItem(`proser_menu`));
+    let menuOptions = new UserSelectionModel();
+    let proser_menu = { menuOptions: menuOptions };
+    let proser_menu_temp;
+    let menuOptions_temp;
+
+    try {
+      proser_menu_temp = JSON.parse(localStorage.getItem(`proser_menu`));
+      menuOptions_temp = proser_menu_temp["menuOptions"];
+
+      if (proser_menu_temp === null) {
+        localStorage.setItem(`proser_menu`, JSON.stringify(proser_menu));
+      } else {
+        proser_menu.menuOptions = menuOptions_temp;
+        menuOptions = menuOptions_temp;
+      }
+    } catch (e) {
+      menuOptions = new UserSelectionModel();
+      proser_menu = { menuOptions: menuOptions };
+      localStorage.setItem(`proser_menu`, JSON.stringify(proser_menu));
+    }
     return menuOptions;
   }
 

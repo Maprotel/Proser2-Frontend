@@ -1,5 +1,12 @@
+<!----------ALERT MESSAGE------------------------- -->
+<div>
+  <app-alert [alertMessage]="alertMessage"></app-alert>
+</div>
 
-<section class="row button-area report">
+
+
+
+<main class="row button-area report" *ngIf="show && !alertMessage.alertShow">
   <!-- ------- BUTTONS -------------------- -->
 
   <article class=" row button-area  mr-auto">
@@ -39,14 +46,14 @@
                              (returnNumberOfRowsInTable)="onReturnNumberOfRowsInTable($event)"
                              (returnRowsForTable)="onReturnRowsForTable($event)">
   </app-reports-report-finder>
-</section>
+</main>
 
-<section *ngIf="!show">
+<section *ngIf="!show && !alertMessage.alertShow">
   <h1>Obteniendo datos del servidor...</h1>
 </section>
 
 <!-- DATATABE---------------------------- -->
-<section class="report" *ngIf="rows && show && !graph">
+<main class="report" *ngIf="rows && show && !graph">
   <div>
     <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'"
                    [limit]="numberOfRowsInTable.value" [headerHeight]="60"
@@ -577,7 +584,8 @@
         </ng-template>
 
         <ng-template #wait_seconds>
-          <p class="right-black-bold">{{rows_total[0].wait_seconds | number: "1.0-0" }}</p>
+          <p class="right-black-bold">
+            {{rows_total[0].wait_seconds | number: "1.0-0" }}</p>
         </ng-template>
 
       </ngx-datatable-column>
@@ -615,9 +623,9 @@
   </div>
 
   <hr />
-</section>
+</main>
 
-<main class="main"></main>
+
 
 
 <section *ngIf="graph">
@@ -627,6 +635,3 @@
 
   </app-reports-inbound-report-graph>
 </section>
-
-
-<!-- <button (click)="onCreateModel(model)">Export</button> -->
