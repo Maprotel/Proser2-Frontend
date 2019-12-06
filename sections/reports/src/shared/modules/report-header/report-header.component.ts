@@ -44,7 +44,7 @@ export class ReportHeaderComponent implements OnInit {
   }
 
   onUserSelectionText() {
-    let data = new UserSelectionModel("standard");
+    let data = new UserSelectionModel("userSelection");
     data.start_date = objectDateToTextDate(this.userSelection.start_date);
     data.end_date = objectDateToTextDate(this.userSelection.end_date);
 

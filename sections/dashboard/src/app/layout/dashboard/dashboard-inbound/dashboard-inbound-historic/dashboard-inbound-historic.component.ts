@@ -55,7 +55,7 @@ export class DashboardInboundHistoricComponent implements OnInit {
     private envService: EnvService,
     private modalService: NgbModal,
   ) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.env = this.envService;
     this.rows = new DashboardInboundResponseModel();
@@ -64,7 +64,7 @@ export class DashboardInboundHistoricComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.title = ("Llamadas entrantes historico");
     this.userSelectionHistoric()
     this.getReportListDashboard(this.userSelection);

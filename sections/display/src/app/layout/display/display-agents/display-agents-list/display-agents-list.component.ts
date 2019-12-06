@@ -107,7 +107,7 @@ export class DisplayAgentsListComponent implements OnInit, OnDestroy {
 
   // Start
   ngOnInit() {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.getReportList(this.userSelection);
     this.filterFieldList = this.model.fieldList();
     this.numberOfRowsInTable = { id: 10, value: 10 };
@@ -227,7 +227,7 @@ export class DisplayAgentsListComponent implements OnInit, OnDestroy {
 
   // Update on return of selector in header
   onReturnHeaderResult(event) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.getReportList(this.userSelection);
     this.show_graph_or_table_button = false;
     //  this.childGraph ? this.childGraph.generateGraph("header", this.rows) : "";
@@ -235,7 +235,7 @@ export class DisplayAgentsListComponent implements OnInit, OnDestroy {
 
   // Activated by button
   onRecalculate(event) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.getReportList(this.userSelection);
     this.show_graph_or_table_button = false;
     console.error("this.rows", this.rows);

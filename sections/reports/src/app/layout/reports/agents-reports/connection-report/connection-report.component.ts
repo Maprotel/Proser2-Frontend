@@ -31,7 +31,7 @@ export class ConnectionReportComponent implements OnInit {
     this.userSelectionHistoric();
   }
   setReportTitles() {
-    // this.userSelection = new UserSelectionModel("standard");
+    // this.userSelection = new UserSelectionModel("userSelection");
     this.userSelection.title = this.title;
     //
     // //

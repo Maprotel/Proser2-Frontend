@@ -61,7 +61,7 @@ export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
     private userSelectionService: UserSelectionService,
     private alertService: AlertService
   ) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("menuOptions");
     this.selectorVisibleFields.start_date = false;
     this.selectorVisibleFields.end_date = false;
@@ -81,7 +81,7 @@ export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
 
     this.userSelection.mode = { id: 0, name: "Actual", value: 'actual' };
     this.old_end_date = this.userSelection.end_date;

@@ -39,8 +39,6 @@ export class UserSelectionService {
   getUserSelectionMenus(
     userSelection: UserSelectionModel): Observable<UserSelectionModel> {
     let query = JSON.stringify(userSelection);
-    console.log('query', query);
-
     const accessToken = localStorage.getItem("accessToken");
     const url_api = `${this.env.loopbackApiUrl}${this.api_string}/userSelectionMenu`;
     return this.http
@@ -109,7 +107,7 @@ export class UserSelectionService {
 
   readMenuOptions(local_store?): UserSelectionModel {
     let menuOptions = new UserSelectionModel('menuOptions')
-    menuOptions = JSON.parse(localStorage.getItem(`menuOptions`));
+    menuOptions = JSON.parse(localStorage.getItem(`proser_menu`));
     return menuOptions;
   }
 
@@ -131,13 +129,13 @@ export class UserSelectionService {
   }
 
 
-  writeMenuOptions(userSelection) {
-    let menuOptions = { userSelection };
+  writeMenuOptions(menuOptions) {
+    let proser_menu = { menuOptions };
     localStorage.setItem(
-      `menuOptions`,
-      JSON.stringify(menuOptions)
+      `proser_menu`,
+      JSON.stringify(proser_menu)
     );
-    return userSelection;
+    return menuOptions;
   }
 
 }

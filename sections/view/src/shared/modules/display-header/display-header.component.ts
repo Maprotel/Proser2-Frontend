@@ -32,7 +32,7 @@ export class DisplayHeaderComponent implements OnInit {
     private userSelectionService: UserSelectionService
   ) {
     this.env = this.envService;
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.local_store = "assignation";
   }
@@ -40,7 +40,7 @@ export class DisplayHeaderComponent implements OnInit {
   ngOnInit() { }
 
   onUserSelectionText() {
-    let data = new UserSelectionModel("standard");
+    let data = new UserSelectionModel("userSelection");
     data.start_date = objectDateToTextDate(this.userSelection.start_date);
     data.end_date = objectDateToTextDate(this.userSelection.end_date);
 

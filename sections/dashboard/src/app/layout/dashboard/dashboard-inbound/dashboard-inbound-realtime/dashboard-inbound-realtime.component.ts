@@ -53,7 +53,7 @@ export class DashboardInboundRealtimeComponent implements OnInit {
     private userSelectionService: UserSelectionService,
     private alertService: AlertService
   ) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.rows = new DashboardInboundResponseModel();
     this.alertMessage = new AlertModel();
@@ -62,7 +62,7 @@ export class DashboardInboundRealtimeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.title = "Entrantes en tiempo real";
     this.userSelectionCurrent();
     this.getReportListDashboard(this.userSelection);

@@ -23,7 +23,7 @@ export class DisplayInboundComponent implements OnInit {
     private envService: EnvService,
     private userSelectionService: UserSelectionService
   ) {
-    // this.userSelection = new UserSelectionModel("standard");
+    // this.userSelection = new UserSelectionModel("userSelection");
     // // this.selectorVisibleFields = new UserSelectionModel("visible");
     // this.title = "Display llamadas entrantes";
   }

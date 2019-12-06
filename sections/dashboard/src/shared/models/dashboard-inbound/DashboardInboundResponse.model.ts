@@ -199,6 +199,6 @@ export class DashboardInboundResponseModel {
       }
     ];
 
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
   }
 }

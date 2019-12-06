@@ -47,7 +47,7 @@ export class DashboardOutboundHistoricComponent implements OnInit {
     private userSelectionService: UserSelectionService,
     private alertService: AlertService
   ) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.rows = new DashboardOutboundResponseModel();
     this.alertMessage = new AlertModel();
@@ -55,7 +55,7 @@ export class DashboardOutboundHistoricComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.title = 'Salientes histórico';
     this.userSelectionHistoric()
     this.getReportListDashboard(this.userSelection);

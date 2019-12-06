@@ -118,7 +118,7 @@ export class DisplayInboundListComponent implements OnInit {
     this.rows = new DisplayInboundResponseModel();
     this.rows_original = new DisplayInboundResponseModel();
 
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
 
     this.selectorVisibleFields.assignation = false;
@@ -184,7 +184,7 @@ export class DisplayInboundListComponent implements OnInit {
 
   // Get records from backend
   getReportList() {
-    let userSelectionTemp = new UserSelectionModel("standard");
+    let userSelectionTemp = new UserSelectionModel("userSelection");
     this.userSelection = this.setHeaderInfo(userSelectionTemp);
 
     this.displayInboundIndicatorsService
@@ -271,7 +271,7 @@ export class DisplayInboundListComponent implements OnInit {
 
   // Update on return of selector in header
   onReturnHeaderResult(event) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.getReportList();
     this.show_graph_or_table_button = false;
     this.childGraph ? this.childGraph.generateGraph("header", this.rows) : "";
@@ -279,7 +279,7 @@ export class DisplayInboundListComponent implements OnInit {
 
   // Activated by button
   onRecalculate(event) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.getReportList();
     this.show_graph_or_table_button = false;
     console.error("this.rows", this.rows);

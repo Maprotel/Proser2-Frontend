@@ -122,47 +122,25 @@ export class AuthService {
 
   }
 
-  setStore(){
-    this.setProserStoreMenuOptions();
+  setStore() {
     this.setProserStoreHistoric();
     this.setProserStoreCurrent();
+    this.setProserStoreMenuOptions();
   }
 
-  // Record proser_historic & proser_current in local store
-  setProserStore() {
-    const proser_historic = {
-      userSelection: new UserSelectionModel("userSelection")
+  // Record proser_current in local store
+  setProserStoreMenuOptions() {
+    const proser_menu = {
+      menuOptions: new UserSelectionModel("menuOptions")
     };
-
-    const proser_current = {
-      userSelection: new UserSelectionModel("userSelection")
-    };
-
-    const menuOptions = {
-      userSelection: new UserSelectionModel("menuOptions")
-    };
-
-    proser_historic.userSelection.mode = {
-      id: 1,
-      name: "Histórico",
-      value: "historic"
-    };
-
-    proser_current.userSelection.mode = {
-      id: 0,
-      name: "Actual",
-      value: "actual"
-    };
-
-    localStorage.setItem("proser_historic", JSON.stringify(proser_historic));
-    localStorage.setItem("proser_current", JSON.stringify(proser_historic));
-    localStorage.setItem("menuOptions", JSON.stringify(menuOptions));
+    localStorage.setItem("proser_menu", JSON.stringify(proser_menu));
   }
+
 
   // Record proser_historic in local store
   setProserStoreHistoric() {
     const proser_historic = {
-      userSelection: new UserSelectionModel("standard")
+      userSelection: new UserSelectionModel("userSelection")
     };
     proser_historic.userSelection.mode = {
       id: 1,
@@ -176,7 +154,7 @@ export class AuthService {
   // Record proser_current in local store
   setProserStoreCurrent() {
     const proser_current = {
-      userSelection: new UserSelectionModel("standard")
+      userSelection: new UserSelectionModel("userSelection")
     };
     proser_current.userSelection.mode = {
       id: 0,
@@ -186,13 +164,7 @@ export class AuthService {
     localStorage.setItem("proser_current", JSON.stringify(proser_current));
   }
 
-  // Record proser_current in local store
-  setProserStoreMenuOptions() {
-    const menuOptions = {
-      userSelection: new UserSelectionModel("menuOptions")
-    };
-    localStorage.setItem("menuOptions", JSON.stringify(menuOptions));
-  }
+
 
   /* GETTERS****************** */
 

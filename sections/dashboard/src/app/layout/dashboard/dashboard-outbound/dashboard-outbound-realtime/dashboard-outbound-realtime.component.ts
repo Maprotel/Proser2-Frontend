@@ -51,7 +51,7 @@ export class DashboardOutboundRealtimeComponent implements OnInit {
     private userSelectionService: UserSelectionService,
     private alertService: AlertService
   ) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.rows = new DashboardOutboundResponseModel();
     this.alertMessage = new AlertModel();

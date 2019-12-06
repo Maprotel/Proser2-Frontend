@@ -23,7 +23,7 @@ export class DisplayOutboundComponent implements OnInit {
     private envService: EnvService,
     private userSelectionService: UserSelectionService
   ) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.title = "Display llamadas salientes";
   }
@@ -35,7 +35,7 @@ export class DisplayOutboundComponent implements OnInit {
   }
 
   setReportTitles() {
-    // this.userSelection = new UserSelectionModel("standard");
+    // this.userSelection = new UserSelectionModel("userSelection");
     this.userSelection.title = this.title;
     // //
     // //

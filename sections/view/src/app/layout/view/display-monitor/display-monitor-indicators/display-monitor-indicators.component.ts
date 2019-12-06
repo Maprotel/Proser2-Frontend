@@ -66,7 +66,7 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
     private userSelectionService: UserSelectionService,
     private alertService: AlertService
   ) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("menuOptions");
     this.selectorVisibleFields.start_date = false;
     this.selectorVisibleFields.end_date = false;

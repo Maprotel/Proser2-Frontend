@@ -69,7 +69,7 @@ export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
     private userSelectionService: UserSelectionService,
     private alertService: AlertService
   ) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.userSelection.mode = { id: 0, name: "Histórico", value: "historic" };
     this.selectorVisibleFields = new UserSelectionModel("menuOptions");
     this.selectorVisibleFields.start_date = true;

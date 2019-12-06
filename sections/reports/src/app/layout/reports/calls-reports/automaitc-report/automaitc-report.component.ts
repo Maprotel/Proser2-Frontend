@@ -35,7 +35,7 @@ export class AutomaitcReportComponent implements OnInit {
   }
 
   setReportTitles() {
-    // this.userSelection = new UserSelectionModel("standard");
+    // this.userSelection = new UserSelectionModel("userSelection");
     this.userSelection.title = this.title;
     //
     // //

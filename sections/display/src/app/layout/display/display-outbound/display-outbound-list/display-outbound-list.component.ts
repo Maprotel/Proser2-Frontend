@@ -115,7 +115,7 @@ export class DisplayOutboundListComponent implements OnInit {
     this.rows = new DisplayOutboundResponseModel();
     this.rows_original = new DisplayOutboundResponseModel();
 
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
 
     this.selectorVisibleFields.assignation = false;
@@ -124,7 +124,7 @@ export class DisplayOutboundListComponent implements OnInit {
 
   // Start
   ngOnInit() {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.getReportList();
     this.filterFieldList = this.model.fieldList();
     this.numberOfRowsInTable = { id: 10, value: 10 };
@@ -181,7 +181,7 @@ export class DisplayOutboundListComponent implements OnInit {
 
   // Get records from backend
   getReportList() {
-    let userSelectionTemp = new UserSelectionModel("standard");
+    let userSelectionTemp = new UserSelectionModel("userSelection");
     this.userSelection = this.setHeaderInfo(userSelectionTemp);
 
     this.displayOutboundIndicatorsService
@@ -238,7 +238,7 @@ export class DisplayOutboundListComponent implements OnInit {
 
   // Update on return of selector in header
   onReturnHeaderResult(event) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.getReportList();
     this.show_graph_or_table_button = false;
     this.childGraph ? this.childGraph.generateGraph("header", this.rows) : "";
@@ -246,7 +246,7 @@ export class DisplayOutboundListComponent implements OnInit {
 
   // Activated by button
   onRecalculate(event) {
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.getReportList();
     this.show_graph_or_table_button = false;
     console.error("this.rows", this.rows);

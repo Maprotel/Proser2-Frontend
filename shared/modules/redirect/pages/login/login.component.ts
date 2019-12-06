@@ -118,17 +118,6 @@ export class LoginComponent implements OnInit {
   // store selection menus
   getUserSelectionMenus() {
     let userSelection = new UserSelectionModel("menuOptions");
-    localStorage.setItem("menuOptions", JSON.stringify(userSelection));
-
-
-    //   this.userSelectionService
-    //     .getUserSelectionMenus(selection)
-    //     .subscribe(data => {
-    //       let menuOptions = data;
-    //       localStorage.setItem("menuOptions", JSON.stringify(menuOptions));
-    //       error => {
-    //         console.error('Error');
-    //       };
-    //     });
+    localStorage.setItem("proser_menu", JSON.stringify(userSelection));
   }
 }

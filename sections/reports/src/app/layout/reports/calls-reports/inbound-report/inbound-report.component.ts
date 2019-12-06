@@ -90,17 +90,42 @@ export class InboundReportComponent implements OnInit {
 
     // userSelection
     // this.userSelection = new UserSelectionModel('standard')
-    // this.userSelection.title = this.title;
-    // this.userSelection.mode = { id: 1, name: "Histórico", value: "historic" };
-    // this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
+    this.userSelection.title = this.title;
+    this.userSelection.mode = { id: 1, name: "Histórico", value: "historic" };
+    this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
 
     // menuOptions
     // this.menuOptions = new UserSelectionModel("menuOptions");
+    console.log('this.menuOptions', this.menuOptions);
+
+    // this.onUserSelectionMenus();
     // this.userSelectionService.writeMenuOptions(this.menuOptions);
 
 
   }
 
+  // userSelectionMenus
+
+  onUserSelectionMenus() {
+    this.userSelectionService.getUserSelectionMenus(this.userSelection)
+      .subscribe(data => {
+
+        this.menuOptions = data;
+        this.userSelectionService.writeMenuOptions(this.menuOptions);
+        this.menuOptions = this.userSelectionService.readMenuOptions();
+        console.log('this.menuOptions', this.menuOptions);
+
+      },
+        error => {
+          console.error("Error", error);
+          this.alertService.error(error.status);
+          this.alertMessage.alertTitle = "Error del servidor";
+          this.alertMessage.alertText = error.statusText;
+          this.alertMessage.alertShow = true;
+          this.alertMessage.alertClass =
+            "alert alert-danger alert-dismissible fade show";
+        });
+  }
 
   // Selector
   onOpenSelector(event) {
@@ -115,7 +140,7 @@ export class InboundReportComponent implements OnInit {
     this.showHeader = true;
     console.log('this.userSelection', this.userSelection);
     console.log('this.menuOptions', this.menuOptions);
-    
+
     this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
     this.userSelectionService.writeMenuOptions(this.menuOptions);
     this.onCloseModal()

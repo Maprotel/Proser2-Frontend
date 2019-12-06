@@ -66,7 +66,7 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     this.model = new ProShowDisplayModel();
 
     this.env = this.envService;
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
 
     this.weekDayList = [

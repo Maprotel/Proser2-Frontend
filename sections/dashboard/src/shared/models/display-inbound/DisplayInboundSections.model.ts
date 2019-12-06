@@ -14,9 +14,9 @@ export class DisplayInboundSectionsModel {
   // INITIALIZE PROPERTIES
   constructor() {
     // sections & views
-    this.userSelection = new UserSelectionModel("standard");
+    this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
-    this.model = new UserSelectionModel("standard");
+    this.model = new UserSelectionModel("userSelection");
     this.title = "Display llamadas entrantes";
     this.serverResponse = null;
   }

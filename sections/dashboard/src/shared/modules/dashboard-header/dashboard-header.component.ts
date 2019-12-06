@@ -50,7 +50,7 @@ export class DashboardHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.userSelection = new UserSelectionModel("standard");
+    // this.userSelection = new UserSelectionModel("userSelection");
     this.headerText = {
       title: this.userSelection.title,
       date: this.onUserSelectionText(),

@@ -78,7 +78,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
     // private envService: EnvService,
     private authService: AuthService
   ) {
-    this.selection = new UserSelectionModel("standard");
+    this.selection = new UserSelectionModel("userSelection");
     this.menuOptions = new UserSelectionModel("menuOptions");
     this.incomingUserSelection = new UserSelectionModel();
 
@@ -88,6 +88,9 @@ export class SelectorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log('menuOptions', this.menuOptions);
+    console.log('userSelection', this.userSelection);
+
     this.onFillForm(this.userSelection);
     this.onChange()
   }
