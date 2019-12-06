@@ -68,8 +68,6 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.submitted = true;
 
-    // console.error('data', this.loginForm.value);
-
     return this.authService
       .loginUser(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(
@@ -77,7 +75,8 @@ export class LoginComponent implements OnInit {
           let temp = this.userCheck(data, this.option);
           this.authService.setUser(temp);
           this.authService.setToken(temp.accessToken);
-          this.getUserSelectionMenus();
+          this.authService.setStore();
+          console.clear();
           this.router.navigate(["/"]);
         },
         error => {
@@ -118,15 +117,18 @@ export class LoginComponent implements OnInit {
 
   // store selection menus
   getUserSelectionMenus() {
-    let selection = new UserSelectionModel("standard");
-    this.userSelectionService
-      .getUserSelectionMenus(selection)
-      .subscribe(data => {
-        let menuOptions = data;
-        localStorage.setItem("menuOptions", JSON.stringify(menuOptions));
-        error => {
-          console.error('Error');
-        };
-      });
+    let userSelection = new UserSelectionModel("menuOptions");
+    localStorage.setItem("menuOptions", JSON.stringify(userSelection));
+
+
+    //   this.userSelectionService
+    //     .getUserSelectionMenus(selection)
+    //     .subscribe(data => {
+    //       let menuOptions = data;
+    //       localStorage.setItem("menuOptions", JSON.stringify(menuOptions));
+    //       error => {
+    //         console.error('Error');
+    //       };
+    //     });
   }
 }

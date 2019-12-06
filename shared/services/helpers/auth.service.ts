@@ -73,6 +73,7 @@ export class AuthService {
     const url_api = `${this.env.loopbackApiUrl}/api/userbases/logout?access_token=${accessToken}`;
     this.router.navigate(["/bye"]);
     localStorage.clear();
+    console.clear();
     return this.http.post<UserbaseModel>(url_api, { headers: this.headers });
   }
 
@@ -118,8 +119,11 @@ export class AuthService {
   // Record token in local store
   setToken(token) {
     localStorage.setItem("accessToken", token);
-    // this.setProserStore();
 
+  }
+
+  setStore(){
+    this.setProserStoreMenuOptions();
     this.setProserStoreHistoric();
     this.setProserStoreCurrent();
   }
@@ -127,11 +131,11 @@ export class AuthService {
   // Record proser_historic & proser_current in local store
   setProserStore() {
     const proser_historic = {
-      userSelection: new UserSelectionModel("standard")
+      userSelection: new UserSelectionModel("userSelection")
     };
 
     const proser_current = {
-      userSelection: new UserSelectionModel("standard")
+      userSelection: new UserSelectionModel("userSelection")
     };
 
     const menuOptions = {

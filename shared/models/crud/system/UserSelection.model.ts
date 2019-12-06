@@ -60,7 +60,7 @@ export class UserSelectionModel {
   current_date: any;
 
   constructor(options?) {
-    if (options === "standard" || options === null) {
+    if (options === "userSelection" || options === null) {
       // TEXT
       this.title = "Título";
       this.entity_selection = "-";
@@ -186,7 +186,7 @@ export class UserSelectionModel {
       this.current_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
     }
 
-    if (options === "visible") {
+    if (options === "selectorVisibleFields") {
       this.title = true;
       this.entity_selection = true;
       this.options = true;

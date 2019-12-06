@@ -41,7 +41,8 @@
     "sms": "ng serve sms",
     "system": "ng serve system",
     "user": "ng serve user",
-    "view": "ng serve view"
+    "view": "ng serve view",
+    "fortinet": "ps aux | grep openforti"
   },
   "private": true,
   "dependencies": {

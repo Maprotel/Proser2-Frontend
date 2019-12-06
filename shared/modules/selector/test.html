@@ -1,7 +1,7 @@
 <app-alert [alertMessage]="alertMessage"></app-alert>
 
 <main id="register"
-      *ngIf="userSelection && selectorVisibleFields && showSelector && menuOptions"
+      *ngIf="userSelection && selectorVisibleFields && show_data && menuOptions"
       class="main">
 
   <form [formGroup]="selectorForm" class="register">
@@ -447,11 +447,10 @@ model.fieldInfo('client').text
         <div class="button-group">
 
           <!-- BUTTONS -->
-          <button type="button" (click)="onAcceptSelector()"
+          <button (click)="onCloseModal()"
                   class="btn btn-success">Aceptar</button>
-          <button type="button" (click)="onCancelSelector()"
-                  class="btn btn-warning">Cancelar</button>
-          <button type="button" (click)="onResetSelector()"
+          <button (click)="onCancel()" class="btn btn-warning">Cancelar</button>
+          <button (click)="onReset()"
                   class="btn btn-secondary">Resetear</button>
           <hr>
           <!-- status -->

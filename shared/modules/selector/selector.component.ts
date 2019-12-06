@@ -32,12 +32,15 @@ import groupList from "shared/data/selector-group-list.data";
   styleUrls: ["./selector.component.scss"]
 })
 export class SelectorComponent implements OnInit, OnDestroy {
-  @Output() closeModal = new EventEmitter();
+  @Output() closeModal: EventEmitter<any> = new EventEmitter();
   @Output() userSelectionBack: EventEmitter<any> = new EventEmitter();
-  @Output() closeSelector: EventEmitter<any> = new EventEmitter();
+
+  @Output() acceptSelector: EventEmitter<any> = new EventEmitter();
+  @Output() cancelSelector: EventEmitter<any> = new EventEmitter();
 
   @Input() userSelection: UserSelectionModel;
   @Input() selectorVisibleFields: UserSelectionModel;
+  @Input() menuOptions: UserSelectionModel;
   @Input() selectorVisibleAreas;
 
   jsonSelector = false;
@@ -56,7 +59,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
   selectorForm: FormGroup;
 
   show_submit_button = false;
-  show_data = false;
+  showSelector = false;
 
   selection;
   previousUserSelection;
@@ -65,9 +68,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
   report_title: string;
 
   incomingUserSelection: UserSelectionModel;
-
-  // list;
-  menuOptions: UserSelectionModel;
 
   // groupList;
 
@@ -88,94 +88,37 @@ export class SelectorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (!this.selectorVisibleAreas) {
-      this.selectorVisibleAreas = {
-        date: true,
-        interval: true,
-        options: true,
-        buttons: true,
-      }
-    }
-
-
-    this.menuOptions = JSON.parse(localStorage.getItem("menuOptions"));
-
-    this.getUserSelectionMenus();
-
-    this.previousUserSelection = this.userSelection;
     this.onFillForm(this.userSelection);
     this.onChange()
   }
 
-  onReset() {
-    this.userSelection = new UserSelectionModel("standard");
-    this.userSelection.title = this.previousUserSelection.title;
-    this.userSelection.mode = this.previousUserSelection.mode;
-
-    this.onFillForm(this.userSelection);
-
-    this.onSaveUserSelection(this.userSelection);
-  }
-
-  onCloseModal() {
-    this.closeModal.emit("close");
-  }
-
-  onAccept() {
-    this.closeModal.emit("close");
-  }
-
-  onCancel() {
-    let proser_historic = {
-      userSelection: new UserSelectionModel()
-    };
-    proser_historic.userSelection = this.previousUserSelection;
-    this.onChange();
-    localStorage.setItem("proser_historic", JSON.stringify(proser_historic));
-    this.closeModal.emit("close");
-  }
-
-  onAllDay() {
-    this.start_time_text = "00:00:00";
-    this.end_time_text = "23:59:59";
-
-    this.selectorForm.patchValue({
-      start_time_hour: {
-        hour: 0,
-        minute: 0,
-        second: 0,
-        value: "00:00:00"
-      }
-    });
-
-    this.selectorForm.patchValue({
-      end_time_hour: {
-        hour: 23,
-        minute: 59,
-        second: 59,
-        value: "23:59:59"
-      }
-    });
-
-    this.selectorForm.patchValue({
-      groupBy: groupList[0]
-    });
-
-    this.onChange();
-  }
-
   ngOnDestroy() {
-    // this.onSaveUserSelection(this.userSelection);
-    this.closeSelector.emit("redraw");
+    // this.acceptSelector.emit("redraw");
   }
 
+  // Selector
+  onResetSelector() {
+    this.userSelection = new UserSelectionModel('userSelection');
+    this.menuOptions = new UserSelectionModel('menuOptions');
+    this.onGetUserSelectionMenus();
+    this.onFillForm(this.userSelection);
+  }
+
+  onAcceptSelector() {
+    this.acceptSelector.emit("acceptSelector");
+  }
+
+  onCancelSelector() {
+    this.cancelSelector.emit("cancelSelector");
+  }
+
+  onSubmit(currentSelection) {
+    // this.onAcceptSelector();
+  }
+
+  // Reset form
   onFillForm(currentSelection) {
     if (currentSelection) {
-      this.start_time_text = objectTimeToTextTime(
-        currentSelection.start_time_hour
-      );
-
-      this.end_time_text = objectTimeToTextTime(currentSelection.end_time_hour);
 
       this.selectorForm = this.formBuilder.group({
         title: [currentSelection.title],
@@ -221,7 +164,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
       });
     }
 
-    this.show_data = true;
+    this.showSelector = true;
   }
 
   // convenience getter for easy access to form fields
@@ -229,14 +172,42 @@ export class SelectorComponent implements OnInit, OnDestroy {
     return this.selectorForm.controls;
   }
 
-  onRechargeForm() {
-    // this.selectorForm.patchValue = this.incomingUserSelection;
+  onChange() {
+    this.selectorForm.patchValue({
+      options: selectorOptionSubtitles(this.selectorForm.value)
+    });
+    this.selectorForm.patchValue({
+      legend: selectorLegendSubtitles(this.selectorForm.value)
+    });
+    this.userSelection.options = this.selectorForm.value.options;
+    this.userSelection.legend = this.selectorForm.value.legend;
   }
 
-  onSubmit(currentSelection) {
-    this.onSaveUserSelection(currentSelection);
-  }
+  onAllDay() {
+    this.selectorForm.patchValue({
+      start_time_hour: {
+        hour: 0,
+        minute: 0,
+        second: 0,
+        value: "00:00:00"
+      }
+    });
 
+    this.selectorForm.patchValue({
+      end_time_hour: {
+        hour: 23,
+        minute: 59,
+        second: 59,
+        value: "23:59:59"
+      }
+    });
+
+    this.selectorForm.patchValue({
+      groupBy: groupList[0]
+    });
+
+    this.onChange();
+  }
 
 
   onNewStartDate() {
@@ -247,7 +218,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.userSelection.start_date = this.selectorForm.value.start_date;
     this.userSelection.end_date = this.selectorForm.value.end_date;
 
-    this.onSaveUserSelection(this.selectorForm.value);
     this.onChange();
   }
 
@@ -255,28 +225,12 @@ export class SelectorComponent implements OnInit, OnDestroy {
   onNewEndDate() {
     this.userSelection.start_date = this.selectorForm.value.start_date;
     this.userSelection.end_date = this.selectorForm.value.end_date;
-    this.onSaveUserSelection(this.selectorForm.value);
     this.onChange();
-  }
-
-  onChange() {
-    this.selectorForm.patchValue({
-      options: selectorOptionSubtitles(this.selectorForm.value)
-    });
-    this.selectorForm.patchValue({
-      legend: selectorLegendSubtitles(this.selectorForm.value)
-    });
-    this.userSelectionBack.emit(this.selectorForm.value);
-    this.onSaveUserSelection(this.selectorForm.value);
   }
 
 
 
   onChangeStartTime() {
-    this.start_time_text = objectTimeToTextTime(
-      this.selectorForm.value.start_time_hour
-    );
-
     this.selectorForm.patchValue({
       start_time: {
         id: 0,
@@ -288,10 +242,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
   }
 
   onChangeEndTime() {
-    this.end_time_text = objectTimeToTextTime(
-      this.selectorForm.value.end_time_hour
-    );
-
     this.selectorForm.patchValue({
       end_time: {
         id: 0,
@@ -335,8 +285,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   onLastMinutes() {
     this.onAllDay();
-    this.onSaveUserSelection(this.selectorForm.value);
-
     let mode = [{ id: 0, name: "Actual" }];
     let start_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
     let end_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
@@ -382,27 +330,23 @@ export class SelectorComponent implements OnInit, OnDestroy {
       this.selectorVisibleFields.start_time = true;
       this.selectorVisibleFields.end_time = true;
     }
-    this.onSaveUserSelection(this.selectorForm.value);
   }
 
-  onStatusChange() {
-    this.onSaveUserSelection(this.selectorForm.value);
-    this.onChange();
-  }
 
   // Gets the menu lists from the server this.menuOptions
-  getUserSelectionMenus() {
-    this.selection = this.userSelection; //this.userSelectionService.readUserSelection();
-    this.userSelectionService
-      .getUserSelectionMenus(this.selection)
-      .subscribe(data => {
-        this.menuOptions = data;
-        localStorage.setItem("menuOptions", JSON.stringify(this.menuOptions));
-        error => {
-          this.onError(error);
-        };
-      });
+  onGetUserSelectionMenus() {
+    this.userSelectionService.getUserSelectionMenus(this.userSelection)
+      .subscribe(
+        data => {
+          // localStorage.setItem(`menuOptions`, JSON.stringify(this.menuOptions));
+          console.log('menuOptions', data);
+          this.menuOptions = data;
+          error => {
+            this.onError(error);
+          };
+        });
   }
+
 
   // ERROR: Handles error on queries
   onError(error?) {
@@ -413,27 +357,10 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.alertMessage.alertClass =
       "alert alert-danger alert-dismissible fade show";
   }
-  closeModalMsg() {
-    this.closeSelector.emit("closeSelector");
-  }
 
   getUserJsonSelector() {
     this.jsonSelector = !this.jsonSelector;
   }
 
-  onSaveUserSelection(userSelection) {
-    if (this.userSelection.mode.value === "actual") {
-      this.userSelectionService.writeUserSelectionCurrent(userSelection);
-    } else {
-      this.userSelectionService.writeUserSelectionHistoric(userSelection);
-    }
-  }
 
-  onReadUserSelection() {
-    if (this.userSelection.mode.value === "actual") {
-      this.userSelectionService.readUserSelectionCurrent();
-    } else {
-      this.userSelectionService.readUserSelectionHistoric();
-    }
-  }
 }

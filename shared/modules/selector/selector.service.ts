@@ -21,7 +21,7 @@ export class SelectorService {
     headers: this.headers
   };
 
-  constructor(private http: HttpClient, private env: EnvService) {}
+  constructor(private http: HttpClient, private env: EnvService) { }
 
   private handleError(error: any) {
     console.error(error);
@@ -38,7 +38,7 @@ export class SelectorService {
     } else {
       filter = `?access_token=${accessToken}`;
     }
-    const url_api = `${this.env.loopbackApiUrl}${this.api_string}/userSelectionMenu${filter}`;
+    const url_api = `${this.env.loopbackApiUrl}${this.api_string}/userSelectionMenu`;
     return this.http
       .post<UserSelectionModel>(url_api, query, { headers: this.headers })
       .pipe(

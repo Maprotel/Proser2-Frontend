@@ -26,26 +26,23 @@ export class UserSelectionService {
     headers: this.headers
   };
 
-  constructor(private http: HttpClient, private env: EnvService) {}
+  constructor(private http: HttpClient, private env: EnvService) { }
 
   private handleError(error: any) {
     console.error(error);
     return throwError(error);
   }
 
+
+
+
   getUserSelectionMenus(
-    selection: UserSelectionModel
-  ): Observable<UserSelectionModel> {
-    let query = JSON.stringify(selection);
+    userSelection: UserSelectionModel): Observable<UserSelectionModel> {
+    let query = JSON.stringify(userSelection);
+    console.log('query', query);
 
     const accessToken = localStorage.getItem("accessToken");
-    let filter;
-    if (query) {
-      filter = `?filter=${query}&access_token=${accessToken}`;
-    } else {
-      filter = `?access_token=${accessToken}`;
-    }
-    const url_api = `${this.env.loopbackApiUrl}${this.api_string}/userSelectionMenu${filter}`;
+    const url_api = `${this.env.loopbackApiUrl}${this.api_string}/userSelectionMenu`;
     return this.http
       .post<UserSelectionModel>(url_api, query, { headers: this.headers })
       .pipe(
@@ -109,28 +106,38 @@ export class UserSelectionService {
     return userSelection;
   }
 
+
+  readMenuOptions(local_store?): UserSelectionModel {
+    let menuOptions = new UserSelectionModel('menuOptions')
+    menuOptions = JSON.parse(localStorage.getItem(`menuOptions`));
+    return menuOptions;
+  }
+
   writeUserSelectionHistoric(userSelection) {
 
-
     let proser_historic = { userSelection };
-    localStorage.setItem(`proser_historic`, JSON.stringify(proser_historic));
-
+    localStorage.setItem(
+      `proser_historic`,
+      JSON.stringify(proser_historic));
     return userSelection;
   }
 
   writeUserSelectionCurrent(userSelection) {
     let proser_current = { userSelection };
-    localStorage.setItem(`proser_current`, JSON.stringify(proser_current));
+    localStorage.setItem(
+      `proser_current`,
+      JSON.stringify(proser_current));
     return userSelection;
   }
 
 
-  writeMenuOptions() {
-    let menuOptions = new UserSelectionModel('menuOptions');
+  writeMenuOptions(userSelection) {
+    let menuOptions = { userSelection };
     localStorage.setItem(
       `menuOptions`,
       JSON.stringify(menuOptions)
     );
+    return userSelection;
   }
 
 }
