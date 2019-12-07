@@ -53,7 +53,7 @@ export class InboundReportListComponent implements OnInit {
 
   // Component variables
   alertMessage = new AlertModel();
-  alertError;
+
   env;
 
   // Selector variables
@@ -203,7 +203,7 @@ export class InboundReportListComponent implements OnInit {
           } else {
             console.error("Error", res);
           }
-          this.alertError = false
+          this.alertMessage = false
         },
         error => {
           // console.error("Error - getReportList", error, error.status);

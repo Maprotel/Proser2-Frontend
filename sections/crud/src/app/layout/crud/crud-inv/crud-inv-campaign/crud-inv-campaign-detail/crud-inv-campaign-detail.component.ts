@@ -18,7 +18,7 @@ export class CrudInvCampaignDetailComponent implements OnInit {
 
   @Input() action: ActionConfig;
 
-  alertMessage: AlertModel;  alertError;
+  alertMessage: AlertModel;  alertMessage;
   env;
   error_detected = false;
   error_message;
