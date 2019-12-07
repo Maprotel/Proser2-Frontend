@@ -1,3 +1,10 @@
+<!----------REPORT HEADER------------------------- -->
+<div *ngIf="showHeader">
+    <app-reports-report-header [userSelection]="userSelection"
+                               (openSelector)="onOpenSelector(selector)">
+    </app-reports-report-header>
+  </div>
+
 <app-reports-inbound-interval-report-list
 [userSelection]="userSelection" [selectorVisibleFields]="selectorVisibleFields"
 >
