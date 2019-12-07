@@ -7,7 +7,8 @@ import { LOCALE_ID } from "@angular/core";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-import { AlertModule } from "shared/modules/alert/alert.module";
+import { AlertModule } from "shared/modules";
+
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import * as Chart from "chart.js";
 import * as ChartDataLabels from "chartjs-plugin-datalabels";
@@ -53,4 +54,4 @@ import { ExcelService } from 'sections/reports/src/shared/services';
   ],
   providers: [ExcelService, { provide: LOCALE_ID, useValue: "es" }]
 })
-export class InboundReportModule {}
+export class InboundReportModule { }

@@ -14,7 +14,8 @@ import { getUpdateFilter } from "shared/functions";
 import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
 
 // Global shared models
-import { AlertModel } from "shared/models/helpers/Alert";
+// import { AlertModel } from "shared/models/helpers/Alert";
+
 import { UserSelectionModel } from "shared/models";
 
 // Global shared services
@@ -46,7 +47,8 @@ export class InboundReportListComponent implements OnInit {
   @Input() selectorVisibleFields: UserSelectionModel;
 
   // Component variables
-  alertMessage = new AlertModel();
+  // alertMessage = new AlertModel();
+  alertError;
   env;
 
   // Selector variables
@@ -157,17 +159,11 @@ export class InboundReportListComponent implements OnInit {
           } else {
             console.error("Error", res);
           }
-          this.alertMessage = new AlertModel();
+          this.alertError = false
         },
         error => {
-          console.error("Error", error);
-          this.show = false;
-          this.alertService.error(error.status);
-          this.alertMessage.alertTitle = "Error del servidor";
-          this.alertMessage.alertText = error.statusText;
-          this.alertMessage.alertShow = true;
-          this.alertMessage.alertClass =
-            "alert alert-danger alert-dismissible fade show";
+          console.error('getReportList', error);
+          this.alertError = error
         }
       );
     }
@@ -232,7 +228,7 @@ export class InboundReportListComponent implements OnInit {
   exportToExcel(data) {
     const filterData = data.map(x => {
       return {
-        
+
         fecha: x.start_date,
         hora_inicio: x.start_time,
         hora_final: x.end_time,

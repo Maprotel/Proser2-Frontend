@@ -1,22 +1,24 @@
 import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 
-import { AlertModel } from "shared/models/helpers/Alert";
 import { NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 import {
+
   AlertService,
   EnvService,
   UserSelectionService
 } from "shared/services";
-import { UserSelectionModel } from "shared/models";
 
-import {
-  dateToDatePicker,
-  objectTimeToTextTime,
-  objectDateToTextDate,
-  selectorOptionSubtitles,
-  selectorLegendSubtitles
-} from "shared/functions";
+import { AlertModel, UserSelectionModel } from "shared/models";
+
+// import { AlertModel } from "shared/models/helpers/Alert";
+// import {
+//   dateToDatePicker,
+//   objectTimeToTextTime,
+//   objectDateToTextDate,
+//   selectorOptionSubtitles,
+//   selectorLegendSubtitles
+// } from "shared/functions";
 
 @Component({
   selector: "app-reports-inbound-report",
@@ -38,15 +40,12 @@ export class InboundReportComponent implements OnInit {
   userSelectionTemp: UserSelectionModel;
   selectorVisibleAreas;
 
-
   // Show
   showHeader: boolean = true;
   showDatatable: boolean = false;
 
   // Data
   title;
-
-
 
   constructor(
     private modalService: NgbModal,
@@ -116,7 +115,6 @@ export class InboundReportComponent implements OnInit {
     this.userSelection = this.userSelectionTemp;
     this.onCloseModal()
   }
-
 
   // Modal
   onOpenModal(content) {
