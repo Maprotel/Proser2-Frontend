@@ -203,7 +203,6 @@ export class InboundReportListComponent implements OnInit {
           } else {
             console.error("Error", res);
           }
-          this.alertMessage = false
         },
         error => {
           // console.error("Error - getReportList", error, error.status);

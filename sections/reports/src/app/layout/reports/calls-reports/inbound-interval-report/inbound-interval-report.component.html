@@ -5,10 +5,12 @@
     </app-reports-report-header>
   </div>
 
+  <div *ngIf="showDatatable">
+
 <app-reports-inbound-interval-report-list
 [userSelection]="userSelection" [selectorVisibleFields]="selectorVisibleFields"
 >
-</app-reports-inbound-interval-report-list>
+</app-reports-inbound-interval-report-list></div>
 
 
 

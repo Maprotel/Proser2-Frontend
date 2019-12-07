@@ -6,11 +6,11 @@
   </div>
   
   <!----------REPORT LIST------------------------- -->
-  
+  <div *ngIf="showDatatable">
   <app-reports-detail-report-list
 [userSelection]="userSelection" [selectorVisibleFields]="selectorVisibleFields"
 >
-</app-reports-detail-report-list>
+</app-reports-detail-report-list></div>
 
 
 

@@ -6,10 +6,11 @@
   </div>
   
   <!----------REPORT LIST------------------------- -->
+  <div *ngIf="showDatatable">
 <app-reports-assignation-report-list [userSelection]="userSelection"
                                      [selectorVisibleFields]="selectorVisibleFields">
 </app-reports-assignation-report-list>
-
+</div>
 
 <!-- MODAL WINDOW FOR SELECTOR ---------------------------------------------------- -->
 <ng-template #selector class="modal-full">
