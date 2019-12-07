@@ -12,6 +12,7 @@ export class AlertModel {
   }
 
   onResetAlert() {
+    console.clear();
     {
       this.alertTitle = '';
       this.alertText = '';
@@ -22,8 +23,14 @@ export class AlertModel {
 
   onAlertError(error) {
     this.alertTitle = "Error del servidor";
-    this.alertText = error;
+    this.alertText = (error.statusText);
     this.alertShow = true;
     this.alertClass = "alert alert-danger alert-dismissible fade show";
+  }
+
+  onSpanishError(text) {
+    let result = text
+    text = 'Unknown Error' ? 'Error desconocido (revise si el backend está funcionando)' : text;
+    return result
   }
 }

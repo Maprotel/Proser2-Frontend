@@ -61,6 +61,7 @@ export class InboundReportListComponent implements OnInit {
 
   // Realtime variables
   timerConnected;
+  backendConnected;
 
   // Datatable variables
   show_columns = false; // shows or hides a colum
@@ -110,6 +111,7 @@ export class InboundReportListComponent implements OnInit {
     this.selectorVisibleFields.assignation = false;
     this.selectorVisibleFields.auxiliar = false;
     this.timerConnected = 0;
+    this.backendConnected = true;
   }
 
   // Start
@@ -147,13 +149,30 @@ export class InboundReportListComponent implements OnInit {
 
     this.subscription.add(
       timerComponent.subscribe(() => {
-        this.getReportList(this.userSelection)
+        this.getPing();
+        !this.backendConnected ? this.getReportList(this.userSelection) : ''
       })
     );
 
     timerClock.subscribe(() => {
       this.timerConnected = this.timerConnected + 1;
     });
+  }
+
+  getPing() {
+    this.callsInboundDailyService.ping()
+      .subscribe(
+        res => {
+          // console.log('Res ping', res);
+          // this.alertMessage.onResetAlert()
+          this.backendConnected = true
+        },
+        error => {
+          console.error("Error - getPing", error, error.status);
+          this.alertMessage.onAlertError(error)
+          this.backendConnected = false
+          this.show = false;
+        })
   }
 
   // Get records from backend
@@ -164,10 +183,7 @@ export class InboundReportListComponent implements OnInit {
         (res: BackendResponseModel) => {
           this.alertMessage.onResetAlert();
           this.show = false;
-
           this.timerConnected = 0;
-          // console.error("res", res);
-
           if (Array.isArray(res.detail)) {
             this.rows_valid = res.detail[0] === undefined ? false : true;
 
@@ -190,9 +206,9 @@ export class InboundReportListComponent implements OnInit {
           this.alertError = false
         },
         error => {
-          console.error("Error", error, error.status);
+          // console.error("Error - getReportList", error, error.status);
           this.show = false;
-          this.alertMessage.onAlertError(error.message)
+          this.alertMessage.onAlertError(error)
         }
       );
     }
