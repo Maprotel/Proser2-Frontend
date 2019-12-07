@@ -5,9 +5,9 @@ import { UserInterface } from "shared/models/pages/user-interface";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { AlertModel } from "shared/models/helpers/Alert";
+import { AlertService } from "shared/services/helpers/alert.service";
 
 import { Router } from "@angular/router";
-import { AlertService } from "shared/services/helpers/alert.service";
 import { EnvService } from "shared/services/helpers/env.service";
 
 
@@ -31,7 +31,10 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   submitted = false;
+
+
   alertMessage = new AlertModel();
+  alertError
 
   constructor(
     private formBuilder: FormBuilder,
@@ -58,6 +61,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
+    this.alertMessage = new AlertModel();
   }
 
   // convenience getter for easy access to form fields
@@ -72,6 +76,7 @@ export class LoginComponent implements OnInit {
       .loginUser(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(
         data => {
+          this.alertMessage.onResetAlert();
           let temp = this.userCheck(data, this.option);
           this.authService.setUser(temp);
           this.authService.setToken(temp.accessToken);
@@ -82,14 +87,14 @@ export class LoginComponent implements OnInit {
         },
         error => {
           console.error("Error", error, error.status);
-          this.alertService.error(error.status);
-          this.alertMessage.alertTitle = "Error del servidor";
-          this.alertMessage.alertText = error.statusText;
-          this.alertMessage.alertShow = true;
-          this.alertMessage.alertClass =
-            "alert alert-danger alert-dismissible fade show";
+          this.alertMessage.onAlertError(error.message)
         }
       );
+  }
+
+
+  onShowAlert() {
+    this.alertMessage.onAlertError('My error')
   }
 
   userCheck(incomingUser, option) {
@@ -126,18 +131,14 @@ export class LoginComponent implements OnInit {
     let userSelection = new UserSelectionModel('userSelection')
     this.userSelectionService.getUserSelectionMenus(userSelection)
       .subscribe(data => {
+        this.alertMessage.onResetAlert();
         let menuOptions = data;
         this.userSelectionService.writeMenuOptions(menuOptions);
         menuOptions = this.userSelectionService.readMenuOptions();
       },
         error => {
-          console.error("Error", error);
-          this.alertService.error(error.status);
-          this.alertMessage.alertTitle = "Error del servidor";
-          this.alertMessage.alertText = error.statusText;
-          this.alertMessage.alertShow = true;
-          this.alertMessage.alertClass =
-            "alert alert-danger alert-dismissible fade show";
+          console.error("Error", error, error.status);
+          this.alertMessage.onAlertError(error.message)
         });
   }
 }

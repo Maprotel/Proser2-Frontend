@@ -53,7 +53,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   action;
 
-  alertMessage: AlertModel;
+  alertMessage: AlertModel; alertError;
   // env;
   error_detected = false;
   error_message;

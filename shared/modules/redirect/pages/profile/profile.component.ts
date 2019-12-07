@@ -17,8 +17,9 @@ export class ProfileComponent implements OnInit {
   showInMenu;
 
 
-  alertMessage = new AlertModel();
   api_string = "/api/Userbases";
+  alertMessage = new AlertModel();
+  alertError;
 
   constructor(
     private authService: AuthService,

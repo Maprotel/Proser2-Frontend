@@ -19,7 +19,7 @@ export class CrudInvShiftChangeDetailComponent implements OnInit {
 
   @Input() action: ActionConfig;
 
-  alertMessage: AlertModel;
+  alertMessage: AlertModel;  alertError;
   env;
   error_detected = false;
   error_message;

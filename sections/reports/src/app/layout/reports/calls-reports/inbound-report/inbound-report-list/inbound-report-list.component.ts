@@ -8,13 +8,14 @@ import {
   NgbActiveModal,
   NgbModalRef
 } from "@ng-bootstrap/ng-bootstrap";
+import { Observable, Subscription, timer } from "rxjs";
 
 // Global shared functions import
 import { getUpdateFilter } from "shared/functions";
 import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
 
 // Global shared models
-// import { AlertModel } from "shared/models/helpers/Alert";
+import { AlertModel } from "shared/models/helpers/Alert";
 
 import { UserSelectionModel } from "shared/models";
 
@@ -38,6 +39,10 @@ import { InboundReportGraphComponent } from "../inbound-report-graph/inbound-rep
   styleUrls: ["./inbound-report-list.component.scss"]
 })
 export class InboundReportListComponent implements OnInit {
+
+  // Subscription
+  private subscription: Subscription = new Subscription();
+
   // Child components
   @ViewChild(InboundReportGraphComponent, { static: false })
   private childGraph: InboundReportGraphComponent;
@@ -47,7 +52,7 @@ export class InboundReportListComponent implements OnInit {
   @Input() selectorVisibleFields: UserSelectionModel;
 
   // Component variables
-  // alertMessage = new AlertModel();
+  alertMessage = new AlertModel();
   alertError;
   env;
 
@@ -88,6 +93,7 @@ export class InboundReportListComponent implements OnInit {
   graph = false;
   show_graph_or_table_button = false;
 
+
   // Init
   constructor(
     private callsInboundDailyService: CallsInboundDailyService,
@@ -103,6 +109,7 @@ export class InboundReportListComponent implements OnInit {
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.selectorVisibleFields.assignation = false;
     this.selectorVisibleFields.auxiliar = false;
+    this.timerConnected = 0;
   }
 
   // Start
@@ -120,6 +127,8 @@ export class InboundReportListComponent implements OnInit {
       name: "fecha_inicio",
       text: "Fecha desde"
     };
+
+    this.onRepeat();
   }
 
   // Finish
@@ -129,12 +138,31 @@ export class InboundReportListComponent implements OnInit {
     );
   }
 
+  // Real time repeat
+  onRepeat() {
+    let timerComponent = timer(1000, 5000);
+    let timerClock = timer(1000, 1000);
+
+    this.getReportList(this.userSelection);
+
+    this.subscription.add(
+      timerComponent.subscribe(() => {
+        this.getReportList(this.userSelection)
+      })
+    );
+
+    timerClock.subscribe(() => {
+      this.timerConnected = this.timerConnected + 1;
+    });
+  }
+
   // Get records from backend
   getReportList(userSelection) {
     if (userSelection) {
       this.rows = [new CallsInboundDailyModel()];
       this.callsInboundDailyService.getReportList(userSelection).subscribe(
         (res: BackendResponseModel) => {
+          this.alertMessage.onResetAlert();
           this.show = false;
 
           this.timerConnected = 0;
@@ -162,8 +190,9 @@ export class InboundReportListComponent implements OnInit {
           this.alertError = false
         },
         error => {
-          console.error('getReportList', error);
-          this.alertError = error
+          console.error("Error", error, error.status);
+          this.show = false;
+          this.alertMessage.onAlertError(error.message)
         }
       );
     }

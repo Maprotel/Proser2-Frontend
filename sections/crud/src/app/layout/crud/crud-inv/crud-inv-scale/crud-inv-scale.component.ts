@@ -17,7 +17,7 @@ export class CrudInvScaleComponent implements OnInit {
   @Output() mainAnswer: EventEmitter<any> = new EventEmitter();
 
   // MAIN VARIABLES
-  alertMessage: AlertModel;
+  alertMessage: AlertModel;  alertError;
   env;
   error_detected = false;
   error_message;

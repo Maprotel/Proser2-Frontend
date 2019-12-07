@@ -43,6 +43,8 @@ export class RegisterComponent implements OnInit {
 
   content;
 
+  alertError;
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,

@@ -17,7 +17,7 @@ export class CrudInvCalendarDayDetailComponent implements OnInit {
 
   @Input() action: ActionConfig;
 
-  alertMessage: AlertModel;
+  alertMessage: AlertModel;  alertError;
   env;
   error_detected = false;
   error_message;
