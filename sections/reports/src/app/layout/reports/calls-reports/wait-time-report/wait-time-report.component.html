@@ -1,3 +1,39 @@
-<app-reports-wait-time-report-list [userSelection]="userSelection"
+<!----------REPORT HEADER------------------------- -->
+<div *ngIf="showHeader">
+    <app-reports-report-header [userSelection]="userSelection"
+                               (openSelector)="onOpenSelector(selector)">
+    </app-reports-report-header>
+  </div>
+  
+  <!----------REPORT LIST------------------------- -->
+  
+  <app-reports-wait-time-report-list [userSelection]="userSelection"
                                    [selectorVisibleFields]="selectorVisibleFields">
 </app-reports-wait-time-report-list>
+
+
+<!-- MODAL WINDOW FOR SELECTOR ---------------------------------------------------- -->
+<ng-template #selector class="modal-full">
+    <div class="modal-header modal-primary">
+      <p class="modal-title ">Seleccione las opciones el reporte</p>
+  
+      <div>
+  
+  
+        <button type="button" class="btn btn-danger text-lg-center "
+                (click)="onCancelSelector($event)">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+    </div>
+  
+  
+    <div class="" id="result">
+      <app-selector [userSelection]="userSelection"
+                    [selectorVisibleFields]="selectorVisibleFields"
+                    [selectorVisibleAreas]="selectorVisibleAreas"
+                    (acceptSelector)="onAcceptSelector($event)"
+                    (cancelSelector)="onCancelSelector($event)">
+      </app-selector>
+    </div>
+  </ng-template>
