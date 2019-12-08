@@ -18,7 +18,8 @@
               <p class="register-detail">{{ selection.pro_show_display_id }}</p>
             </div>
             <input *ngIf="action.action !== 'showRecord' && false" type="text"
-                   formControlName="pro_show_display_id"  (change)="onRecordJsonChange()"
+                   formControlName="pro_show_display_id"
+                   (change)="onRecordJsonChange()"
                    class="form-control register-input disabled"
                    [ngClass]="{ 'is-invalid': f.pro_show_display_id.errors }" />
 
@@ -41,7 +42,8 @@
               </p>
             </div>
             <input *ngIf="action.action !== 'showRecord' && false" type="text"
-                   formControlName="pro_show_display_status"  (change)="onRecordJsonChange()"
+                   formControlName="pro_show_display_status"
+                   (change)="onRecordJsonChange()"
                    class="form-control register-input disabled"
                    [ngClass]="{ 'is-invalid': f.pro_show_display_status.errors }" />
 
@@ -63,7 +65,8 @@
               </p>
             </div>
             <input *ngIf="action.action !== 'showRecord'" type="text"
-                   formControlName="pro_show_display_name"  (change)="onRecordJsonChange()"
+                   formControlName="pro_show_display_name"
+                   (change)="onRecordJsonChange()"
                    class="form-control register-input" [ngClass]="{
                 'is-invalid': f.pro_show_display_name.errors
               }" />
@@ -115,7 +118,8 @@
               </p>
             </div>
             <input *ngIf="action.action !== 'showRecord'" type="text"
-                   formControlName="pro_show_display_start_time"  (change)="onRecordJsonChange()"
+                   formControlName="pro_show_display_start_time"
+                   (change)="onRecordJsonChange()"
                    class="form-control register-input"
                    [ngClass]="{ 'is-invalid': f.pro_show_display_start_time.errors }" />
 
@@ -137,7 +141,8 @@
               </p>
             </div>
             <input *ngIf="action.action !== 'showRecord'" type="text"
-                   formControlName="pro_show_display_end_time"  (change)="onRecordJsonChange()"
+                   formControlName="pro_show_display_end_time"
+                   (change)="onRecordJsonChange()"
                    class="form-control register-input"
                    [ngClass]="{ 'is-invalid': f.pro_show_display_end_time.errors }" />
 
@@ -165,7 +170,8 @@
                          placeholder="Display" [dropdownPosition]="'auto'"
                          [searchable]="false" [clearable]="false"
                          [multiple]="false" hideSelected="true"
-                         formControlName="pro_show_display_type"  (change)="onRecordJsonChange()"
+                         formControlName="pro_show_display_type"
+                         (change)="onRecordJsonChange()"
                          (change)="onRecordJsonChange()">
               </ng-select>
             </div>
@@ -193,7 +199,8 @@
             <div class="form-control register-input">
 
               <button class="btn btn-outline-secondary"
-                      (click)="editUserSelection(new)">Editar</button>
+                      (click)="editUserSelection(selector)">Editar</button>
+
               <!-- <button class="btn btn-outline-primary"
                       (click)="copyUserSelection()">Guardar</button> -->
             </div>
@@ -307,20 +314,30 @@
 
 
 <!-- MODAL WINDOW FOR SELECTOR ---------------------------------------------------- -->
-<ng-template #new class="modal-full">
+<ng-template #selector class="modal-full">
   <div class="modal-header modal-primary">
     <p class="modal-title ">Seleccione las opciones el reporte</p>
-    <button type="button" class="btn btn-danger text-lg-center "
-            (click)="activeModal.close()">
-      <span aria-hidden="true">×</span>
-    </button>
+
+    <div>
+
+
+      <button type="button" class="btn btn-danger text-lg-center "
+              (click)="onCancelSelector($event)">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
   </div>
+
 
   <div class="" id="result">
     <app-selector [userSelection]="userSelection"
                   [selectorVisibleFields]="selectorVisibleFields"
-                  (userSelectionBack)="updateSelection($event)"
-                  (closeSelector)="closeSelector($event)">
+                  [selectorVisibleAreas]="selectorVisibleAreas"
+                  (acceptSelector)="onAcceptSelector($event)"
+                  (cancelSelector)="onCancelSelector($event)">
     </app-selector>
   </div>
 </ng-template>
+
+
+{{ userSelection | json}}

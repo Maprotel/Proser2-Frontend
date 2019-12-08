@@ -17,7 +17,7 @@ export class CrudAuxColorComponent implements OnInit {
   @Output() mainAnswer: EventEmitter<any> = new EventEmitter();
 
   // MAIN VARIABLES
-  alertMessage: AlertModel;  alertMessage;
+  alertMessage: AlertModel; 
   env;
   error_detected = false;
   error_message;

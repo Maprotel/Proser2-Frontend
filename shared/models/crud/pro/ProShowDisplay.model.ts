@@ -13,18 +13,8 @@ export class ProShowDisplayModel {
 
   constructor() {
     this.pro_show_display_id = 0;
-    this.pro_show_display_name = "";
-    this.pro_show_display_weekday = {
-      weekday: [
-        { id: 1, name: "lunes", value: 1 },
-        { id: 2, name: "martes", value: 2 },
-        { id: 3, name: "miércoles", value: 3 },
-        { id: 4, name: "jueves", value: 4 },
-        { id: 5, name: "viernes", value: 5 },
-        { id: 6, name: "sábado", value: 6 },
-        { id: 7, name: "domingo", value: 7 }
-      ]
-    };
+    this.pro_show_display_name = "Nuevo Display";
+    this.pro_show_display_weekday = this.weekDayList();
     this.pro_show_display_start_time = "00:00:00";
     this.pro_show_display_end_time = "23:59:59";
     this.pro_show_display_selection = new UserSelectionModel();
@@ -91,5 +81,40 @@ export class ProShowDisplayModel {
     return register.filter(x => {
       return x.field_name === field_name;
     })[0];
+  }
+
+
+  public weekDayList() {
+    const result = [
+      { id: 1, name: "lunes", value: 1 },
+      { id: 2, name: "martes", value: 2 },
+      { id: 3, name: "miércoles", value: 3 },
+      { id: 4, name: "jueves", value: 4 },
+      { id: 5, name: "viernes", value: 5 },
+      { id: 6, name: "sábado", value: 6 },
+      { id: 7, name: "domingo", value: 7 }
+    ];
+
+    return result;
+  }
+
+  public displayTypeList() {
+    const result = [
+      { id: 1, name: "Llamadas entrantes", value: "inbound" },
+      { id: 2, name: "Llamadas salientes", value: "outbound" },
+      { id: 3, name: "Llamadas automáticas", value: "automatic" },
+      { id: 4, name: "Agentes", value: "agents" }
+    ];
+    return result;
+  }
+
+  public viewTypeList() {
+    const result = [
+      { id: 1, name: "standard", value: 1 },
+      { id: 2, name: "historic", value: 2 },
+      { id: 3, name: "graph", value: 3 },
+      { id: 4, name: "group", value: 4 }
+    ];
+    return result;
   }
 }

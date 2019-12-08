@@ -24,19 +24,19 @@ export class CrudShowDisplayDetailComponent implements OnInit {
   @Output() editAnswer: EventEmitter<any> = new EventEmitter();
 
   @Input() action: ActionConfig;
+  @Input() selection;
 
-  alertMessage: AlertModel;  alertMessage;
+  alertMessage: AlertModel;
 
   env;
-  error_detected = false;
-  error_message;
+  // error_detected = false;
+  // error_message;
 
   registerForm: FormGroup;
 
   show_submit_button;
   show_data;
 
-  selection;
 
   model: ProShowDisplayModel;
 
@@ -45,8 +45,10 @@ export class CrudShowDisplayDetailComponent implements OnInit {
   viewTypeList;
 
   userSelection;
+  userSelectionTemp;
   selectorVisibleFields;
-  local_store;
+  selectorVisibleAreas;
+
   activeModal;
 
   rows_original;
@@ -60,77 +62,44 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     private userSelectionService: UserSelectionService,
     private modalService: NgbModal
   ) {
+    this.env = this.envService;
+
     this.alertMessage = new AlertModel();
     this.show_submit_button = false;
     this.show_data = true;
-    this.model = new ProShowDisplayModel();
 
-    this.env = this.envService;
     this.userSelection = new UserSelectionModel("userSelection");
-    this.selectorVisibleFields = new UserSelectionModel("visible");
+    this.selectorVisibleFields = new UserSelectionModel('selectorVisibleFields');
+    this.selectorVisibleFields.mode = false;
+    this.selectorVisibleFields.interval = true;
+    this.selectorVisibleFields.groupBy = false;
+    this.selectorVisibleFields.last_minutes = true;
+    this.selectorVisibleFields.status = false;
+    this.selectorVisibleFields.auxiliar = false;
+    this.selectorVisibleFields.assignation = false;
 
-    this.weekDayList = [
-      { id: 1, name: "lunes", value: 1 },
-      { id: 2, name: "martes", value: 2 },
-      { id: 3, name: "miércoles", value: 3 },
-      { id: 4, name: "jueves", value: 4 },
-      { id: 5, name: "viernes", value: 5 },
-      { id: 6, name: "sábado", value: 6 },
-      { id: 7, name: "domingo", value: 7 }
-    ];
+    this.selectorVisibleAreas = {
+      date: false,
+      interval: true,
+      options: true,
+      buttons: true,
+    }
 
-    this.displayTypeList = [
-      { id: 1, name: "Llamadas entrantes", value: "inbound" },
-      { id: 2, name: "Llamadas salientes", value: "outbound" },
-      { id: 3, name: "Llamadas automáticas", value: "automatic" },
-      { id: 4, name: "Agentes", value: "agents" }
-    ];
-
-    this.viewTypeList = [
-      { id: 1, name: "standard", value: 1 },
-      { id: 2, name: "historic", value: 2 },
-      { id: 3, name: "graph", value: 3 },
-      { id: 4, name: "group", value: 4 }
-    ];
+    this.model = new ProShowDisplayModel();
+    this.weekDayList = this.model.weekDayList();
+    this.displayTypeList = this.model.displayTypeList();
+    this.viewTypeList = this.model.viewTypeList();
   }
 
   ngOnInit() {
-    this.userSelection = JSON.parse(
-      localStorage.getItem("proser_historic")
-    ).userSelection;
-    this.selection = JSON.parse(localStorage.getItem("recordSelection"))[0];
+    // this.selection = JSON.parse(localStorage.getItem("recordSelection"))[0];
     this.onFillForm();
   }
 
   onFillForm() {
     /******** NEW RECORD ********* */
-    if (this.action.action === "newRecord") {
-      this.selection = new ProShowDisplayModel();
-      this.selection.pro_show_display_selection = new UserSelectionModel(
-        "standard"
-      );
-      // localStorage.setItem(
-      //   "proser_historic",
-      //   JSON.stringify(this.selection.pro_show_display_selection)
-      // );
-
-      this.selection.pro_show_display_name = "Test";
-      this.selection.pro_show_display_type = {
-        id: 1,
-        name: "Llamadas entrantes",
-        value: "inbound"
-      };
-      this.selection.pro_show_display_weekday = [
-        { id: 1, name: "lunes", value: 1 },
-        { id: 2, name: "martes", value: 2 },
-        { id: 3, name: "miércoles", value: 3 },
-        { id: 4, name: "jueves", value: 4 },
-        { id: 5, name: "viernes", value: 5 }
-      ];
-      this.selection.pro_show_display_view = [
-        { id: 1, name: "standard", value: 1 }
-      ];
-    }
+    (this.action.action === "newRecord") ?
+      this.selection = new ProShowDisplayModel() : this.selection;
 
     this.registerForm = this.formBuilder.group({
       pro_show_display_id: [this.selection.pro_show_display_id],
@@ -362,7 +331,7 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     this.editAnswer.emit(this.action);
   }
 
-  onRecordJsonChange() {}
+  onRecordJsonChange() { }
 
   copyUserSelection() {
     let temp = localStorage.getItem("proser_historic");
@@ -373,61 +342,53 @@ export class CrudShowDisplayDetailComponent implements OnInit {
 
   }
 
+  // Selector
+  onOpenSelector(event) {
+    this.userSelectionTemp = this.userSelection;
+    this.onOpenModal(event);
+  }
 
-
-  editUserSelection(content) {
-    this.userSelectionService.writeUserSelectionHistoric(
-      this.registerForm.value.pro_show_display_selection
-    );
-
-    this.userSelection = JSON.parse(
-      localStorage.getItem("proser_historic")
-    ).userSelection;
-
+  onAcceptSelector(event) {
+    // this.onResetValues()
     this.registerForm.patchValue({
       pro_show_display_selection: this.userSelection
     });
 
-    this.selectorVisibleFields.mode = false;
-    this.selectorVisibleFields.start_date = false;
-    this.selectorVisibleFields.end_date = false;
-    this.selectorVisibleFields.interval = false;
-    this.selectorVisibleFields.groupBy = false;
-    this.selectorVisibleFields.last_minutes = false;
+    console.log('onAcceptSelector', this.registerForm.value.pro_show_display_selection);
+    this.onCloseModal()
+  }
 
-    this.selectorVisibleFields.status = false;
-
-    this.openDetailModal(content);
+  onCancelSelector() {
+    this.userSelection = this.userSelectionTemp;
+    this.onCloseModal()
   }
 
 
-  openDetailModal(content) {
+  // Modal
+  onOpenModal(content) {
+    this.userSelectionTemp = this.userSelection;
     this.activeModal = this.modalService.open(content, {
       windowClass: "my-class",
       keyboard: false
     });
   }
 
-  onCloseModal(event, closeModal) {
+  onCloseModal() {
+
+    // this.userSelection = this.userSelectionService.readUserSelectionHistoric();
     this.activeModal.close();
   }
 
-  updateSelection(event, userSelectionBack) {
-    this.userSelection = this.userSelectionService.readUserSelectionHistoric(
-      this.local_store
-    );
-  }
 
-  closeSelector($event) {
-    this.userSelection = this.userSelectionService.readUserSelectionHistoric(
-      this.local_store
-    );
-
-    this.returnResult.emit({
-      userSelection: this.userSelection
-      // rows: this.rows,
-      // rows_original: this.rows_original
+  editUserSelection(content) {
+    this.userSelection = this.registerForm.value.pro_show_display_selection
+    this.userSelection.title = 'Selección tres';
+    console.log('editUserSelection', this.userSelection);
+    this.registerForm.patchValue({
+      pro_show_display_selection: this.userSelection
     });
-    this.ngOnInit();
+
+
+    this.onOpenModal(content);
   }
 }

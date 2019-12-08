@@ -1,9 +1,11 @@
 <app-alert [alertMessage]="alertMessage"></app-alert>
 
+
+
 <main id="register"
       *ngIf="userSelection && selectorVisibleFields && showSelector && menuOptions"
       class="main">
-
+  {{userSelection.title}}
   <form [formGroup]="selectorForm" class="register">
     <section class="register-form">
       <article class="register-column" *ngIf="selectorVisibleAreas.date">

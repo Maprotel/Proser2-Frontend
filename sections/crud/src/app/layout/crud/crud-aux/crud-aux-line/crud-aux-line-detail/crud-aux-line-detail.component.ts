@@ -18,7 +18,7 @@ export class CrudAuxLineDetailComponent implements OnInit {
 
   @Input() action: ActionConfig;
 
-  alertMessage: AlertModel;  alertMessage;
+  alertMessage: AlertModel; 
   env;
   error_detected = false;
   error_message;
