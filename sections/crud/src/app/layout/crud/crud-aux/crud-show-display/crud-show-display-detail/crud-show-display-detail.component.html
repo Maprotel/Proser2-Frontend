@@ -1,6 +1,8 @@
 <app-alert [alertMessage]="alertMessage"></app-alert>
 
-<section id="register" class="register" *ngIf="action && show_data">
+{{selection | json}}
+
+<section id="register" class="register" *ngIf="showDetail && selection && test">
   <div class="card mt-3">
     <div class="card-body">
       <h3 class="h2 mb-3 font-weight-normal text-center">
@@ -17,7 +19,7 @@
             <div *ngIf="true">
               <p class="register-detail">{{ selection.pro_show_display_id }}</p>
             </div>
-            <input *ngIf="action.action !== 'showRecord' && false" type="text"
+            <input *ngIf="showRecord !== 'showRecord' && false" type="text"
                    formControlName="pro_show_display_id"
                    (change)="onRecordJsonChange()"
                    class="form-control register-input disabled"
@@ -41,7 +43,7 @@
               <p class="register-detail">{{ selection.pro_show_display_status }}
               </p>
             </div>
-            <input *ngIf="action.action !== 'showRecord' && false" type="text"
+            <input *ngIf="showRecord !== 'showRecord' && false" type="text"
                    formControlName="pro_show_display_status"
                    (change)="onRecordJsonChange()"
                    class="form-control register-input disabled"
@@ -64,7 +66,7 @@
               <p class="register-detail">{{ selection.pro_show_display_name }}
               </p>
             </div>
-            <input *ngIf="action.action !== 'showRecord'" type="text"
+            <input *ngIf="showRecord !== 'showRecord'" type="text"
                    formControlName="pro_show_display_name"
                    (change)="onRecordJsonChange()"
                    class="form-control register-input" [ngClass]="{
@@ -83,7 +85,7 @@
           <div class="form-group" id="pro_show_display_weekday">
             <label
                    class="register-label">{{model.fieldInfo('pro_show_display_weekday').text}}</label>
-            <div *ngIf="action.action === 'showRecord'">
+            <div *ngIf="showRecord === 'showRecord'">
               <p class="register-detail">
                 {{ selection.pro_show_display_weekday }}
               </p>
@@ -112,12 +114,12 @@
           <div class="form-group" id="pro_show_display_start_time">
             <label
                    class="register-label">{{model.fieldInfo('pro_show_display_start_time').text}}</label>
-            <div *ngIf="action.action === 'showRecord'">
+            <div *ngIf="showRecord === 'showRecord'">
               <p class="register-detail">
                 {{ selection.pro_show_display_start_time }}
               </p>
             </div>
-            <input *ngIf="action.action !== 'showRecord'" type="text"
+            <input *ngIf="showRecord !== 'showRecord'" type="text"
                    formControlName="pro_show_display_start_time"
                    (change)="onRecordJsonChange()"
                    class="form-control register-input"
@@ -135,12 +137,12 @@
           <div class="form-group" id="pro_show_display_end_time">
             <label
                    class="register-label">{{model.fieldInfo('pro_show_display_end_time').text}}</label>
-            <div *ngIf="action.action === 'showRecord'">
+            <div *ngIf="showRecord === 'showRecord'">
               <p class="register-detail">
                 {{ selection.pro_show_display_end_time }}
               </p>
             </div>
-            <input *ngIf="action.action !== 'showRecord'" type="text"
+            <input *ngIf="showRecord !== 'showRecord'" type="text"
                    formControlName="pro_show_display_end_time"
                    (change)="onRecordJsonChange()"
                    class="form-control register-input"
@@ -160,7 +162,7 @@
           <div class="form-group" id="pro_show_display_type">
             <label
                    class="register-label">{{model.fieldInfo('pro_show_display_type').text}}</label>
-            <div *ngIf="action.action === 'showRecord'">
+            <div *ngIf="showRecord === 'showRecord'">
               <p class="register-detail">{{ selection.pro_show_display_type }}
               </p>
             </div>
@@ -190,7 +192,7 @@
           <div class="form-group" id="pro_show_display_selection">
             <label
                    class="register-label">{{model.fieldInfo('pro_show_display_selection').text}}</label>
-            <div *ngIf="action.action === 'showRecord'">
+            <div *ngIf="showRecord === 'showRecord'">
               <p class="register-detail">
                 {{ selection.pro_show_display_selection }}
               </p>
@@ -204,7 +206,7 @@
               <!-- <button class="btn btn-outline-primary"
                       (click)="copyUserSelection()">Guardar</button> -->
             </div>
-            <!-- <input *ngIf="action.action !== 'showRecord'" type="text"
+            <!-- <input *ngIf="showRecord !== 'showRecord'" type="text"
                    formControlName="pro_show_display_selection"
                    class="form-control register-input"
                    [ngClass]="{ 'is-invalid': f.pro_show_display_selection.errors }" 
@@ -224,7 +226,7 @@
           <div class="form-group" id="pro_show_display_view">
             <label
                    class="register-label">{{model.fieldInfo('pro_show_display_view').text}}</label>
-            <div *ngIf="action.action === 'showRecord'">
+            <div *ngIf="showRecord === 'showRecord'">
               <p class="register-detail">{{ selection.pro_show_display_view }}
               </p>
             </div>
@@ -261,14 +263,14 @@
 
           <div>
             <button type="button" class="btn btn-secondary  register-button"
-                    *ngIf="action.action === 'newRecord'" (click)="onReset()">
+                    *ngIf="showRecord === 'newRecord'" (click)="onReset()">
               Reiniciar
             </button>
           </div>
 
           <div>
             <button type="button" class="btn btn-danger  register-button" *ngIf="
-                action.action === 'editRecord' &&
+                showRecord === 'editRecord' &&
                 selection.pro_show_display_status === 'I'
               " (click)="onDelete()">
               Eliminar
@@ -277,7 +279,7 @@
 
           <div>
             <button type="button" class="btn btn-danger  register-button" *ngIf="
-                action.action === 'editRecord' &&
+                showRecord === 'editRecord' &&
                 selection.pro_show_display_status === 'A'
               " (click)="onDeactivate()">
               Desactivar
@@ -287,7 +289,7 @@
           <div>
             <button type="button" class="btn btn-primary  register-button"
                     *ngIf="
-                action.action === 'editRecord' &&
+                showRecord === 'editRecord' &&
                 selection.pro_show_display_name === 'I'
               " (click)="onReactivate()">
               Reactivar
@@ -296,7 +298,7 @@
 
           <div *ngIf="
               registerForm.status === 'VALID' &&
-              action.action !== 'showRecord' 
+              showRecord !== 'showRecord' 
             ">
             <button type="button" class="btn btn-success  register-button"
                     (click)="onSubmit(registerForm.value)">
@@ -309,8 +311,9 @@
   </div>
 </section>
 
-<!-- &&
-              (!registerForm.pristine || show_submit_button) -->
+
+
+
 
 
 <!-- MODAL WINDOW FOR SELECTOR ---------------------------------------------------- -->
@@ -338,6 +341,3 @@
     </app-selector>
   </div>
 </ng-template>
-
-
-{{ userSelection | json}}
