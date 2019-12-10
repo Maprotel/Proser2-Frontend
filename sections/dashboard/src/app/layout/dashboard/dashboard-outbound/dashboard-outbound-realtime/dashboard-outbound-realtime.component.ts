@@ -107,7 +107,7 @@ export class DashboardOutboundRealtimeComponent implements OnInit {
       date: true,
       interval: true,
       options: true,
-      buttons: true,
+      buttons: false,
     }
 
     // userSelection

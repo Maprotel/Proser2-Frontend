@@ -74,7 +74,7 @@ export class DetailReportComponent implements OnInit {
       date: true,
       interval: false,
       options: true,
-      buttons: true,
+      buttons: false,
     }
 
     // userSelection
