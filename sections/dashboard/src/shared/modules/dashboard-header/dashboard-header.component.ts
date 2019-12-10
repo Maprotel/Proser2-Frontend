@@ -1,20 +1,19 @@
+
+
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { EnvService, UserSelectionService } from "shared/services";
 
 import { UserSelectionModel } from "shared/models";
-import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
-
 import { NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 import {
-  selectionToText,
-  optionsToText,
   dateToDatePicker,
-  selectorLegendSubtitles,
-  selectorOptionSubtitles
+  objectTimeToTextTime,
+  objectDateToTextDate,
+  selectorOptionSubtitles,
+  selectorLegendSubtitles
 } from "shared/functions";
 
-import * as moment from "moment";
 @Component({
   selector: "app-dashboard-dashboard-header",
   templateUrl: "./dashboard-header.component.html",
@@ -22,21 +21,17 @@ import * as moment from "moment";
 })
 export class DashboardHeaderComponent implements OnInit {
   @Output() returnResult = new EventEmitter();
+  @Output() openSelector = new EventEmitter();
 
   @Input() userSelection;
   @Input() selectorVisibleFields;
   @Input() timerConnected;
   @Input() historic;
-  @Input() show_header;
-
-  headerText;
 
   activeModal: NgbActiveModal;
-  local_store;
   env;
 
-  rows;
-  rows_original;
+
 
   constructor(
     private envService: EnvService,
@@ -44,87 +39,28 @@ export class DashboardHeaderComponent implements OnInit {
     private userSelectionService: UserSelectionService
   ) {
     this.env = this.envService;
-
-    this.selectorVisibleFields = new UserSelectionModel("visible");
-    this.local_store = "assignation";
   }
 
   ngOnInit() {
-    // this.userSelection = new UserSelectionModel("userSelection");
-    this.headerText = {
-      title: this.userSelection.title,
-      date: this.onUserSelectionText(),
-      legend: this.userSelection.legend,
-      options: this.userSelection.options
-    }
-    this.userSelection.current_date = dateToDatePicker(
-      moment().format("YYYY-MM-DD")
-    );
+    this.userSelection.options = selectorOptionSubtitles(this.userSelection)
+    this.userSelection.legend = selectorLegendSubtitles(this.userSelection)
   }
 
   onUserSelectionText() {
-    let result = null;
+    let data = new UserSelectionModel("userSelection");
+    data.start_date = objectDateToTextDate(this.userSelection.start_date);
+    data.end_date = objectDateToTextDate(this.userSelection.end_date);
 
-    let start_date = objectDateToTextDate(this.userSelection.start_date);
-    let end_date = objectDateToTextDate(this.userSelection.end_date);
-
-    if (start_date == end_date) {
-      result = start_date;
-    } else {
-      result = start_date + " " + end_date;
-    }
-
-    return result;
+    return data;
   }
 
-  onUserSelectionLegend() {
-    let result = null;
-    result = selectorLegendSubtitles(this.userSelection);
-    return result;
-  }
-
-  onUserSelectionOptions() {
-    let result = null;
-    result = selectorOptionSubtitles(this.userSelection);
-    return result;
-  }
-
-  openModal(content) {
-    this.activeModal = this.modalService.open(content, {
-      windowClass: "my-class",
-      keyboard: false
-    });
-  }
-
-  /****************************** */
-
-  openDetailModal(content) {
-    this.activeModal = this.modalService.open(content, {
-      windowClass: "my-class",
-      keyboard: false
-    });
-  }
-
-  onCloseModal(event, closeModal) {
-    this.activeModal.close();
-  }
 
   updateSelection(event, userSelectionBack) {
-    this.userSelection = this.userSelectionService.readUserSelectionHistoric(
-      this.local_store
-    );
   }
 
-  closeSelector($event) {
-    this.userSelection = this.userSelectionService.readUserSelectionHistoric(
-      this.local_store
-    );
-    // console.error("CLOSED", this.userSelection);
-    this.returnResult.emit({
-      userSelection: this.userSelection,
-      rows: this.rows,
-      rows_original: this.rows_original
-    });
-    this.ngOnInit();
+
+  onOpenSelector(event) {
+    this.openSelector.emit('openSelector');
   }
+
 }

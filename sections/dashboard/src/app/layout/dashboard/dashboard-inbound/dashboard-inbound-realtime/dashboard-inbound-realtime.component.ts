@@ -4,6 +4,8 @@ import { UserSelectionModel, AlertModel } from "shared/models";
 import { DashboardInboundIndicatorsRealTimeService } from "sections/dashboard/src/shared/services";
 import { DashboardInboundResponseModel } from "sections/dashboard/src/shared/models";
 
+import { NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+
 // Installed modules
 import { Observable, Subscription, timer } from "rxjs";
 import { AlertService, UserSelectionService } from "shared/services";
@@ -32,6 +34,7 @@ export class DashboardInboundRealtimeComponent implements OnInit {
   // User selection
   userSelection;
   selectorVisibleFields;
+  selectorVisibleAreas;
 
   dashboardOptions;
   local_store;
@@ -48,10 +51,16 @@ export class DashboardInboundRealtimeComponent implements OnInit {
   // fake
   historic;
 
+  showHeader: boolean = true
+  showDatatable;
+  userSelectionTemp
+  activeModal
+
   constructor(
     private dashboardInboundIndicatorsRealTimeService: DashboardInboundIndicatorsRealTimeService,
     private userSelectionService: UserSelectionService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private modalService: NgbModal,
   ) {
     this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
@@ -62,10 +71,7 @@ export class DashboardInboundRealtimeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userSelection = new UserSelectionModel("userSelection");
-    this.title = "Entrantes en tiempo real";
-    this.userSelectionCurrent();
-    this.getReportListDashboard(this.userSelection);
+    this.onResetValues();
     this.onRepeat();
   }
 
@@ -74,16 +80,38 @@ export class DashboardInboundRealtimeComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  userSelectionCurrent() {
+  onResetValues() {
+    // Stored Data
     this.userSelection = this.userSelectionService.readUserSelectionCurrent();
-    this.selectorVisibleFields.groupBy = false;
-    this.selectorVisibleFields.interval = false;
-    this.selectorVisibleFields.assignation = false;
-    this.selectorVisibleFields.auxiliar = false;
-    
+
+    // Component variables
+    this.title = "Entrantes en tiempo real";
+    this.showHeader = true;
+
+    // Selector
+    this.selectorVisibleFields = new UserSelectionModel("selectorVisibleFields");
+
     this.selectorVisibleFields.start_date = false;
     this.selectorVisibleFields.end_date = false;
 
+    this.selectorVisibleFields.start_time = true;
+    this.selectorVisibleFields.end_time = true;
+
+    this.selectorVisibleFields.groupBy = false;
+    this.selectorVisibleFields.interval = false;
+    this.selectorVisibleFields.last_minutes = false;
+
+    this.selectorVisibleFields.auxiliar = false;
+    this.selectorVisibleFields.assignation = false;
+
+    this.selectorVisibleAreas = {
+      date: true,
+      interval: true,
+      options: true,
+      buttons: false,
+    }
+
+    // userSelection
     this.userSelection.title = this.title;
 
     this.userSelection.mode = { id: 0, name: "Actual", value: "actual" };
@@ -97,13 +125,20 @@ export class DashboardInboundRealtimeComponent implements OnInit {
       moment().format("YYYY-MM-DD")
     );
 
+    this.userSelection.options = selectorOptionSubtitles(this.userSelection)
+    this.userSelection.legend = selectorLegendSubtitles(this.userSelection)
+
     this.userSelectionService.writeUserSelectionCurrent(this.userSelection);
     this.userSelection = this.userSelectionService.readUserSelectionCurrent();
+
+    // Show
+    this.showDatatable = true
+
   }
 
   // Get records from backend
   getReportListDashboard(userSelection: UserSelectionModel) {
-    this.userSelectionCurrent();
+    // this.onResetValues();
     this.dashboardInboundIndicatorsRealTimeService
       .getReportList(userSelection)
       .subscribe(
@@ -112,6 +147,7 @@ export class DashboardInboundRealtimeComponent implements OnInit {
           if (res) {
             this.rows = res;
             this.show = true;
+            this.showDatatable = true;
           } else {
             console.error("Error", res);
           }
@@ -120,6 +156,7 @@ export class DashboardInboundRealtimeComponent implements OnInit {
         error => {
           console.error("Error", error);
           this.show = false;
+          this.showDatatable = false;
           this.alertService.error(error.status);
           this.alertMessage.alertTitle = "Error del servidor";
           this.alertMessage.alertText = error.statusText;
@@ -152,5 +189,39 @@ export class DashboardInboundRealtimeComponent implements OnInit {
     timerClock.subscribe(() => {
       this.timerConnected = this.timerConnected + 1;
     });
+  }
+
+  // Selector
+  onOpenSelector(event) {
+    this.showDatatable = false
+    this.userSelectionTemp = this.userSelection;
+    this.onOpenModal(event);
+  }
+
+  onAcceptSelector(event) {
+    this.showDatatable = false;
+    this.userSelectionService.writeUserSelectionCurrent(event);
+    this.onResetValues()
+    this.onCloseModal()
+  }
+
+  onCancelSelector() {
+    this.userSelection = this.userSelectionTemp;
+    this.onCloseModal()
+  }
+
+  // Modal
+  onOpenModal(content) {
+    this.showDatatable = false;
+    this.activeModal = this.modalService.open(content, {
+      windowClass: "my-class",
+      keyboard: false
+    });
+  }
+
+  onCloseModal() {
+    this.showHeader = true;
+    this.showDatatable = false;
+    this.activeModal.close();
   }
 }

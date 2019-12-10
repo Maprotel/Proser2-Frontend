@@ -65,10 +65,10 @@
             <!-- {{
            model.fieldInfo("start_time").text
          }} -->
-            hrs inicio <br> <span class="text-danger">{{start_time_text}}
+            hrs inicio <br> <span class="text-hour">{{start_time_text}}
             </span>
           </label>
-
+          <hr>
           <ngb-timepicker formControlName="start_time_hour"
                           (ngModelChange)="onChangeStartTime()" seconds="true">
           </ngb-timepicker>
@@ -89,9 +89,9 @@
             <!-- {{
                   model.fieldInfo("start_time").text
                 }} -->
-            hrs final <br> <span class="text-danger">{{end_time_text}}</span>
+            hrs final <br> <span class="text-hour">{{end_time_text}}</span>
           </label>
-
+          <hr>
           <ngb-timepicker formControlName="end_time_hour" seconds="true"
                           (ngModelChange)="onChangeEndTime() "></ngb-timepicker>
 
@@ -158,6 +158,7 @@
             </div>
           </div>
         </div>
+
 
 
         <hr>

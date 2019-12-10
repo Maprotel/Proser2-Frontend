@@ -124,6 +124,9 @@ export class SelectorComponent implements OnInit, OnDestroy {
   onFillForm(currentSelection) {
     if (currentSelection) {
 
+      this.start_time_text = currentSelection.start_time.value
+      this.end_time_text = currentSelection.end_time.value
+
       this.selectorForm = this.formBuilder.group({
         title: [currentSelection.title],
         entity_selection: [currentSelection.entity_selection],
@@ -236,6 +239,9 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
 
   onChangeStartTime() {
+
+    this.start_time_text = objectTimeToTextTime(this.selectorForm.value.start_time_hour)
+
     this.selectorForm.patchValue({
       start_time: {
         id: 0,
@@ -243,16 +249,20 @@ export class SelectorComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.userSelection.start_time = this.selectorForm.value.start_time
+
     this.onChange();
   }
 
   onChangeEndTime() {
+    this.end_time_text = objectTimeToTextTime(this.selectorForm.value.end_time_hour)
     this.selectorForm.patchValue({
       end_time: {
         id: 0,
         value: this.end_time_text
       }
     });
+    this.userSelection.end_time = this.selectorForm.value.end_time
     this.onChange();
   }
 
@@ -289,52 +299,53 @@ export class SelectorComponent implements OnInit, OnDestroy {
   }
 
   onLastMinutes() {
-    this.onAllDay();
-    let mode = [{ id: 0, name: "Actual" }];
-    let start_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
-    let end_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
-    let start_time = { id: 0, value: "00:00:00" };
-    let end_time = { id: 0, value: "23:59:59" };
-    let interval = null;
+    // this.onAllDay();
 
-    this.selectorForm.patchValue({
-      mode: mode
-    });
 
-    this.selectorForm.patchValue({
-      interval: interval
-    });
+    this.userSelection.last_minutes = this.selectorForm.value.last_minutes
 
-    this.selectorForm.patchValue({
-      start_date: start_date
-    });
+    // let start_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
+    // let end_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
+    // let start_time = { id: 0, value: "00:00:00" };
+    // let end_time = { id: 0, value: "23:59:59" };
+    // let interval = null;
 
-    this.selectorForm.patchValue({
-      end_date: end_date
-    });
+    // this.selectorForm.patchValue({
+    //   interval: interval
+    // });
 
-    this.selectorForm.patchValue({
-      start_time: start_time
-    });
+    // this.selectorForm.patchValue({
+    //   start_date: start_date
+    // });
 
-    this.selectorForm.patchValue({
-      end_time: end_time
-    });
+    // this.selectorForm.patchValue({
+    //   end_date: end_date
+    // });
 
-    this.userSelection.mode = mode;
-    this.userSelection.interval = interval;
-    this.userSelection.start_date = start_date;
-    this.userSelection.end_date = end_date;
-    this.userSelection.start_time = start_time;
-    this.userSelection.end_time = end_time;
+    // this.selectorForm.patchValue({
+    //   start_time: start_time
+    // });
 
-    if (this.userSelection.last_minutes === null) {
-      this.selectorVisibleFields.start_time = false;
-      this.selectorVisibleFields.end_time = false;
-    } else {
-      this.selectorVisibleFields.start_time = true;
-      this.selectorVisibleFields.end_time = true;
-    }
+    // this.selectorForm.patchValue({
+    //   end_time: end_time
+    // });
+
+    // this.userSelection.interval = interval;
+    // this.userSelection.start_date = start_date;
+    // this.userSelection.end_date = end_date;
+    // this.userSelection.start_time = start_time;
+    // this.userSelection.end_time = end_time;
+
+
+    // if (this.userSelection.last_minutes === null) {
+    //   this.selectorVisibleFields.start_time = false;
+    //   this.selectorVisibleFields.end_time = false;
+    // } else {
+    //   this.selectorVisibleFields.start_time = true;
+    //   this.selectorVisibleFields.end_time = true;
+    // }
+
+    // this.onChange();
   }
 
   // Get menu options from database

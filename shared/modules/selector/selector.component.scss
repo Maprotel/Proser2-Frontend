@@ -1,6 +1,15 @@
 @import "shared/styles/styles";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
+.timer {
+  font-size: 3rem;
+}
+
+.text-hour {
+  font-size: 2rem;
+  color: red;
+}
+
 .json-selector {
   font-size: 1rem;
   padding: 20px;

@@ -4,16 +4,13 @@
 </div>
 
 <!----------REPORT HEADER------------------------- -->
-<div *ngIf="userSelection">
-  <app-dashboard-dashboard-historic-header [userSelection]="userSelection"
-                                           [selectorVisibleFields]="selectorVisibleFields"
-                                           [timerConnected]="timerConnected"
-                                           [historic]="historic"
-                                           (returnResult)="onReturnHeaderResult($event)">
-  </app-dashboard-dashboard-historic-header>
+<div>
+  <app-dashboard-dashboard-header [userSelection]="userSelection"
+                                  (openSelector)="onOpenSelector(selector)">
+  </app-dashboard-dashboard-header>
 </div>
 
-<section class="main-button" *ngIf="!show">
+<section class="main-button" *ngIf="!showDatatable">
   <div>
     <h1>Obteniendo datos del servidor...</h1>
   </div>
@@ -22,7 +19,7 @@
 
 
 <!-- TODAY -->
-<main class="main" *ngIf="rows && show">
+<main class="main" *ngIf="rows && showDatatable">
   <!-- HIGHLIGHTS -->
   <section class="highlights">
     <article>
@@ -61,3 +58,32 @@
     </div>
   </section>
 </main>
+
+
+
+
+<!-- MODAL WINDOW FOR SELECTOR ---------------------------------------------------- -->
+<ng-template #selector class="modal-full">
+  <div class="modal-header modal-primary">
+    <p class="modal-title ">Seleccione las opciones el reporte</p>
+
+    <div>
+
+
+      <button type="button" class="btn btn-danger text-lg-center "
+              (click)="onCancelSelector($event)">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+  </div>
+
+
+  <div class="" id="result">
+    <app-selector [userSelection]="userSelection"
+                  [selectorVisibleFields]="selectorVisibleFields"
+                  [selectorVisibleAreas]="selectorVisibleAreas"
+                  (acceptSelector)="onAcceptSelector($event)"
+                  (cancelSelector)="onCancelSelector($event)">
+    </app-selector>
+  </div>
+</ng-template>
