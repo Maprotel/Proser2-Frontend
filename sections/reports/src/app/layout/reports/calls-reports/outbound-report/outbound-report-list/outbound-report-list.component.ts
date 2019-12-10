@@ -145,7 +145,7 @@ export class OutboundReportListComponent implements OnInit {
               this.rows_valid = res.detail[0] === undefined ? false : true;
 
               this.rows = res.detail;
-              this.rows_original = res.group;
+              this.rows_original = res.detail;
               this.rows_total = res.total;
 
               this.rows_detail = res.detail;

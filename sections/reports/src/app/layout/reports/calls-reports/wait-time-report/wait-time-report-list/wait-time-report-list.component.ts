@@ -124,7 +124,7 @@ export class WaitTimeReportListComponent implements OnInit {
   ngOnDestroy() {
     this.userSelectionService.writeUserSelectionHistoric(
       this.userSelection,
-     
+
     );
   }
 
@@ -141,9 +141,9 @@ export class WaitTimeReportListComponent implements OnInit {
 
           if (Array.isArray(res.detail)) {
             this.rows_valid = res.detail[0] === undefined ? false : true;
-            
+
             this.rows = res.detail;
-            this.rows_original = res.group;
+            this.rows_original = res.detail;
             this.rows_total = res.total;
 
             this.rows_detail = res.detail;
@@ -234,7 +234,7 @@ export class WaitTimeReportListComponent implements OnInit {
   exportToExcel(data) {
     const filterData = data.map(x => {
       return {
-        
+
         fecha: x.start_date,
         intervalo_inicial: x.interval_start,
         intervalo_final: x.interval_end,

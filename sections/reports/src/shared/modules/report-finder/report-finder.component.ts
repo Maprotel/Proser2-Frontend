@@ -22,7 +22,7 @@ export class ReportFinderComponent implements OnInit {
   @Input() rows_original;
   @Input() initialSelectedFilterField;
   @Input() filterFieldList;
-  
+
   findInList;
 
   selectedFilterField;

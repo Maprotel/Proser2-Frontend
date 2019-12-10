@@ -121,7 +121,7 @@ export class InboundIntervalReportListComponent implements OnInit {
   ngOnDestroy() {
     this.userSelectionService.writeUserSelectionHistoric(
       this.userSelection,
-      
+
     );
   }
 
@@ -142,7 +142,7 @@ export class InboundIntervalReportListComponent implements OnInit {
               this.rows_valid = res.detail[0] === undefined ? false : true;
 
               this.rows = res.detail;
-              this.rows_original = res.group;
+              this.rows_original = res.detail;
               this.rows_total = res.total;
 
               this.rows_detail = res.detail;
@@ -234,7 +234,7 @@ export class InboundIntervalReportListComponent implements OnInit {
   exportToExcel(data) {
     const filterData = data.map(x => {
       return {
-        
+
         fecha: x.start_date,
         intervalo_inicial: x.interval_start,
         intervalo_final: x.interval_end,
