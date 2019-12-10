@@ -4,12 +4,6 @@
 </div>
 
 
-<!----------REPORT HEADER------------------------- -->
-<app-reports-report-header [userSelection]="userSelection"
-                           [selectorVisibleFields]="selectorVisibleFields"
-                           (returnResult)="onReturnHeaderResult($event)">
-</app-reports-report-header>
-
 <section class="row button-area report">
   <!-- ------- BUTTONS -------------------- -->
 
@@ -621,7 +615,8 @@
         </ng-template>
 
         <ng-template #wait_seconds>
-          <p class="right-black-bold">{{rows_total[0].wait_seconds | number: "1.0-0" }}</p>
+          <p class="right-black-bold">
+            {{rows_total[0].wait_seconds | number: "1.0-0" }}</p>
         </ng-template>
 
       </ngx-datatable-column>

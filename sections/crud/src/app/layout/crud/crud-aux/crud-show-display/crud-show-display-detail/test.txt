@@ -20,20 +20,16 @@ import { ProShowDisplayService } from "shared/services/";
   styleUrls: ["./crud-show-display-detail.component.scss"]
 })
 export class CrudShowDisplayDetailComponent implements OnInit {
-  // @Output() returnResult = new EventEmitter();
-  // @Output() editAnswer: EventEmitter<any> = new EventEmitter();
+  @Output() returnResult = new EventEmitter();
+  @Output() editAnswer: EventEmitter<any> = new EventEmitter();
 
+  @Input() action: ActionConfig;
   @Input() selection;
-  @Input() showDatatable;
-  @Input() showDetail;
-
-  @Input() newRecord;
-  @Input() editRecord;
-
-  test: boolean = false
 
   alertMessage: AlertModel;
   env;
+  showDatatable;
+  showDetail;
   // error_detected = false;
   // error_message;
 
@@ -68,53 +64,8 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     private userSelectionService: UserSelectionService,
     private modalService: NgbModal
   ) {
-    this.onResetValues()
-  }
-
-  ngOnInit() {
-    this.onFillForm();
-  }
-
-  // onNewRecord() {
-  //   console.log('onNewRecord');
-
-  // }
-
-  // onEditRecord() {
-  //   console.log('onEditRecord');
-  // }
-
-  onFillForm() {
-    /******** NEW RECORD ********* */
-    // (this.action.action === "newRecord") ?
-    //   this.selection = new ProShowDisplayModel() : this.selection;
-
-    // (this.action.action === "selectedRecord") ?
-    //   this.selection = new ProShowDisplayModel() : this.selection;
-
-    this.registerForm = this.formBuilder.group({
-      pro_show_display_id: [this.selection.pro_show_display_id],
-      pro_show_display_name: [this.selection.pro_show_display_name],
-      pro_show_display_weekday: [this.selection.pro_show_display_weekday],
-
-      pro_show_display_start_time: [this.selection.pro_show_display_start_time],
-      pro_show_display_end_time: [this.selection.pro_show_display_end_time],
-
-      pro_show_display_type: [this.selection.pro_show_display_type],
-      pro_show_display_selection: [this.selection.pro_show_display_selection],
-      pro_show_display_view: [this.selection.pro_show_display_view],
-      pro_show_display_status: [this.selection.pro_show_display_status]
-    });
-  }
-
-  // convenience getter for easy access to form fields
-  get f() {
-    return this.registerForm.controls;
-  }
-
-
-  onResetValues() {
     this.env = this.envService;
+
     this.alertMessage = new AlertModel();
     this.show_submit_button = false;
     this.show_data = true;
@@ -142,9 +93,48 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     this.viewTypeList = this.model.viewTypeList();
   }
 
+  ngOnInit() {
+    // this.selection = JSON.parse(localStorage.getItem("recordSelection"))[0];
+    this.onFillForm();
+  }
+
+  onFillForm() {
+    /******** NEW RECORD ********* */
+    (this.action.action === "newRecord") ?
+      this.selection = new ProShowDisplayModel() : this.selection;
+
+    (this.action.action === "selectedRecord") ?
+      this.selection = new ProShowDisplayModel() : this.selection;
+
+    this.registerForm = this.formBuilder.group({
+      pro_show_display_id: [this.selection.pro_show_display_id],
+      pro_show_display_name: [this.selection.pro_show_display_name],
+      pro_show_display_weekday: [this.selection.pro_show_display_weekday],
+
+      pro_show_display_start_time: [this.selection.pro_show_display_start_time],
+      pro_show_display_end_time: [this.selection.pro_show_display_end_time],
+
+      pro_show_display_type: [this.selection.pro_show_display_type],
+      pro_show_display_selection: [this.selection.pro_show_display_selection],
+      pro_show_display_view: [this.selection.pro_show_display_view],
+      pro_show_display_status: [this.selection.pro_show_display_status]
+    });
+  }
+
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.registerForm.controls;
+  }
+
+  onAnswer(event) {
+    this.action = event;
+    this.selection = this.action.temp;
+    this.action.action === "showRecord" ? this.onShowDetail() : "";
+    this.action.action === "editRecord" ? this.onEditRecord() : "";
+  }
 
   // CREATE RECORD
-  onCreateRecord(query) {
+  createRecord(query) {
     let record = this.registerForm.value;
 
     record.pro_show_display_weekday = JSON.stringify(
@@ -166,12 +156,12 @@ export class CrudShowDisplayDetailComponent implements OnInit {
         alert(
           `Registro agregado satisfactoriamente, ${data.pro_show_display_id}, ${data.pro_show_display_name}`
         );
-        // this.action.temp = [data];
+        this.action.temp = [data];
         // this.selection = new AuxHourModel;
         // this.onFillForm();
         // this.show_data = true;
-        // this.action.action = "afterCreatedRecord";
-        // this.editAnswer.emit(this.action);
+        this.action.action = "afterCreatedRecord";
+        this.editAnswer.emit(this.action);
       },
       error => {
         this.show_data = false;
@@ -180,8 +170,8 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     );
   }
 
-  // EDIT RECORD
-  onEditRecord(query) {
+  // CREATE RECORD
+  editRecord(query) {
     let record = this.registerForm.value;
 
     record.pro_show_display_weekday = JSON.stringify(
@@ -201,13 +191,13 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     this.showDisplayService.putRecord(record).subscribe(
       data => {
         this.selection = data;
-        // this.action.temp = this.selection;
+        this.action.temp = this.selection;
         alert(
-          `Registro modificado satisfactoriamente`
+          `Registro modificado satisfactoriamente, ${this.action.temp.aux_color_id}, ${this.action.temp.aux_color_name}`
         );
-        // this.action.action = "selectedRecord";
+        this.action.action = "selectedRecord";
         this.show_data = true;
-        // this.editAnswer.emit(this.action);
+        this.editAnswer.emit(this.action);
       },
       error => {
         this.show_data = false;
@@ -217,19 +207,18 @@ export class CrudShowDisplayDetailComponent implements OnInit {
   }
 
   // DELETE RECORD
-  onDeleteRecord(query: ProShowDisplayModel) {
-    // let id = this.action.temp.pro_show_display_id;
-    let id = 1;
+  deleteRecord(query: ProShowDisplayModel) {
+    let id = this.action.temp.pro_show_display_id;
 
     this.showDisplayService.deleteRecord(id).subscribe(
       data => {
         this.selection = data;
-        // this.action.temp = this.selection;
+        this.action.temp = this.selection;
         this.selection = new ProShowDisplayModel();
         this.onFillForm();
         alert(`Registro eliminado satisfactoriamente`);
         this.show_data = true;
-        // this.editAnswer.emit(this.action);
+        this.editAnswer.emit(this.action);
       },
       error => {
         console.error("Error", error);
@@ -239,31 +228,89 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     );
   }
 
+  onDelete() {
+    this.action.action = "delete";
+    this.deleteRecord(this.action.temp);
+  }
+
+  onDeactivate() {
+    this.selection = this.action.temp;
+    this.selection.pro_show_display_status = "I";
+    this.onFillForm();
+    this.show_submit_button = true;
+    // this.registerForm.pristine = false;
+  }
+
+  onReactivate() {
+    this.selection = this.action.temp;
+    this.selection.pro_show_display_status = "A";
+    this.onFillForm();
+    this.show_submit_button = true;
+    // this.registerForm.pristine = false;
+  }
+
+  onReset() {
+    this.selection = new ProShowDisplayModel();
+    this.action.temp = this.selection;
+    this.onFillForm();
+  }
+
+  afterCreatedRecord(register) {
+    this.action.action = "afterCreatedRecord";
+    this.action.temp = [register];
+    this.editAnswer.emit(this.action);
+  }
+
+  onShowDetail() {
+    this.action.action = "showRecord";
+  }
+
+  onEditRecord() {
+    this.action.action = "editRecord";
+    this.selection = this.action.temp;
+    this.onFillForm();
+  }
+
+  afterEditedRecord(register) {
+    this.action.action = "afterEditedRecord";
+    this.action.temp = [register];
+    this.editAnswer.emit(this.action);
+  }
+
+  onCancel() {
+    this.action = { action: "cancel", temp: "" };
+    this.editAnswer.emit(this.action);
+  }
+
+  onAction() {
+    this.action = { action: "edit_box", temp: "" };
+    this.editAnswer.emit(this.action);
+  }
 
   onSubmit(register) {
-    // if (this.action.action === "newRecord") {
-    //   this.createRecord(register);
-    //   this.afterCreatedRecord(register);
-    // }
+    if (this.action.action === "newRecord") {
+      this.createRecord(register);
+      this.afterCreatedRecord(register);
+    }
 
-    // if (this.action.action === "editRecord") {
-    //   this.selection = register;
-    //   this.editRecord(register);
-    //   this.afterEditedRecord(register);
-    // }
+    if (this.action.action === "editRecord") {
+      this.selection = register;
+      this.editRecord(register);
+      this.afterEditedRecord(register);
+    }
 
-    // if (this.action.action === "deleteRecord") {
-    //   this.selection = register;
-    //   this.deleteRecord(register);
-    //   this.action.temp = register;
-    //   this.editAnswer.emit(this.action);
-    // }
+    if (this.action.action === "deleteRecord") {
+      this.selection = register;
+      this.deleteRecord(register);
+      this.action.temp = register;
+      this.editAnswer.emit(this.action);
+    }
 
-    // if (this.action.action === "showRecord") {
-    //   this.selection = register;
-    //   this.action.temp = register;
-    //   this.editAnswer.emit(this.action);
-    // }
+    if (this.action.action === "showRecord") {
+      this.selection = register;
+      this.action.temp = register;
+      this.editAnswer.emit(this.action);
+    }
   }
 
   // ERROR
@@ -276,6 +323,29 @@ export class CrudShowDisplayDetailComponent implements OnInit {
       "alert alert-danger alert-dismissible fade show";
   }
 
+  sendTest() {
+    this.action.action = "test";
+    this.action.temp = [
+      {
+        aux_color_id: 2,
+        aux_color_name: "Supervisor 008",
+        aux_color_status: "A"
+      }
+    ];
+
+    this.editAnswer.emit(this.action);
+  }
+
+  onRecordJsonChange() { }
+
+  copyUserSelection() {
+    let temp = localStorage.getItem("proser_historic");
+
+    this.registerForm.patchValue({
+      pro_show_display_selection: temp
+    });
+
+  }
 
   // Selector
   onOpenSelector(event) {
@@ -324,93 +394,4 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     });
     this.onOpenModal(content);
   }
-
-  /*** */
-
-  // onDelete() {
-  //   this.action.action = "delete";
-  //   this.deleteRecord(this.action.temp);
-  // }
-
-  // onDeactivate() {
-  //   this.selection = this.action.temp;
-  //   this.selection.pro_show_display_status = "I";
-  //   this.onFillForm();
-  //   this.show_submit_button = true;
-  //   // this.registerForm.pristine = false;
-  // }
-
-  // onReactivate() {
-  //   this.selection = this.action.temp;
-  //   this.selection.pro_show_display_status = "A";
-  //   this.onFillForm();
-  //   this.show_submit_button = true;
-  //   // this.registerForm.pristine = false;
-  // }
-
-  // onReset() {
-  //   this.selection = new ProShowDisplayModel();
-  //   this.action.temp = this.selection;
-  //   this.onFillForm();
-  // }
-
-  // afterCreatedRecord(register) {
-  //   this.action.action = "afterCreatedRecord";
-  //   this.action.temp = [register];
-  //   this.editAnswer.emit(this.action);
-  // }
-
-  // onShowDetail() {
-  //   this.action.action = "showRecord";
-  // }
-
-  // onEditRecord() {
-  //   this.action.action = "editRecord";
-  //   this.selection = this.action.temp;
-  //   this.onFillForm();
-  // }
-
-  // afterEditedRecord(register) {
-  //   this.action.action = "afterEditedRecord";
-  //   this.action.temp = [register];
-  //   this.editAnswer.emit(this.action);
-  // }
-
-  // onCancel() {
-  //   this.action = { action: "cancel", temp: "" };
-  //   this.editAnswer.emit(this.action);
-  // }
-
-  // onAction() {
-  //   this.action = { action: "edit_box", temp: "" };
-  //   this.editAnswer.emit(this.action);
-  // }
-
-
-
-  // sendTest() {
-  //   this.action.action = "test";
-  //   this.action.temp = [
-  //     {
-  //       aux_color_id: 2,
-  //       aux_color_name: "Supervisor 008",
-  //       aux_color_status: "A"
-  //     }
-  //   ];
-
-  //   this.editAnswer.emit(this.action);
-  // }
-
-  // onRecordJsonChange() { }
-
-  // copyUserSelection() {
-  //   let temp = localStorage.getItem("proser_historic");
-
-  //   this.registerForm.patchValue({
-  //     pro_show_display_selection: temp
-  //   });
-
-  // }
-
-
 }

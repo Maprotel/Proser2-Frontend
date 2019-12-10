@@ -21,7 +21,7 @@ export class CrudInvSupervisorComponent implements OnInit, OnDestroy {
   @Output() mainAnswer: EventEmitter<any> = new EventEmitter();
 
   // MAIN VARIABLES
-  alertMessage: AlertModel;
+  alertMessage: AlertModel; 
   env;
   error_detected = false;
   error_message;

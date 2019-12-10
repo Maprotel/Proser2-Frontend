@@ -1,15 +1,10 @@
-<!----------ALERT MESSAGE------------------------- -->
-<div>
-  <app-alert [alertMessage]="alertMessage"></app-alert>
-</div>
-
-
 <!----------REPORT HEADER------------------------- -->
 <div *ngIf="showHeader">
   <app-reports-report-header [userSelection]="userSelection"
                              (openSelector)="onOpenSelector(selector)">
   </app-reports-report-header>
 </div>
+
 <!----------REPORT LIST------------------------- -->
 <div *ngIf="showDatatable">
   <app-reports-inbound-report-list [userSelection]="userSelection">

@@ -13,7 +13,7 @@ export class CrudUserbaseModel {
   filterFieldList;
   selectedFilterField;
   // others
-  alertMessage: AlertModel;
+  alertMessage: AlertModel; 
   action;
   profileList;
   title;

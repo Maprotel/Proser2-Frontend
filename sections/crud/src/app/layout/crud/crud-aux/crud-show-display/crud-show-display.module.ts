@@ -17,12 +17,14 @@ import { CrudShowDisplayDetailComponent } from "./crud-show-display-detail/crud-
 import { SharedPipesModule } from "shared/pipes/shared-pipes.module";
 
 import { SelectorModule } from "shared/modules/selector/selector.module";
+import { CrudShowDisplaySubheaderComponent } from './crud-show-display-subheader/crud-show-display-subheader.component';
 
 @NgModule({
   declarations: [
     CrudShowDisplayComponent,
     CrudShowDisplayListComponent,
-    CrudShowDisplayDetailComponent
+    CrudShowDisplayDetailComponent,
+    CrudShowDisplaySubheaderComponent
   ],
   imports: [
     CommonModule,

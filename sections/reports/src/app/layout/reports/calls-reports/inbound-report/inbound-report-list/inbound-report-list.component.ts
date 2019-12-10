@@ -8,6 +8,7 @@ import {
   NgbActiveModal,
   NgbModalRef
 } from "@ng-bootstrap/ng-bootstrap";
+import { Observable, Subscription, timer } from "rxjs";
 
 // Global shared functions import
 import { getUpdateFilter } from "shared/functions";
@@ -15,6 +16,7 @@ import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
 
 // Global shared models
 import { AlertModel } from "shared/models/helpers/Alert";
+
 import { UserSelectionModel } from "shared/models";
 
 // Global shared services
@@ -37,6 +39,10 @@ import { InboundReportGraphComponent } from "../inbound-report-graph/inbound-rep
   styleUrls: ["./inbound-report-list.component.scss"]
 })
 export class InboundReportListComponent implements OnInit {
+
+  // Subscription
+  private subscription: Subscription = new Subscription();
+
   // Child components
   @ViewChild(InboundReportGraphComponent, { static: false })
   private childGraph: InboundReportGraphComponent;
@@ -47,6 +53,7 @@ export class InboundReportListComponent implements OnInit {
 
   // Component variables
   alertMessage = new AlertModel();
+
   env;
 
   // Selector variables
@@ -54,6 +61,7 @@ export class InboundReportListComponent implements OnInit {
 
   // Realtime variables
   timerConnected;
+  backendConnected;
 
   // Datatable variables
   show_columns = false; // shows or hides a colum
@@ -86,6 +94,7 @@ export class InboundReportListComponent implements OnInit {
   graph = false;
   show_graph_or_table_button = false;
 
+
   // Init
   constructor(
     private callsInboundDailyService: CallsInboundDailyService,
@@ -101,6 +110,8 @@ export class InboundReportListComponent implements OnInit {
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.selectorVisibleFields.assignation = false;
     this.selectorVisibleFields.auxiliar = false;
+    this.timerConnected = 0;
+    this.backendConnected = true;
   }
 
   // Start
@@ -118,6 +129,8 @@ export class InboundReportListComponent implements OnInit {
       name: "fecha_inicio",
       text: "Fecha desde"
     };
+
+    this.onRepeat();
   }
 
   // Finish
@@ -127,17 +140,50 @@ export class InboundReportListComponent implements OnInit {
     );
   }
 
+  // Real time repeat
+  onRepeat() {
+    let timerComponent = timer(1000, 5000);
+    let timerClock = timer(1000, 1000);
+
+    this.getReportList(this.userSelection);
+
+    this.subscription.add(
+      timerComponent.subscribe(() => {
+        this.getPing();
+        !this.backendConnected ? this.getReportList(this.userSelection) : ''
+      })
+    );
+
+    timerClock.subscribe(() => {
+      this.timerConnected = this.timerConnected + 1;
+    });
+  }
+
+  getPing() {
+    this.callsInboundDailyService.ping()
+      .subscribe(
+        res => {
+          // console.log('Res ping', res);
+          // this.alertMessage.onResetAlert()
+          this.backendConnected = true
+        },
+        error => {
+          console.error("Error - getPing", error, error.status);
+          this.alertMessage.onAlertError(error)
+          this.backendConnected = false
+          this.show = false;
+        })
+  }
+
   // Get records from backend
   getReportList(userSelection) {
     if (userSelection) {
       this.rows = [new CallsInboundDailyModel()];
       this.callsInboundDailyService.getReportList(userSelection).subscribe(
         (res: BackendResponseModel) => {
+          this.alertMessage.onResetAlert();
           this.show = false;
-
           this.timerConnected = 0;
-          // console.error("res", res);
-
           if (Array.isArray(res.detail)) {
             this.rows_valid = res.detail[0] === undefined ? false : true;
 
@@ -157,17 +203,11 @@ export class InboundReportListComponent implements OnInit {
           } else {
             console.error("Error", res);
           }
-          this.alertMessage = new AlertModel();
         },
         error => {
-          console.error("Error", error);
+          // console.error("Error - getReportList", error, error.status);
           this.show = false;
-          this.alertService.error(error.status);
-          this.alertMessage.alertTitle = "Error del servidor";
-          this.alertMessage.alertText = error.statusText;
-          this.alertMessage.alertShow = true;
-          this.alertMessage.alertClass =
-            "alert alert-danger alert-dismissible fade show";
+          this.alertMessage.onAlertError(error)
         }
       );
     }
@@ -232,7 +272,7 @@ export class InboundReportListComponent implements OnInit {
   exportToExcel(data) {
     const filterData = data.map(x => {
       return {
-        
+
         fecha: x.start_date,
         hora_inicio: x.start_time,
         hora_final: x.end_time,

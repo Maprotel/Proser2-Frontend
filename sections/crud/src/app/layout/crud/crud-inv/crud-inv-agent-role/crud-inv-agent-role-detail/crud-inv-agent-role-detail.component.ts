@@ -16,7 +16,7 @@ export class CrudInvAgentRoleDetailComponent implements OnInit {
 
   @Input() action: ActionConfig;
 
-  alertMessage: AlertModel;
+  alertMessage: AlertModel; 
   env;
   error_detected = false;
   error_message;

@@ -5,18 +5,19 @@
 
 
 <!----------REPORT HEADER------------------------- -->
-<div *ngIf="userSelection">
+<div>
   <app-dashboard-dashboard-header [userSelection]="userSelection"
-                                  [selectorVisibleFields]="selectorVisibleFields"
-                                  [timerConnected]="timerConnected"
-                                  [historic]="historic"
-                                  (returnResult)="onReturnHeaderResult($event)">
+                                  (openSelector)="onOpenSelector(selector)">
   </app-dashboard-dashboard-header>
 </div>
+
+
 <!----------CLOCK SPACE------------------------- -->
 <section class="main-button">
   <div>
-
+    <!-- <button class="btn btn-outline" (click)="onResetValues()">reset</button>
+    <button class="btn btn-outline"
+            (click)="getReportListDashboard(userSelection)">update</button> -->
   </div>
   <div class="clock ml-auto">
     <a>
@@ -25,7 +26,7 @@
   </div>
 </section>
 
-<section class="main-button" *ngIf="!show">
+<section class="main-button" *ngIf="!showDatatable">
   <div>
     <h1>Obteniendo datos del servidor...</h1>
   </div>
@@ -33,7 +34,7 @@
 
 
 <!-- TODAY -->
-<main class="main" *ngIf="rows && show">
+<main class="main" *ngIf="rows && showDatatable">
   <!-- HIGHLIGHTS -->
   <section class="highlights">
     <article>
@@ -72,3 +73,31 @@
   </section>
 
 </main>
+
+
+
+<!-- MODAL WINDOW FOR SELECTOR ---------------------------------------------------- -->
+<ng-template #selector class="modal-full">
+  <div class="modal-header modal-primary">
+    <p class="modal-title ">Seleccione las opciones el reporte</p>
+
+    <div>
+
+
+      <button type="button" class="btn btn-danger text-lg-center "
+              (click)="onCancelSelector($event)">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+  </div>
+
+
+  <div class="" id="result">
+    <app-selector [userSelection]="userSelection"
+                  [selectorVisibleFields]="selectorVisibleFields"
+                  [selectorVisibleAreas]="selectorVisibleAreas"
+                  (acceptSelector)="onAcceptSelector($event)"
+                  (cancelSelector)="onCancelSelector($event)">
+    </app-selector>
+  </div>
+</ng-template>

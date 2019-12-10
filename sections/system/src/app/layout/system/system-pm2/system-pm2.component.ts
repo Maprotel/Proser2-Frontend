@@ -11,7 +11,7 @@ import { EnvService } from "shared/services/helpers/env.service";
   styleUrls: ["./system-pm2.component.scss"]
 })
 export class SystemPm2Component implements OnInit {
-  alertMessage: AlertModel;
+  alertMessage: AlertModel; alertMessage;
   message;
   env;
   temp;
@@ -26,7 +26,7 @@ export class SystemPm2Component implements OnInit {
     this.message = "Espacio para los mensajes del sistema";
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onKill() {
     let item = {

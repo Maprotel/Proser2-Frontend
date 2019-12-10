@@ -13,7 +13,7 @@ import { UserSelectionModel } from "shared/models";
   providedIn: "root"
 })
 export class CallsInboundDailyService {
-  constructor(private http: HttpClient, private env: EnvService) {}
+  constructor(private http: HttpClient, private env: EnvService) { }
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
@@ -24,11 +24,22 @@ export class CallsInboundDailyService {
     return throwError(error);
   }
 
+  ping() {
+    const url_api = `${
+      this.env.loopbackApiUrl
+      }/ping`;
+    const res = this.http.post(url_api, {
+      headers: this.headers
+    }).pipe(map(data => data), catchError(this.handleError));
+
+    return res;
+  }
+
   getReportList(userSelection: UserSelectionModel): Observable<any> {
     const accessToken = localStorage.getItem("accessToken");
     const url_api = `${
       this.env.loopbackApiUrl
-    }/api/InvReports/callsInboundDailyReport?access_token=${accessToken}`;
+      }/api/InvReports/callsInboundDailyReport?access_token=${accessToken}`;
     const res = this.http
       .post(url_api, userSelection, {
         headers: this.headers

@@ -1,12 +1,11 @@
 <main class="main">
 
-  <div class="datatable" *ngIf="rows && show_datatable">
+  <div class="datatable" *ngIf="rows && showDatatable">
     <!-- [columns]="columns" [selected]="selected" -->
     <ngx-datatable class="dark" [rows]="rows" [columnMode]="'force'"
                    [headerHeight]="40" [footerHeight]="40" [rowHeight]="'35'"
-                   [limit]="numberOfRowsInTable.value" [selected]="selected"
-                   [selectionType]="'single'" [scrollbarH]="true"
-                   [scrollbarV]="false" [summaryRow]="false"
+                   [limit]="15" [selected]="selected" [selectionType]="'single'"
+                   [scrollbarH]="true" [scrollbarV]="false" [summaryRow]="false"
                    [summaryHeight]="50"
                    [messages]="{ emptyMessage: 'Sin datos que mostrar' }"
                    [loadingIndicator]="'Contactando servidor'"

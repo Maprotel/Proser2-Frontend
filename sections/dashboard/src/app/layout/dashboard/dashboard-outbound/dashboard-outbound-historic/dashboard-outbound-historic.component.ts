@@ -4,12 +4,19 @@ import { UserSelectionModel, AlertModel } from "shared/models";
 import { DashboardOutboundIndicatorsService } from "sections/dashboard/src/shared/services";
 import { DashboardOutboundResponseModel } from "sections/dashboard/src/shared/models";
 
+import { NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+
 // Installed modules
 import { Observable, Subscription, timer } from "rxjs";
 import { AlertService, UserSelectionService } from "shared/services";
 import * as moment from "moment";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
-import { dateToDatePicker } from "shared/functions";
+
+import {
+  dateToDatePicker,
+  selectorOptionSubtitles,
+  selectorLegendSubtitles
+} from "shared/functions";
 @Component({
   selector: "app-dashboard-dashboard-outbound-historic",
   templateUrl: "./dashboard-outbound-historic.component.html",
@@ -19,8 +26,6 @@ export class DashboardOutboundHistoricComponent implements OnInit {
   // Subscription
   private subscription: Subscription = new Subscription();
 
-  header_data;
-
   alertMessage;
   show;
   title;
@@ -28,7 +33,9 @@ export class DashboardOutboundHistoricComponent implements OnInit {
   // User selection
   userSelection;
   selectorVisibleFields;
+  selectorVisibleAreas;
 
+  dashboardOptions;
   local_store;
 
   // data
@@ -36,16 +43,24 @@ export class DashboardOutboundHistoricComponent implements OnInit {
 
   // Timer
   timerConnected;
+
   // Icon
   faClock = faClock;
 
   // fake
   historic;
 
+  showHeader: boolean = true
+  showDatatable;
+  userSelectionTemp
+  activeModal
+
+
   constructor(
     private dashboardOutboundIndicatorsService: DashboardOutboundIndicatorsService,
     private userSelectionService: UserSelectionService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private modalService: NgbModal,
   ) {
     this.userSelection = new UserSelectionModel("userSelection");
     this.selectorVisibleFields = new UserSelectionModel("visible");
@@ -55,37 +70,64 @@ export class DashboardOutboundHistoricComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userSelection = new UserSelectionModel("userSelection");
-    this.title = 'Salientes histórico';
-    this.userSelectionHistoric()
-    this.getReportListDashboard(this.userSelection);
+    this.onResetValues();
+    this.onRepeat();
   }
 
   // Finish
   ngOnDestroy() {
-    this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
     this.subscription.unsubscribe();
   }
 
-  userSelectionHistoric() {
+  onResetValues() {
+    // Stored Data
     this.userSelection = this.userSelectionService.readUserSelectionHistoric();
+
+    // Component variables
+    this.title = "Salientes histórico";
+    this.showHeader = true;
+
+    // Selector
+    this.selectorVisibleFields = new UserSelectionModel("selectorVisibleFields");
+
+    this.selectorVisibleFields.start_date = true;
+    this.selectorVisibleFields.end_date = true;
+
+    this.selectorVisibleFields.start_time = true;
+    this.selectorVisibleFields.end_time = true;
+
     this.selectorVisibleFields.groupBy = false;
     this.selectorVisibleFields.interval = false;
-    this.selectorVisibleFields.assignation = false;
-    this.selectorVisibleFields.auxiliar = false;
+    this.selectorVisibleFields.last_minutes = false;
 
+    this.selectorVisibleFields.auxiliar = false;
+    this.selectorVisibleFields.assignation = false;
+
+    this.selectorVisibleAreas = {
+      date: true,
+      interval: true,
+      options: true,
+      buttons: false,
+    }
+
+    // userSelection
     this.userSelection.title = this.title;
 
     this.userSelection.mode = { id: 0, name: "Histórico", value: "historic" };
 
+    this.userSelection.options = selectorOptionSubtitles(this.userSelection)
+    this.userSelection.legend = selectorLegendSubtitles(this.userSelection)
+
     this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
     this.userSelection = this.userSelectionService.readUserSelectionHistoric();
+
+    // Show
+    this.showDatatable = true
+
   }
 
   // Get records from backend
   getReportListDashboard(userSelection: UserSelectionModel) {
-    this.userSelection = this.userSelectionService.readUserSelectionHistoric();
-    this.userSelectionHistoric();
     this.dashboardOutboundIndicatorsService
       .getReportList(this.userSelection)
       .subscribe(
@@ -93,7 +135,7 @@ export class DashboardOutboundHistoricComponent implements OnInit {
           this.timerConnected = 0;
           if (res) {
             this.rows = res;
-            this.show = true;
+            this.showDatatable = true;
           } else {
             console.error("Error", res);
           }
@@ -101,7 +143,7 @@ export class DashboardOutboundHistoricComponent implements OnInit {
         },
         error => {
           console.error("Error", error);
-          this.show = false;
+          this.showDatatable = false;
           this.alertService.error(error.status);
           this.alertMessage.alertTitle = "Error del servidor";
           this.alertMessage.alertText = error.statusText;
@@ -115,8 +157,60 @@ export class DashboardOutboundHistoricComponent implements OnInit {
   // Update on return of selector in header
   onReturnHeaderResult(event) {
     this.show = false;
-    this.userSelectionHistoric();
     this.getReportListDashboard(this.userSelection);
   }
 
+  // Real time repeat
+  onRepeat() {
+    let timerComponent = timer(1000, 5000);
+    let timerClock = timer(1000, 1000);
+
+    this.getReportListDashboard(this.userSelection);
+
+    this.subscription.add(
+      timerComponent.subscribe(() => {
+        this.getReportListDashboard(this.userSelection);
+      })
+    );
+
+    timerClock.subscribe(() => {
+      this.timerConnected = this.timerConnected + 1;
+    });
+  }
+
+  // Selector
+  onOpenSelector(event) {
+    this.showDatatable = false
+    this.userSelectionTemp = this.userSelection;
+    this.onOpenModal(event);
+  }
+
+  onAcceptSelector(event) {
+    this.showDatatable = false;
+    console.log('event', event);
+    this.userSelection = event;
+    this.userSelectionService.writeUserSelectionHistoric(event);
+    this.onCloseModal()
+  }
+
+  onCancelSelector() {
+    this.userSelection = this.userSelectionTemp;
+    this.onCloseModal()
+  }
+
+  // Modal
+  onOpenModal(content) {
+    this.showDatatable = false;
+    this.activeModal = this.modalService.open(content, {
+      windowClass: "my-class",
+      keyboard: false
+    });
+  }
+
+  onCloseModal() {
+    this.showHeader = true;
+    this.showDatatable = false;
+    // this.userSelection = this.userSelectionService.readUserSelectionHistoric();
+    this.activeModal.close();
+  }
 }
