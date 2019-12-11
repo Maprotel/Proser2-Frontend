@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
   alertMessage = new AlertModel();
   alertError
 
+  menuOptions
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -132,9 +134,8 @@ export class LoginComponent implements OnInit {
     this.userSelectionService.getUserSelectionMenus(userSelection)
       .subscribe(data => {
         this.alertMessage.onResetAlert();
-        let menuOptions = data;
-        this.userSelectionService.writeMenuOptions(menuOptions);
-        menuOptions = this.userSelectionService.readMenuOptions();
+        this.menuOptions = data;
+        this.userSelectionService.writeMenuOptions(this.menuOptions);
       },
         error => {
           console.error("Error", error, error.status);

@@ -99,7 +99,7 @@ export class CrudShowDisplayComponent implements OnInit {
 
 
 
-  onGetActive($event?) {
+  onGetActive(event?) {
     let query = `{"where":{"pro_show_display_status":"A"}}`;
     this.getAll_Records(query);
   }

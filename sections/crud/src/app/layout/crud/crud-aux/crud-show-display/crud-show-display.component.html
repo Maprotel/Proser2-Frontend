@@ -1,8 +1,7 @@
 <app-alert [alertMessage]="alertMessage"></app-alert>
 
 <section>
-  <app-crud-crud-show-display-subheader [showEditButton]=showEditButton;
-  (getActiveBack)="onGetActive($event)"
+  <app-crud-crud-show-display-subheader [showEditButton]="showEditButton"
                                         (getInactiveBack)="onGetInactive($event)"
                                         (getAllBack)="onGetAll($event)"
                                         (newRecordBack)="onNewRecord($event)"

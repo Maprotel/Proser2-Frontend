@@ -353,6 +353,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.userSelectionService.getUserSelectionMenus(this.userSelection)
       .subscribe(data => {
         this.menuOptions = data;
+        console.log('data', data);
         this.userSelectionService.writeMenuOptions(this.menuOptions);
         this.menuOptions = this.userSelectionService.readMenuOptions();
       },
