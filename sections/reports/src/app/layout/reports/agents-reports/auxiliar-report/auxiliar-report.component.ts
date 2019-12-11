@@ -74,7 +74,7 @@ export class AuxiliarReportComponent implements OnInit {
       date: true,
       interval: false,
       options: true,
-      buttons: false,
+      buttons: true,
     }
 
     // userSelection

@@ -11,7 +11,7 @@ import { EnvService } from "shared/services/helpers/env.service";
   styleUrls: ["./system-pm2.component.scss"]
 })
 export class SystemPm2Component implements OnInit {
-  alertMessage: AlertModel; alertMessage;
+  alertMessage: AlertModel;
   message;
   env;
   temp;

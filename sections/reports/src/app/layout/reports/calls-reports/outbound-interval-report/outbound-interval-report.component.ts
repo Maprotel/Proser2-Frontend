@@ -64,7 +64,7 @@ export class OutboundIntervalReportComponent implements OnInit {
     this.selectorVisibleFields.end_time = false;
 
     this.selectorVisibleFields.groupBy = false;
-    this.selectorVisibleFields.interval = false;
+    this.selectorVisibleFields.interval = true;
     this.selectorVisibleFields.last_minutes = false;
 
     this.selectorVisibleFields.auxiliar = false;
@@ -72,9 +72,9 @@ export class OutboundIntervalReportComponent implements OnInit {
 
     this.selectorVisibleAreas = {
       date: true,
-      interval: false,
+      interval: true,
       options: true,
-      buttons: false,
+      buttons: true,
     }
 
     // userSelection

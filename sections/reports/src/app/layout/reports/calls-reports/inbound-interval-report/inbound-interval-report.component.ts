@@ -1,5 +1,5 @@
 
-  import { Component, OnInit, EventEmitter, Output } from "@angular/core";
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 
 import { NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
@@ -66,7 +66,7 @@ export class InboundIntervalReportComponent implements OnInit {
     this.selectorVisibleFields.end_time = false;
 
     this.selectorVisibleFields.groupBy = false;
-    this.selectorVisibleFields.interval = false;
+    this.selectorVisibleFields.interval = true;
     this.selectorVisibleFields.last_minutes = false;
 
     this.selectorVisibleFields.auxiliar = false;
@@ -74,9 +74,9 @@ export class InboundIntervalReportComponent implements OnInit {
 
     this.selectorVisibleAreas = {
       date: true,
-      interval: false,
+      interval: true,
       options: true,
-      buttons: false,
+      buttons: true,
     }
 
     // userSelection
