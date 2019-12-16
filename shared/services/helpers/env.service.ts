@@ -25,13 +25,16 @@ export class EnvService {
   public userLink = this.host + '/proser_reports/dist/user/'
   public viewLink = this.host + '/proser_reports/dist/view/'
 
+  public proserLink = this.host + '/proser_reports/dist/home/'
+
+
   // API url
   public loopbackApiUrl = "http://localhost:3151";
   public systemApiUrl = "http://localhost:3152";
   public userApiUrl = "http://localhost:3153";
 
   // Version
-  public version = "2.3.9";
+  public version = "2.4.0";
 
   // Callcenter Name
   public callcenterName = "Test CallCenter";

@@ -25,9 +25,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'login-header-menu-packages',
-  templateUrl: './header-menu-packages.component.html',
-  styleUrls: ['./header-menu-packages.component.scss']
+  selector: 'login-header-menu-sections',
+  templateUrl: './header-menu-sections.component.html',
+  styleUrls: ['./header-menu-sections.component.scss']
 })
 export class HeaderMenuSectionsComponent implements OnInit {
   showInMenu;

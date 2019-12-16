@@ -1,3 +1,4 @@
+
 // Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,7 +22,8 @@ import { HeaderComponent } from './header.component';
 
 import { HeaderMenuLoginComponent } from './header-menu-login/header-menu-login.component';
 
-import { HeaderMenuSectionsComponent } from './header-menu-packages/header-menu-packages.component';
+
+import { HeaderMenuSectionsComponent } from './header-menu-sections/header-menu-sections.component';
 
 @NgModule({
   declarations: [HeaderComponent, HeaderMenuSectionsComponent, HeaderMenuLoginComponent],
