@@ -1,140 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "sections",
+  "newProjectRoot": "packages",
   "projects": {
-    "audit": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "sections/audit",
-      "sourceRoot": "sections/audit/src",
-      "prefix": "app-audit",
-      "architect": {
-        "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
-          "options": {
-            "customWebpackConfig": {
-              "path": "./extra-webpack.config.js"
-            },
-            "outputPath": "dist/audit",
-            "index": "sections/audit/src/index.html",
-            "main": "sections/audit/src/main.ts",
-            "polyfills": "sections/audit/src/polyfills.ts",
-            "tsConfig": "sections/audit/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "sections/audit/src/favicon.ico",
-              "sections/audit/src/shared/assets",
-              {
-                "glob": "**/*",
-                "input": "./shared/assets/",
-                "output": "./assets"
-              }
-            ],
-            "styles": [
-              "shared/styles/app.scss",
-              "sections/audit/src/shared/styles/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "shared/environments/environment.ts",
-                  "with": "shared/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "audit:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "audit:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "audit:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "sections/audit/src/test.ts",
-            "polyfills": "sections/audit/src/polyfills.ts",
-            "tsConfig": "sections/audit/tsconfig.spec.json",
-            "karmaConfig": "sections/audit/karma.conf.js",
-            "assets": [
-              "sections/audit/src/favicon.ico",
-              "sections/audit/src/shared/assets",
-              {
-                "glob": "**/*",
-                "input": "./shared/assets/",
-                "output": "./assets"
-              }
-            ],
-            "styles": [
-              "shared/styles/app.scss",
-              "sections/audit/src/shared/styles/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "sections/audit/tsconfig.app.json",
-              "sections/audit/tsconfig.spec.json",
-              "sections/audit/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "sections/audit/e2e/protractor.conf.js",
-            "devServerTarget": "audit:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "audit:serve:production"
-            }
-          }
-        }
-      }
-    },
     "crud": {
       "projectType": "application",
       "schematics": {
@@ -142,8 +10,8 @@
           "style": "scss"
         }
       },
-      "root": "sections/crud",
-      "sourceRoot": "sections/crud/src",
+      "root": "packages/crud",
+      "sourceRoot": "packages/crud/src",
       "prefix": "app-crud",
       "architect": {
         "build": {
@@ -153,14 +21,14 @@
               "path": "./extra-webpack.config.js"
             },
             "outputPath": "dist/crud",
-            "index": "sections/crud/src/index.html",
-            "main": "sections/crud/src/main.ts",
-            "polyfills": "sections/crud/src/polyfills.ts",
-            "tsConfig": "sections/crud/tsconfig.app.json",
+            "index": "packages/crud/src/index.html",
+            "main": "packages/crud/src/main.ts",
+            "polyfills": "packages/crud/src/polyfills.ts",
+            "tsConfig": "packages/crud/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "sections/crud/src/favicon.ico",
-              "sections/crud/src/shared/assets",
+              "packages/crud/src/favicon.ico",
+              "packages/crud/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -169,7 +37,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/crud/src/shared/styles/styles.scss"
+              "packages/crud/src/shared/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -220,13 +88,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "sections/crud/src/test.ts",
-            "polyfills": "sections/crud/src/polyfills.ts",
-            "tsConfig": "sections/crud/tsconfig.spec.json",
-            "karmaConfig": "sections/crud/karma.conf.js",
+            "main": "packages/crud/src/test.ts",
+            "polyfills": "packages/crud/src/polyfills.ts",
+            "tsConfig": "packages/crud/tsconfig.spec.json",
+            "karmaConfig": "packages/crud/karma.conf.js",
             "assets": [
-              "sections/crud/src/favicon.ico",
-              "sections/crud/src/shared/assets",
+              "packages/crud/src/favicon.ico",
+              "packages/crud/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -235,7 +103,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/crud/src/shared/styles/styles.scss"
+              "packages/crud/src/shared/styles/styles.scss"
             ],
             "scripts": []
           }
@@ -244,9 +112,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "sections/crud/tsconfig.app.json",
-              "sections/crud/tsconfig.spec.json",
-              "sections/crud/e2e/tsconfig.json"
+              "packages/crud/tsconfig.app.json",
+              "packages/crud/tsconfig.spec.json",
+              "packages/crud/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -256,7 +124,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "sections/crud/e2e/protractor.conf.js",
+            "protractorConfig": "packages/crud/e2e/protractor.conf.js",
             "devServerTarget": "crud:serve"
           },
           "configurations": {
@@ -274,8 +142,8 @@
           "style": "scss"
         }
       },
-      "root": "sections/dashboard",
-      "sourceRoot": "sections/dashboard/src",
+      "root": "packages/dashboard",
+      "sourceRoot": "packages/dashboard/src",
       "prefix": "app-dashboard",
       "architect": {
         "build": {
@@ -285,14 +153,14 @@
               "path": "./extra-webpack.config.js"
             },
             "outputPath": "dist/dashboard",
-            "index": "sections/dashboard/src/index.html",
-            "main": "sections/dashboard/src/main.ts",
-            "polyfills": "sections/dashboard/src/polyfills.ts",
-            "tsConfig": "sections/dashboard/tsconfig.app.json",
+            "index": "packages/dashboard/src/index.html",
+            "main": "packages/dashboard/src/main.ts",
+            "polyfills": "packages/dashboard/src/polyfills.ts",
+            "tsConfig": "packages/dashboard/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "sections/dashboard/src/favicon.ico",
-              "sections/dashboard/src/shared/assets",
+              "packages/dashboard/src/favicon.ico",
+              "packages/dashboard/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -301,7 +169,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/dashboard/src/shared/styles/styles.scss"
+              "packages/dashboard/src/shared/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -352,13 +220,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "sections/dashboard/src/test.ts",
-            "polyfills": "sections/dashboard/src/polyfills.ts",
-            "tsConfig": "sections/dashboard/tsconfig.spec.json",
-            "karmaConfig": "sections/dashboard/karma.conf.js",
+            "main": "packages/dashboard/src/test.ts",
+            "polyfills": "packages/dashboard/src/polyfills.ts",
+            "tsConfig": "packages/dashboard/tsconfig.spec.json",
+            "karmaConfig": "packages/dashboard/karma.conf.js",
             "assets": [
-              "sections/dashboard/src/favicon.ico",
-              "sections/dashboard/src/shared/assets",
+              "packages/dashboard/src/favicon.ico",
+              "packages/dashboard/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -367,7 +235,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/dashboard/src/shared/styles/styles.scss"
+              "packages/dashboard/src/shared/styles/styles.scss"
             ],
             "scripts": []
           }
@@ -376,9 +244,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "sections/dashboard/tsconfig.app.json",
-              "sections/dashboard/tsconfig.spec.json",
-              "sections/dashboard/e2e/tsconfig.json"
+              "packages/dashboard/tsconfig.app.json",
+              "packages/dashboard/tsconfig.spec.json",
+              "packages/dashboard/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -388,7 +256,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "sections/dashboard/e2e/protractor.conf.js",
+            "protractorConfig": "packages/dashboard/e2e/protractor.conf.js",
             "devServerTarget": "dashboard:serve"
           },
           "configurations": {
@@ -406,8 +274,8 @@
           "style": "scss"
         }
       },
-      "root": "sections/display",
-      "sourceRoot": "sections/display/src",
+      "root": "packages/display",
+      "sourceRoot": "packages/display/src",
       "prefix": "app-display",
       "architect": {
         "build": {
@@ -417,14 +285,14 @@
               "path": "./extra-webpack.config.js"
             },
             "outputPath": "dist/display",
-            "index": "sections/display/src/index.html",
-            "main": "sections/display/src/main.ts",
-            "polyfills": "sections/display/src/polyfills.ts",
-            "tsConfig": "sections/display/tsconfig.app.json",
+            "index": "packages/display/src/index.html",
+            "main": "packages/display/src/main.ts",
+            "polyfills": "packages/display/src/polyfills.ts",
+            "tsConfig": "packages/display/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "sections/display/src/favicon.ico",
-              "sections/display/src/shared/assets",
+              "packages/display/src/favicon.ico",
+              "packages/display/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -433,7 +301,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/display/src/shared/styles/styles.scss"
+              "packages/display/src/shared/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -484,13 +352,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "sections/display/src/test.ts",
-            "polyfills": "sections/display/src/polyfills.ts",
-            "tsConfig": "sections/display/tsconfig.spec.json",
-            "karmaConfig": "sections/display/karma.conf.js",
+            "main": "packages/display/src/test.ts",
+            "polyfills": "packages/display/src/polyfills.ts",
+            "tsConfig": "packages/display/tsconfig.spec.json",
+            "karmaConfig": "packages/display/karma.conf.js",
             "assets": [
-              "sections/display/src/favicon.ico",
-              "sections/display/src/shared/assets",
+              "packages/display/src/favicon.ico",
+              "packages/display/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -499,7 +367,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/display/src/shared/styles/styles.scss"
+              "packages/display/src/shared/styles/styles.scss"
             ],
             "scripts": []
           }
@@ -508,9 +376,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "sections/display/tsconfig.app.json",
-              "sections/display/tsconfig.spec.json",
-              "sections/display/e2e/tsconfig.json"
+              "packages/display/tsconfig.app.json",
+              "packages/display/tsconfig.spec.json",
+              "packages/display/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -520,7 +388,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "sections/display/e2e/protractor.conf.js",
+            "protractorConfig": "packages/display/e2e/protractor.conf.js",
             "devServerTarget": "display:serve"
           },
           "configurations": {
@@ -538,22 +406,22 @@
           "style": "scss"
         }
       },
-      "root": "sections/home",
-      "sourceRoot": "sections/home/src",
+      "root": "packages/home",
+      "sourceRoot": "packages/home/src",
       "prefix": "home",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/home",
-            "index": "sections/home/src/index.html",
-            "main": "sections/home/src/main.ts",
-            "polyfills": "sections/home/src/polyfills.ts",
-            "tsConfig": "sections/home/tsconfig.app.json",
+            "index": "packages/home/src/index.html",
+            "main": "packages/home/src/main.ts",
+            "polyfills": "packages/home/src/polyfills.ts",
+            "tsConfig": "packages/home/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "sections/home/src/favicon.ico",
-              "sections/home/src/shared/assets",
+              "packages/home/src/favicon.ico",
+              "packages/home/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -562,7 +430,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/home/src/shared/styles/styles.scss"
+              "packages/home/src/shared/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -618,13 +486,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "sections/home/src/test.ts",
-            "polyfills": "sections/home/src/polyfills.ts",
-            "tsConfig": "sections/home/tsconfig.spec.json",
-            "karmaConfig": "sections/home/karma.conf.js",
+            "main": "packages/home/src/test.ts",
+            "polyfills": "packages/home/src/polyfills.ts",
+            "tsConfig": "packages/home/tsconfig.spec.json",
+            "karmaConfig": "packages/home/karma.conf.js",
             "assets": [
-              "sections/home/src/favicon.ico",
-              "sections/home/src/shared/assets",
+              "packages/home/src/favicon.ico",
+              "packages/home/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -633,7 +501,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/home/src/shared/styles/styles.scss"
+              "packages/home/src/shared/styles/styles.scss"
             ],
             "scripts": []
           }
@@ -642,9 +510,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "sections/home/tsconfig.app.json",
-              "sections/home/tsconfig.spec.json",
-              "sections/home/e2e/tsconfig.json"
+              "packages/home/tsconfig.app.json",
+              "packages/home/tsconfig.spec.json",
+              "packages/home/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -654,7 +522,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "sections/home/e2e/protractor.conf.js",
+            "protractorConfig": "packages/home/e2e/protractor.conf.js",
             "devServerTarget": "home:serve"
           },
           "configurations": {
@@ -672,8 +540,8 @@
           "style": "scss"
         }
       },
-      "root": "sections/reports",
-      "sourceRoot": "sections/reports/src",
+      "root": "packages/reports",
+      "sourceRoot": "packages/reports/src",
       "prefix": "app-reports",
       "architect": {
         "build": {
@@ -683,14 +551,14 @@
               "path": "./extra-webpack.config.js"
             },
             "outputPath": "dist/reports",
-            "index": "sections/reports/src/index.html",
-            "main": "sections/reports/src/main.ts",
-            "polyfills": "sections/reports/src/polyfills.ts",
-            "tsConfig": "sections/reports/tsconfig.app.json",
+            "index": "packages/reports/src/index.html",
+            "main": "packages/reports/src/main.ts",
+            "polyfills": "packages/reports/src/polyfills.ts",
+            "tsConfig": "packages/reports/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "sections/reports/src/favicon.ico",
-              "sections/reports/src/shared/assets",
+              "packages/reports/src/favicon.ico",
+              "packages/reports/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -699,8 +567,8 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/reports/src/shared/styles/styles.scss",
-              "sections/reports/src/shared/styles/datatable/datatable.scss"
+              "packages/reports/src/shared/styles/styles.scss",
+              "packages/reports/src/shared/styles/datatable/datatable.scss"
             ],
             "scripts": []
           },
@@ -751,13 +619,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "sections/reports/src/test.ts",
-            "polyfills": "sections/reports/src/polyfills.ts",
-            "tsConfig": "sections/reports/tsconfig.spec.json",
-            "karmaConfig": "sections/reports/karma.conf.js",
+            "main": "packages/reports/src/test.ts",
+            "polyfills": "packages/reports/src/polyfills.ts",
+            "tsConfig": "packages/reports/tsconfig.spec.json",
+            "karmaConfig": "packages/reports/karma.conf.js",
             "assets": [
-              "sections/reports/src/favicon.ico",
-              "sections/reports/src/shared/assets",
+              "packages/reports/src/favicon.ico",
+              "packages/reports/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -766,8 +634,8 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/reports/src/shared/styles/styles.scss",
-              "sections/reports/src/shared/styles/datatable/datatable.scss"
+              "packages/reports/src/shared/styles/styles.scss",
+              "packages/reports/src/shared/styles/datatable/datatable.scss"
             ],
             "scripts": []
           }
@@ -776,9 +644,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "sections/reports/tsconfig.app.json",
-              "sections/reports/tsconfig.spec.json",
-              "sections/reports/e2e/tsconfig.json"
+              "packages/reports/tsconfig.app.json",
+              "packages/reports/tsconfig.spec.json",
+              "packages/reports/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -788,7 +656,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "sections/reports/e2e/protractor.conf.js",
+            "protractorConfig": "packages/reports/e2e/protractor.conf.js",
             "devServerTarget": "reports:serve"
           },
           "configurations": {
@@ -802,8 +670,8 @@
     "sms": {
       "projectType": "application",
       "schematics": {},
-      "root": "sections/sms",
-      "sourceRoot": "sections/sms/src",
+      "root": "packages/sms",
+      "sourceRoot": "packages/sms/src",
       "prefix": "app",
       "architect": {
         "build": {
@@ -813,14 +681,14 @@
               "path": "./extra-webpack.config.js"
             },
             "outputPath": "dist/sms",
-            "index": "sections/sms/src/index.html",
-            "main": "sections/sms/src/main.ts",
-            "polyfills": "sections/sms/src/polyfills.ts",
-            "tsConfig": "sections/sms/tsconfig.app.json",
+            "index": "packages/sms/src/index.html",
+            "main": "packages/sms/src/main.ts",
+            "polyfills": "packages/sms/src/polyfills.ts",
+            "tsConfig": "packages/sms/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "sections/sms/src/favicon.ico",
-              "sections/sms/src/shared/assets",
+              "packages/sms/src/favicon.ico",
+              "packages/sms/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -829,7 +697,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/sms/src/shared/styles/styles.scss"
+              "packages/sms/src/shared/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -880,13 +748,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "sections/sms/src/test.ts",
-            "polyfills": "sections/sms/src/polyfills.ts",
-            "tsConfig": "sections/sms/tsconfig.spec.json",
-            "karmaConfig": "sections/sms/karma.conf.js",
+            "main": "packages/sms/src/test.ts",
+            "polyfills": "packages/sms/src/polyfills.ts",
+            "tsConfig": "packages/sms/tsconfig.spec.json",
+            "karmaConfig": "packages/sms/karma.conf.js",
             "assets": [
-              "sections/sms/src/favicon.ico",
-              "sections/sms/src/shared/assets",
+              "packages/sms/src/favicon.ico",
+              "packages/sms/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -895,7 +763,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/sms/src/shared/styles/styles.scss"
+              "packages/sms/src/shared/styles/styles.scss"
             ],
             "scripts": []
           }
@@ -904,9 +772,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "sections/sms/tsconfig.app.json",
-              "sections/sms/tsconfig.spec.json",
-              "sections/sms/e2e/tsconfig.json"
+              "packages/sms/tsconfig.app.json",
+              "packages/sms/tsconfig.spec.json",
+              "packages/sms/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -916,7 +784,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "sections/sms/e2e/protractor.conf.js",
+            "protractorConfig": "packages/sms/e2e/protractor.conf.js",
             "devServerTarget": "sms:serve"
           },
           "configurations": {
@@ -934,8 +802,8 @@
           "style": "scss"
         }
       },
-      "root": "sections/system",
-      "sourceRoot": "sections/system/src",
+      "root": "packages/system",
+      "sourceRoot": "packages/system/src",
       "prefix": "app-system",
       "architect": {
         "build": {
@@ -945,14 +813,14 @@
               "path": "./extra-webpack.config.js"
             },
             "outputPath": "dist/system",
-            "index": "sections/system/src/index.html",
-            "main": "sections/system/src/main.ts",
-            "polyfills": "sections/system/src/polyfills.ts",
-            "tsConfig": "sections/system/tsconfig.app.json",
+            "index": "packages/system/src/index.html",
+            "main": "packages/system/src/main.ts",
+            "polyfills": "packages/system/src/polyfills.ts",
+            "tsConfig": "packages/system/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "sections/system/src/favicon.ico",
-              "sections/system/src/shared/assets",
+              "packages/system/src/favicon.ico",
+              "packages/system/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -961,7 +829,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/system/src/shared/styles/styles.scss"
+              "packages/system/src/shared/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -1012,13 +880,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "sections/system/src/test.ts",
-            "polyfills": "sections/system/src/polyfills.ts",
-            "tsConfig": "sections/system/tsconfig.spec.json",
-            "karmaConfig": "sections/system/karma.conf.js",
+            "main": "packages/system/src/test.ts",
+            "polyfills": "packages/system/src/polyfills.ts",
+            "tsConfig": "packages/system/tsconfig.spec.json",
+            "karmaConfig": "packages/system/karma.conf.js",
             "assets": [
-              "sections/system/src/favicon.ico",
-              "sections/system/src/shared/assets",
+              "packages/system/src/favicon.ico",
+              "packages/system/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -1027,7 +895,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/system/src/shared/styles/styles.scss"
+              "packages/system/src/shared/styles/styles.scss"
             ],
             "scripts": []
           }
@@ -1036,9 +904,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "sections/system/tsconfig.app.json",
-              "sections/system/tsconfig.spec.json",
-              "sections/system/e2e/tsconfig.json"
+              "packages/system/tsconfig.app.json",
+              "packages/system/tsconfig.spec.json",
+              "packages/system/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -1048,7 +916,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "sections/system/e2e/protractor.conf.js",
+            "protractorConfig": "packages/system/e2e/protractor.conf.js",
             "devServerTarget": "system:serve"
           },
           "configurations": {
@@ -1066,8 +934,8 @@
           "style": "scss"
         }
       },
-      "root": "sections/user",
-      "sourceRoot": "sections/user/src",
+      "root": "packages/user",
+      "sourceRoot": "packages/user/src",
       "prefix": "app-user",
       "architect": {
         "build": {
@@ -1077,14 +945,14 @@
               "path": "./extra-webpack.config.js"
             },
             "outputPath": "dist/user",
-            "index": "sections/user/src/index.html",
-            "main": "sections/user/src/main.ts",
-            "polyfills": "sections/user/src/polyfills.ts",
-            "tsConfig": "sections/user/tsconfig.app.json",
+            "index": "packages/user/src/index.html",
+            "main": "packages/user/src/main.ts",
+            "polyfills": "packages/user/src/polyfills.ts",
+            "tsConfig": "packages/user/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "sections/user/src/favicon.ico",
-              "sections/user/src/shared/assets",
+              "packages/user/src/favicon.ico",
+              "packages/user/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -1093,7 +961,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/user/src/shared/styles/styles.scss"
+              "packages/user/src/shared/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -1144,13 +1012,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "sections/user/src/test.ts",
-            "polyfills": "sections/user/src/polyfills.ts",
-            "tsConfig": "sections/user/tsconfig.spec.json",
-            "karmaConfig": "sections/user/karma.conf.js",
+            "main": "packages/user/src/test.ts",
+            "polyfills": "packages/user/src/polyfills.ts",
+            "tsConfig": "packages/user/tsconfig.spec.json",
+            "karmaConfig": "packages/user/karma.conf.js",
             "assets": [
-              "sections/user/src/favicon.ico",
-              "sections/user/src/shared/assets",
+              "packages/user/src/favicon.ico",
+              "packages/user/src/shared/assets",
               {
                 "glob": "**/*",
                 "input": "./shared/assets/",
@@ -1159,7 +1027,7 @@
             ],
             "styles": [
               "shared/styles/app.scss",
-              "sections/user/src/shared/styles/styles.scss"
+              "packages/user/src/shared/styles/styles.scss"
             ],
             "scripts": []
           }
@@ -1168,9 +1036,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "sections/user/tsconfig.app.json",
-              "sections/user/tsconfig.spec.json",
-              "sections/user/e2e/tsconfig.json"
+              "packages/user/tsconfig.app.json",
+              "packages/user/tsconfig.spec.json",
+              "packages/user/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -1180,145 +1048,12 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "sections/user/e2e/protractor.conf.js",
+            "protractorConfig": "packages/user/e2e/protractor.conf.js",
             "devServerTarget": "user:serve"
           },
           "configurations": {
             "production": {
               "devServerTarget": "user:serve:production"
-            }
-          }
-        }
-      }
-    },
-    "view": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "sections/view",
-      "sourceRoot": "sections/view/src",
-      "prefix": "app-view",
-      "architect": {
-        "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
-          "options": {
-            "customWebpackConfig": {
-              "path": "./extra-webpack.config.js"
-            },
-            "outputPath": "dist/view",
-            "index": "sections/view/src/index.html",
-            "main": "sections/view/src/main.ts",
-            "polyfills": "sections/view/src/polyfills.ts",
-            "tsConfig": "sections/view/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "sections/view/src/favicon.ico",
-              "sections/view/src/shared/assets",
-              "sections/view/src/styles",
-              {
-                "glob": "**/*",
-                "input": "./shared/assets/",
-                "output": "./assets"
-              }
-            ],
-            "styles": [
-              "shared/styles/app.scss",
-              "sections/view/src/shared/styles/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "shared/environments/environment.ts",
-                  "with": "shared/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "view:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "view:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "view:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "sections/view/src/test.ts",
-            "polyfills": "sections/view/src/polyfills.ts",
-            "tsConfig": "sections/view/tsconfig.spec.json",
-            "karmaConfig": "sections/view/karma.conf.js",
-            "assets": [
-              "sections/view/src/favicon.ico",
-              "sections/view/src/shared/assets",
-              {
-                "glob": "**/*",
-                "input": "./shared/assets/",
-                "output": "./assets"
-              }
-            ],
-            "styles": [
-              "shared/styles/app.scss",
-              "sections/view/src/shared/styles/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "sections/view/tsconfig.app.json",
-              "sections/view/tsconfig.spec.json",
-              "sections/view/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "sections/view/e2e/protractor.conf.js",
-            "devServerTarget": "view:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "view:serve:production"
             }
           }
         }
