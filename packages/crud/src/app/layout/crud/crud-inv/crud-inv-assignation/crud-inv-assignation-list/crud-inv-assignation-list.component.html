@@ -14,12 +14,8 @@
       <!-- ----------------------------------------------------------------------- -->
 
       <ngx-datatable-column prop="inv_break_id" width="50" [frozenLeft]="true">
-        <ng-template
-          let-column="column"
-          let-sort="sortFn"
-          let-sortDir="sortDir"
-          ngx-datatable-header-template
-        >
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
           <p class="izquierda-negrita " (click)="sort($event, sortDir, sortFn)">
             {{ model.fieldInfo('inv_break_id').text }}
           </p>
@@ -33,12 +29,8 @@
       <!-- ----------------------------------------------------------------------- -->
 
       <ngx-datatable-column prop="inv_break_status" width="80">
-        <ng-template
-          let-column="column"
-          let-sort="sortFn"
-          let-sortDir="sortDir"
-          ngx-datatable-header-template
-        >
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
           <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">
             {{ model.fieldInfo('inv_break_status').text }}
           </p>
@@ -52,12 +44,8 @@
       <!-- ----------------------------------------------------------------------- -->
 
       <ngx-datatable-column prop="inv_break_name" width="150">
-        <ng-template
-          let-column="column"
-          let-sort="sortFn"
-          let-sortDir="sortDir"
-          ngx-datatable-header-template
-        >
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
           <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">
             {{ model.fieldInfo('inv_break_name').text }}
           </p>
@@ -72,12 +60,8 @@
       <!-- ----------------------------------------------------------------------- -->
 
       <ngx-datatable-column prop="inv_break_shortname" width="150">
-        <ng-template
-          let-column="column"
-          let-sort="sortFn"
-          let-sortDir="sortDir"
-          ngx-datatable-header-template
-        >
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
           <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">
             {{ model.fieldInfo('inv_break_shortname').text }}
           </p>
@@ -92,12 +76,8 @@
       <!-- ----------------------------------------------------------------------- -->
 
       <ngx-datatable-column prop="inv_break_description" width="200">
-        <ng-template
-          let-column="column"
-          let-sort="sortFn"
-          let-sortDir="sortDir"
-          ngx-datatable-header-template
-        >
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
           <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">
             {{ model.fieldInfo('inv_break_description').text }}
           </p>
@@ -109,59 +89,45 @@
         </ng-template>
       </ngx-datatable-column>
 
-    <!-- ----------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------- -->
 
-  <ngx-datatable-column prop="inv_break_type" width="100">
-  
-    <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"  ngx-datatable-header-template>
-      <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">{{model.fieldInfo('inv_break_type').text}}</p>
-      </ng-template>
-  
-    <ng-template let-value="value" ngx-datatable-cell-template>
-  
-        <!-- <a (click)="openModal(agent)" class="btn btn-primary-sm">Agente</a> -->
-      <p class="celda_derecha_negro">{{value}}</p>
-  
-    </ng-template>
-  
-  </ngx-datatable-column>
-  
-  
-  <!-- ----------------------------------------------------------------------- -->
+      <ngx-datatable-column prop="inv_break_productivity" width="100">
 
-  <ngx-datatable-column prop="inv_break_productivity" width="100">
-  
-    <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"  ngx-datatable-header-template>
-      <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">{{model.fieldInfo('inv_break_productivity').text}}</p>
-      </ng-template>
-  
-    <ng-template let-value="value" ngx-datatable-cell-template>
-  
-        <!-- <a (click)="openModal(agent)" class="btn btn-primary-sm">Agente</a> -->
-      <p class="celda_derecha_negro">{{value}}</p>
-  
-    </ng-template>
-  
-  </ngx-datatable-column>
-  
-  
-  <!-- ----------------------------------------------------------------------- -->
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
+          <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">
+            {{model.fieldInfo('inv_break_productivity').text}}</p>
+        </ng-template>
 
-  <ngx-datatable-column prop="inv_break_class" width="100">
-  
-    <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"  ngx-datatable-header-template>
-      <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">{{model.fieldInfo('inv_break_class').text}}</p>
-      </ng-template>
-  
-    <ng-template let-value="value" ngx-datatable-cell-template>
-  
-        <!-- <a (click)="openModal(agent)" class="btn btn-primary-sm">Agente</a> -->
-      <p class="celda_derecha_negro">{{value}}</p>
-  
-    </ng-template>
-  
-  </ngx-datatable-column>
-    <!-- ----------------------------------------------------------------------- -->
+        <ng-template let-value="value" ngx-datatable-cell-template>
+
+          <!-- <a (click)="openModal(agent)" class="btn btn-primary-sm">Agente</a> -->
+          <p class="celda_derecha_negro">{{value}}</p>
+
+        </ng-template>
+
+      </ngx-datatable-column>
+
+
+      <!-- ----------------------------------------------------------------------- -->
+
+      <ngx-datatable-column prop="inv_break_class" width="100">
+
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
+          <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">
+            {{model.fieldInfo('inv_break_class').text}}</p>
+        </ng-template>
+
+        <ng-template let-value="value" ngx-datatable-cell-template>
+
+          <!-- <a (click)="openModal(agent)" class="btn btn-primary-sm">Agente</a> -->
+          <p class="celda_derecha_negro">{{value}}</p>
+
+        </ng-template>
+
+      </ngx-datatable-column>
+      <!-- ----------------------------------------------------------------------- -->
     </ngx-datatable>
   </div>
 </main>

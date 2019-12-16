@@ -1,11 +1,16 @@
 # Version control
 
-# 2.4.0
-- Ajustes del display para que arranque en forma automática según programación
+# 2.4.1
 - Creacion de crud para programar guardias y permisos
 - Creacion de tabla para personal planificado
+- 
+# 2.4.0
+- Ajustes del display para que arranque en forma automática según programación
 - cambio de sections a packages
 - mover packages de view y audit para apps diferentes
+- Cambio en la forma de hacer deploy para tener todo en carpeta proser
+- Menu de Navegación Organizacional
+  
 
 # 2.3.9
 - Upgrade del selector para que funcione como función pura

@@ -169,39 +169,7 @@
             </div>
           </div>
           <!-------------------------- FIELD END --------------------------->
-          <!-- inv_supervisor_type_json -->
-
-          <!-- <div class="form-group" id="inv_supervisor_type_json"> -->
-          <div id="inv_supervisor_type_json">
-            <label class="register-label">{{
-              model.fieldInfo('inv_supervisor_type_json').text
-            }}</label>
-
-            <div *ngIf="action.action === 'showRecord' && false">
-              <p class="register-detail">
-                {{ selection.inv_supervisor_type_json }}
-              </p>
-            </div>
-
-            <div class="form-control register-input">
-              <ng-select [items]="typeList" bindLabel="name" placeholder="Tipo"
-                         [dropdownPosition]="'auto'" [searchable]="false"
-                         [clearable]="true" [multiple]="false"
-                         hideSelected="true" (change)="onRecordJsonChange()"
-                         formControlName="inv_supervisor_type_json">
-              </ng-select>
-            </div>
-
-            <div *ngIf="
-                f.inv_supervisor_type_json.dirty &&
-                f.inv_supervisor_type_json.errors
-              " class="register-error">
-              <div *ngIf="f.inv_supervisor_type_json.errors.required">
-                Este dato es obligatorio
-              </div>
-            </div>
-          </div>
-          <!-------------------------- FIELD END --------------------------->
+        
           <!-- inv_supervisor_schedule_json -->
           <div class="form-group" id="inv_supervisor_schedule_json">
             <label class="register-label">{{
@@ -233,6 +201,8 @@
               </div>
             </div>
           </div>
+
+          <hr>
           <!-------------------------- FIELD END --------------------------->
           <!-- inv_supervisor_client_json -->
           <div class="form-group" id="inv_supervisor_client_json">

@@ -61,22 +61,6 @@
 
       <!-- ----------------------------------------------------------------------- -->
 
-      <ngx-datatable-column prop="inv_supervisor_type_json" width="30">
-        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-                     ngx-datatable-header-template>
-          <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">
-            {{ model.fieldInfo('inv_supervisor_type_json').text }}
-          </p>
-        </ng-template>
-
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <p class="celda_derecha_negro">{{ value.name }}</p>
-        </ng-template>
-      </ngx-datatable-column>
-
-
-      <!-- ----------------------------------------------------------------------- -->
-
       <ngx-datatable-column prop="inv_supervisor_schedule_json" width="50">
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
                      ngx-datatable-header-template>

@@ -154,33 +154,7 @@
                   </div>
           <!-------------------------- FIELD END --------------------------->
 
-                <!-- inv_break_type -->
-                <div class="form-group" id="inv_break_type">
-                  <label class="register-label">{{model.fieldInfo('inv_break_type').text}}</label>
-                  <div *ngIf="true">
-                    <p class="register-detail" >{{selection.inv_break_type}}</p>
-                  </div>
-                    <input
-                      *ngIf="action.action !== 'showRecord' && false"
-                    type="text"
-                    formControlName="inv_break_type"
-                    class="form-control register-input"
-                    [ngClass]="{ 'is-invalid': f.inv_break_type.errors }"
-                  />
 
-                  <div
-                    *ngIf="
-                      f.inv_break_type.dirty &&
-                      f.inv_break_type.errors
-                    "
-                    class="register-error"
-                  >
-                    <div *ngIf="f.inv_break_type.errors.required">
-                      Este dato es obligatorio
-                    </div>
-                  </div>
-                </div>
-          <!-------------------------- FIELD END --------------------------->
 
                 <!-- inv_break_productivity -->
                 <div class="form-group" id="inv_break_productivity">

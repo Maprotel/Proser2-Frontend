@@ -110,26 +110,6 @@
 
       <!-- ----------------------------------------------------------------------- -->
 
-      <ngx-datatable-column prop="inv_break_type" width="100">
-
-        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-                     ngx-datatable-header-template>
-          <p class="celda_derecha" (click)="sort($event, sortDir, sortFn)">
-            {{model.fieldInfo('inv_break_type').text}}</p>
-        </ng-template>
-
-        <ng-template let-value="value" ngx-datatable-cell-template>
-
-          <!-- <a (click)="openModal(agent)" class="btn btn-primary-sm">Agente</a> -->
-          <p class="celda_derecha_negro">{{value}}</p>
-
-        </ng-template>
-
-      </ngx-datatable-column>
-
-
-      <!-- ----------------------------------------------------------------------- -->
-
       <ngx-datatable-column prop="inv_break_productivity" width="100">
 
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
