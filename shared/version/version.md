@@ -1,5 +1,12 @@
 # Version control
 
+# 2.4.0
+- Ajustes del display para que arranque en forma automática según programación
+- Creacion de crud para programar guardias y permisos
+- Creacion de tabla para personal planificado
+- cambio de sections a packages
+- mover packages de view y audit para apps diferentes
+
 # 2.3.9
 - Upgrade del selector para que funcione como función pura
 
