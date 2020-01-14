@@ -284,6 +284,7 @@ export class DetailReportListComponent implements OnInit {
         llamadas_atendidas: x.inbound_calls_attended,
         llamadas_realizadas: x.outbound_calls_made,
         llamadas_internas: x.outbound_internal_made,
+        llamadas_colgadas: x.hung_by_agent,
         porcentaje_duracion_atendidas: x.inbound_percent,
         porcentaje_duracion_realizadas: x.outbound_percent,
         porcentaje_duracion_internas: x.internal_percent,

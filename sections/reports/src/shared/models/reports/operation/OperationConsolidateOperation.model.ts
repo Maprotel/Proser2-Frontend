@@ -18,6 +18,7 @@ export class OperationConsolidateOperationModel {
   outbound_internal_sec: string;
   outbound_internal_time: string;
   internal_percent: string;
+  hung_by_agent: string;
   auxiliar_duration_sec: string;
   auxiliar_duration_time: string;
   auxiliar_percent: string;
@@ -48,6 +49,7 @@ export class OperationConsolidateOperationModel {
     this.outbound_internal_sec = "";
     this.outbound_internal_time = "";
     this.internal_percent = "";
+    this.hung_by_agent = "";
     this.auxiliar_duration_sec = "";
     this.auxiliar_duration_time = "";
     this.auxiliar_percent = "";
@@ -238,6 +240,12 @@ export class OperationConsolidateOperationModel {
         name: "porcentaje_disponible",
         text: "Porcentaje disponible",
         html: `<p>Porcentaje <br> disponible</p>`
+      },
+      {
+        field_name: "hung_by_agent",
+        name: "llamadas_colgadas",
+        text: "Llamadas colgadas",
+        html: `<p>Llamadas <br> colgadas</p>`
       }
     ];
   }

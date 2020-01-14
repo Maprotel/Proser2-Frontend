@@ -233,8 +233,6 @@ export class AuditReportListComponent implements OnInit {
         duracion: x.audit_duration,
         duracion_sec: x.audit_duration_sec,
         id_agente: x.audit_agent_id,
-        cedula: x.inv_agent_legal_id,
-        doc_interno: x.inv_agent_internal_id,
         supervisor: x.supervisor,
         turno: x.schedule,
         rol: x.role,

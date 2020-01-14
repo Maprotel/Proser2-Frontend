@@ -432,6 +432,24 @@
         </ng-template>
       </ngx-datatable-column>
 
+      <!-- hung_by_agent------------------------------------- -->
+
+      <ngx-datatable-column prop="hung_by_agent" width="100"
+                            name="date">
+
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
+          <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
+            <span [innerHTML]="model.fieldInfo('hung_by_agent').html">
+            </span>
+          </p>
+        </ng-template>
+
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
+        </ng-template>
+      </ngx-datatable-column>
+
 
       <!-- inbound_percent------------------------------------- -->
 
