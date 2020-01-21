@@ -20,7 +20,7 @@
             "customWebpackConfig": {
               "path": "./extra-webpack.config.js"
             },
-            "outputPath": "dist/crud",
+            "outputPath": "erika",
             "index": "packages/crud/src/index.html",
             "main": "packages/crud/src/main.ts",
             "polyfills": "packages/crud/src/polyfills.ts",
