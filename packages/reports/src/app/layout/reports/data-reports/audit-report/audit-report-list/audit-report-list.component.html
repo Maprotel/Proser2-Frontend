@@ -227,39 +227,10 @@
       </ngx-datatable-column>
 
 
-      <!-- inv_agent_legal_id ------------------------------------- -->
-
-      <ngx-datatable-column prop="inv_agent_legal_id" width="100">
-        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-                     ngx-datatable-header-template>
-          <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
-            Cédula
-          </p>
-        </ng-template>
-
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <p class="right-black-normal">{{ value }}</p>
-        </ng-template>
-      </ngx-datatable-column>
-
-      <!-- inv_agent_internal_id ------------------------------------- -->
-
-      <ngx-datatable-column prop="inv_agent_internal_id" width="100">
-        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-                     ngx-datatable-header-template>
-          <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
-            Doc. Interno
-          </p>
-        </ng-template>
-
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <p class="right-black-normal_negro">{{ value }}</p>
-        </ng-template>
-      </ngx-datatable-column>
-
+      
       <!-- supervisor ------------------------------------- -->
 
-      <ngx-datatable-column prop="supervisor" width="100">
+      <ngx-datatable-column prop="supervisor" width="150">
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
                      ngx-datatable-header-template>
           <p class="left-black-bold" (click)="sort($event, sortDir, sortFn)">
@@ -274,7 +245,7 @@
 
       <!-- schedule ------------------------------------- -->
 
-      <ngx-datatable-column prop="schedule" width="100">
+      <ngx-datatable-column prop="schedule" width="150">
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
                      ngx-datatable-header-template>
           <p class="left-black-bold" (click)="sort($event, sortDir, sortFn)">
@@ -304,7 +275,7 @@
 
       <!-- client ------------------------------------- -->
 
-      <ngx-datatable-column prop="client" width="100">
+      <ngx-datatable-column prop="client" width="150">
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
                      ngx-datatable-header-template>
           <p class="left-black-bold" (click)="sort($event, sortDir, sortFn)">
@@ -319,7 +290,7 @@
 
       <!-- queue ------------------------------------- -->
 
-      <ngx-datatable-column prop="queue" width="100">
+      <ngx-datatable-column prop="queue" width="150">
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
                      ngx-datatable-header-template>
           <p class="left-black-bold" (click)="sort($event, sortDir, sortFn)">
@@ -334,7 +305,7 @@
 
       <!-- service ------------------------------------- -->
 
-      <ngx-datatable-column prop="service" width="100">
+      <ngx-datatable-column prop="service" width="150">
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
                      ngx-datatable-header-template>
           <p class="left-black-bold" (click)="sort($event, sortDir, sortFn)">
@@ -349,7 +320,7 @@
 
       <!-- campaign ------------------------------------- -->
 
-      <ngx-datatable-column prop="campaign" width="100" *ngIf="show_columns">
+      <ngx-datatable-column prop="campaign" width="150" *ngIf="show_columns">
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
                      ngx-datatable-header-template>
           <p class="left-black-bold" (click)="sort($event, sortDir, sortFn)">
