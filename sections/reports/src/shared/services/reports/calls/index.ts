@@ -7,3 +7,4 @@ export * from "./reports-inbound.service";
 export * from "./reports-outbound-interval.service";
 export * from "./reports-outbound.service";
 export * from "./reports-wait-time.service";
+export * from "./reports-calls-indicators-interval.service";

@@ -27,19 +27,19 @@ import { BackendResponseModel } from "sections/reports/src/shared/models/reports
 
 // Local shared
 
-import { CallsInboundDailyByIntervalService } from "sections/reports/src/shared/services/reports/calls/reports-inbound-interval.service";
-import { CallsInboundDailyByIntervalModel } from "sections/reports/src/shared/models/reports/calls/CallsInboundDailyByInterval.model";
-import { InboundIntervalReportGraphComponent } from "../inbound-interval-report-graph/inbound-interval-report-graph.component";
+import { CallsIndicatorsByIntervalService } from "sections/reports/src/shared/services/reports/calls/reports-calls-indicators-interval.service";
+import { CallsIndicatorsByIntervalModel } from "sections/reports/src/shared/models/reports/calls/CallsIndicatorsByInterval.model";
+import { CallsIndicatorsByIntervalReportGraphComponent } from "../calls-indicators-interval-report-graph/calls-indicators-interval-report-graph.component";
 
 @Component({
-  selector: "app-reports-inbound-interval-report-list",
-  templateUrl: "./inbound-interval-report-list.component.html",
-  styleUrls: ["./inbound-interval-report-list.component.scss"]
+  selector: "app-reports-calls-indicators-interval-report-list",
+  templateUrl: "./calls-indicators-interval-report-list.component.html",
+  styleUrls: ["./calls-indicators-interval-report-list.component.scss"]
 })
-export class InboundIntervalReportListComponent implements OnInit {
+export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
   // Child components
-  @ViewChild(InboundIntervalReportGraphComponent, { static: false })
-  private childGraph: InboundIntervalReportGraphComponent;
+  @ViewChild(CallsIndicatorsByIntervalReportGraphComponent, { static: false })
+  private childGraph: CallsIndicatorsByIntervalReportGraphComponent;
 
   // Variables that come from main component
   @Input() userSelection: UserSelectionModel;
@@ -66,7 +66,7 @@ export class InboundIntervalReportListComponent implements OnInit {
   findInList;
 
   // Variable to display values
-  model: CallsInboundDailyByIntervalModel;
+  model: CallsIndicatorsByIntervalModel;
   rows;
   rows_original;
   rows_total;
@@ -87,13 +87,13 @@ export class InboundIntervalReportListComponent implements OnInit {
 
   // Init
   constructor(
-    private callsInboundDailyByIntervalService: CallsInboundDailyByIntervalService,
+    private callsIndicatorsByIntervalService: CallsIndicatorsByIntervalService,
     private alertService: AlertService,
     private modalService: NgbModal,
     private userSelectionService: UserSelectionService,
     private excelService: ExcelService
   ) {
-    this.model = new CallsInboundDailyByIntervalModel();
+    this.model = new CallsIndicatorsByIntervalModel();
     this.local_store = "assignation";
     this.selectorVisibleFields = new UserSelectionModel("visible");
     this.selectorVisibleFields.assignation = false;
@@ -108,7 +108,7 @@ export class InboundIntervalReportListComponent implements OnInit {
     this.getReportList(this.userSelection);
     this.filterFieldList = this.model.fieldList();
     this.numberOfRowsInTable = { id: 10, value: 10 };
-    this.exportName = "reporte-entrante-intervalo";
+    this.exportName = "reporte-indicadores-intervalo";
 
     this.initialSelectedFilterField = {
       field_name: "start_date",
@@ -128,8 +128,8 @@ export class InboundIntervalReportListComponent implements OnInit {
   // Get records from backend
   getReportList(userSelection) {
     if (userSelection) {
-      this.rows = [new CallsInboundDailyByIntervalModel()];
-      this.callsInboundDailyByIntervalService
+      this.rows = [new CallsIndicatorsByIntervalModel()];
+      this.callsIndicatorsByIntervalService
         .getReportList(userSelection)
         .subscribe(
           (res: BackendResponseModel) => {
@@ -240,20 +240,23 @@ export class InboundIntervalReportListComponent implements OnInit {
         intervalo_final: x.interval_end,
         recibidas: x.inboundReceived,
         atendidas: x.inboundAttended,
-        atendidas_antes_de: x.inboundBeforeTime,
-        atendidas_despues_de: x.inboundAfterTime,
+        atendidas_antes_de_20s: x.inboundBeforeTime,
+        atendidas_antes_de_60s: x.inboundBeforeMinute,
+        fraccion_nivel_servicio_20s: x.inboundServiceLevel,
+        porcentaje_nivel_servicio_20s: ((x.inboundServiceLevel)*100).toFixed(2),
+        fraccion_nivel_servicio_60s: x.inboundServiceLevelMinute,
+        porcentaje_nivel_servicio_60s: ((x.inboundServiceLevelMinute)*100).toFixed(2),
+        fraccion_nivel_atencion: x.inboundAttentionLevel,
+        porcentaje_nivel_atencion: ((x.inboundAttentionLevel)*100).toFixed(2),
+        tmo: (x.inboundTmo).toFixed(2),
+        t_prom_espera_contest: (x.avgWaitTimeAnswer),
+        t_prom_espera_abandon: x.avgWaitTimeAbandon,
+        t_max_espera_contest: x.maxWaitTimeAnswer,
+        t_max_espera_abandon: x.maxWaitTimeAbandon,
         abandonadas: x.inboundAbandoned,
-        cortas: x.inboundShort,
-        colgadas_agente: x.inboundHungAgent,
-        nivel_servicio: x.inboundServiceLevel,
-        nivel_atencion: x.inboundAttentionLevel,
-        nivel_abandono: x.inboundAbandonLevel,
-        tmo: x.inboundTmo,
-        asa: x.inboundAsa,
-        seg_operacion: x.operation_seconds,
-        hrs_operacion: x.operation_time,
-        seg_espera: x.wait_seconds,
-        hrs_espera: x.wait_time
+        fraccion_nivel_abandono: x.inboundAbandonLevel,
+        porcentaje_nivel_abandono: ((x.inboundAbandonLevel)*100).toFixed(2)
+      
       };
     });
 
@@ -276,7 +279,7 @@ export class InboundIntervalReportListComponent implements OnInit {
 
   // temporary method to generate excel map for exporting model
   onCreateModel(model?) {
-    model = new CallsInboundDailyByIntervalModel().fieldList();
+    model = new CallsIndicatorsByIntervalModel().fieldList();
 
     // console.error("model", model);
 

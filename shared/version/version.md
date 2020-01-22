@@ -1,5 +1,8 @@
 # Version control
 
+# 2.3.10
+- Se agrego el reporte Indicadores por intervalo
+
 # 2.3.9
 - Upgrade del selector para que funcione como función pura
 

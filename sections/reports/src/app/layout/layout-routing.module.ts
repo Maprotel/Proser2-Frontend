@@ -139,6 +139,13 @@ const routes: Routes = [
           import(
             "./reports/calls-reports/wait-time-report/wait-time-report.module"
           ).then(m => m.WaitTimeReportModule)
+      },
+      {
+        path: "calls-indicators-interval-report",
+        loadChildren: () =>
+          import(
+            "./reports/calls-reports/calls-indicators-interval-report/calls-indicators-interval-report.module"
+          ).then(m => m.CallsIndicatorsByIntervalReportModule)
       }
     ]
   }
