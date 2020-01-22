@@ -1,0 +1,124 @@
+{
+  "$schema": "node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "sms": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "sections/sms",
+      "sourceRoot": "sections/sms/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "./extra-webpack.config.js"
+            },
+            "outputPath": "dist/sms",
+            "index": "sections/sms/src/index.html",
+            "main": "sections/sms/src/main.ts",
+            "polyfills": "sections/sms/src/polyfills.ts",
+            "tsConfig": "sections/sms/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "sections/sms/src/favicon.ico",
+              "sections/sms/src/assets"
+            ],
+            "styles": [
+              "sections/sms/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "sections/sms/src/environments/environment.ts",
+                  "with": "sections/sms/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sms:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sms:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sms:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "sections/sms/src/test.ts",
+            "polyfills": "sections/sms/src/polyfills.ts",
+            "tsConfig": "sections/sms/tsconfig.spec.json",
+            "karmaConfig": "sections/sms/karma.conf.js",
+            "assets": [
+              "sections/sms/src/favicon.ico",
+              "sections/sms/src/assets"
+            ],
+            "styles": [
+              "sections/sms/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "sections/sms/tsconfig.app.json",
+              "sections/sms/tsconfig.spec.json",
+              "sections/sms/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "sections/sms/e2e/protractor.conf.js",
+            "devServerTarget": "sms:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sms:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "proser"
+}
