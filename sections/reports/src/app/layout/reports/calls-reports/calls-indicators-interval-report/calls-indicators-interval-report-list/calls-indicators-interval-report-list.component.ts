@@ -70,13 +70,17 @@ export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
   rows;
   rows_original;
   rows_total;
+  rows_subtotal;
   rows_detail;
   rows_detail_original;
+  temp_rows_detail_original;
   rows_detail_total;
   row_selection;
   exportName;
   rows_valid;
   idealResponseTime;
+
+  rows_detail_subtotal;
 
   // Modal window variables
   activeModal: NgbActiveModal;
@@ -143,7 +147,21 @@ export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
 
               this.rows = res.detail;
               this.rows_original = res.detail;
+              this.rows_subtotal = res.subtotal;
               this.rows_total = res.total;
+
+              this.temp_rows_detail_original = (this.rows_original).concat(this.rows_subtotal)
+              this.rows_detail_subtotal = (this.temp_rows_detail_original).sort(
+                function (o1,o2) {
+                if (o1.start_date > o2.start_date) { //comparación lexicogŕafica
+                  return 1;
+                } else if (o1.start_date < o2.start_date) {
+                  return -1;
+                } 
+                return 0;
+              });
+
+              console.log("rows_detail_subtotal", this.rows_detail_subtotal);
 
               this.rows_detail = res.detail;
               this.rows_detail_original = res.detail;
@@ -231,8 +249,8 @@ export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
   }
 
   // Export to excel
-  exportToExcel(data) {
-    const filterData = data.map(x => {
+  exportToExcel(data, total) {
+    const filterData = (data.concat(total)).map(x => {
       return {
 
         fecha: x.start_date,
@@ -242,21 +260,17 @@ export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
         atendidas: x.inboundAttended,
         atendidas_antes_de_20s: x.inboundBeforeTime,
         atendidas_antes_de_60s: x.inboundBeforeMinute,
-        fraccion_nivel_servicio_20s: x.inboundServiceLevel,
         porcentaje_nivel_servicio_20s: ((x.inboundServiceLevel)*100).toFixed(2),
-        fraccion_nivel_servicio_60s: x.inboundServiceLevelMinute,
         porcentaje_nivel_servicio_60s: ((x.inboundServiceLevelMinute)*100).toFixed(2),
-        fraccion_nivel_atencion: x.inboundAttentionLevel,
         porcentaje_nivel_atencion: ((x.inboundAttentionLevel)*100).toFixed(2),
-        tmo: (x.inboundTmo).toFixed(2),
-        t_prom_espera_contest: (x.avgWaitTimeAnswer),
-        t_prom_espera_abandon: x.avgWaitTimeAbandon,
-        t_max_espera_contest: x.maxWaitTimeAnswer,
-        t_max_espera_abandon: x.maxWaitTimeAbandon,
+        tmo: Math.trunc(x.inboundTmo),
+        t_prom_espera_contest: Math.trunc(x.avgWaitTimeAnswer),
+        t_prom_espera_abandon: Math.trunc(x.avgWaitTimeAbandon),
+        t_max_espera_contest: Math.trunc(x.maxWaitTimeAnswer),
+        t_max_espera_abandon: Math.trunc(x.maxWaitTimeAbandon),
         abandonadas: x.inboundAbandoned,
-        fraccion_nivel_abandono: x.inboundAbandonLevel,
         porcentaje_nivel_abandono: ((x.inboundAbandonLevel)*100).toFixed(2)
-      
+
       };
     });
 

@@ -29,7 +29,7 @@
     </div>
     <!-- --------------------- -->
     <div *ngIf="!show_graph_or_table_button && rows_valid">
-      <a class="btn btn-outline-primary " (click)="exportToExcel(rows)">
+      <a class="btn btn-outline-primary " (click)="exportToExcel(rows_detail_subtotal, rows_total)">
         Exportar excel
       </a>
     </div>
@@ -55,7 +55,7 @@
 <!-- DATATABE---------------------------- -->
 <section class="report" *ngIf="rows && show && !graph">
   <div>
-    <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'"
+    <ngx-datatable class="material" [rows]="rows_detail_subtotal" [columnMode]="'force'"
                    [limit]="numberOfRowsInTable.value" [headerHeight]="80"
                    [footerHeight]="50" [rowHeight]="40" [scrollbarH]="true"
                    [scrollbarV]="false" [summaryRow]="true" [summaryHeight]="50"
