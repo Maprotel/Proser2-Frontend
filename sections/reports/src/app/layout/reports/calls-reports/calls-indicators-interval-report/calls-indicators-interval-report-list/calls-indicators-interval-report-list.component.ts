@@ -153,15 +153,13 @@ export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
               this.temp_rows_detail_original = (this.rows_original).concat(this.rows_subtotal)
               this.rows_detail_subtotal = (this.temp_rows_detail_original).sort(
                 function (o1,o2) {
-                if (o1.start_date > o2.start_date) { //comparación lexicogŕafica
+                if (o1.start_date > o2.start_date) { 
                   return 1;
                 } else if (o1.start_date < o2.start_date) {
                   return -1;
                 } 
                 return 0;
               });
-
-              console.log("rows_detail_subtotal", this.rows_detail_subtotal);
 
               this.rows_detail = res.detail;
               this.rows_detail_original = res.detail;
