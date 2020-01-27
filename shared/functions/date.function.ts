@@ -1,5 +1,12 @@
 import * as moment from "moment";
 
+/**
+ * Date to object date converter
+ *
+ * @export
+ * @param {*} [date]
+ * @returns a date object with year month and day properties
+ */
 export function dateToDatePicker(date?) {
   // convierte de objeto un texto en formato  {year: 2018, month: 10, day: 3}
   const newDate = moment(date);
