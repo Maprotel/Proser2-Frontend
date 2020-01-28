@@ -1,2 +1,0 @@
-cd angular
-ng serve
