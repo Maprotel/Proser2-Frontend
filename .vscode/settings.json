@@ -7,7 +7,7 @@
     ".gitignore": true,
     ".jshintignore": true,
     ".jshintrc": true,
-    ".npmignore": true,
+    ".npmignore": false,
     ".npmrc": true,
     ".prettierignore": true,
     ".prettierrc": true,
