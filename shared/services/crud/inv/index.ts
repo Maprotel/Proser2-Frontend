@@ -15,3 +15,4 @@ export * from "./inv-calendar.service";
 export * from "./inv-calendar-day.service";
 export * from "./inv-auxiliar.service";
 export * from "./inv-assignation.service";
+export * from "./inv-agent-plan.service";

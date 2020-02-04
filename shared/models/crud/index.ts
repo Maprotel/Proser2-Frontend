@@ -31,6 +31,7 @@ export * from "./inv/InvSms.model";
 export * from "./inv/InvSupervisor.model";
 export * from "./inv/InvAuxiliar.model";
 export * from "./inv/InvAssignation.model";
+export * from "./inv/InvAgentPlan.model";
 
 // MAIN
 export * from "./main/MainAudit.model";

@@ -29,6 +29,14 @@ const routes: Routes = [
       },
 
       {
+        path: "crud-inv-agent-plan",
+        loadChildren: () =>
+          import("./crud-inv/crud-inv-agent-plan/crud-inv-agent-plan.module").then(
+            m => m.CrudInvAgentPlanModule
+          )
+      },
+
+      {
         path: "crud-inv-shift-change",
         loadChildren: () =>
           import(
