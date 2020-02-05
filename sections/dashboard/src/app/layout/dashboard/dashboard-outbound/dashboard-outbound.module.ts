@@ -90,6 +90,8 @@ import { DashboardOutboundModalCurrentcallsComponent } from './dashboard-outboun
 
 import { DashboardOutboundModalTextComponent } from "./dashboard-outbound-modals/dashboard-outbound-modal-text/dashboard-outbound-modal-text.component";
 
+import { DashboardOutboundModalPlanAgentsComponent } from "./dashboard-outbound-modals/dashboard-outbound-modal-plan-agents/dashboard-outbound-modal-plan-agents.component";
+
 
 
 
@@ -117,6 +119,7 @@ import { DashboardOutboundModalTextComponent } from "./dashboard-outbound-modals
     DashboardOutboundModalTextComponent,
     DashboardOutboundModalCurrentcallsComponent,
     DashboardOutboundModalBreaksComponent,
+    DashboardOutboundModalPlanAgentsComponent,
 
     DashboardOutboundModalAgentsHistoricComponent,
     DashboardOutboundModalBreaksHistoricComponent,

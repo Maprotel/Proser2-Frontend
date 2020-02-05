@@ -121,4 +121,21 @@ export class DashboardInboundListsService {
       );
     return res;
   }
+
+
+  dashboardInboundListPlanAgents(
+    userSelectionModel: UserSelectionModel
+  ): Observable<any> {
+    const accessToken = localStorage.getItem("accessToken");
+    const url_api = `${this.env.loopbackApiUrl}/api/InvDashboards/dashboardInboundListPlanAgents?access_token=${accessToken}`;
+    const res = this.http
+      .post(url_api, userSelectionModel, {
+        headers: this.headers
+      })
+      .pipe(
+        map(data => data),
+        catchError(this.handleError)
+      );
+    return res;
+  }
 }

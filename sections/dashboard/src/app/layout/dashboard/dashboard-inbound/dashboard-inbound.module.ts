@@ -94,6 +94,8 @@ import { DashboardInboundModalCurrentcallsComponent } from './dashboard-inbound-
 
 import { DashboardInboundModalTextComponent } from "./dashboard-inbound-modals/dashboard-inbound-modal-text/dashboard-inbound-modal-text.component";
 
+import { DashboardInboundModalPlanAgentsComponent } from "./dashboard-inbound-modals/dashboard-inbound-modal-plan-agents/dashboard-inbound-modal-plan-agents.component";
+
 
 @NgModule({
   declarations: [
@@ -118,6 +120,7 @@ import { DashboardInboundModalTextComponent } from "./dashboard-inbound-modals/d
     DashboardInboundModalTextComponent,
     DashboardInboundModalCurrentcallsComponent,
     DashboardInboundModalBreaksComponent,
+    DashboardInboundModalPlanAgentsComponent,
 
 
 

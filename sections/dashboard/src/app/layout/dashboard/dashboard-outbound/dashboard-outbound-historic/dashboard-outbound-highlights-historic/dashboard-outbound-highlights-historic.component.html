@@ -67,7 +67,8 @@
 
   <!-- Agentes planificados -->
   <article class=" frame">
-    <div class="indicator-cell gray">
+    <div class="indicator-cell gray indicator-pointer"
+    (click)="openDetailModal(planAgents) ">
       <p class="indicator-label">Agentes<br />planificados</p>
       <p class="indicator-number ">
         {{
@@ -156,5 +157,20 @@
   <app-dashboard-dashboard-outbound-modal-agents [modalView]="modalView" [userSelection]="userSelection"
                                                  (closeModal)="onCloseModal()">
   </app-dashboard-dashboard-outbound-modal-agents>
+
+</ng-template>
+
+<!-- MODAL WINDOW FOR SELECTOR ---------------------------------------------------- -->
+<ng-template #planAgents class="modal-dialog modal-sm">
+  <div class="modal-header modal-primary">
+    <p class="modal-title ">Detalle del registro</p>
+    <button type="button" class="btn btn-danger text-lg-center "
+            (click)="activeModal.close()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <app-dashboard-dashboard-outbound-modal-plan-agents [userSelection]="userSelection">
+  </app-dashboard-dashboard-outbound-modal-plan-agents>
 
 </ng-template>
