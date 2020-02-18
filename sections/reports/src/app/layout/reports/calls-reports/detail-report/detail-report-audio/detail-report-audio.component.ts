@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, Input } from "@angular/core";
 
 import { AlertModel } from "shared/models/helpers/Alert";
 import { AlertService } from "shared/services";
@@ -15,6 +15,8 @@ import { CallsDetailModel } from "sections/reports/src/shared/models/reports/cal
   styleUrls: ["./detail-report-audio.component.scss"]
 })
 export class DetailReportAudioComponent implements OnInit, OnDestroy {
+  @Input() selected;
+  
   alertMessage = new AlertModel();
   recordSelection;
   show = false;
@@ -37,6 +39,8 @@ export class DetailReportAudioComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.recordSelection = JSON.parse(localStorage.getItem("selected_row"));
+
+    // console.log("this.recordSelection", this.recordSelection);
 
     this.recording = this.recordSelection.record === null ? false : true;
 
@@ -72,10 +76,12 @@ export class DetailReportAudioComponent implements OnInit, OnDestroy {
   getRecording() {
     let selected = JSON.parse(localStorage.getItem("selected_row"));
 
+    // console.log("Get Record selected",selected);
+
     let record = selected;
     this.callsDetailService.getRecording(record).subscribe(
       res => {
-        console.error("Result", res);
+        // console.log("Result", res);
         this.show = true;
         if (res === null) {
           this.show = true;
@@ -97,12 +103,12 @@ export class DetailReportAudioComponent implements OnInit, OnDestroy {
 
   deleteRecording() {
     let selected = JSON.parse(localStorage.getItem("selected_row"));
-    console.error("deleteRecording", selected);
+    // console.error("deleteRecording", selected);
 
     let record = selected;
     this.callsDetailService.deleteRecording(record).subscribe(
       res => {
-        console.error("Result", res);
+        // console.error("Result", res);
         this.show = true;
         if (res === null) {
           this.show = true;
@@ -135,7 +141,7 @@ export class DetailReportAudioComponent implements OnInit, OnDestroy {
     if (ext) {
       fileName = fileName + "." + ext;
     }
-    console.error("fileName", fileName);
+    // console.error("fileName", fileName);
 
     return fileName;
   }

@@ -44,9 +44,9 @@ export class CallsDetailService {
     const fileName = url.substring(url.lastIndexOf("/") + 1);
 
     const accessToken = localStorage.getItem("accessToken");
-    const url_api = `${this.env.loopbackApiUrl}/api/InvReports/callsGetRecordigFile?access_token=${accessToken}`;
+    const url_api = `${this.env.loopbackApiUrl}/api/InvReports/callsGetRecordingFile?access_token=${accessToken}`;
 
-    console.warn("url_api", url_api, selected);
+    // console.warn("url_api", url_api, selected);
 
     const res = this.http.post(url_api, selected, {
       headers: this.headers
@@ -59,7 +59,7 @@ export class CallsDetailService {
     const fileName = url.substring(url.lastIndexOf("/") + 1);
 
     const accessToken = localStorage.getItem("accessToken");
-    const url_api = `${this.env.loopbackApiUrl}/api/InvReports/deleteRecordigFile?access_token=${accessToken}`;
+    const url_api = `${this.env.loopbackApiUrl}/api/InvReports/deleteRecordingFile?access_token=${accessToken}`;
 
     const res = this.http.post(url_api, selected, {
       headers: this.headers
