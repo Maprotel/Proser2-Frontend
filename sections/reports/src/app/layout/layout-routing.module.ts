@@ -75,6 +75,12 @@ const routes: Routes = [
           import(
             "./reports/operation-reports/consolidate-report/consolidate-report.module"
           ).then(m => m.ConsolidateReportModule)
+      },{
+        path: "resume-report",
+        loadChildren: () =>
+          import(
+            "./reports/operation-reports/resume-report/resume-report.module"
+          ).then(m => m.ResumeReportModule)
       },
       // ---------------------------------------
       {

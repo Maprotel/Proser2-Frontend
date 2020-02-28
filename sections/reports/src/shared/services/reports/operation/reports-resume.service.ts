@@ -12,7 +12,7 @@ import { UserSelectionModel } from "shared/models";
 @Injectable({
   providedIn: "root"
 })
-export class operationProductivityService {
+export class OperationResumeService {
   constructor(private http: HttpClient, private env: EnvService) {}
 
   headers: HttpHeaders = new HttpHeaders({
@@ -28,7 +28,7 @@ export class operationProductivityService {
     const accessToken = localStorage.getItem("accessToken");
     const url_api = `${
       this.env.loopbackApiUrl
-    }/api/InvReports/operationProductivityReport?access_token=${accessToken}`;
+    }/api/InvReports/operationResumeReport?access_token=${accessToken}`;
     const res = this.http
       .post(url_api, userSelection, {
         headers: this.headers
