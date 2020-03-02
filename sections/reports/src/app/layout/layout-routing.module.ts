@@ -152,6 +152,13 @@ const routes: Routes = [
           import(
             "./reports/calls-reports/calls-indicators-interval-report/calls-indicators-interval-report.module"
           ).then(m => m.CallsIndicatorsByIntervalReportModule)
+      },
+      {
+        path: "calls-indicators-queue-report",
+        loadChildren: () =>
+          import(
+            "./reports/calls-reports/calls-indicators-queue-report/calls-indicators-queue-report.module"
+          ).then(m => m.CallsIndicatorsByQueueReportModule)
       }
     ]
   }
