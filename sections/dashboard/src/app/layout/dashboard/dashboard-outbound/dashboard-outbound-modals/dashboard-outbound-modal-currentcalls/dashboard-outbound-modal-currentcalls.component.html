@@ -66,7 +66,7 @@
                        let-sortDir="sortDir" ngx-datatable-header-template>
             <p class="cell-title" (click)="sort($event, sortDir, sortFn)">
               <!-- {{model.fieldInfo('entry_queue_time').text}} -->
-              Fecha
+              Hora
             </p>
           </ng-template>
 
@@ -143,6 +143,24 @@
             <p class="cell-title" (click)="sort($event, sortDir, sortFn)">
               <!-- {{model.fieldInfo('duration_time').text}} -->
               Duración
+            </p>
+          </ng-template>
+
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            <p class="cell-data">{{ value }}</p>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <!------------------------------------------------- -->
+        <!-- queue------------------------------------- -->
+
+        <ngx-datatable-column prop="queue" width="75" name="queue">
+
+          <ng-template let-column="column" let-sort="sortFn"
+                       let-sortDir="sortDir" ngx-datatable-header-template>
+            <p class="cell-title" (click)="sort($event, sortDir, sortFn)">
+              <!-- {{model.fieldInfo('queue').text}} -->
+              Cola
             </p>
           </ng-template>
 
