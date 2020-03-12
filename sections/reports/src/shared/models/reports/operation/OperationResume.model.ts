@@ -30,6 +30,7 @@ export class OperationResumeModel {
   available_percent: string;
   tmo: string;
   time_conversation: string;
+  sec_conversation: string;
 
 
   constructor() {
@@ -64,6 +65,7 @@ export class OperationResumeModel {
     this.available_percent = "";
     this.tmo = "";
     this.time_conversation = "";
+    this.sec_conversation = "";
   }
 
   public fieldList() {
@@ -104,7 +106,7 @@ export class OperationResumeModel {
         field_name: "login_duration_time",
         name: "login_tiempo",
         text: "Login tiempo",
-        html: `<p>Duración <br> login</p>`
+        html: `<p>Duración hms<br> login</p>`
       },
       {
         field_name: "inbound_calls_attended",
@@ -263,6 +265,12 @@ export class OperationResumeModel {
         name: "tiempo_conversacion",
         text: "tiempo de conversacion",
         html: `<p>Tiempo de <br> conversación</p>`
+      },
+      {
+        field_name: "sec_conversation",
+        name: "segundos_conversacion",
+        text: "Segundos de conversacion",
+        html: `<p>Segundos de <br> conversación</p>`
       }
     ];
   }

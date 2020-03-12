@@ -128,7 +128,7 @@
 
       <!-- login_duration_sec------------------------------------- -->
 
-      <!-- <ngx-datatable-column prop="login_duration_sec" width="100" name="date">
+      <ngx-datatable-column prop="login_duration_sec" width="100" name="date">
 
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
                      ngx-datatable-header-template>
@@ -140,7 +140,7 @@
         <ng-template let-value="value" ngx-datatable-cell-template>
           <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
         </ng-template>
-      </ngx-datatable-column> -->
+      </ngx-datatable-column>
 
 
       <!-- login_duration_time------------------------------------- -->
@@ -201,7 +201,7 @@
 
       <!-- inbound_attended_duration_sec------------------------------------- -->
 
-      <!-- <ngx-datatable-column prop="inbound_attended_duration_sec" width="100"
+      <ngx-datatable-column prop="inbound_attended_duration_sec" width="100"
                             name="date">
 
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
@@ -216,12 +216,12 @@
         <ng-template let-value="value" ngx-datatable-cell-template>
           <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
         </ng-template>
-      </ngx-datatable-column> -->
+      </ngx-datatable-column>
 
 
       <!-- outbound_made_sec------------------------------------- -->
 
-      <!-- <ngx-datatable-column prop="outbound_made_sec" width="100" name="date">
+      <ngx-datatable-column prop="outbound_made_sec" width="100" name="date">
 
         <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
                      ngx-datatable-header-template>
@@ -234,7 +234,7 @@
         <ng-template let-value="value" ngx-datatable-cell-template>
           <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
         </ng-template>
-      </ngx-datatable-column> -->
+      </ngx-datatable-column>
 
 
       <!-- outbound_internal_sec------------------------------------- -->
@@ -246,65 +246,6 @@
                      ngx-datatable-header-template>
           <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
             <span [innerHTML]="model.fieldInfo('outbound_internal_sec').html">
-            </span>
-          </p>
-        </ng-template>
-
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
-        </ng-template>
-      </ngx-datatable-column> -->
-
-
-      <!-- auxiliar_duration_sec------------------------------------- -->
-
-      <!-- <ngx-datatable-column prop="auxiliar_duration_sec" width="100"
-                            name="date">
-
-        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-                     ngx-datatable-header-template>
-          <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
-            <span [innerHTML]="model.fieldInfo('auxiliar_duration_sec').html">
-            </span>
-          </p>
-        </ng-template>
-
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
-        </ng-template>
-      </ngx-datatable-column> -->
-
-
-       <!-- assignation_duration_sec------------------------------------- -->
-
-       <!-- <ngx-datatable-column prop="assignation_duration_sec" width="100"
-       name="date">
-
-      <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-      ngx-datatable-header-template>
-      <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
-      <span
-      [innerHTML]="model.fieldInfo('assignation_duration_sec').html">
-      </span>
-      </p>
-      </ng-template>
-
-      <ng-template let-value="value" ngx-datatable-cell-template>
-      <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
-      </ng-template>
-      </ngx-datatable-column> -->
-
-
-      <!-- available_duration_sec------------------------------------- -->
-
-      <!-- <ngx-datatable-column prop="available_duration_sec" width="100"
-                            name="date">
-
-        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
-                     ngx-datatable-header-template>
-          <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
-            <span
-                  [innerHTML]="model.fieldInfo('available_duration_sec').html">
             </span>
           </p>
         </ng-template>
@@ -350,6 +291,26 @@
         <ng-template let-value="value" ngx-datatable-cell-template>
           <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
         </ng-template>
+      </ngx-datatable-column>
+
+
+     <!-- sec_conversation------------------------------------- -->
+
+     <ngx-datatable-column prop="sec_conversation" width="100"
+     name="date">
+
+      <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+      ngx-datatable-header-template>
+      <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
+      <span
+      [innerHTML]="model.fieldInfo('sec_conversation').html">
+      </span>
+      </p>
+      </ng-template>
+
+      <ng-template let-value="value" ngx-datatable-cell-template>
+      <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
+      </ng-template>
       </ngx-datatable-column>
 
 
@@ -433,6 +394,25 @@
       </ngx-datatable-column> -->
 
 
+      <!-- auxiliar_duration_sec------------------------------------- -->
+
+      <ngx-datatable-column prop="auxiliar_duration_sec" width="100"
+                            name="date">
+
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
+          <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
+            <span [innerHTML]="model.fieldInfo('auxiliar_duration_sec').html">
+            </span>
+          </p>
+        </ng-template>
+
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
+        </ng-template>
+      </ngx-datatable-column>
+
+
       <!-- auxiliar_duration_time------------------------------------- -->
 
       <ngx-datatable-column prop="auxiliar_duration_time" width="100"
@@ -449,6 +429,26 @@
         <ng-template let-value="value" ngx-datatable-cell-template>
           <p class="right-black-normal">{{ value }}</p>
         </ng-template>
+      </ngx-datatable-column>
+
+
+       <!-- assignation_duration_sec------------------------------------- -->
+
+       <ngx-datatable-column prop="assignation_duration_sec" width="100"
+       name="date">
+
+      <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+      ngx-datatable-header-template>
+      <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
+      <span
+      [innerHTML]="model.fieldInfo('assignation_duration_sec').html">
+      </span>
+      </p>
+      </ng-template>
+
+      <ng-template let-value="value" ngx-datatable-cell-template>
+      <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
+      </ng-template>
       </ngx-datatable-column>
 
 
@@ -472,6 +472,26 @@
       </ngx-datatable-column>
 
 
+      <!-- available_duration_sec------------------------------------- -->
+
+      <ngx-datatable-column prop="available_duration_sec" width="100"
+                            name="date">
+
+        <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
+          <p class="right-black-bold" (click)="sort($event, sortDir, sortFn)">
+            <span
+                  [innerHTML]="model.fieldInfo('available_duration_sec').html">
+            </span>
+          </p>
+        </ng-template>
+
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <p class="right-black-normal">{{ value | number: "1.0-0" }}</p>
+        </ng-template>
+      </ngx-datatable-column>
+
+
       <!-- available_duration_time------------------------------------- -->
 
       <ngx-datatable-column prop="available_duration_time" width="100"
@@ -490,10 +510,6 @@
           <p class="right-black-normal">{{ value }}</p>
         </ng-template>
       </ngx-datatable-column>
-
-
-      
-
 
       <!-- outbound_internal_made------------------------------------- -->
 
