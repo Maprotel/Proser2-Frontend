@@ -20,6 +20,7 @@ export class CrudInvSmsListComponent implements OnInit {
   selection;
 
   model: InvSmsModel;
+  sortFn
   // INITIALIZATION
   constructor(
   ) {

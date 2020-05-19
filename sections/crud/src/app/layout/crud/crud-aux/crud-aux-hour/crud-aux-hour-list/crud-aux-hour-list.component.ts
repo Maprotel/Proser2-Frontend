@@ -20,6 +20,9 @@ export class CrudAuxHourListComponent implements OnInit {
   selection;
 
   model: AuxHourModel;
+
+  sortFn
+  
   // INITIALIZATION
   constructor(
   ) {

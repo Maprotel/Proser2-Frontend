@@ -21,6 +21,7 @@ export class CrudShowDisplayListComponent implements OnInit {
   selected;
 
   model: ProShowDisplayModel;
+  sortFn
 
   query;
 

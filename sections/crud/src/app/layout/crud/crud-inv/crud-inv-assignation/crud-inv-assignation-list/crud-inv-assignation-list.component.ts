@@ -20,6 +20,7 @@ export class CrudInvAssignationListComponent implements OnInit {
   selection;
 
   model: InvAssignationModel;
+  sortFn
   // INITIALIZATION
   constructor(
   ) {

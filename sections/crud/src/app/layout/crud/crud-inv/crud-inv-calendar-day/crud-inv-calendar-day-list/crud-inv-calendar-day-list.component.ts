@@ -21,6 +21,7 @@ export class CrudInvCalendarDayListComponent implements OnInit {
   selection;
 
   model: InvCalendarDayModel;
+  sortFn
   // INITIALIZATION
   constructor() {
     this.model = new InvCalendarDayModel();

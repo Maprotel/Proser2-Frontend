@@ -19,6 +19,7 @@ export class CrudInvSupervisorListComponent implements OnInit {
   selection;
 
   model: InvSupervisorModel;
+  sortFn;
   // INITIALIZATION
   constructor() {
     this.model = new InvSupervisorModel();
