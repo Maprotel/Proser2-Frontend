@@ -12,8 +12,14 @@ import { logout } from "shared/functions";
   styleUrls: ["./login-header.component.scss"]
 })
 export class LoginHeaderComponent implements OnInit {
+<<<<<<< HEAD
   alertMessage: AlertModel; 
   currentUser; 
+
+=======
+  alertMessage: AlertModel;
+  currentUser;
+>>>>>>> 65404a27865b29bf7750eb682f6e285e4fefd51a
 
 
   constructor(

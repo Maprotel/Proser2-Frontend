@@ -8,7 +8,10 @@ import { EnvService } from "shared/services/helpers/env.service";
 export class LoginHeaderLoginComponent implements OnInit {
   env;
   faSignInAlt;
+<<<<<<< HEAD
   faDigitalTachograph;
+=======
+>>>>>>> 65404a27865b29bf7750eb682f6e285e4fefd51a
   constructor(private envService: EnvService) {
     this.env = this.envService;
   }
