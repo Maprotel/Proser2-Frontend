@@ -30,7 +30,7 @@ export class CrudShowDisplayDetailComponent implements OnInit {
   @Input() newRecord;
   @Input() editRecord;
 
-  test: boolean = false
+  test: boolean = false;
 
   alertMessage: AlertModel;
   env;
@@ -41,7 +41,6 @@ export class CrudShowDisplayDetailComponent implements OnInit {
 
   show_submit_button;
   show_data;
-
 
   model: ProShowDisplayModel;
 
@@ -59,7 +58,7 @@ export class CrudShowDisplayDetailComponent implements OnInit {
   rows_original;
   rows;
 
-  showRecord = 'showRecord'
+  showRecord = "showRecord";
   constructor(
     private formBuilder: FormBuilder,
     private showDisplayService: ProShowDisplayService,
@@ -68,7 +67,7 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     private userSelectionService: UserSelectionService,
     private modalService: NgbModal
   ) {
-    this.onResetValues()
+    this.onResetValues();
   }
 
   ngOnInit() {
@@ -112,7 +111,6 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-
   onResetValues() {
     this.env = this.envService;
     this.alertMessage = new AlertModel();
@@ -120,7 +118,9 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     this.show_data = true;
 
     this.userSelection = new UserSelectionModel("userSelection");
-    this.selectorVisibleFields = new UserSelectionModel('selectorVisibleFields');
+    this.selectorVisibleFields = new UserSelectionModel(
+      "selectorVisibleFields"
+    );
     this.selectorVisibleFields.mode = false;
     this.selectorVisibleFields.interval = true;
     this.selectorVisibleFields.groupBy = false;
@@ -133,15 +133,14 @@ export class CrudShowDisplayDetailComponent implements OnInit {
       date: false,
       interval: true,
       options: true,
-      buttons: true,
-    }
+      buttons: true
+    };
 
     this.model = new ProShowDisplayModel();
     this.weekDayList = this.model.weekDayList();
     this.displayTypeList = this.model.displayTypeList();
     this.viewTypeList = this.model.viewTypeList();
   }
-
 
   // CREATE RECORD
   onCreateRecord(query) {
@@ -202,9 +201,7 @@ export class CrudShowDisplayDetailComponent implements OnInit {
       data => {
         this.selection = data;
         // this.action.temp = this.selection;
-        alert(
-          `Registro modificado satisfactoriamente`
-        );
+        alert(`Registro modificado satisfactoriamente`);
         // this.action.action = "selectedRecord";
         this.show_data = true;
         // this.editAnswer.emit(this.action);
@@ -239,26 +236,22 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     );
   }
 
-
   onSubmit(register) {
     // if (this.action.action === "newRecord") {
     //   this.createRecord(register);
     //   this.afterCreatedRecord(register);
     // }
-
     // if (this.action.action === "editRecord") {
     //   this.selection = register;
     //   this.editRecord(register);
     //   this.afterEditedRecord(register);
     // }
-
     // if (this.action.action === "deleteRecord") {
     //   this.selection = register;
     //   this.deleteRecord(register);
     //   this.action.temp = register;
     //   this.editAnswer.emit(this.action);
     // }
-
     // if (this.action.action === "showRecord") {
     //   this.selection = register;
     //   this.action.temp = register;
@@ -276,7 +269,6 @@ export class CrudShowDisplayDetailComponent implements OnInit {
       "alert alert-danger alert-dismissible fade show";
   }
 
-
   // Selector
   onOpenSelector(event) {
     this.userSelectionTemp = this.userSelection;
@@ -289,15 +281,17 @@ export class CrudShowDisplayDetailComponent implements OnInit {
       pro_show_display_selection: this.userSelection
     });
 
-    console.log('onAcceptSelector', this.registerForm.value.pro_show_display_selection);
-    this.onCloseModal()
+    console.log(
+      "onAcceptSelector",
+      this.registerForm.value.pro_show_display_selection
+    );
+    this.onCloseModal();
   }
 
   onCancelSelector() {
     this.userSelection = this.userSelectionTemp;
-    this.onCloseModal()
+    this.onCloseModal();
   }
-
 
   // Modal
   onOpenModal(content) {
@@ -309,21 +303,26 @@ export class CrudShowDisplayDetailComponent implements OnInit {
   }
 
   onCloseModal() {
-
     // this.userSelection = this.userSelectionService.readUserSelectionHistoric();
     this.activeModal.close();
   }
 
-
   editUserSelection(content) {
-    this.userSelection = this.registerForm.value.pro_show_display_selection
-    this.userSelection.title = 'Selección tres';
-    console.log('editUserSelection', this.userSelection);
+    this.userSelection = this.registerForm.value.pro_show_display_selection;
+    this.userSelection.title = "Selección tres";
+    console.log("editUserSelection", this.userSelection);
     this.registerForm.patchValue({
       pro_show_display_selection: this.userSelection
     });
     this.onOpenModal(content);
   }
+
+  onRecordJsonChange() {}
+  onCancel() {}
+  onReset() {}
+  onDelete(){}
+  onDeactivate(){}
+  onReactivate(){}
 
   /*** */
 
@@ -386,8 +385,6 @@ export class CrudShowDisplayDetailComponent implements OnInit {
   //   this.editAnswer.emit(this.action);
   // }
 
-
-
   // sendTest() {
   //   this.action.action = "test";
   //   this.action.temp = [
@@ -411,6 +408,4 @@ export class CrudShowDisplayDetailComponent implements OnInit {
   //   });
 
   // }
-
-
 }

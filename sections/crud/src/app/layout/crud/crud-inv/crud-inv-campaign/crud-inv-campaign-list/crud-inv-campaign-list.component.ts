@@ -20,6 +20,7 @@ export class CrudInvCampaignListComponent implements OnInit {
   selection;
 
   model: InvCampaignModel;
+  sortFn
   // INITIALIZATION
   constructor(
   ) {

@@ -19,6 +19,7 @@ export class CrudInvQueueListComponent implements OnInit {
   selection;
 
   model: InvQueueModel;
+  sortFn
   // INITIALIZATION
   constructor() {
     this.model = new InvQueueModel();
