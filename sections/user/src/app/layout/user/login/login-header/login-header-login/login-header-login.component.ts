@@ -7,6 +7,7 @@ import { EnvService } from "shared/services/helpers/env.service";
 })
 export class LoginHeaderLoginComponent implements OnInit {
   env;
+  faSignInAlt;
   constructor(private envService: EnvService) {
     this.env = this.envService;
   }

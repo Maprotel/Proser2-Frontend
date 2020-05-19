@@ -31,6 +31,7 @@ export class LoginRegisterComponent implements OnInit {
   closeResult: string;
 
   selection: UserbaseModel;
+  content;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,7 +39,7 @@ export class LoginRegisterComponent implements OnInit {
     private alertService: AlertService,
     private modalService: NgbModal,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.onFillForm();
@@ -88,7 +89,7 @@ export class LoginRegisterComponent implements OnInit {
     );
   }
 
-  onSubmit() { }
+  onSubmit() {}
 
   // convenience getter for easy access to form fields
   get f() {
