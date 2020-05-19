@@ -80,6 +80,9 @@ export class AuxiliarReportListComponent implements OnInit {
   //Icons
   faUser = faUser;
 
+  sortFn;
+  agent_legal_id;
+  
   // Init
   constructor(
     private agentsAuxiliarService: AgentsAuxiliarService,

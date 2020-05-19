@@ -86,6 +86,9 @@ export class WaitTimeReportListComponent implements OnInit {
   graph = false;
   show_graph_or_table_button = false;
 
+
+  sortFn;
+
   // Init
   constructor(
     private callsWaitTimeService: CallsWaitTimeService,
@@ -292,6 +295,8 @@ export class WaitTimeReportListComponent implements OnInit {
 
     console.error("model", model3);
   }
+
+  onValueChange($event){}
 
   //Test function for modal
   // openModal(content) {

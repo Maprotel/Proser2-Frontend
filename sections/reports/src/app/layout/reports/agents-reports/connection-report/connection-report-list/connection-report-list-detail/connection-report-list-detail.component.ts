@@ -13,7 +13,8 @@ export class ConnectionReportListDetailComponent implements OnInit {
 
   rows_total;
   
-  
+  sortFn;
+
   constructor() {}
 
   ngOnInit() {

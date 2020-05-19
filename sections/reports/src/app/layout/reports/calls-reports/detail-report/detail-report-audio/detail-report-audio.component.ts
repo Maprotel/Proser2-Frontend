@@ -30,6 +30,9 @@ export class DetailReportAudioComponent implements OnInit, OnDestroy {
   msbapDisplayTitle = false;
   msbapDisplayVolumeControls = true;
 
+  msaapDisplayVolumeControls;
+
+
   constructor(
     private callsDetailService: CallsDetailService,
     private alertService: AlertService,

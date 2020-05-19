@@ -80,6 +80,10 @@ export class ConnectionReportListComponent implements OnInit {
   // Modal window variables
   activeModal: NgbActiveModal;
 
+  sortFn;
+
+  agent_legal_id;
+
   // Init
   constructor(
     private agentsConnectionService: AgentsConnectionService,

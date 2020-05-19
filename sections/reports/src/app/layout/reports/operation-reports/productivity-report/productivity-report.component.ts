@@ -102,7 +102,7 @@ export class ProductivityReportComponent implements OnInit {
     this.onCloseModal()
   }
 
-  onCancelSelector() {
+  onCancelSelector($event) {
     this.userSelection = this.userSelectionTemp;
     this.onCloseModal()
   }
@@ -122,5 +122,6 @@ export class ProductivityReportComponent implements OnInit {
     this.userSelection = this.userSelectionService.readUserSelectionHistoric();
     this.activeModal.close();
   }
+
 
 }

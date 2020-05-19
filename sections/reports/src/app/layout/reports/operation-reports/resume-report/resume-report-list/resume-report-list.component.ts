@@ -64,6 +64,8 @@ export class ResumeReportListComponent implements OnInit {
   model: OperationResumeModel;
   exportName;
 
+  sortFn;
+
   constructor(
     private operationResumeService: OperationResumeService,
     private alertService: AlertService,

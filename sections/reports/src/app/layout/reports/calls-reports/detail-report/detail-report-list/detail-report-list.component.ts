@@ -60,6 +60,8 @@ export class DetailReportListComponent implements OnInit {
 
   faPhone = faPhone;
 
+  sortFn;
+
   constructor(
     private callsDetailService: CallsDetailService,
     private alertService: AlertService,

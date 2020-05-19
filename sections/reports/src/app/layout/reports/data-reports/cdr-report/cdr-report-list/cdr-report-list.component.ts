@@ -59,6 +59,13 @@ export class CdrReportListComponent implements OnInit {
   model: MainCdrReportModel;
   exportName;
 
+
+  cdr_id;
+  cdr_calldate;
+  countCdrDate;
+  sortFn;
+
+
   constructor(
     private mainCdrService: MainCdrService,
     private alertService: AlertService,

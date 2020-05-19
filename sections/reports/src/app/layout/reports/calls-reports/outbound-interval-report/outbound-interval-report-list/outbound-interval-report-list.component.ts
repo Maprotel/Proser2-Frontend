@@ -85,6 +85,10 @@ export class OutboundIntervalReportListComponent implements OnInit {
   graph = false;
   show_graph_or_table_button = false;
 
+
+  sortFn;
+
+
   // Init
   constructor(
     private callsOutboundDailyByIntervalService: CallsOutboundDailyByIntervalService,
@@ -306,4 +310,6 @@ export class OutboundIntervalReportListComponent implements OnInit {
       keyboard: false
     });
   }
+
+  onValueChange($event){}
 }

@@ -93,6 +93,8 @@ export class CallsIndicatorsByQueueReportListComponent implements OnInit {
   show_graph_or_table_button = false;
 
 
+  sortFn;
+
   // Init
   constructor(
     private callsIndicatorsByQueueService: CallsIndicatorsByQueueService,

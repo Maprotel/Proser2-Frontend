@@ -86,6 +86,8 @@ export class OutboundReportListComponent implements OnInit {
   graph = false;
   show_graph_or_table_button = false;
 
+  sortFn;
+
   // Init
   constructor(
     private callsOutboundDailyReportService: CallsOutboundDailyReportService,
@@ -309,4 +311,6 @@ export class OutboundReportListComponent implements OnInit {
       keyboard: false
     });
   }
+
+  onValueChange($event){}
 }

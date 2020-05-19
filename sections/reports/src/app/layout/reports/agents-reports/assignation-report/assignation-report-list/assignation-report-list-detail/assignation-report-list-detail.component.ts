@@ -12,7 +12,8 @@ export class AssignationReportListDetailComponent implements OnInit {
   @Input() selected;
 
   rows_total;
-
+  sortFn;
+  
   constructor() {}
 
   ngOnInit() {

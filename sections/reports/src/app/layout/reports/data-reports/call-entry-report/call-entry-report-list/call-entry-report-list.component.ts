@@ -59,6 +59,20 @@ export class CallEntryReportListComponent implements OnInit {
   model: MainCallEntryReportModel;
   exportName;
 
+
+  callentry_id;
+  inv_agent_name;
+  callentry_queue_id;
+  inv_queue_number;
+  callentry_datetime_init;
+  callentry_datetime_end;
+  callentry_duration_sec;
+  callentry_contact_id;
+  countCdrDate;
+  callentry_callerid;
+  sortFn;
+
+
   constructor(
     private mainCallEntryService: MainCallEntryService,
     private alertService: AlertService,

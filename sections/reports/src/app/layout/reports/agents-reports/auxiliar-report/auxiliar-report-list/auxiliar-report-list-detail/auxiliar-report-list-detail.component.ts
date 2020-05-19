@@ -12,7 +12,8 @@ export class AuxiliarReportListDetailComponent implements OnInit {
   @Input() selected;
 
   rows_total;
-
+  sortFn;
+  
   constructor() {}
 
   ngOnInit() {

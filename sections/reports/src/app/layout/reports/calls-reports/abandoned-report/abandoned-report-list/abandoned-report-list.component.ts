@@ -58,6 +58,8 @@ export class AbandonedReportListComponent implements OnInit {
   model: CallsAbandonedModel;
   exportName;
 
+  sortFn;
+
   constructor(
     private callsAbandonedService: CallsAbandonedService,
     private alertService: AlertService,
