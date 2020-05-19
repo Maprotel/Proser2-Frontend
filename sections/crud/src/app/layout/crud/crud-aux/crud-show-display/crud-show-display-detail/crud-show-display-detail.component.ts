@@ -288,7 +288,7 @@ export class CrudShowDisplayDetailComponent implements OnInit {
     this.onCloseModal();
   }
 
-  onCancelSelector() {
+  onCancelSelector(temp) {
     this.userSelection = this.userSelectionTemp;
     this.onCloseModal();
   }

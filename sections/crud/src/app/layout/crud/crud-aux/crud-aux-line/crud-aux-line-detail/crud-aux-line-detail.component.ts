@@ -233,7 +233,7 @@ export class CrudAuxLineDetailComponent implements OnInit {
     this.editAnswer.emit(this.action);
   }
 
-  onChangeLineValue(event) {
+  onChangeLineValue() {
     this.registerForm.patchValue({
       aux_line_name: this.registerForm.value.aux_line_value + " lineas"
     });
