@@ -19,7 +19,7 @@ export class CrudUserbaseListComponent implements OnInit {
   private detailComponent: CrudUserbaseDetailComponent;
 
   @Input() crudRecord: CrudUserbaseModel;
-
+  sortFn;
   constructor(
     private userbaseService: UserbaseService,
     private roleMappingService: RoleMappingService,

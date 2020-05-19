@@ -13,7 +13,8 @@ import { logout } from "shared/functions";
 })
 export class LoginHeaderComponent implements OnInit {
   alertMessage: AlertModel; 
-  currentUser;
+  currentUser; 
+
 
   constructor(
     private authService: AuthService,

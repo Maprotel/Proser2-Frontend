@@ -70,4 +70,10 @@ export class CrudUserbaseHeaderButtonsComponent implements OnInit {
     this.crudRecord.title = "Visualizar detalle del registro";
     localStorage.setItem("currentCrud", JSON.stringify(this.crudRecord));
   }
+
+  onGetActive(){}
+
+  onGetInactive(){}
+
+  onExportToExcel(){}
 }

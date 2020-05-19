@@ -31,7 +31,7 @@ export class LoginRegisterComponent implements OnInit {
   closeResult: string;
 
   selection: UserbaseModel;
-
+  content;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
