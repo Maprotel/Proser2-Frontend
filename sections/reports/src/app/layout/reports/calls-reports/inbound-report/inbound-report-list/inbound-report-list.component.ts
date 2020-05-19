@@ -44,7 +44,7 @@ export class InboundReportListComponent implements OnInit {
   private subscription: Subscription = new Subscription();
 
   // Child components
-  @ViewChild(InboundReportGraphComponent, { static: false })
+  @ViewChild(InboundReportGraphComponent)
   private childGraph: InboundReportGraphComponent;
 
   // Variables that come from main component

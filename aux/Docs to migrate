@@ -1,0 +1,126 @@
+Using package manager: 'npm'
+Collecting installed dependencies...
+Found 73 dependencies.
+Fetching dependency metadata from registry...
+Package '@angular/cli' is already up to date.
+                  Package "@ng-select/ng-select" has an incompatible peer dependency to "@angular/core" (requires ">=6.0.0 <8.0.0" (extended), would install "9.1.7").
+                  Package "@ng-select/ng-select" has an incompatible peer dependency to "@angular/common" (requires ">=6.0.0 <8.0.0" (extended), would install "9.1.7").
+                  Package "@ng-select/ng-select" has an incompatible peer dependency to "@angular/forms" (requires ">=6.0.0 <8.0.0" (extended), would install "9.1.7").
+                  Package "@angular-devkit/build-angular" has an incompatible peer dependency to "typescript" (requires ">=3.1 < 3.6", would install "3.8.3").
+    Updating package.json with dependency @angular/core @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency @angular/compiler-cli @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency @angular/language-service @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency @angular/compiler @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency @angular/platform-browser-dynamic @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency @angular/common @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency @angular/router @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency @angular/forms @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency @angular/animations @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency @angular/platform-server @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency zone.js @ "0.10.3" (was "0.9.1")...
+    Updating package.json with dependency @angular/platform-browser @ "9.1.7" (was "8.2.14")...
+    Updating package.json with dependency typescript @ "3.8.3" (was "3.4.5")...
+UPDATE package.json (4919 bytes)
+✔ Packages installed successfully.
+** Executing migrations of package '@angular/core' **
+
+▸ Static flag migration.
+  Removes the `static` flag from dynamic queries.
+  As of Angular 9, the "static" flag defaults to false and is no longer required for your view and content queries.
+  Read more about this here: https://v9.angular.io/guide/migration-dynamic-flag
+UPDATE sections/display/src/app/layout/display/display-inbound/display-inbound-list/display-inbound-list.component.ts (10033 bytes)
+UPDATE sections/display/src/app/layout/display/display-outbound/display-outbound-list/display-outbound-list.component.ts (9079 bytes)
+UPDATE sections/reports/src/app/layout/reports/calls-reports/inbound-interval-report/inbound-interval-report-list/inbound-interval-report-list.component.ts (9186 bytes)
+UPDATE sections/reports/src/app/layout/reports/calls-reports/inbound-report/inbound-report-list/inbound-report-list.component.ts (9786 bytes)
+UPDATE sections/reports/src/app/layout/reports/calls-reports/outbound-interval-report/outbound-interval-report-list/outbound-interval-report-list.component.ts (9011 bytes)
+UPDATE sections/reports/src/app/layout/reports/calls-reports/outbound-report/outbound-report-list/outbound-report-list.component.ts (8905 bytes)
+UPDATE sections/reports/src/app/layout/reports/calls-reports/wait-time-report/wait-time-report-list/wait-time-report-list.component.ts (8850 bytes)
+UPDATE sections/reports/src/app/layout/reports/calls-reports/calls-indicators-interval-report/calls-indicators-interval-report-list/calls-indicators-interval-report-list.component.ts (10052 bytes)
+UPDATE sections/system/src/app/layout/system/crud-userbase/crud-userbase-list/crud-userbase-list.component.ts (3341 bytes)
+UPDATE sections/user/src/app/layout/user/crud-userbase/crud-userbase-list/crud-userbase-list.component.ts (3157 bytes)
+  Migration completed.
+
+▸ Missing @Injectable and incomplete provider definition migration.
+  In Angular 9, enforcement of @Injectable decorators for DI is a bit stricter and incomplete provider definitions behave differently.
+  Read more about this here: https://v9.angular.io/guide/migration-injectable
+  Migration completed.
+
+▸ ModuleWithProviders migration.
+  In Angular 9, the ModuleWithProviders type without a generic has been deprecated.
+  This migration adds the generic where it is missing.
+  Read more about this here: https://v9.angular.io/guide/migration-module-with-providers
+UPDATE sections/crud/src/app/app.module.ts (3313 bytes)
+UPDATE sections/dashboard/src/app/app.module.ts (3318 bytes)
+UPDATE sections/display/src/app/app.module.ts (3315 bytes)
+UPDATE sections/reports/src/app/app.module.ts (3315 bytes)
+UPDATE sections/sms/src/app/app.module.ts (3311 bytes)
+UPDATE sections/system/src/app/app.module.ts (3315 bytes)
+UPDATE sections/user/src/app/app.module.ts (3313 bytes)
+  Migration completed.
+
+▸ Renderer to Renderer2 migration.
+  As of Angular 9, the Renderer class is no longer available.
+  Renderer2 should be used instead.
+  Read more about this here: https://v9.angular.io/guide/migration-renderer
+  Migration completed.
+
+▸ Undecorated classes with decorated fields migration.
+  As of Angular 9, it is no longer supported to have Angular field decorators on a class that does not have an Angular decorator.
+  Read more about this here: https://v9.angular.io/guide/migration-undecorated-classes
+  Migration completed.
+
+▸ Undecorated classes with DI migration.
+  As of Angular 9, it is no longer supported to use Angular DI on a class that does not have an Angular decorator.
+  Read more about this here: https://v9.angular.io/guide/migration-undecorated-classes
+    
+    This migration uses the Angular compiler internally and therefore projects that no longer build successfully after the update cannot run the migration. Please ensure there are no AOT compilation errors and rerun the migration. The following project failed: sections/crud/tsconfig.app.json
+    
+    Error: The Angular Compiler requires TypeScript >=3.6.4 and <3.9.0 but 3.9.2 was found instead.
+    
+    
+    This migration uses the Angular compiler internally and therefore projects that no longer build successfully after the update cannot run the migration. Please ensure there are no AOT compilation errors and rerun the migration. The following project failed: sections/dashboard/tsconfig.app.json
+    
+    Error: The Angular Compiler requires TypeScript >=3.6.4 and <3.9.0 but 3.9.2 was found instead.
+    
+    
+    This migration uses the Angular compiler internally and therefore projects that no longer build successfully after the update cannot run the migration. Please ensure there are no AOT compilation errors and rerun the migration. The following project failed: sections/display/tsconfig.app.json
+    
+    Error: The Angular Compiler requires TypeScript >=3.6.4 and <3.9.0 but 3.9.2 was found instead.
+    
+    
+    This migration uses the Angular compiler internally and therefore projects that no longer build successfully after the update cannot run the migration. Please ensure there are no AOT compilation errors and rerun the migration. The following project failed: sections/home/tsconfig.app.json
+    
+    Error: The Angular Compiler requires TypeScript >=3.6.4 and <3.9.0 but 3.9.2 was found instead.
+    
+    
+    This migration uses the Angular compiler internally and therefore projects that no longer build successfully after the update cannot run the migration. Please ensure there are no AOT compilation errors and rerun the migration. The following project failed: sections/reports/tsconfig.app.json
+    
+    Error: The Angular Compiler requires TypeScript >=3.6.4 and <3.9.0 but 3.9.2 was found instead.
+    
+    
+    This migration uses the Angular compiler internally and therefore projects that no longer build successfully after the update cannot run the migration. Please ensure there are no AOT compilation errors and rerun the migration. The following project failed: sections/sms/tsconfig.app.json
+    
+    Error: The Angular Compiler requires TypeScript >=3.6.4 and <3.9.0 but 3.9.2 was found instead.
+    
+    
+    This migration uses the Angular compiler internally and therefore projects that no longer build successfully after the update cannot run the migration. Please ensure there are no AOT compilation errors and rerun the migration. The following project failed: sections/system/tsconfig.app.json
+    
+    Error: The Angular Compiler requires TypeScript >=3.6.4 and <3.9.0 but 3.9.2 was found instead.
+    
+    
+    This migration uses the Angular compiler internally and therefore projects that no longer build successfully after the update cannot run the migration. Please ensure there are no AOT compilation errors and rerun the migration. The following project failed: sections/user/tsconfig.app.json
+    
+    Error: The Angular Compiler requires TypeScript >=3.6.4 and <3.9.0 but 3.9.2 was found instead.
+    
+    Could not migrate all undecorated classes that use dependency
+    injection. Some project targets could not be analyzed due to
+    TypeScript program failures.
+    
+    Migration can be rerun with: "ng update @angular/core --migrate-only migration-v9-undecorated-classes-with-di"
+    
+  Migration completed.
+
+
+Your project has been updated to Angular version 9!
+For more info, please see: https://v9.angular.io/guide/updating-to-version-9
+➜  Proser2-Frontend git:(develop) ✗ 

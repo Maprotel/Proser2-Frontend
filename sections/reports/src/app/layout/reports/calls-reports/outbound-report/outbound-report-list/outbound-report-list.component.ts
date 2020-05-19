@@ -38,7 +38,7 @@ import { OutboundReportGraphComponent } from "../outbound-report-graph/outbound-
 })
 export class OutboundReportListComponent implements OnInit {
   // Child components
-  @ViewChild(OutboundReportGraphComponent, { static: false })
+  @ViewChild(OutboundReportGraphComponent)
   private childGraph: OutboundReportGraphComponent;
 
   // Variables that come from main component

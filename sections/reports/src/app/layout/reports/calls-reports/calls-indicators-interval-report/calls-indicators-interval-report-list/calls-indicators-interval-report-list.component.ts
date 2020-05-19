@@ -38,7 +38,7 @@ import { CallsIndicatorsByIntervalReportGraphComponent } from "../calls-indicato
 })
 export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
   // Child components
-  @ViewChild(CallsIndicatorsByIntervalReportGraphComponent, { static: false })
+  @ViewChild(CallsIndicatorsByIntervalReportGraphComponent)
   private childGraph: CallsIndicatorsByIntervalReportGraphComponent;
 
   // Variables that come from main component

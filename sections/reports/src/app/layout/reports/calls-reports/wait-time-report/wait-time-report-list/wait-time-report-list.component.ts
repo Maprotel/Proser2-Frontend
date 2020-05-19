@@ -38,7 +38,7 @@ import { WaitTimeReportGraphComponent } from "../wait-time-report-graph/wait-tim
 })
 export class WaitTimeReportListComponent implements OnInit {
   // Child components
-  @ViewChild(WaitTimeReportGraphComponent, { static: false })
+  @ViewChild(WaitTimeReportGraphComponent)
   private childGraph: WaitTimeReportGraphComponent;
 
   // Variables that come from main component

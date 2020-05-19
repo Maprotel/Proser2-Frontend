@@ -38,7 +38,7 @@ import { OutboundIntervalReportGraphComponent } from "../outbound-interval-repor
 })
 export class OutboundIntervalReportListComponent implements OnInit {
   // Child components
-  @ViewChild(OutboundIntervalReportGraphComponent, { static: false })
+  @ViewChild(OutboundIntervalReportGraphComponent)
   private childGraph: OutboundIntervalReportGraphComponent;
 
   // Variables that come from main component

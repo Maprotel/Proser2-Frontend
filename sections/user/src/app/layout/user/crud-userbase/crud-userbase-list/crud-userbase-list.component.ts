@@ -15,7 +15,7 @@ import { CrudUserbaseDetailComponent } from "../crud-userbase-detail/crud-userba
 })
 export class CrudUserbaseListComponent implements OnInit {
   // Child components
-  @ViewChild(CrudUserbaseDetailComponent, { static: false })
+  @ViewChild(CrudUserbaseDetailComponent)
   private detailComponent: CrudUserbaseDetailComponent;
 
   @Input() crudRecord: CrudUserbaseModel;
