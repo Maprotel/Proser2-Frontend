@@ -16,6 +16,6 @@ export class DisplayInboundBreaksAuxiliarHistoricComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectLine(){}
+  selectLine(a,b){}
 
 }
