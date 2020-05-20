@@ -9,9 +9,13 @@ export class DisplayInboundBreaksAuxiliarHistoricComponent implements OnInit {
   @Input() rows;
   @Input() userSelection;
 
+  break;
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  selectLine(){}
 
 }
