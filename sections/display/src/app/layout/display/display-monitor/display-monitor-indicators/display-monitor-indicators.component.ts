@@ -54,6 +54,8 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
   // fake
   historic;
 
+  operation_time;
+
   constructor(
     private displayMonitorByIndicatorsService: DisplayMonitorByIndicatorsService,
 
@@ -169,5 +171,5 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
     this.selectorVisibleFields.auxiliar = false;
   }
 
-  onSelect() { }
+  onSelect($event) { }
 }

@@ -31,6 +31,8 @@ export class DashboardOutboundModalPlanAgentsComponent implements OnInit {
   dashboardSelection = new DashboardSelectionModel();
   local_store;
   title;
+  
+  sortFn;
 
   constructor(
     private dashboardOutboundListsService: DashboardOutboundListsService,
@@ -74,9 +76,9 @@ export class DashboardOutboundModalPlanAgentsComponent implements OnInit {
     }
   }
 
-  onActivate() {}
+  onActivate($event) {}
 
-  onSelect() {}
+  onSelect($event) {}
 
   
 }
