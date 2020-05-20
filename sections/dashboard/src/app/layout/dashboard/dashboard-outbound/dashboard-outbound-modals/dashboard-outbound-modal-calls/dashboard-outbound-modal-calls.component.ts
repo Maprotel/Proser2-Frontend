@@ -32,6 +32,8 @@ export class DashboardOutboundModalCallsComponent implements OnInit {
   local_store;
   title;
 
+  sortFn;
+
   constructor(
     private dashboardOutboundListsService: DashboardOutboundListsService,
     private alertService: AlertService,
@@ -75,9 +77,9 @@ export class DashboardOutboundModalCallsComponent implements OnInit {
     }
   }
 
-  onActivate() { }
+  onActivate($event) { }
 
-  onSelect() { }
+  onSelect($event) { }
 
   onAddTitle(modalView) {
     let result = "Lista de llamadas";

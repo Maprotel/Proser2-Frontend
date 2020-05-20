@@ -33,6 +33,8 @@ export class DashboardInboundModalAgentsHistoricComponent implements OnInit {
   local_store;
   title;
 
+  sortFn;
+
   constructor(
     private dashboardInboundListsService: DashboardInboundListsService,
     private alertService: AlertService,
@@ -79,9 +81,9 @@ export class DashboardInboundModalAgentsHistoricComponent implements OnInit {
     }
   }
 
-  onActivate() {}
+  onActivate($event) {}
 
-  onSelect() {}
+  onSelect($event) {}
 
   onAddTitle(modalView) {
     let result = "Lista de agentes";

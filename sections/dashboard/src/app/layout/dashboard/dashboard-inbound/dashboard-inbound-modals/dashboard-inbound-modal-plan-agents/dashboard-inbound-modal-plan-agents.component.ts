@@ -32,6 +32,8 @@ export class DashboardInboundModalPlanAgentsComponent implements OnInit {
   local_store;
   title;
 
+  sortFn;
+
   constructor(
     private dashboardInboundListsService: DashboardInboundListsService,
     private alertService: AlertService,
@@ -74,9 +76,9 @@ export class DashboardInboundModalPlanAgentsComponent implements OnInit {
     }
   }
 
-  onActivate() {}
+  onActivate($event) {}
 
-  onSelect() {}
+  onSelect($event) {}
 
   
 }

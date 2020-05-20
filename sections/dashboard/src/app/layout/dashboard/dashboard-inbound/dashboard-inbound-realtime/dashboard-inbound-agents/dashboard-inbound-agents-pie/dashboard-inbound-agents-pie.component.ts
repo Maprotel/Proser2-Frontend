@@ -50,6 +50,8 @@ export class DashboardInboundAgentsPieComponent implements OnInit {
     { name: "Auxiliar", value: 0, color: "#ffc107" }
   ];
 
+  pieChartPlugins;
+
   constructor(private modalService: NgbModal) {}
 
   ngOnInit() {}
