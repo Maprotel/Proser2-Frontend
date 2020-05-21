@@ -20,6 +20,7 @@ export class CrudInvClientListComponent implements OnInit {
   selection;
 
   model: InvClientModel;
+  sortFn
   // INITIALIZATION
   constructor(
   ) {

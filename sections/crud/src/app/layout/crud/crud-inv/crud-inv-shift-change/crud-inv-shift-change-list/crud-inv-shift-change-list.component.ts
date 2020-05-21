@@ -19,6 +19,7 @@ export class CrudInvShiftChangeListComponent implements OnInit {
   selection;
 
   model: ProScheduleChangeModel;
+  sortFn
   // INITIALIZATION
   constructor() {
     this.model = new ProScheduleChangeModel();

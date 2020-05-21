@@ -22,6 +22,8 @@ export class CrudAuxColorListComponent implements OnInit {
 
   model: AuxColorModel;
 
+  sortFn
+
 
   // INITIALIZATION
   constructor(

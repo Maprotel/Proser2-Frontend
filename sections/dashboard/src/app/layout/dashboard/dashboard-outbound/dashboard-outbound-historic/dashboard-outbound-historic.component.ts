@@ -193,7 +193,7 @@ export class DashboardOutboundHistoricComponent implements OnInit {
     this.onCloseModal()
   }
 
-  onCancelSelector() {
+  onCancelSelector($event) {
     this.userSelection = this.userSelectionTemp;
     this.onCloseModal()
   }

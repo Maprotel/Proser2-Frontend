@@ -1,18 +1,13 @@
 import { DatatableFinderComponent } from "./../../../../../../../../shared/modules/datatable-finder/datatable-finder.component";
 import { Component, OnInit, Input, ViewChild } from "@angular/core";
 
-import {
-  UserbaseService,
-  RoleMappingService
-} from "shared/services/";
+import { UserbaseService, RoleMappingService } from "shared/services/";
 import { AlertService, EnvService } from "shared/services/";
 import { AlertModel, UserbaseModel } from "shared/models";
 
 // Component imports
 import { CrudUserbaseModel } from "../CrudUserbase.model";
 import { CrudUserbaseDetailComponent } from "../crud-userbase-detail/crud-userbase-detail.component";
-
-
 
 @Component({
   selector: "app-user-crud-userbase-list",
@@ -21,12 +16,13 @@ import { CrudUserbaseDetailComponent } from "../crud-userbase-detail/crud-userba
 })
 export class CrudUserbaseListComponent implements OnInit {
   // Child components
-  @ViewChild(CrudUserbaseDetailComponent, { static: false })
+  @ViewChild(CrudUserbaseDetailComponent)
   private detailComponent: CrudUserbaseDetailComponent;
 
   @Input() crudRecord: CrudUserbaseModel;
 
   @Input() exportData;
+  sortFn;
 
   constructor(
     private userbaseService: UserbaseService,
@@ -112,9 +108,5 @@ export class CrudUserbaseListComponent implements OnInit {
     this.crudRecord.buttonEditRecord.value = true;
   }
 
-  onExport() {
-
-  }
-
-  
+  onExport() {}
 }

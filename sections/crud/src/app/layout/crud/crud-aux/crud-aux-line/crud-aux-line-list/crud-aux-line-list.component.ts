@@ -20,6 +20,7 @@ export class CrudAuxLineListComponent implements OnInit {
   selection;
 
   model: AuxLineModel;
+  sortFn
   // INITIALIZATION
   constructor(
   ) {

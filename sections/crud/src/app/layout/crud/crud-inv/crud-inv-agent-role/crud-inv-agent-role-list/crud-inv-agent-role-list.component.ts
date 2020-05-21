@@ -20,6 +20,7 @@ export class CrudInvAgentRoleListComponent implements OnInit {
   selection;
 
   model: InvAgentRoleModel;
+  sortFn
   // INITIALIZATION
   constructor(
   ) {

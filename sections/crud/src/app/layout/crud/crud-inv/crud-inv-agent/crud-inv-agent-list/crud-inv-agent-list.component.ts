@@ -19,6 +19,7 @@ export class CrudInvAgentListComponent implements OnInit {
   selection;
 
   model: InvAgentModel;
+  sortFn
   // INITIALIZATION
   constructor() {
     this.model = new InvAgentModel();

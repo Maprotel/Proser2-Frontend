@@ -64,6 +64,8 @@ export class ConsolidateReportListComponent implements OnInit {
   model: OperationConsolidateOperationModel;
   exportName;
 
+  sortFn;
+
   constructor(
     private operationConsolidateOperationService: OperationConsolidateOperationService,
     private alertService: AlertService,

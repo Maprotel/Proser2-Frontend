@@ -38,7 +38,7 @@ import { CallsIndicatorsByIntervalReportGraphComponent } from "../calls-indicato
 })
 export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
   // Child components
-  @ViewChild(CallsIndicatorsByIntervalReportGraphComponent, { static: false })
+  @ViewChild(CallsIndicatorsByIntervalReportGraphComponent)
   private childGraph: CallsIndicatorsByIntervalReportGraphComponent;
 
   // Variables that come from main component
@@ -89,6 +89,9 @@ export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
   graph = false;
   show_graph_or_table_button = false;
 
+
+  sortFn;
+  
   // Init
   constructor(
     private callsIndicatorsByIntervalService: CallsIndicatorsByIntervalService,
@@ -328,4 +331,6 @@ export class CallsIndicatorsByIntervalReportListComponent implements OnInit {
       keyboard: false
     });
   }
+
+  onValueChange($event){}
 }

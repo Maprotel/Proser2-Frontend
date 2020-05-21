@@ -11,6 +11,8 @@ export class DisplayInboundBreaksAssignationsComponent implements OnInit {
   @Input() rows;
   @Input() userSelection;
 
+  assigned;
+
   constructor(private modalService: NgbModal) {}
 
   ngOnInit() {}

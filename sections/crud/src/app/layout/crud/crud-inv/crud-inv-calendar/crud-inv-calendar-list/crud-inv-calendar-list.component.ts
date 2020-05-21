@@ -20,6 +20,7 @@ export class CrudInvCalendarListComponent implements OnInit {
   selection;
 
   model: InvCalendarModel;
+  sortFn
   // INITIALIZATION
   constructor(
   ) {

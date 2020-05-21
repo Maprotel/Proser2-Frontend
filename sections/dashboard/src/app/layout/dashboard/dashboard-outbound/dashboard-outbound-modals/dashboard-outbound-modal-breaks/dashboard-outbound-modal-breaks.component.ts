@@ -32,6 +32,8 @@ export class DashboardOutboundModalBreaksComponent implements OnInit {
   local_store;
   title;
 
+  sortFn;
+
   constructor(
     private dashboardOutboundListsService: DashboardOutboundListsService,
     private alertService: AlertService,
@@ -76,9 +78,9 @@ export class DashboardOutboundModalBreaksComponent implements OnInit {
     }
   }
 
-  onActivate() { }
+  onActivate($event) { }
 
-  onSelect() { }
+  onSelect($event) { }
 
   onAddTitle(modalView) {
     let result = "Lista de agentes";

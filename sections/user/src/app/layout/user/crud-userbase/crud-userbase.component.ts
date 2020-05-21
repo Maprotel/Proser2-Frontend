@@ -29,4 +29,6 @@ export class CrudUserbaseComponent implements OnInit {
   ngOnInit() {}
 
   ngOnDestroy() {}
+
+  onlistAnswer(event){}
 }

@@ -20,6 +20,8 @@ export class CrudAuxIntervalListComponent implements OnInit {
   selection;
 
   model: AuxIntervalModel;
+
+  sortFn
   // INITIALIZATION
   constructor(
   ) {

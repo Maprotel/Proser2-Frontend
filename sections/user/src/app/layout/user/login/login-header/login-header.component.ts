@@ -12,8 +12,9 @@ import { logout } from "shared/functions";
   styleUrls: ["./login-header.component.scss"]
 })
 export class LoginHeaderComponent implements OnInit {
-  alertMessage: AlertModel; 
+  alertMessage: AlertModel;
   currentUser;
+  faDigitalTachograph;
 
   constructor(
     private authService: AuthService,

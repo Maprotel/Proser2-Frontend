@@ -44,7 +44,7 @@ export class InboundReportListComponent implements OnInit {
   private subscription: Subscription = new Subscription();
 
   // Child components
-  @ViewChild(InboundReportGraphComponent, { static: false })
+  @ViewChild(InboundReportGraphComponent)
   private childGraph: InboundReportGraphComponent;
 
   // Variables that come from main component
@@ -94,7 +94,7 @@ export class InboundReportListComponent implements OnInit {
   graph = false;
   show_graph_or_table_button = false;
 
-
+  sortFn;
   // Init
   constructor(
     private callsInboundDailyService: CallsInboundDailyService,
@@ -355,4 +355,6 @@ export class InboundReportListComponent implements OnInit {
   closeModal() {
     this.activeModal.close();
   }
+
+  onValueChange($event){}
 }

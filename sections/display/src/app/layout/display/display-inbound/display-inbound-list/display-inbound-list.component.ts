@@ -44,10 +44,10 @@ export class DisplayInboundListComponent implements OnInit {
   // Subscription
   private subscription: Subscription = new Subscription();
   // Child components
-  @ViewChild(DisplayInboundGraphComponent, { static: false })
+  @ViewChild(DisplayInboundGraphComponent)
   private childGraph: DisplayInboundGraphComponent;
 
-  @ViewChild(DisplayInboundHighlightsComponent, { static: false })
+  @ViewChild(DisplayInboundHighlightsComponent)
   private highligthts: DisplayInboundHighlightsComponent;
 
   timerComponent;

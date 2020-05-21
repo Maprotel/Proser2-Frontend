@@ -38,7 +38,7 @@ import { InboundIntervalReportGraphComponent } from "../inbound-interval-report-
 })
 export class InboundIntervalReportListComponent implements OnInit {
   // Child components
-  @ViewChild(InboundIntervalReportGraphComponent, { static: false })
+  @ViewChild(InboundIntervalReportGraphComponent)
   private childGraph: InboundIntervalReportGraphComponent;
 
   // Variables that come from main component
@@ -85,6 +85,7 @@ export class InboundIntervalReportListComponent implements OnInit {
   graph = false;
   show_graph_or_table_button = false;
 
+  sortFn;
   // Init
   constructor(
     private callsInboundDailyByIntervalService: CallsInboundDailyByIntervalService,
@@ -313,4 +314,6 @@ export class InboundIntervalReportListComponent implements OnInit {
       keyboard: false
     });
   }
+
+  onValueChange($event){}
 }

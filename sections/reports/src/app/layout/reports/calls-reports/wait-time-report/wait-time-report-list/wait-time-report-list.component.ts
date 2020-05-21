@@ -38,7 +38,7 @@ import { WaitTimeReportGraphComponent } from "../wait-time-report-graph/wait-tim
 })
 export class WaitTimeReportListComponent implements OnInit {
   // Child components
-  @ViewChild(WaitTimeReportGraphComponent, { static: false })
+  @ViewChild(WaitTimeReportGraphComponent)
   private childGraph: WaitTimeReportGraphComponent;
 
   // Variables that come from main component
@@ -85,6 +85,9 @@ export class WaitTimeReportListComponent implements OnInit {
   // Graph variables
   graph = false;
   show_graph_or_table_button = false;
+
+
+  sortFn;
 
   // Init
   constructor(
@@ -292,6 +295,8 @@ export class WaitTimeReportListComponent implements OnInit {
 
     console.error("model", model3);
   }
+
+  onValueChange($event){}
 
   //Test function for modal
   // openModal(content) {

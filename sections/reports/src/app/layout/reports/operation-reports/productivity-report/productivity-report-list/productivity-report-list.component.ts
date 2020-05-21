@@ -62,6 +62,10 @@ export class ProductivityReportListComponent implements OnInit {
   model: RealCurrentAgentsReportModel;
   exportName;
 
+
+  sortFn;
+  rcc_callentry_buton;
+  
   constructor(
     private realCurrentAgentsService: RealCurrentAgentsService,
     private alertService: AlertService,

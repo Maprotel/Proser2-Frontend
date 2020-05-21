@@ -64,6 +64,8 @@ export class DetailReportListComponent implements OnInit {
   model: OperationDetailOperationModel;
   exportName;
 
+  sortFn;
+
   constructor(
     private operationDetailOperationService: OperationDetailOperationService,
     private alertService: AlertService,

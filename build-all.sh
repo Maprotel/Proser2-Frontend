@@ -1,5 +1,4 @@
 SHELL=/bin/bash
-
     npm run  build-crud;
     npm run  build-dashboard;
     npm run  build-display;

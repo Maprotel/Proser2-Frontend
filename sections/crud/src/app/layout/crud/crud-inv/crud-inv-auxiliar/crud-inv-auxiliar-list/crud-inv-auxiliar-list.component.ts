@@ -20,6 +20,7 @@ export class CrudInvAuxiliarListComponent implements OnInit {
   selection;
 
   model: InvAuxiliarModel;
+  sortFn
   // INITIALIZATION
   constructor(
   ) {

@@ -97,7 +97,7 @@ export class AppModule { }
 const providers = [];
 @NgModule({})
 export class SmsSharedModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<AppModule> {
     return {
       ngModule: AppModule,
       providers: providers

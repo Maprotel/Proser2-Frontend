@@ -19,6 +19,7 @@ export class CrudInvScheduleListComponent implements OnInit {
   selection;
 
   model: InvScheduleModel;
+  sortFn;
   // INITIALIZATION
   constructor() {
     this.model = new InvScheduleModel();

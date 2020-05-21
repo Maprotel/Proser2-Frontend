@@ -102,7 +102,7 @@ export class CdrReportComponent implements OnInit {
     this.onCloseModal()
   }
 
-  onCancelSelector() {
+  onCancelSelector($event) {
     this.userSelection = this.userSelectionTemp;
     this.onCloseModal()
   }

@@ -237,4 +237,6 @@ export class CrudInvAgentPlanComponent implements OnInit {
       }
     );
   }
+
+  onlistAnswer($event){}
 }

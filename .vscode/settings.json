@@ -4,7 +4,7 @@
     ".editorconfig": true,
     ".eslintrc.json": true,
     ".eslintrc.original.json": true,
-    ".gitignore": true,
+    ".gitignore": false,
     ".jshintignore": true,
     ".jshintrc": true,
     ".npmignore": false,
@@ -22,7 +22,7 @@
     "e2e": false,
     "error.tzt": true,
     "karma.conf.js": true,
-    "node_modules": true,
+    "node_modules": false,
     "package-lock.json": true,
     "README.md": true,
     "src/browserslist": false,
@@ -33,8 +33,8 @@
     "src/tsconfig.app.json": true,
     "src/tsconfig.spec.json": true,
     "src/tslint.json": true,
-    "tsconfig.app.json": true,
-    "tsconfig.json": true,
+    "tsconfig.app.json": false,
+    "tsconfig.json": false,
     "tsconfig.spec.json": true,
     "tslint.json": true,
     "projects/*/e2e": true,
@@ -55,7 +55,7 @@
     ".jshintignore": true,
     ".jshintrc": true,
     ".npmignore": true,
-    "node_modules": true
+    "node_modules": false
   },
   "git.ignoreLimitWarning": true,
   "cSpell.words": [

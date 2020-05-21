@@ -43,9 +43,11 @@ export class SelectorComponent implements OnInit, OnDestroy {
   // @Input() menuOptions: UserSelectionModel;
   @Input() selectorVisibleAreas;
 
-  menuOptions
+  menuOptions;
 
   jsonSelector = false;
+  groupList;
+  list
 
   // time
   start_time_text = "00:00:00";
@@ -53,7 +55,8 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   action;
 
-  alertMessage: AlertModel; alertError;
+  alertMessage: AlertModel;
+  alertError;
   // env;
   error_detected = false;
   error_message;
@@ -86,13 +89,12 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
     this.alertMessage = new AlertModel();
     this.model = new UserSelectionModel();
-
   }
 
   ngOnInit() {
     this.menuOptions = this.userSelectionService.readMenuOptions();
     this.onFillForm(this.userSelection);
-    this.onChange()
+    this.onChange();
   }
 
   ngOnDestroy() {
@@ -101,8 +103,8 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   // Selector
   onResetSelector() {
-    this.userSelection = new UserSelectionModel('userSelection');
-    this.menuOptions = new UserSelectionModel('menuOptions');
+    this.userSelection = new UserSelectionModel("userSelection");
+    this.menuOptions = new UserSelectionModel("menuOptions");
     this.onGetUserSelectionMenus();
     this.onFillForm(this.userSelection);
     this.onChange();
@@ -123,9 +125,8 @@ export class SelectorComponent implements OnInit, OnDestroy {
   // Reset form
   onFillForm(currentSelection) {
     if (currentSelection) {
-
-      this.start_time_text = currentSelection.start_time.value
-      this.end_time_text = currentSelection.end_time.value
+      this.start_time_text = currentSelection.start_time.value;
+      this.end_time_text = currentSelection.end_time.value;
 
       this.selectorForm = this.formBuilder.group({
         title: [currentSelection.title],
@@ -186,7 +187,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.selectorForm.patchValue({
       legend: selectorLegendSubtitles(this.selectorForm.value)
     });
-    this.userSelection = this.selectorForm.value
+    this.userSelection = this.selectorForm.value;
     this.userSelection.options = this.selectorForm.value.options;
     this.userSelection.legend = this.selectorForm.value.legend;
   }
@@ -217,7 +218,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.onChange();
   }
 
-
   onNewStartDate() {
     this.selectorForm.patchValue({
       end_date: this.selectorForm.value.start_date
@@ -236,11 +236,10 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.onChange();
   }
 
-
-
   onChangeStartTime() {
-
-    this.start_time_text = objectTimeToTextTime(this.selectorForm.value.start_time_hour)
+    this.start_time_text = objectTimeToTextTime(
+      this.selectorForm.value.start_time_hour
+    );
 
     this.selectorForm.patchValue({
       start_time: {
@@ -249,20 +248,22 @@ export class SelectorComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.userSelection.start_time = this.selectorForm.value.start_time
+    this.userSelection.start_time = this.selectorForm.value.start_time;
 
     this.onChange();
   }
 
   onChangeEndTime() {
-    this.end_time_text = objectTimeToTextTime(this.selectorForm.value.end_time_hour)
+    this.end_time_text = objectTimeToTextTime(
+      this.selectorForm.value.end_time_hour
+    );
     this.selectorForm.patchValue({
       end_time: {
         id: 0,
         value: this.end_time_text
       }
     });
-    this.userSelection.end_time = this.selectorForm.value.end_time
+    this.userSelection.end_time = this.selectorForm.value.end_time;
     this.onChange();
   }
 
@@ -301,8 +302,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
   onLastMinutes() {
     // this.onAllDay();
 
-
-    this.userSelection.last_minutes = this.selectorForm.value.last_minutes
+    this.userSelection.last_minutes = this.selectorForm.value.last_minutes;
 
     // let start_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
     // let end_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
@@ -336,7 +336,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
     // this.userSelection.start_time = start_time;
     // this.userSelection.end_time = end_time;
 
-
     // if (this.userSelection.last_minutes === null) {
     //   this.selectorVisibleFields.start_time = false;
     //   this.selectorVisibleFields.end_time = false;
@@ -350,13 +349,15 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   // Get menu options from database
   onGetUserSelectionMenus() {
-    this.userSelectionService.getUserSelectionMenus(this.userSelection)
-      .subscribe(data => {
-        this.menuOptions = data;
-        console.log('data', data);
-        this.userSelectionService.writeMenuOptions(this.menuOptions);
-        this.menuOptions = this.userSelectionService.readMenuOptions();
-      },
+    this.userSelectionService
+      .getUserSelectionMenus(this.userSelection)
+      .subscribe(
+        data => {
+          this.menuOptions = data;
+          console.log("data", data);
+          this.userSelectionService.writeMenuOptions(this.menuOptions);
+          this.menuOptions = this.userSelectionService.readMenuOptions();
+        },
         error => {
           console.error("Error", error);
           this.alertService.error(error.status);
@@ -365,15 +366,15 @@ export class SelectorComponent implements OnInit, OnDestroy {
           this.alertMessage.alertShow = true;
           this.alertMessage.alertClass =
             "alert alert-danger alert-dismissible fade show";
-        });
+        }
+      );
   }
 
   // Status
   onStatusChange() {
-    this.userSelection.status = this.selectorForm.value.status
+    this.userSelection.status = this.selectorForm.value.status;
     this.onGetUserSelectionMenus();
   }
-
 
   // ERROR: Handles error on queries
   onError(error?) {
@@ -388,6 +389,4 @@ export class SelectorComponent implements OnInit, OnDestroy {
   getUserJsonSelector() {
     this.jsonSelector = !this.jsonSelector;
   }
-
-
 }
