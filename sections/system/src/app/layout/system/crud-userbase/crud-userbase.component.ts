@@ -23,6 +23,7 @@ import { ngxCsv } from "ngx-csv/ngx-csv";
 })
 export class CrudUserbaseComponent implements OnInit {
   crudRecord: CrudUserbaseModel;
+  sortFn
 
   constructor() {
     this.crudRecord = new CrudUserbaseModel();
@@ -77,4 +78,5 @@ export class CrudUserbaseComponent implements OnInit {
 
     new ngxCsv(data_mapped, "My Report", options);
   }
+  onListAnswer($event) {}
 }

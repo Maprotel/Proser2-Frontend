@@ -75,4 +75,6 @@ export class CrudUserbaseHeaderButtonsComponent implements OnInit {
   onExport() {
     this.exportData.emit("export");
   }
+  onGetActive() {}
+  onGetInactive(){}
 }
