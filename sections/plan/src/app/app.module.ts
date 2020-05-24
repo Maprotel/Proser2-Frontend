@@ -97,7 +97,7 @@ export class AppModule { }
 
 const providers = [];
 @NgModule({})
-export class ReportSharedModule {
+export class CrudSharedModule {
   static forRoot(): ModuleWithProviders<AppModule> {
     return {
       ngModule: AppModule,

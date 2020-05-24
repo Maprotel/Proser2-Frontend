@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   currentUser;
   visibleMenus;
 
-  // *ngIf="currentUser"
+
 
   constructor(
     private authService: AuthService,
