@@ -533,6 +533,140 @@
         }
       }
     },
+    "plan": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "sections/plan",
+      "sourceRoot": "sections/plan/src",
+      "prefix": "app-plan",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "./extra-webpack.config.js"
+            },
+            "outputPath": "dist/plan",
+            "index": "sections/plan/src/index.html",
+            "main": "sections/plan/src/main.ts",
+            "polyfills": "sections/plan/src/polyfills.ts",
+            "tsConfig": "sections/plan/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "sections/plan/src/favicon.ico",
+              "sections/plan/src/shared/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "shared/styles/app.scss",
+              "sections/plan/src/shared/styles/styles.scss",
+              "sections/plan/src/shared/styles/datatable/datatable.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "shared/environments/environment.ts",
+                  "with": "shared/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "plan:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "plan:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "plan:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "sections/plan/src/test.ts",
+            "polyfills": "sections/plan/src/polyfills.ts",
+            "tsConfig": "sections/plan/tsconfig.spec.json",
+            "karmaConfig": "sections/plan/karma.conf.js",
+            "assets": [
+              "sections/plan/src/favicon.ico",
+              "sections/plan/src/shared/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "shared/styles/app.scss",
+              "sections/plan/src/shared/styles/styles.scss",
+              "sections/plan/src/shared/styles/datatable/datatable.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "sections/plan/tsconfig.app.json",
+              "sections/plan/tsconfig.spec.json",
+              "sections/plan/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "sections/plan/e2e/protractor.conf.js",
+            "devServerTarget": "plan:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "plan:serve:production"
+            }
+          }
+        }
+      }
+    },
     "reports": {
       "projectType": "application",
       "schematics": {

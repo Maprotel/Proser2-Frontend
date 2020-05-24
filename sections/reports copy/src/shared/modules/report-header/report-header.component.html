@@ -1,0 +1,31 @@
+<section class="header-block">
+
+  <!-- ------- REPORT NAME -------------------- -->
+  <article class="header-left">
+    <p class="report-title">{{ userSelection.title }}</p>
+    <p class="report-date">
+      {{ onUserSelectionText().start_date | date:'EEEE yyyy-MM-dd' }}
+      <span
+            *ngIf="!(onUserSelectionText().start_date === onUserSelectionText().end_date)">
+        &nbsp;al&nbsp;{{ onUserSelectionText().end_date | date:'EEEE yyyy-MM-dd' }}
+      </span>
+    </p>
+    <p class="report-time">{{ userSelection.legend }}</p>
+  </article>
+
+  <!-- ------- CALLCENTER NAME -------------------- -->
+  <article class="header-center ">
+    <p class=" callenter-title">{{ env.callcenterName }}</p>
+  </article>
+
+
+  <!-- ------- INFO -------------------- -->
+  <article class="header-right">
+    <p>
+      <a class="selector-text-link" (click)="onOpenSelector(true)">
+        Filtre la información aquí</a>
+    </p>
+
+    <p class="report-selection">{{ userSelection.options }}</p>
+  </article>
+</section>
