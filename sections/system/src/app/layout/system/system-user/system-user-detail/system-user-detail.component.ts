@@ -72,6 +72,7 @@ export class SystemUserDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("HOLA");
     this.getRoles();
     this.selection = JSON.parse(localStorage.getItem("recordSelection"))[0];
     this.onFillForm();
