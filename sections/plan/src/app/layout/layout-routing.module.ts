@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: "crud",
-        loadChildren: () => import("./crud/crud.module").then(m => m.CrudModule)
+        loadChildren: () => import("./plan/plan.module").then(m => m.PlanModule)
       }
     ]
   }

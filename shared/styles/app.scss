@@ -1,12 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/bootstrap";
+@import "fonts.scss";
 @import "general-config";
+@import "responsive";
+@import "rtl";
 @import "spinner";
 
-@import "rtl";
-@import "responsive";
-
-@import "fonts.scss";
-
+// Vendor
 @import "~@swimlane/ngx-datatable/index.scss";
 // @import "~@swimlane/ngx-datatable/release/assets/icons.css";
