@@ -40,6 +40,7 @@ export class CrudUserbaseDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("HOLA");
     this.onFillForm();
     // this.crudRecord.currentRecord.roleMapping = this.getExistingRoleMapping(
     //   this.crudRecord.currentRecord
@@ -367,7 +368,7 @@ export class CrudUserbaseDetailComponent implements OnInit {
 
   createRoleMapping(profile_json, user) {
     let query = {
-      principalType: profile_json.name,
+      principalType: "USER",
       principalId: user,
       roleId: profile_json.id
     };
