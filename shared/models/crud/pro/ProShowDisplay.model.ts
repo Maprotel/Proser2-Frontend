@@ -14,18 +14,19 @@ export class ProShowDisplayModel {
   constructor() {
     this.pro_show_display_id = 0;
     this.pro_show_display_name = "Nuevo Display";
-    this.pro_show_display_weekday = this.weekDayList();
+    this.pro_show_display_weekday = [];
     this.pro_show_display_start_time = "00:00:00";
     this.pro_show_display_end_time = "23:59:59";
     this.pro_show_display_selection = new UserSelectionModel();
-    this.pro_show_display_type = null;
-    this.pro_show_display_view = {
-      view: [
-        { id: 1, name: "actual", value: 1 },
-        { id: 2, name: "historic", value: 2 },
-        { id: 3, name: "graph", value: 3 }
-      ]
-    };
+    this.pro_show_display_type = [
+      { id: 1, name: "previo", value: 1 },
+      { id: 2, name: "actual", value: 2 }
+    ];
+    this.pro_show_display_view = [
+      { id: 1, name: "estandar", value: 1 },
+      { id: 2, name: "historica", value: 2 },
+      { id: 3, name: "grafica", value: 3 }
+    ];
     this.pro_show_display_status = "A";
   }
 
@@ -82,7 +83,6 @@ export class ProShowDisplayModel {
       return x.field_name === field_name;
     })[0];
   }
-
 
   public weekDayList() {
     const result = [
