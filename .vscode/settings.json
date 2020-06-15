@@ -23,7 +23,7 @@
     "error.tzt": true,
     "karma.conf.js": true,
     "node_modules": false,
-    "package-lock.json": true,
+    "package-lock.json": false,
     "README.md": true,
     "src/browserslist": false,
     "src/favicon.ico": true,
