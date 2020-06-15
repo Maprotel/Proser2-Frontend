@@ -5,3 +5,5 @@ export * from "./crud/index";
 export * from "./helpers/index";
 export * from "./pages/index";
 // export * from "../../aux/reports/index";
+
+export * from "./plan/index"
