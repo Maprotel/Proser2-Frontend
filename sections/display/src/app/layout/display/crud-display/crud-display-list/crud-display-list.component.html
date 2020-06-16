@@ -13,12 +13,12 @@
       <div class="col">
         <button class="btn btn-primary btn-sm mr-1" (click)="onGetRecords()">
           Todos</button>
-        <button class="btn btn-secondary btn-sm mr-1" (click)="onExportToCsv()">Exportar</button>
+        <!-- <button class="btn btn-secondary btn-sm mr-1" (click)="onExportToCsv()">Exportar</button> -->
         <button class="btn btn-outline-primary btn-sm mr-1" (click)="onNewRecord()">Nuevo</button>
         <button class="btn btn-success btn-sm mr-1" (click)="onEditRecord()"
-          *ngIf="selectedRecord.confKey">Editar</button>
+          *ngIf="selectedRecord.pro_show_display_id">Editar</button>
         <button class="btn btn-danger btn-sm mr-1" (click)="open(content)"
-          *ngIf="selectedRecord.confKey">Eliminar</button>
+          *ngIf="selectedRecord.pro_show_display_id">Eliminar</button>
       </div>
 
       <div class="col">
@@ -130,9 +130,9 @@
   <!-- body -->
   <div class="modal-body">
 
-    <p class="small">Está seguro que quiere eliminar la variable:</p>
+    <p class="small">Está seguro que quiere eliminar el turno:</p>
 
-    <p class="h2">{{selectedRecord.confKey}}</p>
+    <p class="h2">{{selectedRecord.pro_show_display_name}}</p>
 
     <p class="h4">¡Esta acción es irreversible!</p>
 

@@ -46,6 +46,7 @@ export class CrudDisplayListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("HOLA");
     this.onGetRecords();
     this.proShowDisplayService.currentRecord.subscribe((data) => {
       this.selectedRecord = data;
@@ -56,6 +57,7 @@ export class CrudDisplayListComponent implements OnInit {
     this.proShowDisplayService.getRecords().subscribe(
       (data) => {
         this.selectedList = data;
+        console.log(this.selectedList, "this.selectedList");
         this.fullList = data;
       },
       (error) => {
