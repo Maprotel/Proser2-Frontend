@@ -11,21 +11,23 @@
   <section class=" mt-0 pt-2 mb-0 pb-0">
     <div class="row d-flex justify-content-end">
       <div class="col">
-        <button class="btn btn-primary btn-xl mr-1" (click)="onGetRecords()">
+        <button class="btn btn-primary  mr-1" (click)="onGetRecords()">
           Todos</button>
-        <!-- <button class="btn btn-secondary btn-sm mr-1" (click)="onExportToCsv()">Exportar</button> -->
-        <button class="btn btn-outline-primary btn-sm mr-1" (click)="onNewRecord()">Nuevo</button>
-        <button class="btn btn-success btn-sm mr-1" (click)="onEditRecord()"
-          *ngIf="selectedRecord.pro_show_display_id">Editar</button>
-        <button class="btn btn-danger btn-sm mr-1" (click)="open(content)"
-          *ngIf="selectedRecord.pro_show_display_id">Eliminar</button>
+        <!-- <button class="btn btn-secondary  mr-1" (click)="onExportToCsv()">Exportar</button> -->
+        <button class="btn btn-outline-primary  mr-1"
+                (click)="onNewRecord()">Nuevo</button>
+        <button class="btn btn-success  mr-1" (click)="onEditRecord()"
+                *ngIf="selectedRecord.pro_show_display_id">Editar</button>
+        <button class="btn btn-danger  mr-1" (click)="open(content)"
+                *ngIf="selectedRecord.pro_show_display_id">Eliminar</button>
       </div>
 
       <div class="col">
         <div class="form-group row">
           <label class="col-sm-3 form-control-label">Búsqueda</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" placeholder="Busque aquí..." [(ngModel)]="term">
+            <input type="text" class="form-control" placeholder="Busque aquí..."
+                   [(ngModel)]="term">
           </div>
         </div>
       </div>
@@ -33,7 +35,8 @@
   </section>
 
 
-  <div class=" table-wrapper-scroll-y table-scrollbar table-bordered table-responsive-sm table-responsive-lg ">
+  <div
+       class=" table-wrapper-scroll-y table-scrollbar table-bordered table-responsive-sm table-responsive-lg ">
     <table mdbTable class="table table-sm table-hover tableFixHead ">
 
       <thead>
@@ -50,49 +53,58 @@
       </thead>
 
       <tbody>
-        <tr mdbTableCol *ngFor="let listItem of selectedList | filter: term; index as i"
-          (click)="updateSelection(listItem, i)" (dblclick)="onEditRecord()" [class.active]="i == selectedRow">
+        <tr mdbTableCol
+            *ngFor="let listItem of selectedList | filter: term; index as i"
+            (click)="updateSelection(listItem, i)" (dblclick)="onEditRecord()"
+            [class.active]="i == selectedRow">
 
 
           <!-- pro_show_display_id -->
           <th scope=" row" class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_id" [term]="term">
+            <ngb-highlight [result]="listItem.pro_show_display_id"
+                           [term]="term">
             </ngb-highlight>
           </th>
 
           <!-- pro_show_display_name -->
           <td class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_name" [term]="term">
+            <ngb-highlight [result]="listItem.pro_show_display_name"
+                           [term]="term">
             </ngb-highlight>
           </td>
 
           <!-- pro_show_display_weekday -->
           <td class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_weekday" [term]="term">
+            <ngb-highlight [result]="listItem.pro_show_display_weekday"
+                           [term]="term">
             </ngb-highlight>
           </td>
 
           <!-- pro_show_display_start_time -->
           <td class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_start_time" [term]="term">
+            <ngb-highlight [result]="listItem.pro_show_display_start_time"
+                           [term]="term">
             </ngb-highlight>
           </td>
 
           <!-- pro_show_display_end_time -->
           <td class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_end_time" [term]="term">
+            <ngb-highlight [result]="listItem.pro_show_display_end_time"
+                           [term]="term">
             </ngb-highlight>
           </td>
 
           <!-- pro_show_display_type -->
           <td class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_type" [term]="term">
+            <ngb-highlight [result]="listItem.pro_show_display_type"
+                           [term]="term">
             </ngb-highlight>
           </td>
 
           <!-- pro_show_display_status -->
           <td class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_status" [term]="term">
+            <ngb-highlight [result]="listItem.pro_show_display_status"
+                           [term]="term">
             </ngb-highlight>
           </td>
 
@@ -109,7 +121,8 @@
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Eliminar el registro</h4>
 
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -125,8 +138,10 @@
   </div>
   <!-- buttons -->
   <div class="modal-footer">
-    <button type="button" class="btn btn-warning" ngbAutofocus (click)="modal.close('Save click')">No</button>
+    <button type="button" class="btn btn-warning" ngbAutofocus
+            (click)="modal.close('Save click')">No</button>
 
-    <button type="button" class="btn btn-danger" (click)="onDeleteRecord(selectedRecord)">Si</button>
+    <button type="button" class="btn btn-danger"
+            (click)="onDeleteRecord(selectedRecord)">Si</button>
   </div>
 </ng-template>

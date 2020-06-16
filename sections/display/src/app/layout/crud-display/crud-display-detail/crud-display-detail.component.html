@@ -1,116 +1,138 @@
-<!-- Horizontal Form-->
+<section class="container">
+  <!-- Horizontal Form-->
 
 
-<div class="card-header d-flex align-items-center">
-  <p class="h4">Detalle de la malla de turno</p>
-</div>
-<div class="card-body">
+  <div class="card-header d-flex align-items-center">
+    <p class="h4">Detalle de la malla de turno</p>
+  </div>
+  <div class="card-body">
 
-  <!-- /********************************************************************************/ -->
-  <form class="form-horizontal two-col" [formGroup]="recordForm">
+    <!-- /********************************************************************************/ -->
+    <form class="form-horizontal two-col" [formGroup]="recordForm">
 
 
 
-    <!-- pro_show_display_id -->
-    <article class="form-group" id="pro_show_display_id">
-      <label class="register-label medium">Id</label>
-      <input type="text" formControlName="pro_show_display_id" class="form-control register-input" />
-      <div *ngIf="(f.pro_show_display_id.errors && !f.pro_show_display_id.pristine)" class="small text-danger">
-        <div *ngIf="f.pro_show_display_id.errors.required">
-          Este dato es obligatorio
+      <!-- pro_show_display_id -->
+      <article class="form-group" id="pro_show_display_id">
+        <label class="register-label medium">Id</label>
+        <input type="text" formControlName="pro_show_display_id"
+               class="form-control register-input" />
+        <div *ngIf="(f.pro_show_display_id.errors && !f.pro_show_display_id.pristine)"
+             class="small text-danger">
+          <div *ngIf="f.pro_show_display_id.errors.required">
+            Este dato es obligatorio
+          </div>
+        </div>
+      </article>
+
+      <!-- pro_show_display_name -->
+      <article class="form-group" id="pro_show_display_name">
+        <label class="register-label medium">Nombre</label>
+        <input type="text" formControlName="pro_show_display_name"
+               class="form-control register-input" />
+        <div *ngIf="(f.pro_show_display_name.errors && !f.pro_show_display_name.pristine)"
+             class="small text-danger">
+          <div *ngIf="f.pro_show_display_name.errors.required">
+            Este dato es obligatorio
+          </div>
+        </div>
+      </article>
+
+      <!-- pro_show_display_weekday -->
+      <article class="form-group" id="pro_show_display_weekday">
+        <label class="register-label medium">Días</label>
+
+        <ng-select [items]="days" bindLabel="value" placeholder="Días"
+                   [dropdownPosition]="'auto'" [searchable]="true"
+                   [clearable]="true" [multiple]="true" hideSelected="true"
+                   formControlName="pro_show_display_weekday">
+        </ng-select>
+
+        <div *ngIf="(f.pro_show_display_weekday.errors && !f.pro_show_display_weekday.pristine)"
+             class="small text-danger">
+          <div *ngIf="f.pro_show_display_weekday.errors.required">
+            Este dato es obligatorio
+          </div>
+        </div>
+      </article>
+
+      <!-- pro_show_display_start_time -->
+      <article class="form-group" id="pro_show_display_start_time">
+        <label class="register-label medium">Inicio</label>
+        <input type="text" formControlName="pro_show_display_start_time"
+               class="form-control register-input" />
+        <div *ngIf="(f.pro_show_display_start_time.errors && !f.pro_show_display_start_time.pristine)"
+             class="small text-danger">
+          <div *ngIf="f.pro_show_display_start_time.errors.required">
+            Este dato es obligatorio
+          </div>
+        </div>
+      </article>
+
+      <!-- pro_show_display_end_time -->
+      <article class="form-group" id="pro_show_display_end_time">
+        <label class="register-label medium">Fin</label>
+        <input type="text" formControlName="pro_show_display_end_time"
+               class="form-control register-input" />
+        <div *ngIf="(f.pro_show_display_end_time.errors && !f.pro_show_display_end_time.pristine)"
+             class="small text-danger">
+          <div *ngIf="f.pro_show_display_end_time.errors.required">
+            Este dato es obligatorio
+          </div>
+        </div>
+      </article>
+
+      <!-- pro_show_display_type -->
+      <article class="form-group" id="pro_show_display_type">
+        <label class="register-label medium">Tipo</label>
+
+        <ng-select [items]="type" bindLabel="name" placeholder="Tipo"
+                   [dropdownPosition]="'auto'" [searchable]="true"
+                   [clearable]="true" [multiple]="false" hideSelected="true"
+                   formControlName="pro_show_display_type">
+        </ng-select>
+
+        <div *ngIf="(f.pro_show_display_type.errors && !f.pro_show_display_type.pristine)"
+             class="small text-danger">
+          <div *ngIf="f.pro_show_display_type.errors.required">
+            Este dato es obligatorio
+          </div>
+        </div>
+      </article>
+
+      <!-- pro_show_display_status -->
+      <article class="form-group" id="pro_show_display_status">
+        <label class="register-label medium">Estatus</label>
+        <input type="text" formControlName="pro_show_display_status"
+               class="form-control register-input" />
+        <div *ngIf="(f.pro_show_display_status.errors && !f.pro_show_display_status.pristine)"
+             class="small text-danger">
+          <div *ngIf="f.pro_show_display_status.errors.required">
+            Este dato es obligatorio
+          </div>
+        </div>
+      </article>
+
+      <!-- pro_show_display_status -->
+      <article>
+
+      </article>
+
+
+
+      <div class="d-flex justify-content-between mt-0 pt-2 mb-0 pb-0">
+        <div class="form-group row">
+
+          <input type="submit" confValue="Guardar"
+                 class="btn btn-success btn-sm mr-1"
+                 *ngIf="!recordForm.pristine && recordForm.valid"
+                 (click)="onSubmit()">
+          <input type="button" confValue="Regresar a la lista"
+                 (click)="onReturn()" class="btn btn-secondary btn-xl mr-1">
+
         </div>
       </div>
-    </article>
+    </form>
+  </div>
 
-    <!-- pro_show_display_name -->
-    <article class="form-group" id="pro_show_display_name">
-      <label class="register-label medium">Nombre</label>
-      <input type="text" formControlName="pro_show_display_name" class="form-control register-input" />
-      <div *ngIf="(f.pro_show_display_name.errors && !f.pro_show_display_name.pristine)" class="small text-danger">
-        <div *ngIf="f.pro_show_display_name.errors.required">
-          Este dato es obligatorio
-        </div>
-      </div>
-    </article>
-
-    <!-- pro_show_display_weekday -->
-    <article class="form-group" id="pro_show_display_weekday">
-      <label class="register-label medium">Días</label>
-
-      <ng-select [items]="days" bindLabel="value" placeholder="Días" [dropdownPosition]="'auto'" [searchable]="true"
-        [clearable]="true" [multiple]="true" hideSelected="true" formControlName="pro_show_display_weekday">
-      </ng-select>
-
-      <div *ngIf="(f.pro_show_display_weekday.errors && !f.pro_show_display_weekday.pristine)" class="small text-danger">
-        <div *ngIf="f.pro_show_display_weekday.errors.required">
-          Este dato es obligatorio
-        </div>
-      </div>
-    </article>
-
-    <!-- pro_show_display_start_time -->
-    <article class="form-group" id="pro_show_display_start_time">
-      <label class="register-label medium">Inicio</label>
-      <input type="text" formControlName="pro_show_display_start_time" class="form-control register-input" />
-      <div *ngIf="(f.pro_show_display_start_time.errors && !f.pro_show_display_start_time.pristine)" class="small text-danger">
-        <div *ngIf="f.pro_show_display_start_time.errors.required">
-          Este dato es obligatorio
-        </div>
-      </div>
-    </article>
-
-    <!-- pro_show_display_end_time -->
-    <article class="form-group" id="pro_show_display_end_time">
-      <label class="register-label medium">Fin</label>
-      <input type="text" formControlName="pro_show_display_end_time" class="form-control register-input" />
-      <div *ngIf="(f.pro_show_display_end_time.errors && !f.pro_show_display_end_time.pristine)" class="small text-danger">
-        <div *ngIf="f.pro_show_display_end_time.errors.required">
-          Este dato es obligatorio
-        </div>
-      </div>
-    </article>
-
-    <!-- pro_show_display_type -->
-    <article class="form-group" id="pro_show_display_type">
-      <label class="register-label medium">Tipo</label>
-
-      <ng-select [items]="type" bindLabel="name" placeholder="Tipo" [dropdownPosition]="'auto'" [searchable]="true"
-        [clearable]="true" [multiple]="false" hideSelected="true" formControlName="pro_show_display_type">
-      </ng-select>
-
-      <div *ngIf="(f.pro_show_display_type.errors && !f.pro_show_display_type.pristine)" class="small text-danger">
-        <div *ngIf="f.pro_show_display_type.errors.required">
-          Este dato es obligatorio
-        </div>
-      </div>
-    </article>
-
-    <!-- pro_show_display_status -->
-    <article class="form-group" id="pro_show_display_status">
-      <label class="register-label medium">Estatus</label>
-      <input type="text" formControlName="pro_show_display_status" class="form-control register-input" />
-      <div *ngIf="(f.pro_show_display_status.errors && !f.pro_show_display_status.pristine)" class="small text-danger">
-        <div *ngIf="f.pro_show_display_status.errors.required">
-          Este dato es obligatorio
-        </div>
-      </div>
-    </article>
-
-    <!-- pro_show_display_status -->
-    <article >
-      
-    </article>
-
-
-
-    <div class="d-flex justify-content-between mt-0 pt-2 mb-0 pb-0">
-      <div class="form-group row">
-
-        <input type="submit" confValue="Guardar" class="btn btn-success btn-sm mr-1"
-          *ngIf="!recordForm.pristine && recordForm.valid" (click)="onSubmit()">
-        <input type="button" confValue="Regresar a la lista" (click)="onReturn()" class="btn btn-secondary btn-xl mr-1">
-
-      </div>
-    </div>
-  </form>
-</div>
+</section>
