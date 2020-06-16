@@ -77,8 +77,17 @@ export class ProShowDisplayService {
   }
 
   putRecord(record: ProShowDisplayModel) {
-    //let id = record.personId;
-    //return this.http.put<ProShowDisplayModel>(`${this.env.apiUrl}/api/ProShowDisplays${id}`, record)
+    let id = null;
+    if (record) {
+      id = record.pro_show_display_id;
+    }
+    const query = JSON.stringify(record);
+    const accessToken = localStorage.getItem("accessToken");
+    const url_api = `${this.env.loopbackApiUrl}${this.apiUrl}/${id}?access_token=${accessToken}`;
+
+    return this.http
+      .put<ProShowDisplayModel>(url_api, query)
+      .pipe(map(data => data));
   }
 
   deleteRecord(id: number): Observable<any> {

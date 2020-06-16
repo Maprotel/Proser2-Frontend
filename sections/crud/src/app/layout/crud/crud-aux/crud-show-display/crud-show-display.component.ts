@@ -132,7 +132,7 @@ export class CrudShowDisplayComponent implements OnInit {
 
 
   getAll_Records(query?) {
-    this.showDisplayService.getAllRecords(query).subscribe(
+    this.showDisplayService.getRecords().subscribe(
       (data: ProShowDisplayModel[]) => {
         let data_mapped = data.map(x => {
           return {
