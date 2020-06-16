@@ -149,7 +149,7 @@ export class DisplayInboundListComponent implements OnInit {
             pro_show_display_selection: x.pro_show_display_selection,
             pro_show_display_view: x.pro_show_display_view,
             pro_show_display_status: x.pro_show_display_status,
-            days: ""
+            days: "",
           };
 
           record.days = record.pro_show_display_weekday.map(x => {
@@ -164,23 +164,7 @@ export class DisplayInboundListComponent implements OnInit {
         this.userSelection = new UserSelectionModel("userSelection");
 
         let currentData = myData.filter(x => {
-          let time =
-            x.pro_show_display_start_date +
-            " " +
-            x.pro_show_display_start_time.value;
-
-          console.log("time", time);
-
-          if (
-            moment(time)
-              .utc()
-              .unix() >=
-            moment()
-              .utc()
-              .unix()
-          ) {
-            return x;
-          }
+          return x.pro_show_display_start_time.value !== null;
         });
 
         console.log("currentData", currentData);
