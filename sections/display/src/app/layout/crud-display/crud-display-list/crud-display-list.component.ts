@@ -75,12 +75,7 @@ export class CrudDisplayListComponent implements OnInit {
 
           return record;
         });
-
-        console.log("myData", myData);
-
         this.selectedList = myData;
-
-        console.log(this.selectedList, "this.selectedList");
         this.fullList = data;
       },
       error => {

@@ -18,5 +18,19 @@
   <!-- ------- INFO -------------------- -->
   <article class="header-right">
     <p class="report-selection"></p>
+    <section class="main-button">
+      <div>
+
+      </div>
+      <div class="clock ml-auto">
+        <p>{{weekday}} - {{userSelection.creation_date}} </p>
+        <p>
+          {{userSelection.creation_time}} </p>
+        <p>
+          <fa-icon [icon]="faClock"></fa-icon> &nbsp; {{timerConnected}}
+        </p>
+
+      </div>
+    </section>
   </article>
 </section>

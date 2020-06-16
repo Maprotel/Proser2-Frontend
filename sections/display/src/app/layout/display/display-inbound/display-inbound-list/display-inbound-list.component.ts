@@ -136,18 +136,51 @@ export class DisplayInboundListComponent implements OnInit {
   onGetProShowList() {
     this.proShowDisplayService.getRecords().subscribe(
       data => {
+        let myData = data.map(x => {
+          let record = {
+            pro_show_display_id: x.pro_show_display_id,
+            pro_show_display_name: x.pro_show_display_name,
+            pro_show_display_weekday: JSON.parse(
+              JSON.parse(JSON.stringify(x.pro_show_display_weekday))
+            ),
+            pro_show_display_start_time: x.pro_show_display_start_time,
+            pro_show_display_end_time: x.pro_show_display_end_time,
+            pro_show_display_type: JSON.parse(x.pro_show_display_type),
+            pro_show_display_selection: x.pro_show_display_selection,
+            pro_show_display_view: x.pro_show_display_view,
+            pro_show_display_status: x.pro_show_display_status,
+            days: ""
+          };
+
+          record.days = record.pro_show_display_weekday.map(x => {
+            return "  " + x.value + "  ";
+          });
+
+          return record;
+        });
+
+        // console.log("myData", myData);
+
         this.userSelection = new UserSelectionModel("userSelection");
+
+        let currentData = data.filter(x => {
+          return x[0];
+        });
+
+        console.log('data', data);
+        
+
         data
-          ? (this.proShowDisplay = data[2])
+          ? (this.proShowDisplay = currentData[0])
           : (this.proShowDisplay = new ProShowDisplayModel());
 
         this.proShowDisplay.pro_show_display_start_time = {
           id: 0,
-          value: "07:00:00"
+          value: this.proShowDisplay.pro_show_display_start_time
         };
         this.proShowDisplay.pro_show_display_end_time = {
           id: 0,
-          value: "19:00:00"
+          value: this.proShowDisplay.pro_show_display_end_time
         };
 
         // "start_time_hour": { "hour": 0, "minute": 0, "second": 0, "value": "00:00:00" }, "end_time_hour": { "hour": 23, "minute": 59, "second": 59, "value": "23:59:59" }
@@ -168,12 +201,12 @@ export class DisplayInboundListComponent implements OnInit {
 
         this.userSelection.title = "Display de llamadas entrantes";
         this.userSelection.options =
-          this.proShowDisplay.pro_show_display_start_time +
+          this.proShowDisplay.pro_show_display_start_time.value +
           " a " +
-          this.proShowDisplay.pro_show_display_end_time;
+          this.proShowDisplay.pro_show_display_end_time.value;
 
-        console.log("this.userSelection", this.userSelection);
-        console.log("this.proShowDisplay", this.proShowDisplay);
+        // console.log("this.userSelection", this.userSelection);
+        // console.log("this.proShowDisplay", this.proShowDisplay);
 
         this.getReportList();
 
@@ -203,7 +236,7 @@ export class DisplayInboundListComponent implements OnInit {
           if (res) {
             this.rows = res;
 
-            console.log("rows", this.rows);
+            // console.log("rows", this.rows);
 
             this.userSelection = res.userSelection;
           } else {
