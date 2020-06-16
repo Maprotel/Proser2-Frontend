@@ -10,6 +10,7 @@ export class ProShowDisplayModel {
   pro_show_display_selection: any;
   pro_show_display_view: any;
   pro_show_display_status: any;
+  days?;
 
   constructor() {
     this.pro_show_display_id = null;

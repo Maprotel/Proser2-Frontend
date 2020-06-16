@@ -15,8 +15,10 @@
         <!-- pro_show_display_id -->
         <article class="form-group" id="pro_show_display_id">
           <label class="register-label medium">Id</label>
-          <input type="text" formControlName="pro_show_display_id"
-                 class="form-control register-input" />
+          <!-- <input type="text" formControlName="pro_show_display_id"
+                 class="form-control register-input" /> -->
+          <p class="form-control register-input bg-dark text-white">
+            {{f.pro_show_display_id.value |json}}</p>
           <div *ngIf="(f.pro_show_display_id.errors && !f.pro_show_display_id.pristine)"
                class="small text-danger">
             <div *ngIf="f.pro_show_display_id.errors.required">
@@ -126,7 +128,7 @@
           <div class="form-group row">
 
             <button type="submit" confValue="Guardar"
-                    class="btn btn-secondary mr-1"
+                    class="btn btn-success mr-1"
                     *ngIf="!recordForm.pristine && recordForm.valid"
                     (click)="onSubmit()">Guardar</button>
 

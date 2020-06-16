@@ -4,10 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 // Services
 import { ProShowDisplayService } from "shared/services";
-import {
-  NotificationService,
-  TranslateErrorService
-} from "shared/services/";
+import { NotificationService, TranslateErrorService } from "shared/services/";
 
 // Models
 import { ProShowDisplayModel } from "shared/models/";
@@ -21,7 +18,7 @@ export class CrudDisplayDetailComponent implements OnInit {
 
   recordForm: FormGroup;
   days = [];
-  newProShowDisplay = new ProShowDisplayModel;
+  newProShowDisplay = new ProShowDisplayModel();
   type = [];
 
   constructor(
@@ -58,11 +55,9 @@ export class CrudDisplayDetailComponent implements OnInit {
   onFillForm() {
     this.recordForm = this.formBuilder.group({
       pro_show_display_id: [this.selectedRecord.pro_show_display_id],
-      pro_show_display_name: [
-        this.selectedRecord.pro_show_display_name
-      ],
+      pro_show_display_name: [this.selectedRecord.pro_show_display_name],
       pro_show_display_weekday: [
-        JSON.stringify(this.selectedRecord.pro_show_display_weekday),
+        this.selectedRecord.pro_show_display_weekday,
         Validators.required
       ],
       pro_show_display_start_time: [
@@ -74,7 +69,7 @@ export class CrudDisplayDetailComponent implements OnInit {
         Validators.required
       ],
       pro_show_display_type: [
-         JSON.stringify(this.selectedRecord.pro_show_display_type),
+        this.selectedRecord.pro_show_display_type,
         Validators.required
       ],
       pro_show_display_status: [
@@ -100,31 +95,40 @@ export class CrudDisplayDetailComponent implements OnInit {
   }
 
   onReplaceOrCreate() {
-    this.proShowDisplayService
-      .replaceOrCreateRecord(this.recordForm.value)
-      .subscribe(
-        data => {
-                    
-          this.selectedRecord = new ProShowDisplayModel();
-          this.proShowDisplayService.changeSelectedRecord(this.selectedRecord);
-          this.onFillForm();
-          this.notification.showSuccess(
-            data.pro_show_display_name,
-            "Turno Registrado"
-          );
-          alert(
-            `Registro agregado satisfactoriamente, ${data.pro_show_display_name}`
-          );
-        },
-        error => {
-          this.notification.showError(
-            `${error.status}: ${this.translateErrorService.translateErrorNumber(
-              error.status
-            )}`,
-            "Error de conexión"
-          );
-        }
-      );
+    let record: ProShowDisplayModel = this.recordForm.value;
+
+    record.pro_show_display_weekday = JSON.stringify(
+      this.recordForm.value.pro_show_display_weekday
+    );
+
+    record.pro_show_display_type = JSON.stringify(
+      this.recordForm.value.pro_show_display_type
+    );
+
+    this.proShowDisplayService.replaceOrCreateRecord(record).subscribe(
+      data => {
+        this.selectedRecord = new ProShowDisplayModel();
+        this.proShowDisplayService.changeSelectedRecord(this.selectedRecord);
+        this.onFillForm();
+        this.notification.showSuccess(
+          data.pro_show_display_name,
+          "Turno Registrado"
+        );
+        alert(
+          `Registro agregado satisfactoriamente, ${data.pro_show_display_name}`
+        );
+
+        this.router.navigate(["/layout/crud-display/crud-display-list"]);
+      },
+      error => {
+        this.notification.showError(
+          `${error.status}: ${this.translateErrorService.translateErrorNumber(
+            error.status
+          )}`,
+          "Error de conexión"
+        );
+      }
+    );
   }
 
   showSelectedProfile() {

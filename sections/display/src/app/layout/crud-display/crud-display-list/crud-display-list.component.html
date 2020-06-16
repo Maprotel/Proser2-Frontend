@@ -75,8 +75,7 @@
 
           <!-- pro_show_display_weekday -->
           <td class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_weekday"
-                           [term]="term">
+            <ngb-highlight [result]="listItem.days" [term]="term">
             </ngb-highlight>
           </td>
 
@@ -96,7 +95,7 @@
 
           <!-- pro_show_display_type -->
           <td class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_type"
+            <ngb-highlight [result]="listItem.pro_show_display_type.name"
                            [term]="term">
             </ngb-highlight>
           </td>
@@ -115,6 +114,21 @@
 </div>
 
 <!-- /*****************************************/ -->
+
+<!-- <ng-template #days>
+
+  <ul *ngFor="let item of listItem.pro_show_display_weekday">
+    <li>item.name</li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let hero of heroes">
+      {{ hero }}
+    </li>
+  </ul>
+
+</ng-template> -->
+
 
 <ng-template #content let-modal>
   <!-- header -->

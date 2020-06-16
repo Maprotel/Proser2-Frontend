@@ -7,10 +7,7 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 // Services
 import { ProShowDisplayService } from "shared/services";
-import {
-  NotificationService,
-  TranslateErrorService,
-} from "shared/services/";
+import { NotificationService, TranslateErrorService } from "shared/services/";
 
 // Models
 import { ProShowDisplayModel } from "shared/models/";
@@ -19,13 +16,12 @@ import { ProShowDisplayModel } from "shared/models/";
 import { Ng2SearchPipe } from "ng2-search-filter";
 
 @Component({
-  selector: 'app-display-crud-display-list',
-  templateUrl: './crud-display-list.component.html',
-  styleUrls: ['./crud-display-list.component.scss']
+  selector: "app-display-crud-display-list",
+  templateUrl: "./crud-display-list.component.html",
+  styleUrls: ["./crud-display-list.component.scss"]
 })
 export class CrudDisplayListComponent implements OnInit {
-
-  selectedList: ProShowDisplayModel[];
+  selectedList;
   selectedRecord: ProShowDisplayModel = new ProShowDisplayModel();
   selectedRow: number;
 
@@ -43,27 +39,53 @@ export class CrudDisplayListComponent implements OnInit {
     private notification: NotificationService,
     private translateErrorService: TranslateErrorService,
     private ng2SearchPipe: Ng2SearchPipe
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.onGetRecords();
-    this.proShowDisplayService.currentRecord.subscribe((data) => {
+    this.proShowDisplayService.currentRecord.subscribe(data => {
       this.selectedRecord = data;
     });
   }
 
   onGetRecords() {
     this.proShowDisplayService.getRecords().subscribe(
-      (data) => {
-        this.selectedList = data;
+      data => {
+        console.log("data", data);
+
+        let myData = data.map(x => {
+          let record = {
+            pro_show_display_id: x.pro_show_display_id,
+            pro_show_display_name: x.pro_show_display_name,
+            pro_show_display_weekday: JSON.parse(
+              JSON.parse(JSON.stringify(x.pro_show_display_weekday))
+            ),
+            pro_show_display_start_time: x.pro_show_display_start_time,
+            pro_show_display_end_time: x.pro_show_display_end_time,
+            pro_show_display_type: JSON.parse(x.pro_show_display_type),
+            pro_show_display_selection: x.pro_show_display_selection,
+            pro_show_display_view: x.pro_show_display_view,
+            pro_show_display_status: x.pro_show_display_status,
+            days: ""
+          };
+
+          record.days = record.pro_show_display_weekday.map(x => {
+            return "  " + x.value + "  ";
+          });
+
+          return record;
+        });
+
+        console.log("myData", myData);
+
+        this.selectedList = myData;
+
         console.log(this.selectedList, "this.selectedList");
         this.fullList = data;
       },
-      (error) => {
+      error => {
         this.notification.showError(
-          `${
-          error.status
-          }: ${this.translateErrorService.translateErrorNumber(
+          `${error.status}: ${this.translateErrorService.translateErrorNumber(
             error.status
           )}`,
           "Error de conexión"
@@ -79,7 +101,6 @@ export class CrudDisplayListComponent implements OnInit {
     this.selectedRecord = record;
     this.proShowDisplayService.changeSelectedRecord(record);
   }
-
 
   onNewRecord() {
     let record: ProShowDisplayModel = new ProShowDisplayModel();
@@ -131,13 +152,11 @@ export class CrudDisplayListComponent implements OnInit {
     this.modalService
       .open(content, { ariaLabelledBy: "modal-basic-title" })
       .result.then(
-        (result) => {
+        result => {
           this.closeResult = `Closed with: ${result}`;
         },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(
-            reason
-          )}`;
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
   }
