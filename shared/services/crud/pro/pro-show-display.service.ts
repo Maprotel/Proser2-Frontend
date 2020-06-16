@@ -13,7 +13,7 @@ import { Observable, BehaviorSubject } from "rxjs";
 import { map } from "rxjs/operators";
 
 // Services
-import { EnvService } from "shared/services";
+import { EnvService } from "shared/services/helpers/env.service";
 
 // Models
 import { ProShowDisplayModel } from "shared/models/";
