@@ -21,6 +21,8 @@ export class CrudDisplayDetailComponent implements OnInit {
 
   recordForm: FormGroup;
   days = [];
+  newProShowDisplay = new ProShowDisplayModel;
+  type = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +40,11 @@ export class CrudDisplayDetailComponent implements OnInit {
       { id: 6, value: "Sábado" },
       { id: 7, value: "Domingo" }
     ];
+    // this.type = this.newProShowDisplay.pro_show_display_type;
+    this.type = [
+      { id: 1, name: "previo", value: 1 },
+      { id: 2, name: "actual", value: 2 }
+    ];
   }
 
   ngOnInit(): void {
@@ -52,11 +59,10 @@ export class CrudDisplayDetailComponent implements OnInit {
     this.recordForm = this.formBuilder.group({
       pro_show_display_id: [this.selectedRecord.pro_show_display_id],
       pro_show_display_name: [
-        this.selectedRecord.pro_show_display_name,
-        Validators.required
+        this.selectedRecord.pro_show_display_name
       ],
       pro_show_display_weekday: [
-        this.selectedRecord.pro_show_display_weekday,
+        JSON.stringify(this.selectedRecord.pro_show_display_weekday),
         Validators.required
       ],
       pro_show_display_start_time: [
@@ -68,15 +74,7 @@ export class CrudDisplayDetailComponent implements OnInit {
         Validators.required
       ],
       pro_show_display_type: [
-        this.selectedRecord.pro_show_display_type,
-        Validators.required
-      ],
-      pro_show_display_selection: [
-        this.selectedRecord.pro_show_display_selection,
-        Validators.required
-      ],
-      pro_show_display_view: [
-        this.selectedRecord.pro_show_display_view,
+         JSON.stringify(this.selectedRecord.pro_show_display_type),
         Validators.required
       ],
       pro_show_display_status: [
@@ -126,6 +124,6 @@ export class CrudDisplayDetailComponent implements OnInit {
   }
 
   showSelectedProfile() {
-    console.log(this.recordForm.value.pro_show_display_weekday);
+    console.log(JSON.stringify(this.recordForm.value.pro_show_display_weekday));
   }
 }
