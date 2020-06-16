@@ -1,3 +1,4 @@
+import { NgSelectModule } from '@ng-select/ng-select';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -26,6 +27,7 @@ import { Ng2SearchPipe } from "ng2-search-filter";
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    NgSelectModule,
     ToastrModule.forRoot(),
     Ng2SearchPipeModule,
     CrudDisplayRoutingModule

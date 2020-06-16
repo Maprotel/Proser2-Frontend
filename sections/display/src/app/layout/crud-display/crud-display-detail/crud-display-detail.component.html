@@ -11,26 +11,91 @@
 
 
 
-    <!-- confKey -->
-    <article class="form-group" id="confKey">
-      <label class="register-label small">Código</label>
-      <input type="text" formControlName="confKey" class="form-control register-input" />
-      <div *ngIf="(f.confKey.errors && !f.confKey.pristine)" class="small text-danger">
-        <div *ngIf="f.confKey.errors.required">
+    <!-- pro_show_display_id -->
+    <article class="form-group" id="pro_show_display_id">
+      <label class="register-label small">Id</label>
+      <input type="text" formControlName="pro_show_display_id" class="form-control register-input" />
+      <div *ngIf="(f.pro_show_display_id.errors && !f.pro_show_display_id.pristine)" class="small text-danger">
+        <div *ngIf="f.pro_show_display_id.errors.required">
           Este dato es obligatorio
         </div>
       </div>
     </article>
 
-    <!-- confValue -->
-    <article class="form-group" id="confValue">
+    <!-- pro_show_display_name -->
+    <article class="form-group" id="pro_show_display_name">
       <label class="register-label small">Nombre</label>
-      <input type="text" formControlName="confValue" class="form-control register-input" />
-      <div *ngIf="(f.confValue.errors && !f.confValue.pristine)" class="small text-danger">
-        <div *ngIf="f.confValue.errors.required">
+      <input type="text" formControlName="pro_show_display_name" class="form-control register-input" />
+      <div *ngIf="(f.pro_show_display_name.errors && !f.pro_show_display_name.pristine)" class="small text-danger">
+        <div *ngIf="f.pro_show_display_name.errors.required">
           Este dato es obligatorio
         </div>
       </div>
+    </article>
+
+    <!-- pro_show_display_weekday -->
+    <article class="form-group" id="pro_show_display_weekday">
+      <label class="register-label small">Días</label>
+
+      <ng-select [items]="days" bindLabel="value" placeholder="Días" [dropdownPosition]="'auto'" [searchable]="true"
+        [clearable]="true" [multiple]="true" hideSelected="true" formControlName="pro_show_display_weekday" (change)="showSelectedProfile()">
+      </ng-select>
+
+      <input type="text" formControlName="pro_show_display_weekday" class="form-control register-input" />
+      <div *ngIf="(f.pro_show_display_weekday.errors && !f.pro_show_display_weekday.pristine)" class="small text-danger">
+        <div *ngIf="f.pro_show_display_weekday.errors.required">
+          Este dato es obligatorio
+        </div>
+      </div>
+    </article>
+
+    <!-- pro_show_display_start_time -->
+    <article class="form-group" id="pro_show_display_start_time">
+      <label class="register-label small">Inicio</label>
+      <input type="text" formControlName="pro_show_display_start_time" class="form-control register-input" />
+      <div *ngIf="(f.pro_show_display_start_time.errors && !f.pro_show_display_start_time.pristine)" class="small text-danger">
+        <div *ngIf="f.pro_show_display_start_time.errors.required">
+          Este dato es obligatorio
+        </div>
+      </div>
+    </article>
+
+    <!-- pro_show_display_end_time -->
+    <article class="form-group" id="pro_show_display_end_time">
+      <label class="register-label small">Fin</label>
+      <input type="text" formControlName="pro_show_display_end_time" class="form-control register-input" />
+      <div *ngIf="(f.pro_show_display_end_time.errors && !f.pro_show_display_end_time.pristine)" class="small text-danger">
+        <div *ngIf="f.pro_show_display_end_time.errors.required">
+          Este dato es obligatorio
+        </div>
+      </div>
+    </article>
+
+    <!-- pro_show_display_type -->
+    <article class="form-group" id="pro_show_display_type">
+      <label class="register-label small">Tipo</label>
+      <input type="text" formControlName="pro_show_display_type" class="form-control register-input" />
+      <div *ngIf="(f.pro_show_display_type.errors && !f.pro_show_display_type.pristine)" class="small text-danger">
+        <div *ngIf="f.pro_show_display_type.errors.required">
+          Este dato es obligatorio
+        </div>
+      </div>
+    </article>
+
+    <!-- pro_show_display_status -->
+    <article class="form-group" id="pro_show_display_status">
+      <label class="register-label small">Estatus</label>
+      <input type="text" formControlName="pro_show_display_status" class="form-control register-input" />
+      <div *ngIf="(f.pro_show_display_status.errors && !f.pro_show_display_status.pristine)" class="small text-danger">
+        <div *ngIf="f.pro_show_display_status.errors.required">
+          Este dato es obligatorio
+        </div>
+      </div>
+    </article>
+
+    <!-- pro_show_display_status -->
+    <article >
+      
     </article>
 
 

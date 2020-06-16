@@ -46,7 +46,6 @@ export class CrudDisplayListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("HOLA");
     this.onGetRecords();
     this.proShowDisplayService.currentRecord.subscribe((data) => {
       this.selectedRecord = data;
@@ -93,32 +92,32 @@ export class CrudDisplayListComponent implements OnInit {
   }
 
   onDeleteRecord(record) {
-    this.proShowDisplayService.deleteRecord(record.key).subscribe(
-      (data) => {
-        if (data.count > 0) {
-          let foo_object = record;
-          this.selectedList = this.selectedList.filter(
-            (obj) => obj !== foo_object
+    this.proShowDisplayService
+      .deleteRecord(record.pro_show_display_id)
+      .subscribe(
+        data => {
+          if (data.count > 0) {
+            let foo_object = record;
+            this.selectedList = this.selectedList.filter(
+              obj => obj !== foo_object
+            );
+            this.notification.showInfo(
+              this.selectedRecord.pro_show_display_name,
+              "Turno eliminado"
+            );
+            this.selectedRecord = new ProShowDisplayModel();
+            this.selectedRow = null;
+          }
+        },
+        error => {
+          this.notification.showError(
+            `${error.status}: ${this.translateErrorService.translateErrorNumber(
+              error.status
+            )}`,
+            "Error de conexión"
           );
-          this.notification.showInfo(
-            this.selectedRecord.pro_show_display_name,
-            "Turno eliminado"
-          );
-          this.selectedRecord = new ProShowDisplayModel();
-          this.selectedRow = null;
         }
-      },
-      (error) => {
-        this.notification.showError(
-          `${
-          error.status
-          }: ${this.translateErrorService.translateErrorNumber(
-            error.status
-          )}`,
-          "Error de conexión"
-        );
-      }
-    );
+      );
     this.modalService.dismissAll(
       `Dismissed ${this.getDismissReason("Deleted record")}`
     );

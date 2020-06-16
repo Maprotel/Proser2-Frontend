@@ -20,6 +20,7 @@ export class CrudDisplayDetailComponent implements OnInit {
   selectedRecord: ProShowDisplayModel = new ProShowDisplayModel();
 
   recordForm: FormGroup;
+  days = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,7 +28,17 @@ export class CrudDisplayDetailComponent implements OnInit {
     private router: Router,
     private notification: NotificationService,
     private translateErrorService: TranslateErrorService
-  ) {}
+  ) {
+    this.days = [
+      { id: 1, value: "Lunes" },
+      { id: 2, value: "Martes" },
+      { id: 3, value: "Miércoles" },
+      { id: 4, value: "Jueves" },
+      { id: 5, value: "Viernes" },
+      { id: 6, value: "Sábado" },
+      { id: 7, value: "Domingo" }
+    ];
+  }
 
   ngOnInit(): void {
     this.proShowDisplayService.currentRecord.subscribe(data => {
@@ -83,7 +94,7 @@ export class CrudDisplayDetailComponent implements OnInit {
   onReturn() {
     this.selectedRecord = new ProShowDisplayModel();
     this.proShowDisplayService.changeSelectedRecord(this.selectedRecord);
-    this.router.navigate(["crud-display/crud-display-list"]);
+    this.router.navigate(["/layout/crud-display/crud-display-list"]);
   }
 
   onSubmit() {
@@ -95,7 +106,10 @@ export class CrudDisplayDetailComponent implements OnInit {
       .replaceOrCreateRecord(this.recordForm.value)
       .subscribe(
         data => {
-          this.notification.showSuccess(data.pro_show_display_name, "Turno Registrado");
+          this.notification.showSuccess(
+            data.pro_show_display_name,
+            "Turno Registrado"
+          );
           this.selectedRecord = new ProShowDisplayModel();
           this.proShowDisplayService.changeSelectedRecord(this.selectedRecord);
           this.onFillForm();
@@ -109,5 +123,9 @@ export class CrudDisplayDetailComponent implements OnInit {
           );
         }
       );
+  }
+
+  showSelectedProfile() {
+    console.log(this.recordForm.value.pro_show_display_weekday);
   }
 }
