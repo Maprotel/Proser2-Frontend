@@ -2,7 +2,7 @@
 
 </div>
 <div class="card-header d-flex align-stores-center">
-  <h3 class="h4">Configuración de Malla de Turnos</h3>
+  <h3 class="h1">Configuración de Malla de Turnos</h3>
 </div>
 
 
@@ -11,7 +11,7 @@
   <section class=" mt-0 pt-2 mb-0 pb-0">
     <div class="row d-flex justify-content-end">
       <div class="col">
-        <button class="btn btn-primary btn-sm mr-1" (click)="onGetRecords()">
+        <button class="btn btn-primary btn-xl mr-1" (click)="onGetRecords()">
           Todos</button>
         <!-- <button class="btn btn-secondary btn-sm mr-1" (click)="onExportToCsv()">Exportar</button> -->
         <button class="btn btn-outline-primary btn-sm mr-1" (click)="onNewRecord()">Nuevo</button>
@@ -86,7 +86,7 @@
 
           <!-- pro_show_display_type -->
           <td class="text-left">
-            <ngb-highlight [result]="listItem.pro_show_display_type" [term]="term">
+            <ngb-highlight [result]="listItem.pro_show_display_type.id" [term]="term">
             </ngb-highlight>
           </td>
 

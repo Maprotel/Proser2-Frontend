@@ -104,14 +104,16 @@ export class CrudDisplayDetailComponent implements OnInit {
       .replaceOrCreateRecord(this.recordForm.value)
       .subscribe(
         data => {
-          console.log(data, "RESPUESTA");
-          
+                    
           this.selectedRecord = new ProShowDisplayModel();
           this.proShowDisplayService.changeSelectedRecord(this.selectedRecord);
           this.onFillForm();
           this.notification.showSuccess(
             data.pro_show_display_name,
             "Turno Registrado"
+          );
+          alert(
+            `Registro agregado satisfactoriamente, ${data.pro_show_display_name}`
           );
         },
         error => {
