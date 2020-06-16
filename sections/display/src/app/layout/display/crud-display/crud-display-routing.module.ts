@@ -8,7 +8,7 @@ import { CrudDisplayDetailComponent } from './crud-display-detail/crud-display-d
 const routes: Routes = [
   {
     path: "",
-    component: CrudDisplayComponent,
+    component: CrudDisplayListComponent,
     children: [
       {
         path: "crud-display-list",
