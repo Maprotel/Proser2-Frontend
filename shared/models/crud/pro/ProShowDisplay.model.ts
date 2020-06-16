@@ -13,7 +13,7 @@ export class ProShowDisplayModel {
 
   constructor() {
     this.pro_show_display_id = 0;
-    this.pro_show_display_name = "Nuevo Display";
+    this.pro_show_display_name = "Nuevo ProShow";
     this.pro_show_display_weekday = [];
     this.pro_show_display_start_time = "00:00:00";
     this.pro_show_display_end_time = "23:59:59";
