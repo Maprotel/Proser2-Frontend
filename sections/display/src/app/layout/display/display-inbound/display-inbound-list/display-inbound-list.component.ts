@@ -134,7 +134,7 @@ export class DisplayInboundListComponent implements OnInit {
   }
 
   onGetProShowList() {
-    this.proShowDisplayService.getAllRecords().subscribe(
+    this.proShowDisplayService.getRecords().subscribe(
       data => {
         this.userSelection = new UserSelectionModel("userSelection");
         data
