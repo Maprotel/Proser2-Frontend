@@ -143,11 +143,11 @@ export class DisplayInboundListComponent implements OnInit {
 
         this.proShowDisplay.pro_show_display_start_time = {
           id: 0,
-          value: "13:00:00"
+          value: "07:00:00"
         };
         this.proShowDisplay.pro_show_display_end_time = {
           id: 0,
-          value: "23:00:00"
+          value: "19:00:00"
         };
 
         // "start_time_hour": { "hour": 0, "minute": 0, "second": 0, "value": "00:00:00" }, "end_time_hour": { "hour": 23, "minute": 59, "second": 59, "value": "23:59:59" }

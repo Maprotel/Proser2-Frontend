@@ -1,15 +1,16 @@
-import { CrudDisplayListComponent } from './crud-display-list/crud-display-list.component';
-import { CrudDisplayComponent } from './crud-display.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CrudDisplayComponent } from "./crud-display.component";
+import { CrudDisplayListComponent } from "./crud-display-list/crud-display-list.component";
 import { CrudDisplayDetailComponent } from './crud-display-detail/crud-display-detail.component';
 
 
 const routes: Routes = [
   {
     path: "",
-    component: CrudDisplayListComponent,
+    component: CrudDisplayComponent,
     children: [
+      { path: "", redirectTo: "crud-display-list" },
       {
         path: "crud-display-list",
         component: CrudDisplayListComponent

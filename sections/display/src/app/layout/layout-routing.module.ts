@@ -51,7 +51,7 @@ const routes: Routes = [
         path: "crud-display",
         loadChildren: () =>
           import(
-            "./display/crud-display/crud-display.module"
+            "./crud-display/crud-display.module"
           ).then(m => m.CrudDisplayModule)
       }
     ] 

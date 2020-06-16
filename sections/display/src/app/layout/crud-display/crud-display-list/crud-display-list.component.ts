@@ -85,11 +85,11 @@ export class CrudDisplayListComponent implements OnInit {
   onNewRecord() {
     let record: ProShowDisplayModel = new ProShowDisplayModel();
     this.proShowDisplayService.changeSelectedRecord(record);
-    this.router.navigate(["crud-display/crud-display-detail"]);
+    this.router.navigate(["/layout/crud-display/crud-display-detail"]);
   }
 
   onEditRecord() {
-    this.router.navigate(["crud-display/crud-display-detail"]);
+    this.router.navigate(["/layout/crud-display/crud-display-detail"]);
   }
 
   onDeleteRecord(record) {

@@ -1,3 +1,4 @@
+import { ToastrModule } from 'ngx-toastr';
 // Angular
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, ModuleWithProviders } from "@angular/core";
@@ -46,8 +47,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
     HomeComponent,
     LoginComponent,
     ByeComponent,
-    NotfoundComponent,
-
+    NotfoundComponent
   ],
   imports: [
     // Angular
@@ -59,6 +59,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
     // Vendor
     NgbModule,
     SelectorModule,
+    ToastrModule.forRoot(),
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     FontAwesomeModule,
@@ -92,7 +93,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
 
 const providers = [];
 @NgModule({})
