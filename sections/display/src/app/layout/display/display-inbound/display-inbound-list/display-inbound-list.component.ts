@@ -163,15 +163,30 @@ export class DisplayInboundListComponent implements OnInit {
 
         this.userSelection = new UserSelectionModel("userSelection");
 
-        let currentData = data.filter(x => {
-          return x[0];
+        let currentData = myData.filter(x => {
+          let time =
+            x.pro_show_display_start_date +
+            " " +
+            x.pro_show_display_start_time.value;
+
+          console.log("time", time);
+
+          if (
+            moment(time)
+              .utc()
+              .unix() >=
+            moment()
+              .utc()
+              .unix()
+          ) {
+            return x;
+          }
         });
 
-        console.log('data', data);
-        
+        console.log("currentData", currentData);
 
         data
-          ? (this.proShowDisplay = currentData[0])
+          ? (this.proShowDisplay = data[0])
           : (this.proShowDisplay = new ProShowDisplayModel());
 
         this.proShowDisplay.pro_show_display_start_time = {
