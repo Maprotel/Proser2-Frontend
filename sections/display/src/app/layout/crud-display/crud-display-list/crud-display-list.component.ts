@@ -107,6 +107,9 @@ export class CrudDisplayListComponent implements OnInit {
             );
             this.selectedRecord = new ProShowDisplayModel();
             this.selectedRow = null;
+            alert(
+              `Registro eliminado, ${this.selectedRecord.pro_show_display_name}`
+            );
           }
         },
         error => {
