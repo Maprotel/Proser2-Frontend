@@ -51,10 +51,10 @@ const routes: Routes = [
         path: "crud-show-display",
         loadChildren: () =>
           import(
-            "./crud/crud-aux/crud-show-display/crud-show-display.module"
-          ).then(m => m.CrudShowDisplayModule)
+            "./display/crud-display/crud-display.module"
+          ).then(m => m.CrudDisplayModule)
       }
-    ]
+    ] 
   }
 ];
 
