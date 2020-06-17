@@ -45,14 +45,6 @@ const routes: Routes = [
           import("./display/display-monitor/display-monitor.module").then(
             m => m.DisplayMonitorModule
           )
-      },
-
-      {
-        path: "crud-display",
-        loadChildren: () =>
-          import("./crud-display/crud-display.module").then(
-            m => m.CrudDisplayModule
-          )
       }
     ]
   }

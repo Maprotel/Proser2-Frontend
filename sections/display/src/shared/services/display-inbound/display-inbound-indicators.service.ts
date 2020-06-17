@@ -40,10 +40,11 @@ export class DisplayInboundIndicatorsService {
   }
 
   // get Show valid userSelection
-  getDisplayShow(): Observable<any> {
+  getDisplayShow(userSelection): Observable<any> {
+    const query = JSON.stringify(userSelection);
     const accessToken = localStorage.getItem("accessToken");
     const url_api = `${this.env.loopbackApiUrl}/api/InvDisplays/displayShow?access_token=${accessToken}`;
-    const res = this.http.get(url_api, { headers: this.headers });
+    const res = this.http.post(url_api, query, { headers: this.headers });
     // console.warn('Dashboard......' , url_api, query);
 
     return res;

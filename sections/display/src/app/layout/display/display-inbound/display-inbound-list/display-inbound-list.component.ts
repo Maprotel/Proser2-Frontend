@@ -18,12 +18,10 @@ import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
 // Global shared models
 import { AlertModel } from "shared/models/helpers/Alert";
 import { UserSelectionModel } from "shared/models";
-import { ProShowDisplayModel } from "shared/models";
 
 // Global shared services
 import { AlertService, EnvService } from "shared/services";
 import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
-import { ProShowDisplayService } from "shared/services/";
 
 // Local models
 import { DisplayInboundResponseModel } from "sections/display/src/shared/models/display-inbound/DisplayInboundResponse.model";
@@ -46,10 +44,10 @@ export class DisplayInboundListComponent implements OnInit {
   // Subscription
   private subscription: Subscription = new Subscription();
   // Child components
-  @ViewChild(DisplayInboundGraphComponent)
+  @ViewChild(DisplayInboundGraphComponent, { static: false })
   private childGraph: DisplayInboundGraphComponent;
 
-  @ViewChild(DisplayInboundHighlightsComponent)
+  @ViewChild(DisplayInboundHighlightsComponent, { static: false })
   private highligthts: DisplayInboundHighlightsComponent;
 
   timerComponent;
@@ -80,15 +78,12 @@ export class DisplayInboundListComponent implements OnInit {
   selected = [];
   idealResponseTime;
   historic = false;
-  show_header = false;
 
   // Filter variables
   numberOfRowsInTable;
   filterFieldList;
   initialSelectedFilterField;
   findInList;
-  proShowDisplayRes: [ProShowDisplayModel];
-  proShowDisplay: ProShowDisplayModel;
 
   // Variable to display values
   model: DisplayInboundModel;
@@ -104,14 +99,17 @@ export class DisplayInboundListComponent implements OnInit {
   // Modal window variables
   activeModal: NgbActiveModal;
 
+  // Graph variables
+  graph = false;
+  show_graph_or_table_button = false;
+
   // Init
   constructor(
     private displayInboundIndicatorsService: DisplayInboundIndicatorsService,
     private alertService: AlertService,
     private envService: EnvService,
     private modalService: NgbModal,
-    private userSelectionService: UserSelectionService,
-    private proShowDisplayService: ProShowDisplayService
+    private userSelectionService: UserSelectionService
   ) {
     this.env = envService;
     this.model = new DisplayInboundModel();
@@ -121,111 +119,74 @@ export class DisplayInboundListComponent implements OnInit {
     this.rows_original = new DisplayInboundResponseModel();
 
     this.userSelection = new UserSelectionModel("userSelection");
-    this.proShowDisplayRes = [new ProShowDisplayModel()];
     this.selectorVisibleFields = new UserSelectionModel("visible");
-    this.onGetProShowList();
+
+    this.selectorVisibleFields.assignation = false;
+    this.selectorVisibleFields.auxiliar = false;
   }
 
   // Start
   ngOnInit() {
-    // this.userSelection.title = "PRUEBA";
-    // this.getReportList();
+    this.getReportList();
+    this.filterFieldList = this.model.fieldList();
+    this.numberOfRowsInTable = { id: 10, value: 10 };
+    this.exportName = "reporte-conexión";
+
+    this.initialSelectedFilterField = {
+      field_name: "start_date",
+      name: "fecha_inicio",
+      text: "Fecha desde"
+    };
     this.onRepeat();
   }
 
-  onGetProShowList() {
-    this.proShowDisplayService.getRecords().subscribe(
-      data => {
-        let myData = data.map(x => {
-          let record = {
-            pro_show_display_id: x.pro_show_display_id,
-            pro_show_display_name: x.pro_show_display_name,
-            pro_show_display_weekday: JSON.parse(
-              JSON.parse(JSON.stringify(x.pro_show_display_weekday))
-            ),
-            pro_show_display_start_time: x.pro_show_display_start_time,
-            pro_show_display_end_time: x.pro_show_display_end_time,
-            pro_show_display_type: JSON.parse(x.pro_show_display_type),
-            pro_show_display_selection: x.pro_show_display_selection,
-            pro_show_display_view: x.pro_show_display_view,
-            pro_show_display_status: x.pro_show_display_status,
-            days: "",
-          };
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    // this.timerComponent.unsubscribe();
+    // this.timerClock.unsubscribe();
+  }
 
-          record.days = record.pro_show_display_weekday.map(x => {
-            return "  " + x.value + "  ";
-          });
+  onRepeat() {
+    if (true) {
+      this.timerComponent = timer(1000, 5000);
+      this.timerClock = timer(1000, 1000);
 
-          return record;
-        });
+      this.getReportList();
+      this.subscription.add(
+        this.timerComponent.subscribe(() => {
+          if (
+            objectDateToTextDate(this.userSelection.start_date) ===
+            this.currentDate
+          ) {
+            this.getReportList();
+          } else {
+          }
+        })
+      );
 
-        // console.log("myData", myData);
+      this.timerClock.subscribe(() => {
+        this.timerConnected = this.timerConnected + 1;
+      });
+    } else {
+      this.subscription.unsubscribe();
+      // this.timerComponent.unsubscribe();
+      // this.timerClock.unsubscribe();
+    }
+  }
 
-        this.userSelection = new UserSelectionModel("userSelection");
-
-        let currentData = myData.filter(x => {
-          return x.pro_show_display_start_time.value !== null;
-        });
-
-        console.log("currentData", currentData);
-
-        data
-          ? (this.proShowDisplay = data[0])
-          : (this.proShowDisplay = new ProShowDisplayModel());
-
-        this.proShowDisplay.pro_show_display_start_time = {
-          id: 0,
-          value: this.proShowDisplay.pro_show_display_start_time
-        };
-        this.proShowDisplay.pro_show_display_end_time = {
-          id: 0,
-          value: this.proShowDisplay.pro_show_display_end_time
-        };
-
-        // "start_time_hour": { "hour": 0, "minute": 0, "second": 0, "value": "00:00:00" }, "end_time_hour": { "hour": 23, "minute": 59, "second": 59, "value": "23:59:59" }
-
-        this.userSelection.start_time = this.proShowDisplay.pro_show_display_start_time;
-        this.userSelection.end_time = this.proShowDisplay.pro_show_display_end_time;
-
-        this.userSelection.start_date = moment().format("YYYY-MM-DD");
-        // this.proShowDisplay.pro_show_display_type == "previo"
-        //   ? (this.userSelection.start_date = moment()
-        //       .subtract(1, "d")
-        //       .format("YYYY-MM-DD"))
-        //   : (this.userSelection.start_date = moment().format("YYYY-MM-DD"));
-        this.userSelection.end_date = moment().format("YYYY-MM-DD");
-
-        this.userSelection.legend = `${this.env.callcenterName}`;
-        this.userSelection.entity_selection = `${this.proShowDisplay.pro_show_display_name}`;
-
-        this.userSelection.title = "Display de llamadas entrantes";
-        this.userSelection.options =
-          this.proShowDisplay.pro_show_display_start_time.value +
-          " a " +
-          this.proShowDisplay.pro_show_display_end_time.value;
-
-        // console.log("this.userSelection", this.userSelection);
-        // console.log("this.proShowDisplay", this.proShowDisplay);
-
-        this.getReportList();
-
-        this.show_header = true;
-      },
-      error => {
-        console.error("Error", error);
-        this.show = false;
-        this.alertService.error(error.status);
-        this.alertMessage.alertTitle = "Error del servidor";
-        this.alertMessage.alertText = error.statusText;
-        this.alertMessage.alertShow = true;
-        this.alertMessage.alertClass =
-          "alert alert-danger alert-dismissible fade show";
-      }
-    );
+  setHeaderInfo(userSelection) {
+    userSelection.title = "Display de llamadas entrantes";
+    userSelection.options = "-";
+    userSelection.legend = "-";
+    userSelection.current_date = moment().format('YYYY-MM-DD');
+    return userSelection;
   }
 
   // Get records from backend
   getReportList() {
+    let userSelectionTemp = new UserSelectionModel("userSelection");
+    this.userSelection = this.setHeaderInfo(userSelectionTemp);
+
     this.displayInboundIndicatorsService
       .getReportList(this.userSelection)
       .subscribe(
@@ -234,10 +195,8 @@ export class DisplayInboundListComponent implements OnInit {
 
           if (res) {
             this.rows = res;
-
-            // console.log("rows", this.rows);
-
             this.userSelection = res.userSelection;
+
           } else {
             console.error("Error", res);
           }
@@ -256,31 +215,138 @@ export class DisplayInboundListComponent implements OnInit {
       );
   }
 
-  onRepeat() {
-    if (true) {
-      this.timerComponent = timer(1000, 5000);
-      this.timerClock = timer(1000, 1000);
-
-      this.getReportList();
-      this.subscription.add(
-        this.timerComponent.subscribe(() => {
-          this.onGetProShowList();
-        })
-      );
-
-      this.timerClock.subscribe(() => {
-        this.timerConnected = this.timerConnected + 1;
-      });
-    } else {
-      this.subscription.unsubscribe();
-      // this.timerComponent.unsubscribe();
-      // this.timerClock.unsubscribe();
+  // Get records from backend
+  getDisplayShow(userSelection) {
+    if (userSelection) {
+      this.displayInboundIndicatorsService
+        .getDisplayShow(userSelection)
+        .subscribe(
+          res => {
+            if (res) {
+              let temp = res[0].pro_show_display_selection;
+              let temp2 = JSON.parse(temp);
+              return temp2;
+            } else {
+              return this.userSelection;
+            }
+            this.alertMessage = new AlertModel();
+          },
+          error => {
+            console.error("Error", error);
+            this.show = false;
+            this.alertService.error(error.status);
+            this.alertMessage.alertTitle = "Error del servidor";
+            this.alertMessage.alertText = error.statusText;
+            this.alertMessage.alertShow = true;
+            this.alertMessage.alertClass =
+              "alert alert-danger alert-dismissible fade show";
+          }
+        );
     }
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-    // this.timerComponent.unsubscribe();
-    // this.timerClock.unsubscribe();
+  // Show modal detail window
+  openDetailModal(content, selected) {
+    this.activeModal = this.modalService.open(content, {
+      windowClass: "my-class",
+      keyboard: false
+    });
+  }
+
+  // Show or hide graph or table buttons
+  onShowHideGraphButtons() {
+    this.graph = !this.graph;
+    this.show_graph_or_table_button = !this.show_graph_or_table_button;
+  }
+  // Data table activate
+  onActivate(event) {
+    this.row_selection = event.row;
+    if (event.type === "dblclick") {
+    }
+  }
+  // Datatable select
+  onSelect(event) {
+    this.selected = event.selected;
+  }
+
+  // Update on return of selector in header
+  onReturnHeaderResult(event) {
+    this.userSelection = new UserSelectionModel("userSelection");
+    this.getReportList();
+    this.show_graph_or_table_button = false;
+    this.childGraph ? this.childGraph.generateGraph("header", this.rows) : "";
+  }
+
+  // Activated by button
+  onRecalculate(event) {
+    this.userSelection = new UserSelectionModel("userSelection");
+    this.getReportList();
+    this.show_graph_or_table_button = false;
+    console.error("this.rows", this.rows);
+
+    this.childGraph ? this.childGraph.generateGraph("button", this.rows) : "";
+  }
+
+  // Response report finder to display number of rows in table
+  onReturnNumberOfRowsInTable(event) {
+    console.error("event", event);
+    this.numberOfRowsInTable = event;
+  }
+
+  // Response report finder
+  onReturnRowsForTable(event) {
+    this.rows = event;
+  }
+
+  // Helper function to expose detail fields from a row
+  onObjectToArray(data) {
+    let obj = data[0];
+
+    let output;
+    if (obj !== undefined) {
+      output = Object.entries(obj).map(([key, value]) => ({
+        key,
+        value
+      }));
+    }
+    return output;
+  }
+
+  // temporary method to generate excel map for exporting model
+  onCreateModel(model?) {
+    model = new DisplayInboundModel().fieldList();
+
+    console.error("model", model);
+
+    let obj = {};
+
+    model.map(x => {
+      obj[`${x.name}`] = "x." + x.field_name;
+    });
+
+    let newModel = JSON.stringify(obj);
+    let newModel2 = JSON.stringify(
+      newModel
+        .replace(/\"/g, "")
+        .replace(/:/g, ": ")
+        .replace(/,/g, ",\n ")
+    );
+    let model3 = eval(newModel2);
+
+    console.error("model", model3);
+  }
+
+  //Test function for modal
+  openModal(content) {
+    // this.rows_detail = this.rows_detail_original.filter(x => {
+    //   return x.agent_id === this.row_selection.agent_id;
+    // });
+    // this.rows_detail_total = this.rows_original.filter(x => {
+    //   return x.agent_id === this.row_selection.agent_id;
+    // });
+    // this.activeModal = this.modalService.open(content, {
+    //   windowClass: "my-class",
+    //   keyboard: false
+    // });
   }
 }

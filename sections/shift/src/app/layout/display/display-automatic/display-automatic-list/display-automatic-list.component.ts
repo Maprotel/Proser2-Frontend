@@ -1,5 +1,5 @@
-// Angular import
-import { Component, OnInit, Input, ViewChild } from "@angular/core";
+// Angular
+import { Component, OnInit, OnDestroy, Input, ViewChild } from "@angular/core";
 
 // Installed modules
 import { Observable, Subscription, timer } from "rxjs";
@@ -21,45 +21,29 @@ import { UserSelectionModel } from "shared/models";
 
 // Global shared services
 import { AlertService, EnvService } from "shared/services";
-import { UserSelectionService } from "shared/services/crud/system/user-selection.service";
+import { UserSelectionService } from "shared/services/";
 
 // Local models
-import { DisplayInboundResponseModel } from "sections/display/src/shared/models/display-inbound/DisplayInboundResponse.model";
+import {
+  DisplayAutomaticModel,
+  DisplayAutomaticResponseModel
+} from "sections/shift/src/shared/models/";
 
 // Local shared
-import { DisplayInboundGraphComponent } from "../display-inbound-graph/display-inbound-graph.component";
-
-import { DisplayInboundModel } from "sections/display/src/shared/models/display-inbound/DisplayInbound.model";
-import { DisplayInboundIndicatorsService } from "sections/display/src/shared/services/display-inbound/display-inbound-indicators.service";
-import { DisplayInboundHighlightsComponent } from "../display-inbound-highlights/display-inbound-highlights.component";
-
-import { faIdBadge, faClock } from "@fortawesome/free-solid-svg-icons";
+import { DisplayAutomaticIndicatorsService } from "sections/shift/src/shared/services/";
 
 @Component({
-  selector: "app-display-display-inbound-list",
-  templateUrl: "./display-inbound-list.component.html",
-  styleUrls: ["./display-inbound-list.component.scss"]
+  selector: "app-display-display-automatic-list",
+  templateUrl: "./display-automatic-list.component.html",
+  styleUrls: ["./display-automatic-list.component.scss"]
 })
-export class DisplayInboundListComponent implements OnInit {
+export class DisplayAutomaticListComponent implements OnInit, OnDestroy {
   // Subscription
   private subscription: Subscription = new Subscription();
-  // Child components
-  @ViewChild(DisplayInboundGraphComponent)
-  private childGraph: DisplayInboundGraphComponent;
-
-  @ViewChild(DisplayInboundHighlightsComponent)
-  private highligthts: DisplayInboundHighlightsComponent;
-
-  timerComponent;
-  timerClock;
 
   // Variables that come from main component
-  userSelection: UserSelectionModel;
-  selectorVisibleFields: UserSelectionModel;
-
-  // Icon
-  faIdBadge = faIdBadge;
-  faClock = faClock;
+  @Input() userSelection: UserSelectionModel;
+  @Input() selectorVisibleFields: UserSelectionModel;
 
   // Component variables
   alertMessage = new AlertModel();
@@ -86,9 +70,9 @@ export class DisplayInboundListComponent implements OnInit {
   findInList;
 
   // Variable to display values
-  model: DisplayInboundModel;
-  rows: DisplayInboundResponseModel;
-  rows_original: DisplayInboundResponseModel;
+  model: DisplayAutomaticModel;
+  rows: DisplayAutomaticResponseModel;
+  rows_original: DisplayAutomaticResponseModel;
   rows_total;
   rows_detail;
   rows_detail_original;
@@ -105,29 +89,27 @@ export class DisplayInboundListComponent implements OnInit {
 
   // Init
   constructor(
-    private displayInboundIndicatorsService: DisplayInboundIndicatorsService,
+    private displayAutomaticIndicatorsService: DisplayAutomaticIndicatorsService,
     private alertService: AlertService,
     private envService: EnvService,
     private modalService: NgbModal,
     private userSelectionService: UserSelectionService
   ) {
     this.env = envService;
-    this.model = new DisplayInboundModel();
-
-    this.currentDate = moment(new Date()).format("YYYY-MM-DD");
-    this.rows = new DisplayInboundResponseModel();
-    this.rows_original = new DisplayInboundResponseModel();
-
-    this.userSelection = new UserSelectionModel("userSelection");
+    this.model = new DisplayAutomaticModel();
+    this.local_store = "assignation";
     this.selectorVisibleFields = new UserSelectionModel("visible");
-
     this.selectorVisibleFields.assignation = false;
     this.selectorVisibleFields.auxiliar = false;
+    this.currentDate = moment(new Date()).format("YYYY-MM-DD");
+    this.rows = new DisplayAutomaticResponseModel();
+    this.rows_original = new DisplayAutomaticResponseModel();
   }
 
   // Start
   ngOnInit() {
-    this.getReportList();
+    this.userSelection = new UserSelectionModel("standard");
+    this.getReportList(this.userSelection);
     this.filterFieldList = this.model.fieldList();
     this.numberOfRowsInTable = { id: 10, value: 10 };
     this.exportName = "reporte-conexión";
@@ -140,93 +122,69 @@ export class DisplayInboundListComponent implements OnInit {
     this.onRepeat();
   }
 
+  // Finish
   ngOnDestroy() {
+    this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
     this.subscription.unsubscribe();
-    // this.timerComponent.unsubscribe();
-    // this.timerClock.unsubscribe();
   }
 
   onRepeat() {
-    if (true) {
-      this.timerComponent = timer(1000, 5000);
-      this.timerClock = timer(1000, 1000);
+    // this.show_automatic = true;
+    // this.show_highlights = false;
 
-      this.getReportList();
-      this.subscription.add(
-        this.timerComponent.subscribe(() => {
-          if (
-            objectDateToTextDate(this.userSelection.start_date) ===
-            this.currentDate
-          ) {
-            this.getReportList();
-          } else {
-          }
-        })
-      );
+    const timerComponent = timer(1000, 5000);
+    const timerClock = timer(1000, 1000);
 
-      this.timerClock.subscribe(() => {
-        this.timerConnected = this.timerConnected + 1;
-      });
-    } else {
-      this.subscription.unsubscribe();
-      // this.timerComponent.unsubscribe();
-      // this.timerClock.unsubscribe();
-    }
-  }
+    this.getReportList(this.userSelection);
 
-  setHeaderInfo(userSelection) {
-    userSelection.title = "Display de llamadas entrantes";
-    userSelection.options = "-";
-    userSelection.legend = "-";
-    userSelection.current_date = moment().format("YYYY-MM-DD");
-    return userSelection;
-  }
-
-  // Get records from backend
-  getReportList() {
-    let userSelectionTemp = new UserSelectionModel("userSelection");
-    this.userSelection = this.setHeaderInfo(userSelectionTemp);
-
-    this.displayInboundIndicatorsService
-      .getReportList(this.userSelection)
-      .subscribe(
-        (res: DisplayInboundResponseModel) => {
-          this.timerConnected = 0;
-
-          if (res) {
-            this.rows = res;
-            this.userSelection = res.userSelection;
-          } else {
-            console.error("Error", res);
-          }
-          this.alertMessage = new AlertModel();
-        },
-        error => {
-          console.error("Error", error);
-          this.show = false;
-          this.alertService.error(error.status);
-          this.alertMessage.alertTitle = "Error del servidor";
-          this.alertMessage.alertText = error.statusText;
-          this.alertMessage.alertShow = true;
-          this.alertMessage.alertClass =
-            "alert alert-danger alert-dismissible fade show";
+    this.subscription.add(
+      timerComponent.subscribe(() => {
+        if (
+          objectDateToTextDate(this.userSelection.start_date) ===
+          this.currentDate
+        ) {
+          // this.historic_mode = false;
+          // this.userSelection.historic_mode = false;
+          this.getReportList(this.userSelection);
+        } else {
+          // this.historic_mode = true;
+          // this.userSelection.historic_mode = true;
         }
-      );
+      })
+    );
+    timerClock.subscribe(() => {
+      this.timerConnected = this.timerConnected + 1;
+    });
   }
 
   // Get records from backend
-  getDisplayShow(userSelection) {
+  getReportList(userSelection: UserSelectionModel) {
     if (userSelection) {
-      this.displayInboundIndicatorsService
-        .getDisplayShow()
+      this.displayAutomaticIndicatorsService
+        .getReportList(userSelection)
         .subscribe(
-          res => {
+          (res: DisplayAutomaticResponseModel) => {
+            // this.show = false;
+
+            this.timerConnected = 0;
+            // console.error("res", res);
+
+            this.currentDate !== objectDateToTextDate(userSelection.start_date)
+              ? (this.historic = true)
+              : (this.historic = false);
+
             if (res) {
-              let temp = res[0].pro_show_display_selection;
-              let temp2 = JSON.parse(temp);
-              return temp2;
+              // res.colors = res.colors[0];
+              this.rows = res;
+              // this.highligthts.onExtractVariables(this.rows);
+
+              // console.error("rows", this.rows);
+
+              // this.childGraph
+              //   ? this.childGraph.generateGraph("service", this.rows)
+              //   : "";
             } else {
-              return this.userSelection;
+              console.error("Error", res);
             }
             this.alertMessage = new AlertModel();
           },
@@ -270,20 +228,20 @@ export class DisplayInboundListComponent implements OnInit {
 
   // Update on return of selector in header
   onReturnHeaderResult(event) {
-    this.userSelection = new UserSelectionModel("userSelection");
-    this.getReportList();
+    this.userSelection = new UserSelectionModel("standard");
+    this.getReportList(this.userSelection);
     this.show_graph_or_table_button = false;
-    this.childGraph ? this.childGraph.generateGraph("header", this.rows) : "";
+    // this.childGraph ? this.childGraph.generateGraph("header", this.rows) : "";
   }
 
   // Activated by button
   onRecalculate(event) {
-    this.userSelection = new UserSelectionModel("userSelection");
-    this.getReportList();
+    this.userSelection = new UserSelectionModel("standard");
+    this.getReportList(this.userSelection);
     this.show_graph_or_table_button = false;
     console.error("this.rows", this.rows);
 
-    this.childGraph ? this.childGraph.generateGraph("button", this.rows) : "";
+    // this.childGraph ? this.childGraph.generateGraph("button", this.rows) : "";
   }
 
   // Response report finder to display number of rows in table
@@ -313,7 +271,7 @@ export class DisplayInboundListComponent implements OnInit {
 
   // temporary method to generate excel map for exporting model
   onCreateModel(model?) {
-    model = new DisplayInboundModel().fieldList();
+    model = new DisplayAutomaticModel().fieldList();
 
     console.error("model", model);
 

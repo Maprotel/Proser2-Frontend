@@ -801,6 +801,138 @@
         }
       }
     },
+    "shift": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "sections/shift",
+      "sourceRoot": "sections/shift/src",
+      "prefix": "app-shift",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "./extra-webpack.config.js"
+            },
+            "outputPath": "dist/shift",
+            "index": "sections/shift/src/index.html",
+            "main": "sections/shift/src/main.ts",
+            "polyfills": "sections/shift/src/polyfills.ts",
+            "tsConfig": "sections/shift/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "sections/shift/src/favicon.ico",
+              "sections/shift/src/shared/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "shared/styles/app.scss",
+              "sections/shift/src/shared/styles/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "shared/environments/environment.ts",
+                  "with": "shared/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "shift:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "shift:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "shift:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "sections/shift/src/test.ts",
+            "polyfills": "sections/shift/src/polyfills.ts",
+            "tsConfig": "sections/shift/tsconfig.spec.json",
+            "karmaConfig": "sections/shift/karma.conf.js",
+            "assets": [
+              "sections/shift/src/favicon.ico",
+              "sections/shift/src/shared/assets",
+              {
+                "glob": "**/*",
+                "input": "./shared/assets/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "shared/styles/app.scss",
+              "sections/shift/src/shared/styles/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "sections/shift/tsconfig.app.json",
+              "sections/shift/tsconfig.spec.json",
+              "sections/shift/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "sections/shift/e2e/protractor.conf.js",
+            "devServerTarget": "shift:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "shift:serve:production"
+            }
+          }
+        }
+      }
+    },
     "sms": {
       "projectType": "application",
       "schematics": {},

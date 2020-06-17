@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit } from "@angular/core";
 import { UserSelectionModel, AlertModel } from "shared/models";
 
@@ -19,9 +17,9 @@ import {
 } from "shared/functions";
 
 @Component({
-  selector: 'app-display-display-monitor-indicators-historic',
-  templateUrl: './display-monitor-indicators-historic.component.html',
-  styleUrls: ['./display-monitor-indicators-historic.component.scss']
+  selector: "app-display-display-monitor-indicators-historic",
+  templateUrl: "./display-monitor-indicators-historic.component.html",
+  styleUrls: ["./display-monitor-indicators-historic.component.scss"]
 })
 export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
   // Subscription
@@ -29,6 +27,7 @@ export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
 
   alertMessage;
   show;
+  operation_time;
 
   // User selection
   userSelection;
@@ -54,8 +53,6 @@ export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
 
   // fake
   historic;
-
-  operation_time;
 
   constructor(
     private displayMonitorByIndicatorsService: DisplayMonitorByIndicatorsService,
@@ -85,7 +82,7 @@ export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
   ngOnInit() {
     this.userSelection = new UserSelectionModel("userSelection");
 
-    this.userSelection.mode = { id: 0, name: "Actual", value: 'actual' };
+    this.userSelection.mode = { id: 0, name: "Actual", value: "actual" };
     this.old_end_date = this.userSelection.end_date;
     this.old_start_date = this.userSelection.start_date;
 
@@ -99,16 +96,14 @@ export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
     this.userSelection.end_date = this.old_end_date;
     this.userSelection.start_date = this.old_start_date;
 
-    this.userSelectionService.writeUserSelectionHistoric(
-      this.userSelection,
-    );
+    this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
 
     this.subscription.unsubscribe();
   }
 
   // Get records from backend
   getMonitorList(userSelection: UserSelectionModel) {
-    this.userSelection.mode = { id: 0, name: "Actual", value: 'actual' };
+    this.userSelection.mode = { id: 0, name: "Actual", value: "actual" };
     this.userSelection.start_date = this.userSelection.current_date;
     this.userSelection.end_date = this.userSelection.current_date;
     this.displayMonitorByIndicatorsService
@@ -176,5 +171,5 @@ export class DisplayMonitorIndicatorsHistoricComponent implements OnInit {
     this.selectorVisibleFields.auxiliar = false;
   }
 
-  onSelect($event) { }
+  onSelect() {}
 }

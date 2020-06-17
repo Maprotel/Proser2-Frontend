@@ -76,7 +76,7 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
   ngOnInit() {
     this.userSelection = new UserSelectionModel("userSelection");
 
-    this.userSelection.mode = { id: 0, name: "Actual", value: 'actual' };
+    this.userSelection.mode = { id: 0, name: "Actual", value: "actual" };
     this.old_end_date = this.userSelection.end_date;
     this.old_start_date = this.userSelection.start_date;
 
@@ -90,16 +90,14 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
     this.userSelection.end_date = this.old_end_date;
     this.userSelection.start_date = this.old_start_date;
 
-    this.userSelectionService.writeUserSelectionHistoric(
-      this.userSelection,
-    );
+    this.userSelectionService.writeUserSelectionHistoric(this.userSelection);
 
     this.subscription.unsubscribe();
   }
 
   // Get records from backend
   getMonitorList(userSelection: UserSelectionModel) {
-    this.userSelection.mode = { id: 0, name: "Actual", value: 'actual' };
+    this.userSelection.mode = { id: 0, name: "Actual", value: "actual" };
     this.userSelection.start_date = this.userSelection.current_date;
     this.userSelection.end_date = this.userSelection.current_date;
     this.displayMonitorByIndicatorsService
@@ -112,8 +110,8 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
             this.rows_total = res.total;
             this.update_date = res.now;
 
-            this.rows ? this.show_table = true : this.show_table = false;
-            this.rows[0] ? this.show_data = true : this.show_data = false;
+            this.rows ? (this.show_table = true) : (this.show_table = false);
+            this.rows[0] ? (this.show_data = true) : (this.show_data = false);
           } else {
             console.error("Error", res);
           }
@@ -171,5 +169,5 @@ export class DisplayMonitorIndicatorsComponent implements OnInit {
     this.selectorVisibleFields.auxiliar = false;
   }
 
-  onSelect($event) { }
+  onSelect() {}
 }

@@ -4,11 +4,11 @@
 </div>
 
 <!----------REPORT HEADER------------------------- -->
-<div *ngIf="show_header">
-  <app-display-display-header [userSelection]="userSelection"
-                              [timerConnected]="timerConnected">
-  </app-display-display-header>
-</div>
+<app-display-display-header [userSelection]="userSelection"
+                            [selectorVisibleFields]="selectorVisibleFields"
+                            [timerConnected]="timerConnected"
+                            (returnResult)="onReturnHeaderResult($event)">
+</app-display-display-header>
 
 
 
@@ -16,10 +16,13 @@
   <div>
 
   </div>
-  <!-- <div class="clock ml-auto">
-    <fa-icon [icon]="faClock"></fa-icon> &nbsp; {{timerConnected}}
-
-  </div> -->
+  <div class="clock ml-auto">
+    <a>{{userSelection.creation_date}} -
+      {{userSelection.creation_time}} - </a>
+    <a>
+      <fa-icon [icon]="faClock"></fa-icon> &nbsp; {{timerConnected}}
+    </a>
+  </div>
 </section>
 
 
@@ -68,7 +71,3 @@
     {{rows.displayInboundCallsIndicators[0].now | date: 'medium'}}
   </p>
 </section>
-
-<!-- {{userSelection | json}} -->
-
-{{proShowDisplay | json}}

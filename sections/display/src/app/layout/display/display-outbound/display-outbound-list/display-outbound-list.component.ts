@@ -44,10 +44,10 @@ export class DisplayOutboundListComponent implements OnInit {
   // Subscription
   private subscription: Subscription = new Subscription();
   // Child components
-  @ViewChild(DisplayOutboundGraphComponent)
+  @ViewChild(DisplayOutboundGraphComponent, { static: false })
   private childGraph: DisplayOutboundGraphComponent;
 
-  @ViewChild(DisplayOutboundHighlightsComponent)
+  @ViewChild(DisplayOutboundHighlightsComponent, { static: false })
   private highligthts: DisplayOutboundHighlightsComponent;
 
   // Variables that come from main component

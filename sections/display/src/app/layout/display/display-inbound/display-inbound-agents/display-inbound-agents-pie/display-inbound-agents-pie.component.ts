@@ -12,6 +12,7 @@ import * as pluginDataLabels from "chartjs-plugin-datalabels";
 export class DisplayInboundAgentsPieComponent implements OnInit {
   @Input() userSelection;
   @Input() rows;
+  pieChartPlugins
   // Pie
   public pieChartOptions: ChartOptions = {
     responsive: false,
@@ -49,8 +50,6 @@ export class DisplayInboundAgentsPieComponent implements OnInit {
     { name: "Asignado", value: 0, color: "#6f42c1" },
     { name: "Auxiliar", value: 0, color: "#ffc107" }
   ];
-
-  pieChartPlugins;
 
   constructor(private modalService: NgbModal) {}
 

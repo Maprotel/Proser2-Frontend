@@ -53,8 +53,6 @@ export class DisplayMonitorAgentsComponent implements OnInit {
   // fake
   historic;
 
-
-
   constructor(
     private displayMonitorByAgentsService: DisplayMonitorByAgentsService,
 
@@ -168,5 +166,5 @@ export class DisplayMonitorAgentsComponent implements OnInit {
     this.selectorVisibleFields.auxiliar = false;
   }
 
-  onSelect($event) { }
+  onSelect() { }
 }

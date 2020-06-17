@@ -168,5 +168,5 @@ export class DisplayMonitorCallsComponent implements OnInit {
     this.selectorVisibleFields.auxiliar = false;
   }
 
-  onSelect($event) { }
+  onSelect() { }
 }

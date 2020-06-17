@@ -13,6 +13,8 @@ export class DisplayInboundBreaksAssignationsComponent implements OnInit {
 
   assigned;
 
+  break
+
   constructor(private modalService: NgbModal) {}
 
   ngOnInit() {}

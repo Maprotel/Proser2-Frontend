@@ -1,0 +1,36 @@
+<section class="header-block">
+
+  <!-- ------- REPORT NAME -------------------- -->
+  <article class="header-left">
+    <p class="report-title">{{ userSelection.title }}</p>
+
+
+    <p class="report-time">Horario: {{ userSelection.options }}</p>
+  </article>
+
+  <!-- ------- CALLCENTER NAME -------------------- -->
+  <article class="header-center ">
+    <p class=" callenter-title">{{ userSelection.legend }} </p>
+    <p class=" callenter-title">{{userSelection.entity_selection}}</p>
+  </article>
+
+
+  <!-- ------- INFO -------------------- -->
+  <article class="header-right">
+    <p class="report-selection"></p>
+    <section class="main-button">
+      <div>
+
+      </div>
+      <div class="clock ml-auto">
+        <p>{{weekday}} - {{userSelection.creation_date}} </p>
+        <p>
+          {{userSelection.creation_time}} </p>
+        <p>
+          <fa-icon [icon]="faClock"></fa-icon> &nbsp; {{timerConnected}}
+        </p>
+
+      </div>
+    </section>
+  </article>
+</section>

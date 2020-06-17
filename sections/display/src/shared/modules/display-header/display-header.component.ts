@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { EnvService, UserSelectionService } from "shared/services";
 
-import { faIdBadge, faClock } from "@fortawesome/free-solid-svg-icons";
+import { UserSelectionModel } from "shared/models";
+import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
 
-import * as moment from "moment";
+import { NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-display-display-header",
@@ -10,53 +12,98 @@ import * as moment from "moment";
   styleUrls: ["./display-header.component.scss"]
 })
 export class DisplayHeaderComponent implements OnInit {
+  @Output() returnResult = new EventEmitter();
+
   @Input() userSelection;
   @Input() selectorVisibleFields;
   @Input() timerConnected;
 
-  weekday;
+  activeModal: NgbActiveModal;
+  local_store;
+  env;
 
-  // Icon
-  faIdBadge = faIdBadge;
-  faClock = faClock;
+  rows;
+  rows_original;
 
-  constructor() {}
-
-  ngOnInit() {
-    this.weekday = this.onWeekName(
-      moment(this.userSelection.creation_date).weekday()
-    );
+  constructor(
+    private envService: EnvService,
+    private modalService: NgbModal,
+    private userSelectionService: UserSelectionService
+  ) {
+    this.env = this.envService;
+    this.userSelection = new UserSelectionModel("userSelection");
+    this.selectorVisibleFields = new UserSelectionModel("visible");
+    this.local_store = "assignation";
   }
 
-  onWeekName(number) {
-    let result = null;
-    if (number == 1) {
-      return "Lunes";
-    }
+  ngOnInit() { }
 
-    if (number == 2) {
-      return "Martes";
-    }
+  onUserSelectionText() {
+    let data = new UserSelectionModel("userSelection");
+    data.start_date = objectDateToTextDate(this.userSelection.start_date);
+    data.end_date = objectDateToTextDate(this.userSelection.end_date);
 
-    if (number == 3) {
-      return "Miércoles";
-    }
+    return data;
+  }
 
-    if (number == 4) {
-      return "Jueves";
-    }
+  openModal(content) {
+    this.activeModal = this.modalService.open(content, {
+      windowClass: "my-class",
+      keyboard: false
+    });
+  }
 
-    if (number == 5) {
-      return "Viernes";
-    }
+  // updateSelection($event) {
+  //   this.userSelection = this.userSelectionService.readUserSelectionHistoric(
+  //     this.local_store
+  //   );
+  //   // console.error("RETURN", this.userSelection);
+  // }
 
-    if (number == 6) {
-      return "Sábado";
-    }
+  // closeSelector($event) {
+  //   this.userSelection = this.userSelectionService.readUserSelectionHistoric(
+  //     this.local_store
+  //   );
+  //   // console.error("CLOSED", this.userSelection);
+  //   this.returnResult.emit({
+  //     userSelection: this.userSelection,
+  //     rows: this.rows,
+  //     rows_original: this.rows_original
+  //   });
+  //   this.ngOnInit();
+  // }
 
-    if (number == 7) {
-      return "Domingo";
-    }
-    return result;
+  /********************************************************* */
+
+  openDetailModal(content) {
+    this.activeModal = this.modalService.open(content, {
+      windowClass: "my-class",
+      keyboard: false
+    });
+  }
+
+  onCloseModal(event, closeModal) {
+    this.activeModal.close();
+  }
+
+  updateSelection(event, userSelectionBack) {
+
+    this.userSelection = this.userSelectionService.readUserSelectionHistoric(
+      this.local_store
+    );
+    // console.error("RETURN", this.userSelection);
+  }
+
+  closeSelector($event) {
+    this.userSelection = this.userSelectionService.readUserSelectionHistoric(
+      this.local_store
+    );
+    // console.error("CLOSED", this.userSelection);
+    this.returnResult.emit({
+      userSelection: this.userSelection,
+      rows: this.rows,
+      rows_original: this.rows_original
+    });
+    this.ngOnInit();
   }
 }
