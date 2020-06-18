@@ -49,6 +49,7 @@ export class HeaderMenuSectionsComponent implements OnInit {
   crudLink;
   dashboardLink;
   displayLink;
+  shiftLink
   homeLink;
   reportsLink;
   smsLink;
@@ -75,6 +76,7 @@ export class HeaderMenuSectionsComponent implements OnInit {
     this.crudLink = this.env.crudLink
     this.dashboardLink = this.env.dashboardLink
     this.displayLink = this.env.displayLink
+    this.shiftLink = this.env.displayLink
     this.homeLink = this.env.homeLink
     this.reportsLink = this.env.reportsLink
     this.smsLink = this.env.smsLink

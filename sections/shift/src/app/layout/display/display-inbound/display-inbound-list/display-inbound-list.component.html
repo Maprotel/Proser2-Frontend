@@ -23,9 +23,13 @@
 </section>
 
 
+<section class="container" *ngIf="showNoValidShift">
+  <h1 class="text-center">No hay turnos validos para hoy a esta hora</h1>
+</section>
+
 
 <!-- TODAY -->
-<main class="main" *ngIf="!historic">
+<main class="main" *ngIf="!historic && !showNoValidShift">
   <!-- HIGHLIGHTS -->
   <section class="highlights" *ngIf="rows">
     <article>
@@ -68,7 +72,3 @@
     {{rows.displayInboundCallsIndicators[0].now | date: 'medium'}}
   </p>
 </section>
-
-<!-- {{userSelection | json}} -->
-
-{{proShowDisplay | json}}

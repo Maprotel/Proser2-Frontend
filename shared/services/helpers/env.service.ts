@@ -17,6 +17,7 @@ export class EnvService {
   public crudLink = this.host + "/proser_reports/dist/crud/";
   public dashboardLink = this.host + "/proser_reports/dist/dashboard/";
   public displayLink = this.host + "/proser_reports/dist/display/";
+  public shiftLink = this.host + "/proser_reports/dist/shift/";
   public homeLink = this.host + "/proser_reports/dist/home/";
   public reportsLink = this.host + "/proser_reports/dist/reports/";
   public smsLink = this.host + "/proser_reports/dist/sms/";

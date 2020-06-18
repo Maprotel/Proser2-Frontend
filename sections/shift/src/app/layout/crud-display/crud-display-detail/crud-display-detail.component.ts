@@ -132,6 +132,6 @@ export class CrudDisplayDetailComponent implements OnInit {
   }
 
   showSelectedProfile() {
-    console.log(JSON.stringify(this.recordForm.value.pro_show_display_weekday));
+    // console.log(JSON.stringify(this.recordForm.value.pro_show_display_weekday));
   }
 }

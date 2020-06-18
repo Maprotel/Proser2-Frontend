@@ -51,7 +51,7 @@ export class CrudDisplayListComponent implements OnInit {
   onGetRecords() {
     this.proShowDisplayService.getRecords().subscribe(
       data => {
-        console.log("data", data);
+        // console.log("data", data);
 
         let myData = data.map(x => {
           let record = {
@@ -90,7 +90,7 @@ export class CrudDisplayListComponent implements OnInit {
   }
 
   updateSelection(record, i) {
-    console.log("record", record);
+    // console.log("record", record);
 
     this.selectedRow = i;
     this.selectedRecord = record;

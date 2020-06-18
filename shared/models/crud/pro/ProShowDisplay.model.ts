@@ -11,6 +11,9 @@ export class ProShowDisplayModel {
   pro_show_display_view: any;
   pro_show_display_status: any;
   days?;
+  day_of_week?;
+  start_datetime?;
+  end_datetime?;
 
   constructor() {
     this.pro_show_display_id = null;
@@ -22,93 +25,97 @@ export class ProShowDisplayModel {
     this.pro_show_display_type;
     this.pro_show_display_view;
     this.pro_show_display_status = "A";
+    this.days = null;
+    this.day_of_week = null;
+    this.start_datetime = null;
+    this.end_datetime = null;
   }
 
-  public fieldList() {
-    return [
-      { field_name: "pro_show_display_id", name: "display_id", text: "Id" },
-      {
-        field_name: "pro_show_display_name",
-        name: "display_nombre",
-        text: "Nombre"
-      },
-      {
-        field_name: "pro_show_display_weekday",
-        name: "display_dia",
-        text: "Día"
-      },
-      {
-        field_name: "pro_show_display_start_time",
-        name: "display_hora_inicio",
-        text: "Inicio"
-      },
-      {
-        field_name: "pro_show_display_end_time",
-        name: "display_hora_fin",
-        text: "Fin"
-      },
-      {
-        field_name: "pro_show_display_type",
-        name: "tipo_display",
-        text: "Display"
-      },
-      {
-        field_name: "pro_show_display_selection",
-        name: "display_seleccion",
-        text: "Selección"
-      },
-      {
-        field_name: "pro_show_display_view",
-        name: "display_vista",
-        text: "Vista"
-      },
-      {
-        field_name: "pro_show_display_status",
-        name: "display_status",
-        text: "Status"
-      }
-    ];
-  }
+  // public fieldList() {
+  //   return [
+  //     { field_name: "pro_show_display_id", name: "display_id", text: "Id" },
+  //     {
+  //       field_name: "pro_show_display_name",
+  //       name: "display_nombre",
+  //       text: "Nombre"
+  //     },
+  //     {
+  //       field_name: "pro_show_display_weekday",
+  //       name: "display_dia",
+  //       text: "Día"
+  //     },
+  //     {
+  //       field_name: "pro_show_display_start_time",
+  //       name: "display_hora_inicio",
+  //       text: "Inicio"
+  //     },
+  //     {
+  //       field_name: "pro_show_display_end_time",
+  //       name: "display_hora_fin",
+  //       text: "Fin"
+  //     },
+  //     {
+  //       field_name: "pro_show_display_type",
+  //       name: "tipo_display",
+  //       text: "Display"
+  //     },
+  //     {
+  //       field_name: "pro_show_display_selection",
+  //       name: "display_seleccion",
+  //       text: "Selección"
+  //     },
+  //     {
+  //       field_name: "pro_show_display_view",
+  //       name: "display_vista",
+  //       text: "Vista"
+  //     },
+  //     {
+  //       field_name: "pro_show_display_status",
+  //       name: "display_status",
+  //       text: "Status"
+  //     }
+  //   ];
+  // }
 
-  public fieldInfo(field_name) {
-    const register = this.fieldList();
+  // public fieldInfo(field_name) {
+  //   const register = this.fieldList();
 
-    return register.filter(x => {
-      return x.field_name === field_name;
-    })[0];
-  }
+  //   return register.filter(x => {
+  //     return x.field_name === field_name;
+  //   })[0];
+  // }
 
-  public weekDayList() {
-    const result = [
-      { id: 1, name: "lunes", value: 1 },
-      { id: 2, name: "martes", value: 2 },
-      { id: 3, name: "miércoles", value: 3 },
-      { id: 4, name: "jueves", value: 4 },
-      { id: 5, name: "viernes", value: 5 },
-      { id: 6, name: "sábado", value: 6 },
-      { id: 7, name: "domingo", value: 7 }
-    ];
+  // public weekDayList() {
+  //   const result = [
+  //     { id: 1, name: "lunes", value: 1 },
+  //     { id: 2, name: "martes", value: 2 },
+  //     { id: 3, name: "miércoles", value: 3 },
+  //     { id: 4, name: "jueves", value: 4 },
+  //     { id: 5, name: "viernes", value: 5 },
+  //     { id: 6, name: "sábado", value: 6 },
+  //     { id: 7, name: "domingo", value: 7 }
+  //   ];
 
-    return result;
-  }
+  //   return result;
+  // }
 
-  public displayTypeList() {
-    const result = [
-      { id: 1, name: "Llamadas entrantes", value: "inbound" },
-      { id: 2, name: "Llamadas salientes", value: "outbound" },
-      { id: 3, name: "Llamadas automáticas", value: "automatic" },
-      { id: 4, name: "Agentes", value: "agents" }
-    ];
-    return result;
-  }
+  // public displayTypeList() {
+  //   const result = [
+  //     { id: 1, name: "Llamadas entrantes", value: "inbound" },
+  //     { id: 2, name: "Llamadas salientes", value: "outbound" },
+  //     { id: 3, name: "Llamadas automáticas", value: "automatic" },
+  //     { id: 4, name: "Agentes", value: "agents" }
+  //   ];
+  //   return result;
+  // }
 
-  public viewTypeList() {
-    const result = [
-      { id: 1, name: "standard", value: 1 },
-      { id: 2, name: "historic", value: 2 },
-      { id: 3, name: "graph", value: 3 },
-      { id: 4, name: "group", value: 4 }
-    ];
-    return result;
-  }
+  // public viewTypeList() {
+  //   const result = [
+  //     { id: 1, name: "standard", value: 1 },
+  //     { id: 2, name: "historic", value: 2 },
+  //     { id: 3, name: "graph", value: 3 },
+  //     { id: 4, name: "group", value: 4 }
+  //   ];
+  //   return result;
+  // }
 }
