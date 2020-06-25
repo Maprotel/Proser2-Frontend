@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
 
-
 import { AuthService } from "shared/services/helpers/auth.service";
 
 import { Router } from "@angular/router";
@@ -11,7 +10,6 @@ import {
   EnvService,
   UserSelectionService
 } from "shared/services";
-
 
 import {
   faDigitalTachograph,
@@ -25,9 +23,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'login-header-menu-sections',
-  templateUrl: './header-menu-sections.component.html',
-  styleUrls: ['./header-menu-sections.component.scss']
+  selector: "login-header-menu-sections",
+  templateUrl: "./header-menu-sections.component.html",
+  styleUrls: ["./header-menu-sections.component.scss"]
 })
 export class HeaderMenuSectionsComponent implements OnInit {
   showInMenu;
@@ -43,13 +41,11 @@ export class HeaderMenuSectionsComponent implements OnInit {
   faUserTie = faUserTie;
   faLaptop = faLaptop;
 
-
-
   auditLink;
   crudLink;
   dashboardLink;
   displayLink;
-  shiftLink
+  shiftLink;
   homeLink;
   reportsLink;
   smsLink;
@@ -57,36 +53,35 @@ export class HeaderMenuSectionsComponent implements OnInit {
   userLink;
   viewLink;
 
-  testLink
+  testLink;
 
-  host
+  host;
 
-  proserLink; 
-  
+  proserLink;
+
   constructor(
     private authService: AuthService,
     private envService: EnvService,
     private router: Router
-
   ) {
     this.env = this.envService;
     this.host = this.envService.host;
 
-    this.auditLink = this.env.auditLink
-    this.crudLink = this.env.crudLink
-    this.dashboardLink = this.env.dashboardLink
-    this.displayLink = this.env.displayLink
-    this.shiftLink = this.env.displayLink
-    this.homeLink = this.env.homeLink
-    this.reportsLink = this.env.reportsLink
-    this.smsLink = this.env.smsLink
-    this.systemLink = this.env.systemLink
-    this.userLink = this.env.userLink
-    this.viewLink = this.env.viewLink
+    this.auditLink = this.env.auditLink;
+    this.crudLink = this.env.crudLink;
+    this.dashboardLink = this.env.dashboardLink;
+    this.displayLink = this.env.displayLink;
+    this.shiftLink = this.env.shiftLink;
+    this.homeLink = this.env.homeLink;
+    this.reportsLink = this.env.reportsLink;
+    this.smsLink = this.env.smsLink;
+    this.systemLink = this.env.systemLink;
+    this.userLink = this.env.userLink;
+    this.viewLink = this.env.viewLink;
   }
 
   ngOnInit() {
-    this.onShowSectionMenus()
+    this.onShowSectionMenus();
   }
 
   onLogout() {
@@ -96,6 +91,6 @@ export class HeaderMenuSectionsComponent implements OnInit {
   }
 
   onShowSectionMenus() {
-    this.showInMenu = this.authService.getCurrentUserValue()
+    this.showInMenu = this.authService.getCurrentUserValue();
   }
 }

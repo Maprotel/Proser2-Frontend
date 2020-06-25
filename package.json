@@ -10,6 +10,7 @@
     "build-crud": "ng build --prod crud --base-href /proser/proser_reports/dist/crud/;",
     "build-dashboard": "ng build --prod dashboard --base-href /proser/proser_reports/dist/dashboard/;",
     "build-display": "ng build --prod display --base-href /proser/proser_reports/dist/display/;",
+    "build-shift": "ng build --prod shift --base-href /proser/proser_reports/dist/shift/;",
     "build-home": "ng build --prod home --base-href /proser/proser_reports/dist/home/",
     "build-reports": "ng build --prod reports --base-href /proser/proser_reports/dist/reports/;",
     "build-sms": "ng build --prod sms --base-href /proser/proser_reports/dist/sms/;",

@@ -27,7 +27,6 @@ export class ProShowDisplayService {
     new ProShowDisplayModel()
   );
   currentRecord = this.currentRecordSource.asObservable();
-  apiUrl = "http://localhost:3151";
 
   constructor(
     private http: HttpClient,
@@ -40,7 +39,7 @@ export class ProShowDisplayService {
   // Methods
   getRecords(): Observable<ProShowDisplayModel[]> {
     // Define api url
-    const apiString = `${this.apiUrl}/api/ProShowDisplays`;
+    const apiString = `${this.env.loopbackApiUrl}/api/ProShowDisplays`;
     // Get backend info
     return this.http
       .get<ProShowDisplayModel[]>(apiString, { responseType: "json" })
@@ -50,7 +49,9 @@ export class ProShowDisplayService {
   getSingleRecord(id): Observable<ProShowDisplayModel> {
     // let id = record.PersonId;
     return this.http
-      .get<ProShowDisplayModel>(`${this.apiUrl}/api/ProShowDisplays/${id}`)
+      .get<ProShowDisplayModel>(
+        `${this.env.loopbackApiUrl}/api/ProShowDisplays/${id}`
+      )
       .pipe(map(data => data));
   }
 
@@ -58,7 +59,7 @@ export class ProShowDisplayService {
     //delete record.personId
     return this.http
       .post<ProShowDisplayModel>(
-        `${this.apiUrl}/api/ProShowDisplays`,
+        `${this.env.loopbackApiUrl}/api/ProShowDisplays`,
         record
       )
       .pipe(map(data => data));
@@ -70,7 +71,7 @@ export class ProShowDisplayService {
     //delete record.personId
     return this.http
       .post<ProShowDisplayModel>(
-        `${this.apiUrl}/api/ProShowDisplays/replaceOrCreate`,
+        `${this.env.loopbackApiUrl}/api/ProShowDisplays/replaceOrCreate`,
         record
       )
       .pipe(map(data => data));
@@ -83,7 +84,7 @@ export class ProShowDisplayService {
     }
     const query = JSON.stringify(record);
     const accessToken = localStorage.getItem("accessToken");
-    const url_api = `${this.env.loopbackApiUrl}${this.apiUrl}/${id}?access_token=${accessToken}`;
+    const url_api = `${this.env.loopbackApiUrl}/${id}?access_token=${accessToken}`;
 
     return this.http
       .put<ProShowDisplayModel>(url_api, query)
@@ -92,12 +93,12 @@ export class ProShowDisplayService {
 
   deleteRecord(id: number): Observable<any> {
     return this.http
-      .delete<any>(`${this.apiUrl}/api/ProShowDisplays/${id}`)
+      .delete<any>(`${this.env.loopbackApiUrl}/api/ProShowDisplays/${id}`)
       .pipe(map(data => data));
   }
 
   ping() {
-    return this.http.get(`${this.apiUrl}/ping`);
+    return this.http.get(`${this.env.loopbackApiUrl}/ping`);
   }
 
   /******************************** */

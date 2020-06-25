@@ -139,68 +139,60 @@ export class DisplayInboundListComponent implements OnInit {
       data => {
         this.userSelection = new UserSelectionModel("userSelection");
         let today = moment().format("YYYY-MM-DD");
+        let tomorrow = moment()
+          .add(1, "days")
+          .format("YYYY-MM-DD");
+        let yesterday = moment()
+          .add(-1, "days")
+          .format("YYYY-MM-DD");
         let now = moment().format("YYYY-MM-DD HH:mm:ss");
         let now_week_day = moment().weekday();
 
-        let myData = data.map(x => {
-          let record = {
-            pro_show_display_id: x.pro_show_display_id,
-            pro_show_display_name: x.pro_show_display_name,
-            pro_show_display_weekday: JSON.parse(
-              JSON.parse(JSON.stringify(x.pro_show_display_weekday))
-            ),
-            pro_show_display_start_time: x.pro_show_display_start_time,
-            pro_show_display_end_time: x.pro_show_display_end_time,
-            pro_show_display_type: JSON.parse(x.pro_show_display_type),
-            pro_show_display_selection: x.pro_show_display_selection,
-            pro_show_display_view: x.pro_show_display_view,
-            pro_show_display_status: x.pro_show_display_status,
-            days: "",
-            day_of_week: JSON.parse(
-              JSON.parse(JSON.stringify(x.pro_show_display_weekday))
-            )
-              .map(x => {
-                return x.id == now_week_day;
-              })
-              .filter(x => {
-                return x == true;
-              }),
-            start_datetime: this.onValidDayStart(
-              x.pro_show_display_type,
-              x.pro_show_display_start_time,
-              x.pro_show_display_end_time,
-              x.pro_show_display_start_time
-            ),
-            end_datetime: this.onValidDayEnd(
-              x.pro_show_display_type,
-              x.pro_show_display_start_time,
-              x.pro_show_display_end_time,
-              x.pro_show_display_end_time
-            )
-          };
+        let myData = data
+          .map(x => {
+            let record = {
+              pro_show_display_id: x.pro_show_display_id,
+              pro_show_display_name: x.pro_show_display_name,
+              pro_show_display_weekday: JSON.parse(
+                JSON.parse(JSON.stringify(x.pro_show_display_weekday))
+              ),
+              pro_show_display_start_time: x.pro_show_display_start_time,
+              pro_show_display_end_time: x.pro_show_display_end_time,
+              pro_show_display_type: JSON.parse(x.pro_show_display_type),
+              pro_show_display_selection: x.pro_show_display_selection,
+              pro_show_display_view: x.pro_show_display_view,
+              pro_show_display_status: x.pro_show_display_status,
+              days: "",
+              day_of_week: JSON.parse(
+                JSON.parse(JSON.stringify(x.pro_show_display_weekday))
+              )
+                .map(x => {
+                  return x.id == now_week_day;
+                })
+                .filter(x => {
+                  return x == true;
+                }),
+              start_datetime: this.onValidDay(x.pro_show_display_type.name, x.pro_show_display_start_time, x.pro_show_display_end_time, x.pro_show_display_start_time),
+              end_datetime: this.onValidDay(x.pro_show_display_type.name, x.pro_show_display_start_time, x.pro_show_display_end_time, x.pro_show_display_end_time),
 
-          record.days = record.pro_show_display_weekday.map(x => {
-            return "  " + x.value + "  ";
+            record.days = record.pro_show_display_weekday.map(x => {
+              return "  " + x.value + "  ";
+            });
+
+            return record;
+          })
+          .filter(x => {
+            return x.day_of_week[0] == true; //.day_of_week == true;
+          })
+          .filter(x => {
+            return moment(x.end_datetime) >= moment(now);
+          })
+          .filter(x => {
+            return moment(x.start_datetime) <= moment(now);
           });
 
-          return record;
-        });
-        // .filter(x => {
-        //   return x.day_of_week[0] == true; //.day_of_week == true;
-        // })
-        // .filter(x => {
-        //   return moment(x.end_datetime) >= moment(now);
-        // })
-        // .filter(x => {
-        //   return moment(x.start_datetime) <= moment(now);
-        // });
 
-        console.log("myData", myData);
-
-        // myData = [];
-        // if (myData !== []) {
-        //   console.log("myData esta vacia");
-        // }
+        
 
         // Show hide data
         if (myData[0]) {
@@ -212,6 +204,7 @@ export class DisplayInboundListComponent implements OnInit {
 
         let emptyData = [new ProShowDisplayModel()];
 
+        console.log("myData", myData, emptyData);
         data
           ? (this.proShowDisplay = myData[0])
           : (this.proShowDisplay = new ProShowDisplayModel());
@@ -336,68 +329,11 @@ export class DisplayInboundListComponent implements OnInit {
     return result;
   }
 
-  onValidDayStart(type, start_time, end_time, data) {
+  onValidDay(type, start_time, end_time, data) {
     let result;
-    let today: string = moment().format("YYYY-MM-DD");
-    let now: string = moment().format("YYYY-MM-DD HH-mm-ss");
-    let shiftStart: string = moment(today + " " + start_time).format(
-      "YYYY-MM-DD HH-mm-ss"
-    );
-    let shiftEnd: string = moment(today + " " + end_time).format(
-      "YYYY-MM-DD HH-mm-ss"
-    );
-    let tomorrow: string = moment()
-      .add(1, "days")
-      .format("YYYY-MM-DD");
-    let yesterday: string = moment()
-      .add(-1, "days")
-      .format("YYYY-MM-DD");
-    let typeName: string = JSON.parse(type).name;
+    let now = moment().format("YYYY-MM-DD");
 
-
-
-    console.log("onValidDayStart.type", typeName);
-
-
-    if (typeName == "actual") {
-      result = today + " " + data;
-    } else {
-      if (moment(shiftStart) >= moment(now) && moment(shiftEnd) >= moment(now) ) {
-        result = tomorrow + " " + data;
-      }
-      if (moment(shiftStart) <= moment(now) && moment(shiftEnd) >= moment(now) ) {
-        result = yesterday + " " + data;
-      }
-    }
-
-    return result;
-  }
-
-  onValidDayEnd(type, start_time, end_time, data) {
-    let result;
-    let today = moment().format("YYYY-MM-DD");
-    let now = moment().format("YYYY-MM-DD HH-mm-ss");
-    let tomorrow = moment()
-      .add(1, "days")
-      .format("YYYY-MM-DD");
-    let yesterday = moment()
-      .add(-1, "days")
-      .format("YYYY-MM-DD");
-    let typeName = JSON.parse(type).name;
-
-    console.log("onValidDayEnd.type", typeName);
-
-    if (typeName == "actual") {
-      result = today + " " + data;
-    } else {
-      if (true) {
-        result = tomorrow + " " + data;
-      }
-      if (false) {
-        result = yesterday + " " + data;
-      }
-    }
-
+    result = now + ' ' + data;
     return result;
   }
 }
