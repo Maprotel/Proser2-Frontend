@@ -142,58 +142,59 @@ export class DisplayInboundListComponent implements OnInit {
         let now = moment().format("YYYY-MM-DD HH:mm:ss");
         let now_week_day = moment().weekday();
 
-        let myData = data.map(x => {
-          let record = {
-            pro_show_display_id: x.pro_show_display_id,
-            pro_show_display_name: x.pro_show_display_name,
-            pro_show_display_weekday: JSON.parse(
-              JSON.parse(JSON.stringify(x.pro_show_display_weekday))
-            ),
-            pro_show_display_start_time: x.pro_show_display_start_time,
-            pro_show_display_end_time: x.pro_show_display_end_time,
-            pro_show_display_type: JSON.parse(x.pro_show_display_type),
-            pro_show_display_selection: x.pro_show_display_selection,
-            pro_show_display_view: x.pro_show_display_view,
-            pro_show_display_status: x.pro_show_display_status,
-            days: "",
-            day_of_week: JSON.parse(
-              JSON.parse(JSON.stringify(x.pro_show_display_weekday))
-            )
-              .map(x => {
-                return x.id == now_week_day;
-              })
-              .filter(x => {
-                return x == true;
-              }),
-            start_datetime: this.onValidDayStart(
-              x.pro_show_display_type,
-              x.pro_show_display_start_time,
-              x.pro_show_display_end_time,
-              x.pro_show_display_start_time
-            ),
-            end_datetime: this.onValidDayEnd(
-              x.pro_show_display_type,
-              x.pro_show_display_start_time,
-              x.pro_show_display_end_time,
-              x.pro_show_display_end_time
-            )
-          };
+        let myData = data
+          .map(x => {
+            let record = {
+              pro_show_display_id: x.pro_show_display_id,
+              pro_show_display_name: x.pro_show_display_name,
+              pro_show_display_weekday: JSON.parse(
+                JSON.parse(JSON.stringify(x.pro_show_display_weekday))
+              ),
+              pro_show_display_start_time: x.pro_show_display_start_time,
+              pro_show_display_end_time: x.pro_show_display_end_time,
+              pro_show_display_type: JSON.parse(x.pro_show_display_type),
+              pro_show_display_selection: x.pro_show_display_selection,
+              pro_show_display_view: x.pro_show_display_view,
+              pro_show_display_status: x.pro_show_display_status,
+              days: "",
+              day_of_week: JSON.parse(
+                JSON.parse(JSON.stringify(x.pro_show_display_weekday))
+              )
+                .map(x => {
+                  return x.id == now_week_day;
+                })
+                .filter(x => {
+                  return x == true;
+                }),
+              start_datetime: this.onValidDayStart(
+                x.pro_show_display_type,
+                x.pro_show_display_start_time,
+                x.pro_show_display_end_time,
+                x.pro_show_display_start_time
+              ),
+              end_datetime: this.onValidDayEnd(
+                x.pro_show_display_type,
+                x.pro_show_display_start_time,
+                x.pro_show_display_end_time,
+                x.pro_show_display_end_time
+              )
+            };
 
-          record.days = record.pro_show_display_weekday.map(x => {
-            return "  " + x.value + "  ";
+            record.days = record.pro_show_display_weekday.map(x => {
+              return "  " + x.value + "  ";
+            });
+
+            return record;
+          })
+          .filter(x => {
+            return x.day_of_week[0] == true; //.day_of_week == true;
+          })
+          .filter(x => {
+            return moment(x.end_datetime) >= moment(now);
+          })
+          .filter(x => {
+            return moment(x.start_datetime) <= moment(now);
           });
-
-          return record;
-        });
-        // .filter(x => {
-        //   return x.day_of_week[0] == true; //.day_of_week == true;
-        // })
-        // .filter(x => {
-        //   return moment(x.end_datetime) >= moment(now);
-        // })
-        // .filter(x => {
-        //   return moment(x.start_datetime) <= moment(now);
-        // });
 
         console.log("myData", myData);
 
@@ -230,22 +231,26 @@ export class DisplayInboundListComponent implements OnInit {
         this.userSelection.start_time = this.proShowDisplay.pro_show_display_start_time;
         this.userSelection.end_time = this.proShowDisplay.pro_show_display_end_time;
 
-        this.userSelection.start_date = moment().format("YYYY-MM-DD");
+        this.userSelection.start_date = moment(
+          this.proShowDisplay.start_datetime
+        ).format("YYYY-MM-DD");
         // this.proShowDisplay.pro_show_display_type == "previo"
         //   ? (this.userSelection.start_date = moment()
         //       .subtract(1, "d")
         //       .format("YYYY-MM-DD"))
         //   : (this.userSelection.start_date = moment().format("YYYY-MM-DD"));
-        this.userSelection.end_date = moment().format("YYYY-MM-DD");
+        this.userSelection.end_date = moment(
+          this.proShowDisplay.end_datetime
+        ).format("YYYY-MM-DD");
 
         this.userSelection.legend = `${this.env.callcenterName}`;
         this.userSelection.entity_selection = `${this.proShowDisplay.pro_show_display_name}`;
 
         this.userSelection.title = "Display de llamadas entrantes";
-        this.userSelection.options =
-          this.proShowDisplay.pro_show_display_start_time.value +
-          " a " +
-          this.proShowDisplay.pro_show_display_end_time.value;
+        this.userSelection.options = `
+        ${this.proShowDisplay.start_datetime}
+          a
+          ${this.proShowDisplay.end_datetime}`;
 
         this.getReportList();
 
@@ -266,6 +271,8 @@ export class DisplayInboundListComponent implements OnInit {
 
   // Get records from backend
   getReportList() {
+    console.log("userSelection", this.userSelection);
+
     this.displayInboundIndicatorsService
       .getReportList(this.userSelection)
       .subscribe(
@@ -339,12 +346,12 @@ export class DisplayInboundListComponent implements OnInit {
   onValidDayStart(type, start_time, end_time, data) {
     let result;
     let today: string = moment().format("YYYY-MM-DD");
-    let now: string = moment().format("YYYY-MM-DD HH-mm-ss");
+    let now: string = moment().format("YYYY-MM-DD HH:mm:ss");
     let shiftStart: string = moment(today + " " + start_time).format(
-      "YYYY-MM-DD HH-mm-ss"
+      "YYYY-MM-DD HH:mm:ss"
     );
     let shiftEnd: string = moment(today + " " + end_time).format(
-      "YYYY-MM-DD HH-mm-ss"
+      "YYYY-MM-DD HH:mm:ss"
     );
     let tomorrow: string = moment()
       .add(1, "days")
@@ -354,49 +361,55 @@ export class DisplayInboundListComponent implements OnInit {
       .format("YYYY-MM-DD");
     let typeName: string = JSON.parse(type).name;
 
-
-
-    console.log("onValidDayStart.type", typeName);
-
+    console.log("Shift", shiftStart, shiftEnd);
 
     if (typeName == "actual") {
       result = today + " " + data;
     } else {
-      if (moment(shiftStart) >= moment(now) && moment(shiftEnd) >= moment(now) ) {
+      if (moment(shiftStart) <= moment(now)) {
         result = tomorrow + " " + data;
       }
-      if (moment(shiftStart) <= moment(now) && moment(shiftEnd) >= moment(now) ) {
+      if (moment(shiftStart) >= moment(now)) {
         result = yesterday + " " + data;
       }
     }
+
+    // console.log("onValidDayStart.type", typeName, result);
 
     return result;
   }
 
   onValidDayEnd(type, start_time, end_time, data) {
     let result;
-    let today = moment().format("YYYY-MM-DD");
-    let now = moment().format("YYYY-MM-DD HH-mm-ss");
-    let tomorrow = moment()
+    let today: string = moment().format("YYYY-MM-DD");
+    let now: string = moment().format("YYYY-MM-DD HH:mm:ss");
+    let shiftStart: string = moment(today + " " + start_time).format(
+      "YYYY-MM-DD HH:mm:ss"
+    );
+    let shiftEnd: string = moment(today + " " + end_time).format(
+      "YYYY-MM-DD HH:mm:ss"
+    );
+    let tomorrow: string = moment()
       .add(1, "days")
       .format("YYYY-MM-DD");
-    let yesterday = moment()
+    let yesterday: string = moment()
       .add(-1, "days")
       .format("YYYY-MM-DD");
-    let typeName = JSON.parse(type).name;
-
-    console.log("onValidDayEnd.type", typeName);
+    let typeName: string = JSON.parse(type).name;
 
     if (typeName == "actual") {
       result = today + " " + data;
     } else {
-      if (true) {
+      if (moment(shiftEnd) <= moment(now)) {
         result = tomorrow + " " + data;
       }
-      if (false) {
-        result = yesterday + " " + data;
+      if (moment(shiftEnd) >= moment(now)) {
+        result = today + " " + data;
       }
     }
+
+    // console.log("onValidDayEnd.type", typeName, result);
+    // console.log("*************************");
 
     return result;
   }
