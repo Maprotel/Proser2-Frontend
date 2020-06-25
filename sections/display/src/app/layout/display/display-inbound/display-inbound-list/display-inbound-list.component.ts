@@ -13,7 +13,7 @@ import {
 
 // Global shared functions import
 import { getUpdateFilter } from "shared/functions";
-import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
+import { objectDateToTextDate, textDateToObjectDate, dateToDatePicker } from "shared/functions";
 
 // Global shared models
 import { AlertModel } from "shared/models/helpers/Alert";
@@ -186,6 +186,8 @@ export class DisplayInboundListComponent implements OnInit {
   getReportList() {
     let userSelectionTemp = new UserSelectionModel("userSelection");
     this.userSelection = this.setHeaderInfo(userSelectionTemp);
+    this.userSelection.start_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
+    this.userSelection.end_date = dateToDatePicker(moment().format("YYYY-MM-DD"));
 
     this.displayInboundIndicatorsService
       .getReportList(this.userSelection)

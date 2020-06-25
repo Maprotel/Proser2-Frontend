@@ -13,7 +13,7 @@ import {
 
 // Global shared functions import
 import { getUpdateFilter } from "shared/functions";
-import { objectDateToTextDate, textDateToObjectDate } from "shared/functions";
+import { objectDateToTextDate, textDateToObjectDate, dateToDatePicker } from "shared/functions";
 
 // Global shared models
 import { AlertModel } from "shared/models/helpers/Alert";
@@ -186,15 +186,15 @@ export class DisplayInboundListComponent implements OnInit {
 
             return record;
           })
-          .filter(x => {
-            return x.day_of_week[0] == true; //.day_of_week == true;
-          })
-          .filter(x => {
-            return moment(x.end_datetime) >= moment(now);
-          })
-          .filter(x => {
-            return moment(x.start_datetime) <= moment(now);
-          });
+          // .filter(x => {
+          //   return x.day_of_week[0] == true; //.day_of_week == true;
+          // })
+          // .filter(x => {
+          //   return moment(x.end_datetime) >= moment(now);
+          // })
+          // .filter(x => {
+          //   return moment(x.start_datetime) <= moment(now);
+          // });
 
         console.log("myData", myData);
 
@@ -231,17 +231,17 @@ export class DisplayInboundListComponent implements OnInit {
         this.userSelection.start_time = this.proShowDisplay.pro_show_display_start_time;
         this.userSelection.end_time = this.proShowDisplay.pro_show_display_end_time;
 
-        this.userSelection.start_date = moment(
+        this.userSelection.start_date = dateToDatePicker(moment(
           this.proShowDisplay.start_datetime
-        ).format("YYYY-MM-DD");
+        ).format("YYYY-MM-DD"));
         // this.proShowDisplay.pro_show_display_type == "previo"
         //   ? (this.userSelection.start_date = moment()
         //       .subtract(1, "d")
         //       .format("YYYY-MM-DD"))
         //   : (this.userSelection.start_date = moment().format("YYYY-MM-DD"));
-        this.userSelection.end_date = moment(
+        this.userSelection.end_date = dateToDatePicker(moment(
           this.proShowDisplay.end_datetime
-        ).format("YYYY-MM-DD");
+        ).format("YYYY-MM-DD"));
 
         this.userSelection.legend = `${this.env.callcenterName}`;
         this.userSelection.entity_selection = `${this.proShowDisplay.pro_show_display_name}`;
@@ -367,11 +367,12 @@ export class DisplayInboundListComponent implements OnInit {
       result = today + " " + data;
     } else {
       if (moment(shiftStart) <= moment(now)) {
-        result = tomorrow + " " + data;
+        result = today + " " + data;
       }
       if (moment(shiftStart) >= moment(now)) {
         result = yesterday + " " + data;
       }
+
     }
 
     // console.log("onValidDayStart.type", typeName, result);
