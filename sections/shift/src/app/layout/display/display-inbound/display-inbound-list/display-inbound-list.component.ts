@@ -196,7 +196,7 @@ export class DisplayInboundListComponent implements OnInit {
             return moment(x.start_datetime) <= moment(now);
           });
 
-        console.log("myData", myData);
+        // console.log("myData", myData);
 
         // myData = [];
         // if (myData !== []) {
@@ -271,7 +271,7 @@ export class DisplayInboundListComponent implements OnInit {
 
   // Get records from backend
   getReportList() {
-    console.log("userSelection", this.userSelection);
+    // console.log("userSelection", this.userSelection);
 
     this.displayInboundIndicatorsService
       .getReportList(this.userSelection)
@@ -362,7 +362,7 @@ export class DisplayInboundListComponent implements OnInit {
       .format("YYYY-MM-DD");
     let typeName: string = JSON.parse(type).name;
 
-    console.log("Shift", shiftStart, shiftEnd);
+    // console.log("Shift", shiftStart, shiftEnd);
 
     if (typeName == "actual") {
       result = today + " " + data;
