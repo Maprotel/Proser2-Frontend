@@ -186,15 +186,15 @@ export class DisplayInboundListComponent implements OnInit {
 
             return record;
           })
-          // .filter(x => {
-          //   return x.day_of_week[0] == true; //.day_of_week == true;
-          // })
-          // .filter(x => {
-          //   return moment(x.end_datetime) >= moment(now);
-          // })
-          // .filter(x => {
-          //   return moment(x.start_datetime) <= moment(now);
-          // });
+          .filter(x => {
+            return x.day_of_week[0] == true; //.day_of_week == true;
+          })
+          .filter(x => {
+            return moment(x.end_datetime) >= moment(now);
+          })
+          .filter(x => {
+            return moment(x.start_datetime) <= moment(now);
+          });
 
         console.log("myData", myData);
 
@@ -347,6 +347,7 @@ export class DisplayInboundListComponent implements OnInit {
     let result;
     let today: string = moment().format("YYYY-MM-DD");
     let now: string = moment().format("YYYY-MM-DD HH:mm:ss");
+    
     let shiftStart: string = moment(today + " " + start_time).format(
       "YYYY-MM-DD HH:mm:ss"
     );
@@ -366,16 +367,23 @@ export class DisplayInboundListComponent implements OnInit {
     if (typeName == "actual") {
       result = today + " " + data;
     } else {
-      if (moment(shiftStart) <= moment(now)) {
+      if (moment(shiftStart).format("HH:mm:ss") <= moment(now).format("HH:mm:ss") &&
+        moment(now).format("HH:mm:ss") <= moment().endOf('day').format("HH:mm:ss")) {
         result = today + " " + data;
       }
-      if (moment(shiftStart) >= moment(now)) {
+      if (moment(shiftEnd).format("HH:mm:ss") <= moment(now).format("HH:mm:ss") &&
+        moment(now).format("HH:mm:ss") <= moment(shiftStart).format("HH:mm:ss")) {
+        result = today + " " + data;
+      }
+      if (moment(shiftEnd).format("HH:mm:ss") >= moment(now).format("HH:mm:ss") &&
+        moment(now).format("HH:mm:ss") >= moment().startOf('day').format("HH:mm:ss")) {
         result = yesterday + " " + data;
       }
 
     }
 
     // console.log("onValidDayStart.type", typeName, result);
+   
 
     return result;
   }
