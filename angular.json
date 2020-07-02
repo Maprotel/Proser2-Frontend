@@ -1326,7 +1326,7 @@
       }
     }
   },
-  "defaultProject": "proser",
+  "defaultProject": "home",
   "cli": {
     "analytics": false
   }

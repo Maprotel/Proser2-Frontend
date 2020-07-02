@@ -196,75 +196,76 @@ export class DisplayInboundListComponent implements OnInit {
           //   return moment(x.start_datetime) <= moment(now);
           // });
 
-        console.log("myData", myData);
-
-        // myData = [];
-        // if (myData !== []) {
-        //   console.log("myData esta vacia");
-        // }
+          
+          myData = [];
+          if (myData == []) {
+              console.log("myData esta vacia");
+            }
+            
+            console.log("myData", myData);
 
         // Show hide data
-        if (myData[0]) {
-          this.showNoValidShift = false;
-        } else {
-          this.showNoValidShift = true;
-          // myData = [new ProShowDisplayModel()];
-        }
+      //   if (myData[0]) {
+      //     this.showNoValidShift = false;
+      //   } else {
+      //     this.showNoValidShift = true;
+      //     // myData = [new ProShowDisplayModel()];
+      //   }
 
-        let emptyData = [new ProShowDisplayModel()];
+      //   let emptyData = [new ProShowDisplayModel()];
 
-        data
-          ? (this.proShowDisplay = myData[0])
-          : (this.proShowDisplay = new ProShowDisplayModel());
+      //   data
+      //     ? (this.proShowDisplay = myData[0])
+      //     : (this.proShowDisplay = new ProShowDisplayModel());
 
-        this.proShowDisplay.pro_show_display_start_time = {
-          id: 0,
-          value: this.proShowDisplay.pro_show_display_start_time
-        };
-        this.proShowDisplay.pro_show_display_end_time = {
-          id: 0,
-          value: this.proShowDisplay.pro_show_display_end_time
-        };
+      //   this.proShowDisplay.pro_show_display_start_time = {
+      //     id: 0,
+      //     value: this.proShowDisplay.pro_show_display_start_time
+      //   };
+      //   this.proShowDisplay.pro_show_display_end_time = {
+      //     id: 0,
+      //     value: this.proShowDisplay.pro_show_display_end_time
+      //   };
 
-        // "start_time_hour": { "hour": 0, "minute": 0, "second": 0, "value": "00:00:00" }, "end_time_hour": { "hour": 23, "minute": 59, "second": 59, "value": "23:59:59" }
+      //   // "start_time_hour": { "hour": 0, "minute": 0, "second": 0, "value": "00:00:00" }, "end_time_hour": { "hour": 23, "minute": 59, "second": 59, "value": "23:59:59" }
 
-        this.userSelection.start_time = this.proShowDisplay.pro_show_display_start_time;
-        this.userSelection.end_time = this.proShowDisplay.pro_show_display_end_time;
+      //   this.userSelection.start_time = this.proShowDisplay.pro_show_display_start_time;
+      //   this.userSelection.end_time = this.proShowDisplay.pro_show_display_end_time;
 
-        this.userSelection.start_date = dateToDatePicker(moment(
-          this.proShowDisplay.start_datetime
-        ).format("YYYY-MM-DD"));
-        // this.proShowDisplay.pro_show_display_type == "previo"
-        //   ? (this.userSelection.start_date = moment()
-        //       .subtract(1, "d")
-        //       .format("YYYY-MM-DD"))
-        //   : (this.userSelection.start_date = moment().format("YYYY-MM-DD"));
-        this.userSelection.end_date = dateToDatePicker(moment(
-          this.proShowDisplay.end_datetime
-        ).format("YYYY-MM-DD"));
+      //   this.userSelection.start_date = dateToDatePicker(moment(
+      //     this.proShowDisplay.start_datetime
+      //   ).format("YYYY-MM-DD"));
+      //   // this.proShowDisplay.pro_show_display_type == "previo"
+      //   //   ? (this.userSelection.start_date = moment()
+      //   //       .subtract(1, "d")
+      //   //       .format("YYYY-MM-DD"))
+      //   //   : (this.userSelection.start_date = moment().format("YYYY-MM-DD"));
+      //   this.userSelection.end_date = dateToDatePicker(moment(
+      //     this.proShowDisplay.end_datetime
+      //   ).format("YYYY-MM-DD"));
 
-        this.userSelection.legend = `${this.env.callcenterName}`;
-        this.userSelection.entity_selection = `${this.proShowDisplay.pro_show_display_name}`;
+      //   this.userSelection.legend = `${this.env.callcenterName}`;
+      //   this.userSelection.entity_selection = `${this.proShowDisplay.pro_show_display_name}`;
 
-        this.userSelection.title = "Display de llamadas entrantes";
-        this.userSelection.options = `
-        ${this.proShowDisplay.start_datetime}
-          a
-          ${this.proShowDisplay.end_datetime}`;
+      //   this.userSelection.title = "Display de llamadas entrantes";
+      //   this.userSelection.options = `
+      //   ${this.proShowDisplay.start_datetime}
+      //     a
+      //     ${this.proShowDisplay.end_datetime}`;
 
-        this.getReportList();
+      //   this.getReportList();
 
-        this.show_header = true;
-      },
-      error => {
-        console.error("Error", error);
-        this.show = false;
-        this.alertService.error(error.status);
-        this.alertMessage.alertTitle = "Error del servidor";
-        this.alertMessage.alertText = error.statusText;
-        this.alertMessage.alertShow = true;
-        this.alertMessage.alertClass =
-          "alert alert-danger alert-dismissible fade show";
+      //   this.show_header = true;
+      // },
+      // error => {
+      //   console.error("Error", error);
+      //   this.show = false;
+      //   this.alertService.error(error.status);
+      //   this.alertMessage.alertTitle = "Error del servidor";
+      //   this.alertMessage.alertText = error.statusText;
+      //   this.alertMessage.alertShow = true;
+      //   this.alertMessage.alertClass =
+      //     "alert alert-danger alert-dismissible fade show";
       }
     );
   }
@@ -361,7 +362,7 @@ export class DisplayInboundListComponent implements OnInit {
       .format("YYYY-MM-DD");
     let typeName: string = JSON.parse(type).name;
 
-    console.log("Shift", shiftStart, shiftEnd);
+    // console.log("Shift", shiftStart, shiftEnd);
 
     if (typeName == "actual") {
       result = today + " " + data;
